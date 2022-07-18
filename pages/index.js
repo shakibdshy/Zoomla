@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
@@ -27,10 +28,13 @@ export default function Home() {
             <p>Find in-depth information about Next.js features and API.</p>
           </a>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+          <Link href="https://nextjs.org/learn">
+            <a className={styles.card}>
+              <h2>Learn &rarr;</h2>
+              <p>Learn about Next.js in an interactive course with quizzes!</p>
+            </a>
+          </Link>
+
 
           <a
             href="https://github.com/vercel/next.js/tree/canary/examples"
@@ -60,7 +64,7 @@ export default function Home() {
         >
           Powered by{' '}
           <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+            <Image src="/vercel.svg" alt="Vercel Logo" width={502} height={200} />
           </span>
         </a>
       </footer>
