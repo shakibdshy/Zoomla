@@ -7,16 +7,16 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@material-tailwind/react": "^1.0.7",
+    "@material-tailwind/react": "1.0.7",
     "next": "12.1.4",
     "react": "18.0.0",
     "react-dom": "18.0.0"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.7",
+    "autoprefixer": "10.4.7",
     "eslint": "8.12.0",
     "eslint-config-next": "12.1.4",
-    "postcss": "^8.4.14",
-    "tailwindcss": "^3.1.6"
+    "postcss": "8.4.14",
+    "tailwindcss": "3.1.6"
   }
 }
