@@ -1,14 +1,28 @@
-import '../styles/globals.css'
 import type { AppProps } from 'next/app'
+import { NextPageWithLayout } from '../types';
+import Layout from '../components/Layout';
+import '../styles/globals.css'
+import { ThemeProvider } from '@material-tailwind/react';
 
-import { ThemeProvider } from "@material-tailwind/react";
+// this should give a better typing
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout;
+};
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return (
+const MyApp = ({
+  Component,
+  pageProps: { ...pageProps },
+}: AppPropsWithLayout) => {
+  // adjust accordingly if you disabled a layout rendering option
+  const getLayout = Component.getLayout ?? ((page) => page);
+
+  return getLayout(
     <ThemeProvider>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </ThemeProvider>
-  );
+  )
 }
 
 export default MyApp
