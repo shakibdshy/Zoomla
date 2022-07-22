@@ -4,10 +4,12 @@ import Header from './Header'
 export default function Layout({ children }: PropsWithChildren<{}>) {
     return (
         <>
-            <Header />
-            <main>
-                {children}
-            </main>
+            <div className="body-container flex">
+                <Header />
+                <main>
+                    {children}
+                </main>
+            </div>
         </>
     )
 }
