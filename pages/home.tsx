@@ -21,6 +21,7 @@ function HomePage() {
               <Image src={author} alt="Author Image" width={100} height={100} objectFit='cover' quality={100} className='rounded-xl' />
             </li>
           </ul>
+          
         </div>
       </section>
     </>
