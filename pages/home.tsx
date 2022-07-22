@@ -2,6 +2,7 @@ import Image from 'next/image'
 import React from 'react'
 import author from '../assets/author2.jpg'
 import { FiSearch } from 'react-icons/fi'
+import HomeRight from '../components/HomeRight'
 
 function HomePage() {
   return (
@@ -21,6 +22,14 @@ function HomePage() {
             </li>
           </ul>
 
+        </div>
+      </section>
+      <section className='flex w-full justify-between'>
+        <div className='w-full p-3'>
+
+        </div>
+        <div className='w-full p-3 text-white max-h-screen'>
+            <HomeRight />
         </div>
       </section>
     </>
