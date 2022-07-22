@@ -1,11 +1,12 @@
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect } from 'react'
 import Card from '../components/Card'
 import DateTime from '../components/DateTime'
 import ScheduleList from '../components/ScheduleList'
 import TopBar from '../components/TopBar'
 
 function HomePage() {
+
   return (
     <>
       <TopBar />
