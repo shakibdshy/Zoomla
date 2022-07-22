@@ -17,6 +17,16 @@
     @apply shadow-md before:w-6 before:bg-[#767780];
 
   }
+
+  .search-input {
+    @apply w-full sm:w-80 h-14 p-2 pl-14 border-none rounded-xl transition-all text-lg text-[#ffffff] placeholder:text-[#797981d3];
+    background: #242736;
+
+  }
+
+  .search-icon {
+    @apply absolute top-0 bottom-0 left-6 my-auto text-xl text-[#878891];
+  }
 }
 
 html,
