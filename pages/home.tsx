@@ -21,15 +21,6 @@ function HomePage() {
               <Image src={author} alt="Author Image" width={100} height={100} objectFit='cover' quality={100} className='rounded-xl' />
             </li>
           </ul>
-
-        </div>
-      </section>
-      <section className='flex w-full justify-between'>
-        <div className='w-full p-3'>
-
-        </div>
-        <div className='w-full p-3 text-white max-h-screen'>
-            <HomeRight />
         </div>
       </section>
     </>
