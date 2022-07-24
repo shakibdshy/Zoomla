@@ -41,7 +41,7 @@ function ScheduleList({setUser}) {
             {
                 data.map(i => (
                     <>
-                    <div onClick={() => setUser(i)} className='w-full border bg-[#2d2b2b] border-grey-800 p-3 sm:p-5 rounded-xl'>
+                    <div onClick={() => setUser(i)} className='w-full border bg-[#212534] border-grey-800 p-3 sm:p-5 rounded-xl'>
                         <div className='flex justify-between items-center'>
                             <h1 className="text-xl font-bold">{i.name}</h1>
                             <div>
@@ -80,7 +80,7 @@ function ScheduleList({setUser}) {
                                     </div>}
                             </div>
                             <div>
-                                <Button size="md" className="!text-grey-500 !px-3 bg-[#393838] border border-[#4d4c4c] mr-2 lowercase" variant="text">id</Button>
+                                <Button size="md" className="!text-grey-500 !px-3 bg-[#282c3a] border border-[#4d4c4c] mr-2 lowercase" variant="text">id</Button>
                                 {!(asPath === '/meeting') && <Button variant="filled" className='text-xl sm:!px-4 !px-3 capitalize'>start</Button>}
                             </div>
                         </div>

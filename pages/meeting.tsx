@@ -32,12 +32,12 @@ function Meeting() {
       <div className='text-white flex h-screen pt-20 md:flex-nowrap flex-wrap'>
         <div className='w-full overflow-y-scroll md:border-r p-4 border-grey-800'>
           <div className='flex !gap-x-3 border-b border-grey-800  items-center p-4 pt-0 justify-between'>
-            <Button size="sm" className="!text-grey-500 !text-xl font-bold !px-2 bg-[#393838] border border-[#4d4c4c] lowercase" variant="text"><AiOutlineReload /></Button>
+            <Button size="sm" className="!text-grey-500 !text-xl font-bold !px-2 bg-[#212534] border border-[#4d4c4c] lowercase" variant="text"><AiOutlineReload /></Button>
             <div className='flex w-full lg:w-1/2 rounded-lg items-center justify-between bg-[#2b2a2a] p-1'>
                <Button onClick={() => setSelect(true)} size="sm" className={`${select && "border bg-[#3d3c3c] border-[#4d4c4c]"} !text-grey-500 !px-3 w-full mr-4 bg-[#2f2e2e]  capitalize`} variant="text">Upcoming</Button>
                <Button onClick={() => setSelect(false)} size="sm" className={`${!select && "border bg-[#3d3c3c] border-[#4d4c4c]"} !text-grey-500 !px-3 w-full bg-[#2f2e2e]  capitalize`} variant="text">Recorded</Button>
             </div>
-            <Button size="sm" className="!text-grey-500 !text-xl font-bold !px-2 bg-[#393838] border border-[#4d4c4c] lowercase" variant="text"><BsPlusSquare /></Button>
+            <Button size="sm" className="!text-grey-500 !text-xl font-bold !px-2 bg-[#282c3a] border border-[#4d4c4c] lowercase" variant="text"><BsPlusSquare /></Button>
           </div>
           <div className='w-full'>
             <h1 className='text-xl font-bold pl-5 mt-5 mb-3'>Today</h1>
@@ -58,10 +58,10 @@ function Meeting() {
 
           <div className='flex w-full items-center gap-x-3 border-y border-grey-800 py-8 justify-between'>
               <Button size="md" variant="filled" className={`!px-4 capitalize`}>start</Button>
-              <Button size="md" className="!text-grey-500 !px-4 w-full border bg-[#2d2b2b] border-grey-800 capitalize" variant="text">Recorded</Button>
-              <Button size="md" className="!text-grey-500 !px-4 w-full border bg-[#2d2b2b] border-grey-800 capitalize" variant="text">Recorded</Button>
-              <Button size="md" className="!text-grey-500 !px-3 border bg-[#2d2b2b] border-grey-800  capitalize" variant="text">id</Button>
-              <Button size="md" className="!text-grey-500 !px-3 border bg-[#2d2b2b] border-grey-800  capitalize" variant="text">id</Button>
+              <Button size="md" className="!text-grey-500 !px-4 w-full border bg-[#212534] border-grey-800 capitalize" variant="text">Recorded</Button>
+              <Button size="md" className="!text-grey-500 !px-4 w-full border bg-[#212534] border-grey-800 capitalize" variant="text">Recorded</Button>
+              <Button size="md" className="!text-grey-500 !px-3 border bg-[#212534] border-grey-800  capitalize" variant="text">id</Button>
+              <Button size="md" className="!text-grey-500 !px-3 border bg-[#212534] border-grey-800  capitalize" variant="text">id</Button>
           </div>
 
           <div className='my-8'>
@@ -69,7 +69,7 @@ function Meeting() {
           </div>
 
           <div className='my-5 border-y p-5 flex items-center justify-between border-grey-800'>
-            <Button size="md" className={`!text-grey-500 !px-3 border bg-[#3d3c3c] border-[#4d4c4c]  capitalize`} variant="text">id</Button>
+            <Button size="md" className={`!text-grey-500 !px-3 border bg-[#282c3a] border-[#4d4c4c]  capitalize`} variant="text">id</Button>
             <div className='w-full text-center'>
               <div>
                 <span className='text-sm text-grey-500'>meeting id</span>
@@ -87,7 +87,7 @@ function Meeting() {
               {
                 user?.user?.slice(0,3).map(u => (
                   <>
-                    <div className='p-5 border rounded-xl text-center bg-[#2d2b2b] border-grey-800'>
+                    <div className='p-5 border rounded-xl text-center bg-[#212534] border-grey-800'>
                         <div>
                             <Image
                                 className='rounded-lg w-full mx-auto'
