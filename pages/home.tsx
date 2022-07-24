@@ -12,11 +12,11 @@ function HomePage() {
     <>
 
       <TopBar />
-      <section className='flex flex-wrap'>
-        <div>
+      <section className='flex h-screen pt-20 md:flex-nowrap flex-wrap'>
+        <div className='p-4'>
           <Card />
         </div>
-        <div>
+        <div className='p-4 border-l overflow-y-scroll border-grey-800'>
           <DateTime />
           <ScheduleList />
         </div>
