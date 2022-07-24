@@ -1,11 +1,18 @@
 import Image from 'next/image'
 import banner from "../assets/banner.png"
 import React, { useState, useEffect } from 'react'
-import { format } from 'date-fns';
+import { format } from 'date-fns'
 
-function Banner() {
+interface dateTypes {
+    days: string,
+    hours: string,
+    minutes: string,
+    seconds: string,
+}
+
+function DateTime() {
     const formateDate = format(new Date, 'PP')
-    const [time, setTime] = useState()
+    const [time, setTime] = useState<dateTypes>()
     let weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][new Date().getDay()]
 
     const calculateTime = () => {
@@ -23,12 +30,11 @@ function Banner() {
     }
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            setTime(calculateTime());
-        }, 1000);
+        const timer = setTimeout(() => setTime(calculateTime()), 1000);
       
         return () => clearTimeout(timer);
-      }, [calculateTime()]);
+    }, [calculateTime()]);
+    
 
     return (
     <div className='w-full relative mb-3'>
@@ -49,4 +55,4 @@ function Banner() {
   )
 }
 
-export default Banner
+export default DateTime

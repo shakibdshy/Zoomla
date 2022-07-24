@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 import Card from '../components/Card'
+import DateComponent from '../components/Date'
 import DateTime from '../components/DateTime'
 import ScheduleList from '../components/ScheduleList'
 import TopBar from '../components/TopBar'
@@ -17,8 +18,9 @@ function HomePage() {
           <Card />
         </div>
         <div className='p-4 border-l overflow-y-scroll border-grey-800'>
-          <DateTime />
-          <ScheduleList />
+          {/* <DateTime /> */}
+          <DateComponent />
+          {/* <ScheduleList /> */}
         </div>
       </section>
     </>
