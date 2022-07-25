@@ -6,8 +6,33 @@ import author2 from "../assets/rohul.png"
 import { MdOutlineWatchLater } from 'react-icons/md';
 import { BsThreeDots } from 'react-icons/bs';
 import { useRouter } from 'next/router';
+import { AnyTxtRecord } from 'dns';
 
-function ScheduleList({ setUser }) {
+type data = {
+    setUser: React.Dispatch<React.SetStateAction<{
+        data: {
+            name: string;
+            time: string;
+            hours: string;
+            user: any[];
+        };
+    }>>
+}
+
+type user = {
+    data: {
+        name: string;
+        time: string;
+        hours: string;
+        user: any;
+    }
+}
+
+type props = {
+    setUser: (val: any) => void
+}
+
+function ScheduleList ({ setUser }: props) {
     const { asPath } = useRouter();
     const data = [
         {

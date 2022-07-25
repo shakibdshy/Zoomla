@@ -6,7 +6,7 @@ export default function Layout({ children }: PropsWithChildren<{}>) {
         <>
             <div className="body-container flex">
                 <Header />
-                <main className='w-full sm:w-[95%] sm:ml-[105px]'>
+                <main className='w-full sm:w-[95%] sm:ml-[90px]'>
                     {children}
                 </main>
             </div>

@@ -12,15 +12,26 @@ import Image from 'next/image';
 import author from "../assets/shakib.jpg"
 import author2 from "../assets/rohul.png"
 
+type users = {
+  data: {
+    name: string;
+    time: string;
+    hours: string;
+    user: any;
+}
+}
+
 function Meeting() {
+
   const [select, setSelect] = useState(true)
-  const data = {
+
+  const data: {name: string, time:string, hours:string, user: any} = {
     name: "Design Daily Zoomla Meeting",
     time: "10:00-11:00",
     hours: "8",
     user: [author, author2, author, author2, author2, author, author2, author2, author, author2,]
   }
-  const [user, setUser] = useState({data})
+  const [user, setUser] = useState(data)
 
   useEffect(() => {
     setUser(data)
@@ -85,7 +96,7 @@ function Meeting() {
             </div>
             <div className='flex items-center mt-8 gap-4'>
               {
-                user?.user?.slice(0,3).map(u => (
+                user?.user?.slice(0,3).map((u) => (
                   <>
                     <div className='p-5 border rounded-xl text-center bg-[#212534] border-grey-800'>
                         <div>
