@@ -35,10 +35,10 @@ function DateComponent(): JSX.Element {
             />
             <div className='absolute rounded-xl w-full flex items-center h-full p-4 top-0 left-0'>
                 <div className='ml-0 sm:ml-3'>
-                    <h1 className='text-3xl md:text-4xl lg:text-6xl text-white font-bold'>
+                    <h1 className='text-xl md:text-2xl lg:text-4xl text-white font-bold'>
                         {clock}
                     </h1>
-                    <p className='sm:text-xl mt-3 text-white font-bold'>
+                    <p className='sm:text-md mt-3 text-white font-bold'>
                         {dates}
                     </p>
                 </div>
