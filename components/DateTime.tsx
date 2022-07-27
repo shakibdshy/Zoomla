@@ -28,12 +28,6 @@ function DateTime() {
 
         return timeLeft;
     }
-
-    useEffect(() => {
-        const timer = setTimeout(() => setTime(calculateTime()), 1000);
-      
-        return () => clearTimeout(timer);
-    }, [calculateTime()]);
     
 
     return (
