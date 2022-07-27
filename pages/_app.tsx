@@ -2,6 +2,7 @@ import type { AppProps } from 'next/app'
 import { NextPageWithLayout } from '../types';
 import Layout from '../components/Layout';
 import '../styles/globals.css'
+import 'react-day-picker/dist/style.css';
 import { ThemeProvider } from '@material-tailwind/react';
 
 // this should give a better typing

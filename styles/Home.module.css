@@ -108,6 +108,10 @@
   margin-left: 0.5rem;
 }
 
+.module{
+  width: 1200px!important;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;

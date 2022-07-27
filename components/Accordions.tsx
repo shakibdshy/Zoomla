@@ -3,7 +3,17 @@ import Image from 'next/image';
 import React, { Fragment, useState } from 'react'
 import { BiChevronRight, BiChevronDown } from 'react-icons/bi'
 
-function Accordions({contactsUser}) {
+// type propsData = {
+//   name: string;
+//   user: {
+//       name: string;
+//       img: any;
+//   }[];
+// }
+
+
+
+function Accordions({contactsUser}: any) {
 
     const [open, setOpen] = useState(0);
     const handleOpen = (value:number) => {
@@ -27,7 +37,7 @@ function Accordions({contactsUser}) {
                   {
                     contactsUser?.user?.map(i => (
                       <>
-                        <div className='flex items-center text-grey-500 hover:text-white rounded-lg hover:bg-[#0e78f9] p-1.5 gap-1'>
+                        <div className='flex items-center cursor-pointer text-grey-500 hover:text-white rounded-lg hover:bg-[#0e78f9] p-1.5 gap-1'>
                           <Image
                               className='rounded-lg w-full mx-auto'
                               src={i.img}
