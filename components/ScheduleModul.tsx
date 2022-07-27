@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { useState } from 'react'
 import {
   Button,
   Dialog,
@@ -26,8 +26,8 @@ function ScheduleModul({ setOpen, open }: props) {
   const handleOpen = () => setOpen(!open);
 
   return (
-    <Fragment>
-      <Dialog className='!bg-[#1c1f2e] !rounded-2xl p-6 !w-full' size='lg' open={open} handler={handleOpen}>
+    <>
+      <Dialog size='md' className='!bg-[#1c1f2e] !rounded-2xl p-6 !w-full' open={open} handler={handleOpen}>
         <DialogHeader className='flex !px-0 items-center justify-between'>
           <div className='flex items-center'>
             <span className='text-white'><BsFillCalendar2DateFill /></span>
@@ -140,7 +140,7 @@ function ScheduleModul({ setOpen, open }: props) {
           </div>
         </DialogFooter>
       </Dialog>
-    </Fragment>
+    </>
   )
 }
 
