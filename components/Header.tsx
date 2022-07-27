@@ -18,8 +18,8 @@ function Header() {
             <nav className='mt-20'>
                 <ul>
                     <li>
-                        <Link href='/home'>
-                            <a className={asPath === '/home' ? 'menu-item isActive' : 'menu-item'}><BsHouseDoorFill className='m-auto' /></a>
+                        <Link href='/'>
+                            <a className={asPath === '/' ? 'menu-item isActive' : 'menu-item'}><BsHouseDoorFill className='m-auto' /></a>
                         </Link>
                     </li>
                     <li>
