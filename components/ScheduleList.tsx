@@ -61,7 +61,7 @@ function ScheduleList ({ setUser }: props) {
         }
     ]
     return (
-        <div className='w-full text-white'>
+        <div className='w-full text-white pt-4'>
             <div className='grid gap-3'>
                 {
                     data.map((i, index) => (

@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import Image from 'next/image'
 import React from 'react'
 import Card from '../components/Card'
@@ -11,16 +12,22 @@ function HomePage() {
 
   return (
     <>
+      <Head>
+        <title>Zoomla | Video Conference Meeting and Real Time Chat</title>
+        <meta name="description" content="Video Conference Meeting and Real Time Chat" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
 
       <TopBar />
-      <section className='flex w-full h-screen pt-20 md:flex-nowrap flex-wrap'>
-        <div className='p-4 w-full'>
+      <section className='home-body flex w-full h-screen pt-20 md:flex-nowrap flex-wrap'>
+        <div className='p-4 pt-16 w-full'>
           <Card />
         </div>
-        <div className='p-4 w-full border-l overflow-y-scroll border-grey-800'>
-          {/* <DateTime /> */}
-          <DateComponent />
-          <ScheduleList />
+        <div className='p-4 pt-16 w-full border-l overflow-y-scroll border-grey-800'>
+          <div className='max-w-xl mx-auto'>
+            <DateComponent />
+            <ScheduleList />
+          </div>
         </div>
       </section>
     </>

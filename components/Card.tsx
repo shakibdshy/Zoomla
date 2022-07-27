@@ -28,7 +28,7 @@ function Card() {
         },
     ]
     return (
-        <div className='grid justify-center grid-cols-2 md:gap-8 gap-5'>
+        <div className='grid justify-center grid-cols-2 md:gap-8 gap-5 max-w-xl mx-auto'>
             {
                 cards.map((card, index) => (
                     <div key={index} className='card'>
