@@ -28,11 +28,7 @@ type user = {
     }
 }
 
-type props = {
-    setUser: (val: any) => void
-}
-
-function ScheduleList ({ setUser }: props) {
+function ScheduleList () {
     const { asPath } = useRouter();
     const data = [
         {
@@ -66,21 +62,19 @@ function ScheduleList ({ setUser }: props) {
                 {
                     data.map((i, index) => (
                         <>
-                            <div key={index} onClick={() => setUser(i)} className='w-full border bg-[#212534] border-grey-800 p-3 sm:p-5 rounded-xl'>
+                            <div key={index} className='w-full border bg-[#212534] border-[#262938] p-3 sm:p-5 rounded-xl shadow-sm'>
                                 <div className='flex justify-between items-center'>
                                     <h1 className="text-xl font-bold">{i.name}</h1>
                                     <div>
                                         <div className="bg-base-200">
-                                            {!(asPath === '/meeting') && <Button size="sm" className="!text-grey-500 bg-[#393838] border border-[#4d4c4c] text-xl" variant="text"><BsThreeDots /></Button>}
+                                            {!(asPath === '/meeting') && <Button size="sm" className="!text-grey-500 bg-[#272b39] border border-[#262938] text-xl shadow-md" variant="text"><BsThreeDots /></Button>}
                                         </div>
                                     </div>
                                 </div>
-                                <div className="text-xs mt-2 text-grey-400 flex items-center">
-                                    <span className="!mr-2"> <MdOutlineWatchLater /> </span>
-                                    <span className=""> {i.time}</span>
-                                    <span className="mx-2">|</span>
-                                    <span className="">start in {i.hours} hours</span>
-                                </div>
+                                <ul className="schedule-list-meta text-xs mt-2 text-grey-400 flex items-center gap-4">
+                                    <li className='flex items-center gap-1'><MdOutlineWatchLater /> {i.time}</li>
+                                    <li>start in {i.hours} hours</li>
+                                </ul>
                                 <div className='flex justify-between mt-8 items-center'>
                                     <div className="flex items-center !gap-x-2">
                                         {
@@ -106,7 +100,7 @@ function ScheduleList ({ setUser }: props) {
                                     </div>
                                     <div>
                                         <Button size="md" className="!text-grey-500 !px-3 bg-[#282c3a] border border-[#4d4c4c] mr-2 lowercase" variant="text">id</Button>
-                                        {!(asPath === '/meeting') && <Button variant="filled" className='text-xl sm:!px-4 !px-3 capitalize'>start</Button>}
+                                        {!(asPath === '/meeting') && <Button variant="filled" className='bg-[#0e78f9] text-xl sm:!px-4 !px-3 capitalize'>start</Button>}
                                     </div>
                                 </div>
                             </div>
