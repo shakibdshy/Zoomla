@@ -17,7 +17,7 @@ function TopBar() {
                           <FiSearch className='search-icon' />
                       </form>
                   </li>
-                  <li className='w-14 h-14'>
+                  <li className='w-12 h-12'>
                       <Image src={author} alt="Author Image" width={60} height={60} objectFit='cover' quality={100} className='rounded-xl' />
                   </li>
               </ul>

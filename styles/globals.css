@@ -19,7 +19,7 @@
   }
 
   .search-input {
-    @apply !w-full md:w-80 py-1 sm:py-2 pl-8 sm:pl-14 border border-grey-800 bg-[#212534] rounded-xl transition-all text-lg text-[#ffffff] placeholder:text-[#797981d3];
+    @apply !w-full md:w-80 py-1 sm:py-2 pl-8 sm:pl-12 border border-[#262938] bg-[#212534] rounded-xl transition-all text-lg text-[#ffffff] placeholder:text-[#797981d3];
 
   }
 
