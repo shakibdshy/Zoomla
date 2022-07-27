@@ -13,11 +13,11 @@ function HomePage() {
     <>
 
       <TopBar />
-      <section className='flex h-screen pt-20 md:flex-nowrap flex-wrap'>
-        <div className='p-4 w-1/2'>
+      <section className='flex w-full h-screen pt-20 md:flex-nowrap flex-wrap'>
+        <div className='p-4 w-full'>
           <Card />
         </div>
-        <div className='p-4 w-1/2 border-l overflow-y-scroll border-grey-800'>
+        <div className='p-4 w-full border-l overflow-y-scroll border-grey-800'>
           {/* <DateTime /> */}
           <DateComponent />
           <ScheduleList />
