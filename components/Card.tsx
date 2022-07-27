@@ -4,12 +4,17 @@ import { BsPlusSquareFill } from 'react-icons/bs'
 import { BsFillCalendarDateFill } from 'react-icons/bs'
 import { TbScreenShare } from 'react-icons/tb'
 import ScheduleModul from './ScheduleModul'
+import JoinMeetingModal from './JoinMeetingModal'
 
 function Card() {
     const [open, setOpen] = useState<boolean>(false);
+    const [meetOpen, setMeetOpen] = useState<boolean>(false);
     const handleOpen = (index: number) => {
         if(index === 2){
           setOpen(!open);
+        }
+        else if(index === 1){
+            setMeetOpen(!open)
         }
     }
 
@@ -47,6 +52,7 @@ function Card() {
                 ))
             }
             <ScheduleModul setOpen={setOpen} open={open} />
+            <JoinMeetingModal setMeetOpen={setMeetOpen} open={meetOpen} />
         </div>
     )
 }
