@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from "@material-tailwind/react";
+import { Button, Menu, MenuHandler, MenuItem, MenuList } from "@material-tailwind/react";
 import Image from "next/image";
 import author from "../assets/shakib.jpg"
 import author2 from "../assets/rohul.png"
@@ -66,9 +66,16 @@ function ScheduleList () {
                                 <div className='flex justify-between items-center'>
                                     <h1 className="text-xl font-bold">{i.name}</h1>
                                     <div>
-                                        <div className="bg-base-200">
-                                            {!(asPath === '/meeting') && <Button size="sm" className="!text-grey-500 bg-[#272b39] border border-[#262938] text-xl shadow-md" variant="text"><BsThreeDots /></Button>}
-                                        </div>
+                                        <Menu>
+                                            <MenuHandler>
+                                                {!(asPath === '/meeting') && <Button size="sm" className="!text-grey-500 bg-[#272b39] border border-[#262938] text-xl shadow-md" variant="text"><BsThreeDots /></Button>}
+                                            </MenuHandler>
+                                            <MenuList className='bg-[#272b39] shadow-sm border-transparent'>
+                                                <MenuItem className='text-grey-400 hover:bg-[#242736] hover:text-grey-500 hover:shadow-md'>Copy Invitation Link</MenuItem>
+                                                <MenuItem className='text-grey-400 hover:bg-[#242736] hover:text-grey-500 hover:shadow-md'>Edit</MenuItem>
+                                                <MenuItem className='text-grey-400 hover:bg-[#242736] hover:text-grey-500 hover:shadow-md'>Delete</MenuItem>
+                                            </MenuList>
+                                        </Menu>
                                     </div>
                                 </div>
                                 <ul className="schedule-list-meta text-xs mt-2 text-grey-400 flex items-center gap-4">
@@ -99,7 +106,7 @@ function ScheduleList () {
                                         </div>}
                                     </div>
                                     <div>
-                                        <Button size="md" className="!text-grey-500 !px-3 bg-[#282c3a] border border-[#4d4c4c] mr-2 lowercase" variant="text">id</Button>
+                                        <Button size="md" className="!text-grey-500 !px-3 bg-[#282c3a] mr-2 lowercase" variant="text">id</Button>
                                         {!(asPath === '/meeting') && <Button variant="filled" className='bg-[#0e78f9] text-xl sm:!px-4 !px-3 capitalize'>start</Button>}
                                     </div>
                                 </div>
