@@ -87,6 +87,15 @@
   }
 }
 
+@media (max-width: 400px) {
+  .card{
+    padding: 16px;
+  }
+  .card-icon{
+    margin-bottom: 20px;
+  }
+}
+
 /* ===== scrollbar design css ===== */
 ::-webkit-scrollbar{
   width: 5px;

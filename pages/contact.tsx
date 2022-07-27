@@ -12,6 +12,7 @@ import author from "../assets/shakib.jpg"
 import author2 from "../assets/rohul.png"
 import Image from 'next/image'
 
+
 function Contact() {
   const [select, setSelect] = useState(true)
 
@@ -42,6 +43,13 @@ function Contact() {
       { name: "Rohul amin", img: author2,},
     ]
   }
+
+  const contactInfo = [
+    {name: "Home", title: '012 123 4562', icons: <AiOutlineHome />},
+    {name: "Work", title: '012 123 4562', icons: <MdOutlineWorkOutline />},
+    {name: "Location", title: 'Los Angeles USA', icons: <GoLocation />},
+    {name: "Time Zone", title: '-10h, GMT', icons: <MdOutlineWatchLater />},
+  ]
 
   return (
     <>
@@ -103,34 +111,19 @@ function Contact() {
              <div className='mt-12'>
               <h1 className='my-8 font-bold'>Contacts info</h1>
               <div className='grid grid-cols-2 border-y py-6 mb-10 mt-6 border-grey-800 gap-y-10'>
-                <div className='flex items-center'>
-                  <Button size="lg" className="!text-grey-500 border bg-[#282c3a] border-grey-800 !p-3 font-bold text-[16px] capitalize" variant="text"> <AiOutlineHome /></Button>
-                  <div className='ml-2'>
-                    <p className='text-grey-500 text-[14px] !mt-1'>Home</p>
-                    <span className='text-white !text-[10]'>012 123 4562</span>
-                  </div>
-                </div>
-                <div className='flex items-center'>
-                  <Button size="lg" className="!text-grey-500 border bg-[#282c3a] border-grey-800 !p-3 font-bold text-[16px] capitalize" variant="text"> <MdOutlineWorkOutline /></Button>
-                  <div className='ml-2'>
-                    <p className='text-grey-500 text-[14px] !mt-1'>Worl</p>
-                    <span className='text-white !text-[10]'>012 123 4562</span>
-                  </div>
-                </div>
-                <div className='flex items-center'>
-                  <Button size="lg" className="!text-grey-500 border bg-[#282c3a] border-grey-800 !p-3 font-bold text-[16px] capitalize" variant="text"> <GoLocation /></Button>
-                  <div className='ml-2'>
-                    <p className='text-grey-500 text-[14px] !mt-1'>Location</p>
-                    <span className='text-white !text-[10]'>Los Angeles, USA</span>
-                  </div>
-                </div>
-     <div className='flex items-center'>
-                  <Button size="lg" className="!text-grey-500 border bg-[#282c3a] border-grey-800 !p-3 font-bold text-[16px] capitalize" variant="text"> <MdOutlineWatchLater /></Button>
-                  <div className='ml-2'>
-                    <p className='text-grey-500 text-[14px] !mt-1'>Time Zone</p>
-                    <span className='text-white !text-[10]'>-10h, GTM</span>
-                  </div>
-                </div>
+                {
+                  contactInfo.map(i => (
+                    <>
+                    <div className='flex items-center'>
+                      <Button size="lg" className="!text-grey-500 border bg-[#282c3a] border-grey-800 !p-3 font-bold text-[16px] capitalize" variant="text">{i.icons}</Button>
+                      <div className='ml-2'>
+                        <p className='text-grey-500 text-[14px] !mt-1'>{i.name}</p>
+                        <span className='text-white !text-[16px]'>{i.title}</span>
+                      </div>
+                    </div>
+                    </>
+                  ))
+                }
               </div>
              </div>
 
