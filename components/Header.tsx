@@ -9,8 +9,8 @@ import { useRouter } from 'next/router'
 function Header() {
     const { asPath } = useRouter();
     return (
-        <header className="p-6 fixed inset-0 max-w-[105px] border-r border-[#272a38]">
-            <div>
+        <header className="p-3 fixed !bottom-0 !left-0 inset-0 max-w-[90px] border-r border-grey-800">
+            <div className='sm:block hidden'>
                 <Link href='/'>
                     <a className='p-4 text-white bg-[#0e78f9] text-2xl w-14 h-14 rounded-xl block shadow-md'><FaVideo className='shadow-sm' /></a>
                 </Link>
