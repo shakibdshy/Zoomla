@@ -1,12 +1,12 @@
 import React from 'react'
 import { Button, Menu, MenuHandler, MenuItem, MenuList } from "@material-tailwind/react";
+import type { MenuHandlerProps } from "@material-tailwind/react";
 import Image from "next/image";
 import author from "../assets/shakib.jpg"
 import author2 from "../assets/rohul.png"
 import { MdOutlineWatchLater } from 'react-icons/md';
 import { BsThreeDots } from 'react-icons/bs';
 import { useRouter } from 'next/router';
-import { AnyTxtRecord } from 'dns';
 
 type data = {
     setUser: React.Dispatch<React.SetStateAction<{
@@ -66,9 +66,10 @@ function ScheduleList () {
                                 <div className='flex justify-between items-center'>
                                     <h1 className="text-xl font-bold">{i.name}</h1>
                                     <div>
-                                        <Menu>
+                                        <Menu placement="bottom-end">
                                             <MenuHandler>
-                                                {!(asPath === '/meeting') && <Button size="sm" className="!text-grey-500 bg-[#272b39] border border-[#262938] text-xl shadow-md" variant="text"><BsThreeDots /></Button>}
+                                                {/* {!(asPath === '/meeting') && } */}
+                                                <Button size="sm" className="!text-grey-500 bg-[#272b39] border border-[#262938] text-xl shadow-md" variant="text"><BsThreeDots /></Button>
                                             </MenuHandler>
                                             <MenuList className='bg-[#272b39] shadow-sm border-transparent'>
                                                 <MenuItem className='text-grey-400 hover:bg-[#242736] hover:text-grey-500 hover:shadow-md'>Copy Invitation Link</MenuItem>
