@@ -2,7 +2,7 @@ import React, { ReactNode, useEffect, useState } from 'react'
 import banner from "../assets/banner.png"
 import Image from 'next/image'
 
-function DateComponent(): ReactNode {
+function DateComponent(): JSX.Element {
     const [clock, setClock] = useState<string>(new Date().toLocaleTimeString());
 
     const dates = new Date().toLocaleDateString(undefined, {
