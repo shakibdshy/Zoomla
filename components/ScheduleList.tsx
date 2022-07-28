@@ -28,7 +28,7 @@ type user = {
     }
 }
 
-function ScheduleList () {
+function ScheduleList() {
     const { asPath } = useRouter();
     const data = [
         {
