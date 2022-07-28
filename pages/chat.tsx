@@ -62,7 +62,7 @@ function Chat() {
               </div>
             </Tab>
             <div>
-              <h3 className='text-xl text-white font-bold mt-5 mb-3'>Resent</h3>
+              <h3 className='text-xl text-white font-bold mt-5 mb-3'>Recent</h3>
             </div>
             <Tab key={3} value='mw' className='single-chat-tab'>
               <div className='flex items-center justify-between'>
@@ -151,13 +151,46 @@ function Chat() {
               </div>
             </TabPanel>
             <TabPanel value='request'>
-              Because it is about motivating the doers. Because I am here to follow my dreams and inspire other people to follow their dreams, too.
+              <div className='flex flex-col space-y-8'>
+                <div className='flex items-start justify-between'>
+                  <div className='flex items-start gap-4'>
+                    <Image src={author} alt="Author Image" width={45} height={45} objectFit='cover' quality={100} className='rounded-xl' />
+                    <div>
+                      <span className='text-white block'>Michelle Williams <span className='text-xs text-grey-400'>email@gmail.com</span></span>
+                      <div className='text-sm text-grey-300 mb-4'>You received a contact request</div>
+                      <div className='flex items-center gap-4'>
+                        <Button size='sm'>Accept</Button>
+                        <Button size='sm' color="red">Decline</Button>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    8:45 PM
+                  </div>
+                </div>
+                <div className='flex items-start justify-between'>
+                  <div className='flex items-start gap-4'>
+                    <Image src={author2} alt="Author Image" width={45} height={45} objectFit='cover' quality={100} className='rounded-xl' />
+                    <div>
+                      <span className='text-white block'>Michelle Williams <span className='text-xs text-grey-400'>email@gmail.com</span></span>
+                      <div className='text-sm text-grey-300 mb-4'>You received a contact request</div>
+                      <div className='flex items-center gap-4'>
+                        <Button size='sm'>Accept</Button>
+                        <Button size='sm' color="red">Decline</Button>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    8:45 PM
+                  </div>
+                </div>
+              </div>
             </TabPanel>
-            <TabPanel value='mw'>
+            <TabPanel className='p-0 !h-[100vh]' value='mw'>
               <div className='pb-4 px-4 sticky top-0 left-0 right-0 border-b border-[#2c2f3c]'>
                 <div className='flex items-center justify-between gap-2'>
                   <div className='flex items-center gap-4'>
-                    <Image src={author2} alt="Author Image" width={45} height={45} objectFit='cover' quality={100} className='rounded-xl' />
+                    <Image src={author} alt="Author Image" width={45} height={45} objectFit='cover' quality={100} className='rounded-xl' />
                     <div>
                       <span className='text-white block'>Michelle Williams</span>
                       <Chip className='!text-xs py-0 px-2 rounded-sm' variant="filled" value="External" />
@@ -218,7 +251,7 @@ function Chat() {
                 </form>
               </div>
             </TabPanel>
-            <TabPanel value='sb'>
+            <TabPanel className='p-0 !h-[100vh]' value='sb'>
               <div className='pb-4 px-4 sticky top-0 left-0 right-0 border-b border-[#2c2f3c]'>
                 <div className='flex items-center justify-between gap-2'>
                   <div className='flex items-center gap-4'>
