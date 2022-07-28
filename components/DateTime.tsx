@@ -4,7 +4,7 @@ import Image from 'next/image'
 import moment from 'moment';
 
 function DateComponent() {
-    const time = moment().format('h:mm:ss a');
+    const time = moment().format('h:mm A');
     const date = moment().format('dddd, MMMM Do YYYY');
 
     return (
