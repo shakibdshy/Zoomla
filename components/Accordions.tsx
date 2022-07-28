@@ -16,7 +16,7 @@ interface UserProps {
     name: string;
     user: {
       name: string;
-      img: string;
+      img: StaticImageData;
     }[];
   }
 }
