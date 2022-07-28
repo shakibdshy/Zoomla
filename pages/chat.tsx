@@ -5,6 +5,7 @@ import {
   TabsBody,
   Tab,
   TabPanel,
+  Button
 } from "@material-tailwind/react";
 import Head from 'next/head';
 import TopBar from '../components/TopBar';
@@ -13,6 +14,8 @@ import { MdOutlinePermContactCalendar } from 'react-icons/md';
 import author from '../assets/author2.jpg'
 import author2 from '../assets/author.jpg'
 import Image from 'next/image';
+import { FiSearch } from 'react-icons/fi'
+import { BsPlusSquare } from 'react-icons/bs'
 
 function Chat() {
   return (
@@ -25,7 +28,18 @@ function Chat() {
 
       <TopBar />
       <Tabs value="html" className='home-body flex w-full h-screen flex-wrap md:flex-nowrap'>
-        <div className='p-4 mt-20 w-full max-w-xs'>
+        <div className='p-4 mt-20 w-full max-w-sm'>
+          <ul className='flex items-center justify-between gap-x-2 sm:gap-x-5 pt-1 pb-5 mb-5 border-b border-[#2c2f3c]'>
+            <li className='w-full shadow-md'>
+              <form className='relative z-10'>
+                <input type="text" name="name" placeholder='Jump to...' className='search-input max-w-full w-full pl-4' />
+              </form>
+            </li>
+            <li>
+              <Button className='w-[46px] h-[46px] bg-[#272a38] border border-[#2c2f3c] shadow-md !p-4 !shadow-none' size="lg"><BsPlusSquare className='m-auto' /></Button>
+            </li>
+          </ul>
+
           <TabsHeader className='flex-col bg-transparent gap-2 text-white'>
             <Tab key={1} value='starred' className='chat-tab pl-4'>
               <div className='flex items-center justify-between'>
