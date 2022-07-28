@@ -16,6 +16,7 @@ import { BiChevronRight, BiChevronDown } from 'react-icons/bi'
 function Accordions({contactsUser}: any) {
 
     const [open, setOpen] = useState(0);
+    
     const handleOpen = (value:number) => {
       setOpen(open === value ? 0 : value);
     };

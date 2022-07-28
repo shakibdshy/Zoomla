@@ -10,6 +10,7 @@ import {
     Checkbox,
     Radio,
   } from "@material-tailwind/react";
+import { useRouter } from 'next/router';
 
   type props = {
     setMeetOpen: (val: boolean) => void
@@ -18,7 +19,12 @@ import {
 
 function JoinMeetingModal({setMeetOpen, open}: props) {
 
-    const handleOpen = () => setMeetOpen(!open);
+    const router = useRouter()
+
+    const handleOpen = () => {
+      setMeetOpen(!open)
+      router.replace("/meetingRome")
+    };
     
   return (
     <Fragment>
@@ -27,7 +33,10 @@ function JoinMeetingModal({setMeetOpen, open}: props) {
             <h1>Join A Meeting</h1>
         </DialogHeader>
         <DialogBody className='py-6 !px-0 !w-full !block border-y !text-white border-[#31364d]'>
-            <h1>Hello</h1>
+            <div className='w-full'>
+                <input className='!text-grey-500 mb-4 border w-full px-4 text-center py-2 rounded-xl outline-0 border-[#2d303d] bg-[#212534]' type="text" name="" placeholder='Meeting ID' id="" />
+                <input className='!text-grey-500 border w-full px-4 text-center py-2 rounded-xl outline-0 border-[#2d303d] bg-[#212534]' type="text" name="" placeholder='Enter Your Name' id="" />
+            </div>
         </DialogBody>
         <DialogFooter className='text-left w-full'>
             <div className='flex items-center'>
