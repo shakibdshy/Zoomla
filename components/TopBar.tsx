@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 function TopBar() {
     const { asPath } = useRouter();  
   return (
-      <section className='p-1 sm:p-3 bg-dark fixed top-0 left-0 sm:pl-10 pl-3 w-full border-b border-grey-800'>
+      <section className='p-1 sm:p-3 sm:py-4 bg-dark fixed top-0 left-0 sm:pl-10 pl-3 w-full border-b border-grey-800'>
           <div className=''>
               <ul className='flex items-center gap-x-2 sm:gap-x-5'>
                   <li className='text-white font-medium text-2xl sm:pl-20 capitalize'>{asPath.slice(1)}</li>
