@@ -11,9 +11,17 @@ import { BiChevronRight, BiChevronDown } from 'react-icons/bi'
 //   }[];
 // }
 
+interface UserProps {
+  contactsUser: {
+    name: string;
+    user: {
+      name: string;
+      img: string;
+    }[];
+  }
+}
 
-
-function Accordions({contactsUser}: any) {
+function Accordions({ contactsUser }: UserProps) {
 
     const [open, setOpen] = useState(0);
     const handleOpen = (value:number) => {
@@ -35,17 +43,17 @@ function Accordions({contactsUser}: any) {
             <AccordionBody className='text-white'>
                 <div className='ml-[30px]'>
                   {
-                    contactsUser?.user?.map(i => (
+                    contactsUser?.user?.map((item, index) => (
                       <>
-                        <div className='flex items-center cursor-pointer text-grey-500 hover:text-white rounded-lg hover:bg-[#0e78f9] p-1.5 gap-1'>
+                        <div key={index} className='flex items-center cursor-pointer text-grey-500 hover:text-white rounded-lg hover:bg-[#0e78f9] p-1.5 gap-1'>
                           <Image
                               className='rounded-lg w-full mx-auto'
-                              src={i.img}
+                            src={item.img}
                               alt="user"
                               width={36}
                               height={40}
                           />
-                          <p className='ml-2 text-sm'>{i.name}</p> 
+                          <p className='ml-2 text-sm'>{item.name}</p> 
                         </div>
                       </>
                     ))
