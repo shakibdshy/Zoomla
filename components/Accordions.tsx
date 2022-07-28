@@ -24,6 +24,7 @@ interface UserProps {
 function Accordions({ contactsUser }: UserProps) {
 
     const [open, setOpen] = useState(0);
+    
     const handleOpen = (value:number) => {
       setOpen(open === value ? 0 : value);
     };
