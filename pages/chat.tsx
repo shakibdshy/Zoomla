@@ -154,10 +154,134 @@ function Chat() {
               Because it is about motivating the doers. Because I am here to follow my dreams and inspire other people to follow their dreams, too.
             </TabPanel>
             <TabPanel value='mw'>
-              Because it is about motivating the doers. Because I am here to follow my dreams and inspire other people to follow their dreams, too.
+              <div className='pb-4 px-4 sticky top-0 left-0 right-0 border-b border-[#2c2f3c]'>
+                <div className='flex items-center justify-between gap-2'>
+                  <div className='flex items-center gap-4'>
+                    <Image src={author2} alt="Author Image" width={45} height={45} objectFit='cover' quality={100} className='rounded-xl' />
+                    <div>
+                      <span className='text-white block'>Michelle Williams</span>
+                      <Chip className='!text-xs py-0 px-2 rounded-sm' variant="filled" value="External" />
+                    </div>
+                  </div>
+                  <ul className='flex items-center gap-2'>
+                    <li>
+                      <Button className='w-[46px] h-[46px] bg-[#272a38] hover:bg-[#0e78f9]  border border-[#2c2f3c] !p-4 !shadow-none' size="lg"><BsStar /></Button>
+                    </li>
+                    <li>
+                      <Button className='w-[46px] h-[46px] bg-[#272a38] hover:bg-[#0e78f9] border border-[#2c2f3c] !p-4 !shadow-none' size="lg"><BsCameraVideo /></Button>
+                    </li>
+                    <li>
+                      <Button className='w-[46px] h-[46px] bg-[#272a38] hover:bg-[#0e78f9] border border-[#2c2f3c] !p-4 !shadow-none' size="lg"><RiShareBoxLine /></Button>
+                    </li>
+                    <li>
+                      <Button className='w-[46px] h-[46px] bg-[#272a38] hover:bg-[#0e78f9] border border-[#2c2f3c] !p-4 !shadow-none' size="lg"><BsFileText /></Button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div className='h-full'>
+                <div className='flex items-start justify-between py-4 px-4'>
+                  <div className='flex items-start gap-4'>
+                    <Image src={author2} alt="Author Image" width={45} height={45} objectFit='cover' quality={100} className='rounded-xl' />
+                    <div className='space-y-3'>
+                      <div className='flex justify-start'>
+                        <div className='bg-[#0e78f9] text-white py-[6px] px-4 rounded-xl text-sm max-w-xs'>Hey You!</div>
+                      </div>
+                      <div className='flex justify-start'>
+                        <div className='bg-[#0e78f9] text-white py-[6px] px-4 rounded-xl text-sm max-w-xs'>Sending you the requested file...</div>
+                      </div>
+                      <div className='bg-[#0e78f9] text-white py-[6px] px-4 rounded-xl text-sm max-w-xs'>Watch this presentation and tell me What&apos; s missing here?.</div>
+                    </div>
+                  </div>
+                  <div>12:48</div>
+                </div>
+                <div className='flex items-start justify-between py-4 px-4'>
+                  <div className='flex items-start gap-4'>
+                    <Image src={author} alt="Author Image" width={45} height={45} objectFit='cover' quality={100} className='rounded-xl' />
+                    <div className='space-y-3'>
+                      <div className='bg-[#222533] shadow-sm text-white py-[6px] px-4 rounded-xl text-sm max-w-xs'>I think everything is on the right place here.</div>
+                    </div>
+                  </div>
+                  <div>08:15</div>
+                </div>
+              </div>
+              <div className='p-4 pb-0 absolute bottom-0 left-0 right-0 z-2 border-t border-[#2c2f3c]'>
+                <ul className='flex items-center gap-4 mb-2'>
+                  <li><BiScreenshot /></li>
+                  <li><BsFileEarmarkCheck /></li>
+                  <li><BsMic /></li>
+                  <li className='ml-auto'><BsEmojiSmile /></li>
+                </ul>
+                <form className='relative'>
+                  <input type="text" placeholder='Message Here' className='bg-transparent text-sm w-full h-12 focus:outline-none focus:text-white' />
+                  <Button size='sm' className='!absolute top-2 right-0'>Send</Button>
+                </form>
+              </div>
             </TabPanel>
             <TabPanel value='sb'>
-              Because it is about motivating the doers. Because I am here to follow my dreams and inspire other people to follow their dreams, too.
+              <div className='pb-4 px-4 sticky top-0 left-0 right-0 border-b border-[#2c2f3c]'>
+                <div className='flex items-center justify-between gap-2'>
+                  <div className='flex items-center gap-4'>
+                    <Image src={author2} alt="Author Image" width={45} height={45} objectFit='cover' quality={100} className='rounded-xl' />
+                    <div>
+                      <span className='text-white block'>Michelle Williams</span>
+                      <Chip className='!text-xs py-0 px-2 rounded-sm' variant="filled" value="External" />
+                    </div>
+                  </div>
+                  <ul className='flex items-center gap-2'>
+                    <li>
+                      <Button className='w-[46px] h-[46px] bg-[#272a38] hover:bg-[#0e78f9]  border border-[#2c2f3c] !p-4 !shadow-none' size="lg"><BsStar /></Button>
+                    </li>
+                    <li>
+                      <Button className='w-[46px] h-[46px] bg-[#272a38] hover:bg-[#0e78f9] border border-[#2c2f3c] !p-4 !shadow-none' size="lg"><BsCameraVideo /></Button>
+                    </li>
+                    <li>
+                      <Button className='w-[46px] h-[46px] bg-[#272a38] hover:bg-[#0e78f9] border border-[#2c2f3c] !p-4 !shadow-none' size="lg"><RiShareBoxLine /></Button>
+                    </li>
+                    <li>
+                      <Button className='w-[46px] h-[46px] bg-[#272a38] hover:bg-[#0e78f9] border border-[#2c2f3c] !p-4 !shadow-none' size="lg"><BsFileText /></Button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div className='h-full'>
+                <div className='flex items-start justify-between py-4 px-4'>
+                  <div className='flex items-start gap-4'>
+                    <Image src={author2} alt="Author Image" width={45} height={45} objectFit='cover' quality={100} className='rounded-xl' />
+                    <div className='space-y-3'>
+                      <div className='flex justify-start'>
+                        <div className='bg-[#0e78f9] text-white py-[6px] px-4 rounded-xl text-sm max-w-xs'>Hey You!</div>
+                      </div>
+                      <div className='flex justify-start'>
+                        <div className='bg-[#0e78f9] text-white py-[6px] px-4 rounded-xl text-sm max-w-xs'>Sending you the requested file...</div>
+                      </div>
+                      <div className='bg-[#0e78f9] text-white py-[6px] px-4 rounded-xl text-sm max-w-xs'>Watch this presentation and tell me What&apos; s missing here?.</div>
+                    </div>
+                  </div>
+                  <div>12:48</div>
+                </div>
+                <div className='flex items-start justify-between py-4 px-4'>
+                  <div className='flex items-start gap-4'>
+                    <Image src={author} alt="Author Image" width={45} height={45} objectFit='cover' quality={100} className='rounded-xl' />
+                    <div className='space-y-3'>
+                      <div className='bg-[#222533] shadow-sm text-white py-[6px] px-4 rounded-xl text-sm max-w-xs'>I think everything is on the right place here.</div>
+                    </div>
+                  </div>
+                  <div>08:15</div>
+                </div>
+              </div>
+              <div className='p-4 pb-0 absolute bottom-0 left-0 right-0 z-2 border-t border-[#2c2f3c]'>
+                <ul className='flex items-center gap-4 mb-2'>
+                  <li><BiScreenshot /></li>
+                  <li><BsFileEarmarkCheck /></li>
+                  <li><BsMic /></li>
+                  <li className='ml-auto'><BsEmojiSmile /></li>
+                </ul>
+                <form className='relative'>
+                  <input type="text" placeholder='Message Here' className='bg-transparent text-sm w-full h-12 focus:outline-none focus:text-white' />
+                  <Button size='sm' className='!absolute top-2 right-0'>Send</Button>
+                </form>
+              </div>
             </TabPanel>
           </TabsBody>
         </div>
