@@ -30,10 +30,10 @@ function meetingRome() {
     }
 
     const data = [
-        {id: 1, name: 'Rohul amin', img: user2,},
-        {id: 2, name: 'Shakibul', img: user1,},
-        {id: 3, name: 'Rohul amin', img: user2,},
-        {id: 4, name: 'Shakibul', img: user1,},
+        {id: 1, name: 'Shakibul', img: user2,},
+        {id: 2, name: 'Rohul amin ', img: user1,},
+        {id: 3, name: 'Shakibul', img: user2,},
+        {id: 4, name: 'Rohul amin', img: user1,},
     ]
     const video = [
         {img: video2, name: "Taniiya"},  {img: video1, name: "Shakil khan"},  {img: author2, name: "Moriom Akter"}
@@ -42,57 +42,97 @@ function meetingRome() {
   return (
     <>
         <TopBar />
-        <div className='text-white w-full h-screen  pt-20 flex justify-between'>
-            <div className='w-full relative border-r pb-28 border-grey-800'>
-                <div className='p-5'>
-                    <div className='w-full pb-0 mb-2'>
-                        <div className='w-full relative'>
-                            <Image
-                                className='rounded-xl w-full mx-auto'
-                                src={author}
-                                alt="user"
-                                width={1080}
-                                height={640}
-                            />
-                            <div className='flex w-full items-center justify-between absolute bottom-2 left-0 p-4 '>
-                                <div className='flex items-center py-2 px-3 rounded-lg text-white bg-[#1a3254aa]'>
-                                    <h3>Arifa Anjum</h3>
-                                    <div className=' ml-2 w-[8px] h-[8px] rounded-full bg-[#10cf64]'></div>
-                                </div>
-                                <div onClick={() => setAudio(!audio)} className={`p-2 cursor-pointer rounded-lg text-white bg-[#1a3254aa] ${audio? 'bg-[#0f78f8aa]' : 'bg-[#1a3254aa]'  }`}>
-                                    <p className='text-xl'>{ audio? <AiFillAudio /> : <AiOutlineAudioMuted />}</p>
+        <div className='w-full h-screen overscroll-y-auto pt-20'>
+            <div className='text-white w-full flex justify-between'>
+                <div className='w-full relative border-r border-grey-800'>
+                    <div className='p-5'>
+                        <div className='w-full pb-0 mb-2'>
+                            <div className='w-full relative'>
+                                <Image
+                                    className='rounded-xl w-full mx-auto'
+                                    src={author}
+                                    alt="user"
+                                    width={1080}
+                                    height={640}
+                                />
+                                <div className='flex w-full items-center justify-between absolute bottom-2 left-0 p-4 '>
+                                    <div className='flex items-center py-2 px-3 rounded-lg text-white bg-[#1a3254aa]'>
+                                        <h3>Arifa Anjum</h3>
+                                        <div className=' ml-2 w-[8px] h-[8px] rounded-full bg-[#10cf64]'></div>
+                                    </div>
+                                    <div onClick={() => setAudio(!audio)} className={`p-2 cursor-pointer rounded-lg text-white bg-[#1a3254aa] ${audio? 'bg-[#0f78f8aa]' : 'bg-[#1a3254aa]'  }`}>
+                                        <p className='text-xl'>{ audio? <AiFillAudio /> : <AiOutlineAudioMuted />}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <div className='flex w-full gap-3 items-center justify-between'>
+                            {
+                                video.map(v => (
+                                    <>
+                                        <div className='w-full relative'>
+                                            <Image
+                                                className='rounded-xl w-full mx-auto'
+                                                src={v.img}
+                                                alt="user"
+                                                // width={1080}
+                                                // height={740}
+                                            />
+                                            <div className='flex w-full items-center justify-between absolute bottom-2 left-0 p-2'>
+                                                <div className='flex items-center py-2 px-3 rounded-lg text-white bg-[#1a3254aa]'>
+                                                    <h3>{v.name}</h3>
+                                                    <div className=' ml-2 w-[8px] h-[8px] rounded-full bg-[#10cf64]'></div>
+                                                </div>
+                                                <div onClick={() => setAudio(!audio)} className={`p-2 cursor-pointer rounded-lg text-white bg-[#1a3254aa] ${audio? 'bg-[#0f78f8]' : 'bg-[#1a3254aa]'  }`}>
+                                                    <p className='text-xl'>{ audio? <AiFillAudio /> : <AiOutlineAudioMuted />}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </>
+                                ))
+                            }
+                        </div>
                     </div>
-                    <div className='flex w-full gap-3 items-center justify-between'>
+                    
+                </div>
+                <div className='w-1/2 p-5 relative'>
+                    <div className='flex w-full mb-5 rounded-lg items-center justify-between bg-[#242634] p-1'>
+                        <Button size="sm" className={`${audio && " bg-[#2d303d] border-[#4d4c4c]"} !text-grey-500 !px-3 w-full mr-4 capitalize`} variant="text">Upcoming</Button>
+                        <Button  size="sm" className={`${!audio && " bg-[#2d303d] border-[#4d4c4c]"} !text-grey-500 !px-3 w-full capitalize`} variant="text">Recorded</Button>
+                    </div>
+                    <div className='grid gap-y-2 pt-5 w-full border-t border-grey-800 '>
                         {
-                            video.map(v => (
+                            data.map(u => (
                                 <>
-                                    <div className='w-full relative'>
+                                    <div className='flex items-center justify-between w-full cursor-pointer text-grey-500 hover:text-white rounded-lg hover:bg-[#212534] p-1.5 gap-1'>
+                                        <div className='flex items-center'>
                                         <Image
-                                            className='rounded-xl w-full mx-auto'
-                                            src={v.img}
+                                            className='rounded-lg w-full mx-auto'
+                                            src={u.img}
                                             alt="user"
-                                            // width={1080}
-                                            // height={740}
+                                            width={36}
+                                            height={40}
                                         />
-                                        <div className='flex w-full items-center justify-between absolute bottom-2 left-0 p-2'>
-                                            <div className='flex items-center py-2 px-3 rounded-lg text-white bg-[#1a3254aa]'>
-                                                <h3>{v.name}</h3>
-                                                <div className=' ml-2 w-[8px] h-[8px] rounded-full bg-[#10cf64]'></div>
-                                            </div>
-                                            <div onClick={() => setAudio(!audio)} className={`p-2 cursor-pointer rounded-lg text-white bg-[#1a3254aa] ${audio? 'bg-[#0f78f8]' : 'bg-[#1a3254aa]'  }`}>
-                                                <p className='text-xl'>{ audio? <AiFillAudio /> : <AiOutlineAudioMuted />}</p>
-                                            </div>
+                                        <p className='ml-2 text-sm'>{u.name}</p> 
+                                        </div>
+                                        <div className='flex items-center'>
+                                            <p onClick={ () => handaleMute(u.id)} className={`text-xl cursor-pointer ${(id === u.id) && 'text-white'}`}>{ (id === u.id)? <AiFillAudio /> : <AiOutlineAudioMuted />}</p>
+                                            <p onClick={ () => handaleMute(u.id)} className='text-xl ml-2 cursor-pointer'>{(id === u.id)? <AiOutlineVideoCamera /> : <BiVideoOff />}</p>
                                         </div>
                                     </div>
                                 </>
                             ))
                         }
                     </div>
+                    <div className='w-full mt-4'>
+                    <MassageAcccordion data={data}  /> 
+                    </div>
                 </div>
-                <div className='border-t flex justify-between items-center w-full absolute bottom-0 left-0 border-grey-800 p-5 py-7'>
+            </div>
+
+            {/* Bottom section */}
+            <div className='flex w-full items-center border-t border-grey-800'>
+                <div className='flex border-r justify-between items-center w-full border-grey-800 px-5 py-7'>
                     <div className='flex items-center gap-3'>
                         <Button size="md" className="!text-grey-500 border border-[#2d303d] bg-[#212534] !px-2 capitalize flex items-center" variant="text">
                             <span className='mr-1 !text-2xl  text-[18px]'><AiFillAudio /></span>
@@ -125,40 +165,7 @@ function meetingRome() {
                         </Button>
                     </div>
                 </div>
-            </div>
-            <div className='w-1/2 p-5 pb-28 relative'>
-                <div className='flex w-full mb-5 rounded-lg items-center justify-between bg-[#242634] p-1'>
-                    <Button size="sm" className={`${audio && " bg-[#2d303d] border-[#4d4c4c]"} !text-grey-500 !px-3 w-full mr-4 capitalize`} variant="text">Upcoming</Button>
-                    <Button  size="sm" className={`${!audio && " bg-[#2d303d] border-[#4d4c4c]"} !text-grey-500 !px-3 w-full capitalize`} variant="text">Recorded</Button>
-                </div>
-                <div className='grid gap-y-2 pt-5 w-full border-t border-grey-800 '>
-                    {
-                        data.map(u => (
-                            <>
-                                <div className='flex items-center justify-between w-full cursor-pointer text-grey-500 hover:text-white rounded-lg hover:bg-[#212534] p-1.5 gap-1'>
-                                    <div className='flex items-center'>
-                                    <Image
-                                        className='rounded-lg w-full mx-auto'
-                                        src={u.img}
-                                        alt="user"
-                                        width={36}
-                                        height={40}
-                                    />
-                                    <p className='ml-2 text-sm'>{u.name}</p> 
-                                    </div>
-                                    <div className='flex items-center'>
-                                        <p onClick={ () => handaleMute(u.id)} className={`text-xl cursor-pointer ${(id === u.id) && 'text-white'}`}>{ (id === u.id)? <AiFillAudio /> : <AiOutlineAudioMuted />}</p>
-                                        <p onClick={ () => handaleMute(u.id)} className='text-xl ml-2 cursor-pointer'>{(id === u.id)? <AiOutlineVideoCamera /> : <BiVideoOff />}</p>
-                                    </div>
-                                </div>
-                            </>
-                        ))
-                    }
-                </div>
-                <div className='w-full mt-4'>
-                   <MassageAcccordion data={data}  /> 
-                </div>
-                <div className='border-t w-full absolute bottom-0 left-0 border-grey-800 p-3'>
+                <div className='w-1/2 p-3'>
                     <div className='flex text-grey-500 items-center mb-6 justify-between'>
                         <div className='text-2xl flex gap-3'>
                             <span className='cursor-pointer'><AiOutlineFile /></span>
@@ -166,7 +173,7 @@ function meetingRome() {
                             <span className='cursor-pointer'><AiFillAudio /></span>
                         </div>
                         <div className='text-2xl'>
-                          <span className='cursor-pointer'><BsEmojiSmile /></span>
+                            <span className='cursor-pointer'><BsEmojiSmile /></span>
                         </div>
                     </div>
                     <div className='flex items-center justify-between'>
