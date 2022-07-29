@@ -8,27 +8,15 @@ import author2 from '../assets/author2.jpg'
 import user1 from '../assets/rohul.png'
 import user2 from '../assets/shakib.jpg'
 import { AiFillAudio, AiOutlineAudioMuted, AiOutlineVideoCamera, AiOutlineFile } from 'react-icons/ai';
-import { BiVideoOff, BiMessageRoundedDots, BiRadioCircleMarked} from 'react-icons/bi';
-import { MdKeyboardArrowUp} from 'react-icons/md';
-import { BsEmojiSmile} from 'react-icons/bs';
-import { RiUserSearchLine, RiComputerLine} from 'react-icons/ri';
+import { BiVideoOff, BiMessageRoundedDots, BiRadioCircleMarked } from 'react-icons/bi';
+import { MdKeyboardArrowUp } from 'react-icons/md';
+import { BsEmojiSmile } from 'react-icons/bs';
+import { RiUserSearchLine, RiComputerLine } from 'react-icons/ri';
 import { Button } from '@material-tailwind/react';
 import MassageAcccordion from '../components/MassageAcccordion'
 
 
 function meetingRome() {
-
-    const [audio, setAudio] = useState<boolean>(true);
-    const [id, setId] = useState<number | Boolean>(false);
-
-    const handaleMute = (userId) => {
-        if(id){
-            setId(false)
-        }else{
-            setId(userId)   
-        }    
-    }
-
     const data = [
         {id: 1, name: 'Shakibul', img: user2,},
         {id: 2, name: 'Rohul amin ', img: user1,},
@@ -36,9 +24,8 @@ function meetingRome() {
         {id: 4, name: 'Rohul amin', img: user1,},
     ]
     const video = [
-        {img: video2, name: "Taniiya"},  {img: video1, name: "Shakil khan"},  {img: author2, name: "Moriom Akter"}
+        { img: video2, name: "Taniiya" }, { img: video1, name: "Shakil khan" }, { img: author2, name: "Moriom Akter" }
     ]
-
   return (
     <>
         <TopBar />
@@ -117,7 +104,69 @@ function meetingRome() {
                                         </div>
                                         <div className='flex items-center'>
                                             <p onClick={ () => handaleMute(u.id)} className={`text-xl cursor-pointer ${(id === u.id) && 'text-white'}`}>{ (id === u.id)? <AiFillAudio /> : <AiOutlineAudioMuted />}</p>
-                                            <p onClick={ () => handaleMute(u.id)} className='text-xl ml-2 cursor-pointer'>{(id === u.id)? <AiOutlineVideoCamera /> : <BiVideoOff />}</p>
+                                        </div>
+                                    </>
+                                ))
+                            }
+                        </div>
+                    </div>
+                    <div className='border-t flex justify-between items-center w-full absolute bottom-0 left-0 border-grey-800 p-5 py-7'>
+                        <div className='flex items-center gap-3'>
+                            <Button size="md" className="!text-grey-500 border border-[#2d303d] bg-[#212534] !px-2 capitalize flex items-center" variant="text">
+                                <span className='mr-1 !text-2xl  text-[18px]'><AiFillAudio /></span>
+                                <span className='text-[18px] !text-2xl -mr-1'><MdKeyboardArrowUp /></span>
+                            </Button>
+                            <Button size="md" className="!text-grey-500 border border-[#2d303d] bg-[#212534] !px-2 capitalize flex items-center" variant="text">
+                                <span className='mr-1 !text-2xl  text-[18px]'><AiOutlineVideoCamera /></span>
+                                <span className='text-[18px] !text-2xl -mr-1'><MdKeyboardArrowUp /></span>
+                            </Button>
+                            <Button size="md" className="!text-grey-500 border border-[#2d303d] bg-[#212534] !px-2 capitalize flex items-center" variant="text">
+                                <span className='mr-1 !text-2xl  text-[18px]'><RiUserSearchLine /></span>
+                                <span className='text-[18px] !text-2xl -mr-1'><MdKeyboardArrowUp /></span>
+                            </Button>
+                        </div>
+                        <div>
+                            <Button size="md" className="!text-white border border-[#2d303d] hover:bg-red-500 bg-red-500 !p-4 capitalize flex items-center" variant="text">End Meeting</Button>
+                        </div>
+                        <div className='flex items-center gap-3'>
+                            <Button size="md" className="!text-grey-500 border border-[#2d303d] bg-[#212534] !px-2 capitalize flex items-center" variant="text">
+                                <span className='mr-1 !text-2xl  text-[18px]'><RiComputerLine /></span>
+                                <span className='text-[18px] !text-2xl -mr-1'><MdKeyboardArrowUp /></span>
+                            </Button>
+                            <Button size="md" className="!text-grey-500 border border-[#2d303d] bg-[#212534] !px-2 capitalize flex items-center" variant="text">
+                                <span className='mr-1 !text-2xl  text-[18px]'><BiRadioCircleMarked /></span>
+                                <span className='text-[18px] !text-2xl -mr-1'><MdKeyboardArrowUp /></span>
+                            </Button>
+                            <Button size="md" className="!text-white border border-[#2d303d] hover:bg-[#0f78f8] bg-[#0f78f8] !px-2 capitalize flex items-center" variant="text">
+                                <span className='mr-1 !text-2xl  text-[18px]'><BiMessageRoundedDots /></span>
+                                <span className='text-[18px] !text-2xl -mr-1'><MdKeyboardArrowUp /></span>
+                            </Button>
+                        </div>
+                    </div>
+                </div>
+                <div className='w-1/2 p-5 pb-28 relative'>
+                    <div className='flex w-full mb-5 rounded-lg items-center justify-between bg-[#242634] p-1'>
+                        <Button size="sm" className='bg-[#2d303d] border-[#4d4c4c] !text-grey-500 !px-3 w-full mr-4 capitalize' variant="text">Upcoming</Button>
+                        <Button size="sm" className='bg-[#2d303d] border-[#4d4c4c]"} !text-grey-500 !px-3 w-full capitalize' variant="text">Recorded</Button>
+                    </div>
+                    <div className='grid gap-y-2 pt-5 w-full border-t border-grey-800'>
+                        {
+                            data.map(u => (
+                                <>
+                                    <div className='flex items-center justify-between w-full cursor-pointer text-grey-500 hover:text-white rounded-lg hover:bg-[#212534] p-1.5 gap-1'>
+                                        <div className='flex items-center'>
+                                            <Image
+                                                className='rounded-lg w-full mx-auto'
+                                                src={u.img}
+                                                alt="user"
+                                                width={36}
+                                                height={40}
+                                            />
+                                            <p className='ml-2 text-sm'>{u.name}</p>
+                                        </div>
+                                        <div className='flex items-center'>
+                                            <p className='text-xl cursor-pointer text-white'><AiFillAudio /></p>
+                                            <p className='text-xl ml-2 cursor-pointer'><AiOutlineVideoCamera /></p>
                                         </div>
                                     </div>
                                 </>
@@ -176,15 +225,10 @@ function meetingRome() {
                             <span className='cursor-pointer'><BsEmojiSmile /></span>
                         </div>
                     </div>
-                    <div className='flex items-center justify-between'>
-                        <input className='!text-grey-500 border px-3 py-1 rounded-xl outline-0 border-[#2d303d] bg-[#212534]' type="text" name="" placeholder='Type Your massage' id="" />
-                        <Button className='!capitalize' size="sm">Send</Button>
-                    </div>
                 </div>
             </div>
-        </div>
-    </>
-  )
+        </>
+    )
 }
 
 export default meetingRome

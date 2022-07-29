@@ -19,7 +19,7 @@
   }
 
   .search-input {
-    @apply !w-full md:w-80 py-1 sm:py-2 pl-8 sm:pl-14 border border-grey-800 bg-[#212534] rounded-xl transition-all text-lg text-[#ffffff] placeholder:text-[#797981d3];
+    @apply !w-full md:w-80 py-1 sm:py-2 pl-8 sm:pl-12 border border-[#262938] bg-[#212534] rounded-xl transition-all text-lg text-[#ffffff] placeholder:text-[#797981d3];
 
   }
 
@@ -69,6 +69,40 @@
   .card-text {
     font-size: 16px;
     color: rgba(255, 255, 255, 0.5);
+  }
+
+  .schedule-list-meta li {
+    position: relative;
+    z-index: 1;
+  }
+
+  .schedule-list-meta li + li::before {
+    position: absolute;
+    content: "";
+    left: -9px;
+    top: 3px;
+    width: 2px;
+    height: 10px;
+    @apply bg-grey-400;
+  }
+
+  .chat-tab > div,
+  .single-chat-tab>div {
+    width: 100%;
+  }
+
+  .chat-tab .tab-title {
+    @apply text-grey-500;
+  }
+
+  .chat-tab .absolute {
+    color: #000;
+    background: #232634;
+  }
+
+  .single-chat-tab .absolute {
+    color: #000;
+    background: #0e78f9;
   }
 }
 
