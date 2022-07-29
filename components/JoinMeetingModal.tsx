@@ -21,9 +21,11 @@ function JoinMeetingModal({setMeetOpen, open}: props) {
 
     const router = useRouter()
 
-    const handleOpen = () => {
+    const handleOpen = (id:number) => {
       setMeetOpen(!open)
-      router.replace("/meetingRome")
+      if(id === 1){
+        router.replace("/meetingRome")
+      }
     };
     
   return (
@@ -40,8 +42,8 @@ function JoinMeetingModal({setMeetOpen, open}: props) {
         </DialogBody>
         <DialogFooter className='text-left w-full'>
             <div className='flex items-center'>
-              <Button onClick={handleOpen} size="sm" className="!text-grey-500 border bg-[#282c3a] border-grey-800 !px-4 capitalize flex items-center" variant="text">Cancel</Button> 
-              <Button onClick={handleOpen} size="sm" className="!text-white border ml-3 bg-[#0e78f9] border-grey-800 !px-4 capitalize flex items-center" variant="text">Join</Button> 
+              <Button onClick={() => handleOpen(2)} size="sm" className="!text-grey-500 border bg-[#282c3a] border-grey-800 !px-4 capitalize flex items-center" variant="text">Cancel</Button> 
+              <Button onClick={() => handleOpen(1)} size="sm" className="!text-white border ml-3 bg-[#0e78f9] border-grey-800 !px-4 capitalize flex items-center" variant="text">Join</Button> 
             </div>
         </DialogFooter>
       </Dialog>
