@@ -14,7 +14,7 @@ import { BsEmojiSmile } from 'react-icons/bs';
 import { RiUserSearchLine, RiComputerLine } from 'react-icons/ri';
 import { Button } from '@material-tailwind/react';
 import MassageAcccordion from '../components/MassageAcccordion'
-function meetingRome() {
+function meetingRoom() {
     const data = [
         { id: 1, name: 'Shakibul', img: user2, },
         { id: 2, name: 'Rohul amin ', img: user1, },
@@ -167,4 +167,4 @@ function meetingRome() {
         </>
     )
 }
-export default meetingRome
+export default meetingRoom
