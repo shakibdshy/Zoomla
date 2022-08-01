@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react'
-import { Button} from "@material-tailwind/react";
+import { Button } from "@material-tailwind/react";
 import TopBar from '../components/TopBar';
 import { AiOutlineReload } from 'react-icons/ai'
 import { BsPlusSquare } from 'react-icons/bs'
@@ -12,20 +12,10 @@ import Image from 'next/image';
 import author from "../assets/shakib.jpg"
 import author2 from "../assets/rohul.png"
 
-type users = {
-  data: {
-    name: string;
-    time: string;
-    hours: string;
-    user: any;
-}
-}
-
 function Meeting() {
-
   const [select, setSelect] = useState(true)
 
-  const data: {name: string, time:string, hours:string, user: any} = {
+  const data: { name: string, time: string, hours: string, user: any[] } = {
     name: "Design Daily Zoomla Meeting",
     time: "10:00-11:00",
     hours: "8",
@@ -45,14 +35,14 @@ function Meeting() {
           <div className='flex !gap-x-3 border-b border-grey-800  items-center p-4 pt-0 justify-between'>
             <Button size="sm" className="!text-grey-500 !text-xl font-bold !px-2 bg-[#212534] border border-[#4d4c4c] lowercase" variant="text"><AiOutlineReload /></Button>
             <div className='flex w-full lg:w-1/2 rounded-lg items-center justify-between bg-[#2b2a2a] p-1'>
-               <Button onClick={() => setSelect(true)} size="sm" className={`${select && "border bg-[#3d3c3c] border-[#4d4c4c]"} !text-grey-500 !px-3 w-full mr-4 bg-[#2f2e2e]  capitalize`} variant="text">Upcoming</Button>
-               <Button onClick={() => setSelect(false)} size="sm" className={`${!select && "border bg-[#3d3c3c] border-[#4d4c4c]"} !text-grey-500 !px-3 w-full bg-[#2f2e2e]  capitalize`} variant="text">Recorded</Button>
+              <Button onClick={() => setSelect(true)} size="sm" className={`${select && "border bg-[#3d3c3c] border-[#4d4c4c]"} !text-grey-500 !px-3 w-full mr-4 bg-[#2f2e2e]  capitalize`} variant="text">Upcoming</Button>
+              <Button onClick={() => setSelect(false)} size="sm" className={`${!select && "border bg-[#3d3c3c] border-[#4d4c4c]"} !text-grey-500 !px-3 w-full bg-[#2f2e2e]  capitalize`} variant="text">Recorded</Button>
             </div>
             <Button size="sm" className="!text-grey-500 !text-xl font-bold !px-2 bg-[#282c3a] border border-[#4d4c4c] lowercase" variant="text"><BsPlusSquare /></Button>
           </div>
           <div className='w-full'>
             <h1 className='text-xl font-bold pl-5 mt-5 mb-3'>Today</h1>
-            <ScheduleList setUser={setUser} />
+            <ScheduleList />
           </div>
         </div>
 
@@ -68,11 +58,11 @@ function Meeting() {
           </div>
 
           <div className='flex w-full items-center gap-x-3 border-y border-grey-800 py-8 justify-between'>
-              <Button size="md" variant="filled" className={`!px-4 capitalize`}>start</Button>
-              <Button size="md" className="!text-grey-500 !px-4 w-full border bg-[#212534] border-grey-800 capitalize" variant="text">Recorded</Button>
-              <Button size="md" className="!text-grey-500 !px-4 w-full border bg-[#212534] border-grey-800 capitalize" variant="text">Recorded</Button>
-              <Button size="md" className="!text-grey-500 !px-3 border bg-[#212534] border-grey-800  capitalize" variant="text">id</Button>
-              <Button size="md" className="!text-grey-500 !px-3 border bg-[#212534] border-grey-800  capitalize" variant="text">id</Button>
+            <Button size="md" variant="filled" className={`!px-4 capitalize`}>start</Button>
+            <Button size="md" className="!text-grey-500 !px-4 w-full border bg-[#212534] border-grey-800 capitalize" variant="text">Recorded</Button>
+            <Button size="md" className="!text-grey-500 !px-4 w-full border bg-[#212534] border-grey-800 capitalize" variant="text">Recorded</Button>
+            <Button size="md" className="!text-grey-500 !px-3 border bg-[#212534] border-grey-800  capitalize" variant="text">id</Button>
+            <Button size="md" className="!text-grey-500 !px-3 border bg-[#212534] border-grey-800  capitalize" variant="text">id</Button>
           </div>
 
           <div className='my-8'>
@@ -91,36 +81,36 @@ function Meeting() {
 
           <div>
             <div className='flex items-center'>
-              <span className='text-xl text-grey-500'><BiUserPin/></span>
+              <span className='text-xl text-grey-500'><BiUserPin /></span>
               <p className='text-grey-500 ml-2 mb-2'>participants:</p>
             </div>
             <div className='flex items-center mt-8 gap-4'>
               {
-                user?.user?.slice(0,3).map((u) => (
+                user?.user?.slice(0, 3).map((u, index) => (
                   <>
-                    <div className='p-5 border rounded-xl text-center bg-[#212534] border-grey-800'>
-                        <div>
-                            <Image
-                                className='rounded-lg w-full mx-auto'
-                                src={u}
-                                alt="user"
-                                width={36}
-                                height={40}
-                            />
-                        </div>
-                        <p className='text-grey-500'>Shakib Hasan</p>
+                    <div key={index} className='p-5 border rounded-xl text-center bg-[#212534] border-grey-800'>
+                      <div>
+                        <Image
+                          className='rounded-lg w-full mx-auto'
+                          src={u}
+                          alt="user"
+                          width={36}
+                          height={40}
+                        />
+                      </div>
+                      <p className='text-grey-500'>Shakib Al Hasan</p>
                     </div>
                   </>
                 ))
-              } 
+              }
               <div className='p-5 border rounded-xl text-center bg-[#0e78f9] border-grey-800'>
-                  <div className='flex items-center justify-center'>
-                      <div style={{backgroundColor: 'rgba(255, 255, 255, 0.15)'}} className='w-[40px] h-[38px] flex items-center justify-center border border-[#539ffa] rounded-lg '>
-                         <BsPlusSquareFill />
-                      </div>
+                <div className='flex items-center justify-center'>
+                  <div style={{ backgroundColor: 'rgba(255, 255, 255, 0.15)' }} className='w-[40px] h-[38px] flex items-center justify-center border border-[#539ffa] rounded-lg '>
+                    <BsPlusSquareFill />
                   </div>
-                  <p className='text-white mt-1'>Invite Member</p>
-              </div> 
+                </div>
+                <p className='text-white mt-1'>Invite Member</p>
+              </div>
             </div>
           </div>
         </div>

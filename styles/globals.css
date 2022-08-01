@@ -85,6 +85,25 @@
     height: 10px;
     @apply bg-grey-400;
   }
+
+  .chat-tab > div,
+  .single-chat-tab>div {
+    width: 100%;
+  }
+
+  .chat-tab .tab-title {
+    @apply text-grey-500;
+  }
+
+  .chat-tab .absolute {
+    color: #000;
+    background: #232634;
+  }
+
+  .single-chat-tab .absolute {
+    color: #000;
+    background: #0e78f9;
+  }
 }
 
 @media (max-width: 400px) {
