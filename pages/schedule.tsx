@@ -1,9 +1,25 @@
-import React from 'react'
+import { useRef } from 'react';
+import FullCalendar from '@fullcalendar/react';
+import dayGridPlugin from "@fullcalendar/daygrid";
+import timeGridPlugin from "@fullcalendar/timegrid";
+import interactionPlugin from "@fullcalendar/interaction";
 
-function Schedule() {
+ function schedule() {
+  
   return (
-    <div>Schedule</div>
+    <>
+      <FullCalendar
+      
+      plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+      editable
+      selectable
+       />
+    </>
   )
 }
 
-export default Schedule
+
+export default schedule;
+
+
+
