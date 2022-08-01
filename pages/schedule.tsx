@@ -11,6 +11,11 @@ import interactionPlugin from "@fullcalendar/interaction";
       <FullCalendar
       
       plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+      headerToolbar={{
+        left:"prev,next today btn",
+        center:"title",
+        right:"dayGridMonth,timeGridWeek,timeGridDay btn"
+      }}
       editable
       selectable
        />
