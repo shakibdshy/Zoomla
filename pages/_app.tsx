@@ -4,6 +4,9 @@ import Layout from '../components/Layout';
 import '../styles/globals.css'
 import 'react-day-picker/dist/style.css';
 import { ThemeProvider } from '@material-tailwind/react';
+import '@fullcalendar/common/main.css'; 
+import '@fullcalendar/daygrid/main.css'; 
+import '@fullcalendar/timegrid/main.css'; 
 
 // this should give a better typing
 type AppPropsWithLayout = AppProps & {
