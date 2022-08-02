@@ -55,7 +55,7 @@ function Contact() {
     <>
       <TopBar />
       <div className='text-white pt-20 h-screen flex md:flex-nowrap flex-wrap'>
-        <div className='w-full overflow-y-scroll p-5 border-r border-grey-800'>
+        <div className='w-full overflow-y-auto p-5 border-r border-grey-800'>
           <div className='flex border-b border-grey-800  items-center p-4 pl-0 pt-0  justify-between'>
             <div className='flex w-full lg:w-1/2 rounded-lg items-center justify-between bg-[#212534] p-1'>
               <Button onClick={() => setSelect(true)} size="sm" className={`${select && "border bg-[#252a3d] border-[#4d4c4c]"} !text-grey-500 !px-3 w-full mr-4 bg-[#282d3f]  capitalize`} variant="text">Contacts</Button>

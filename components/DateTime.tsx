@@ -4,10 +4,7 @@ import React, { useState, useEffect } from 'react'
 import { format } from 'date-fns'
 
 interface dateTypes {
-    days: string,
-    hours: string,
-    minutes: string,
-    seconds: string,
+    calculateTime: () => {}
 }
 
 function DateTime() {
