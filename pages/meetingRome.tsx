@@ -22,12 +22,15 @@ function meetingRome() {
         { id: 2, name: 'Rohul amin ', img: user1, },
         { id: 3, name: 'Shakibul', img: user2, },
         { id: 4, name: 'Rohul amin', img: user1, },
-    ]
+    ];
     const video = [
-        { img: video2, name: "Taniiya" }, { img: video1, name: "Shakil khan" }, { img: author2, name: "Moriom Akter" }
-    ]
+        { img: video2, name: "Taniiya" },
+        { img: video1, name: "Shakil khan" },
+        { img: author2, name: "Moriom Akter" }
+    ];
+
     return (
-    <>
+        <>
             <TopBar />
             <div className='w-full h-screen overscroll-y-auto pt-20'>
                 <div className='text-white w-full flex justify-between'>
@@ -165,8 +168,9 @@ function meetingRome() {
                         </div>
                     </div>
                 </div>
-            </>
-            )
+            </div>
+        </>
+    )
 }
 
-            export default meetingRome
+export default meetingRome
