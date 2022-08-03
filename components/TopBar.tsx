@@ -3,8 +3,10 @@ import React from 'react'
 import author from '../assets/author2.jpg'
 import { FiSearch } from 'react-icons/fi'
 import { useRouter } from 'next/router';
+import { FaVideo } from 'react-icons/fa'
 import { Menu, MenuHandler, MenuItem, MenuList } from '@material-tailwind/react';
 import type { MenuHandlerProps } from "@material-tailwind/react";
+import Link from 'next/link';
 
 function TopBar() {
     const { asPath } = useRouter();
@@ -12,7 +14,12 @@ function TopBar() {
         <section className='p-1 sm:p-3 sm:py-4 bg-dark fixed top-0 left-0 sm:pl-10 pl-3 w-full z-10 bg-[#1c1f2e] border-b border-grey-800'>
             <div className=''>
                 <ul className='flex items-center justify-between gap-x-2 sm:gap-x-5'>
-                    <li className='text-white font-medium text-2xl sm:pl-20 capitalize'>{asPath.slice(1)}</li>
+                    <li className='text-white hidden sm:block font-medium text-2xl sm:pl-20 capitalize'>{asPath.slice(1)}</li>
+                    <li className='sm:hidden'>
+                        <Link href='/home'>
+                            <a className='p-3 text-white bg-[#0e78f9] text-2xl w-12 h-12 rounded-xl block shadow-md'><FaVideo className='shadow-sm' /></a>
+                        </Link>
+                    </li>
                     <li className='ml-auto hidden sm:block grow-0 shrink-0 basis-auto'>
                         <form className='relative z-10'>
                             <input type="text" name="name" placeholder='Search by keyword' className='search-input' />
