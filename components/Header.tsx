@@ -11,15 +11,15 @@ function Header() {
     return (
         <header className="p-3 hidden !bg-[rgb(28,31,46)] sm:block !z-20 fixed !bottom-0 !left-0 sm:inset-0 max-w-[90px] border-r border-grey-800">
             <div className='sm:block hidden'>
-                <Link href='/'>
+                <Link href='/home'>
                     <a className='p-4 text-white bg-[#0e78f9] text-2xl w-14 h-14 rounded-xl block shadow-md'><FaVideo className='shadow-sm' /></a>
                 </Link>
             </div>
             <nav className='mt-20'>
                 <ul>
                     <li>
-                        <Link href='/'>
-                            <a className={asPath === '/' ? 'menu-item isActive' : 'menu-item'}><BsHouseDoorFill className='m-auto' /></a>
+                        <Link href='/home'>
+                            <a className={asPath === '/home' ? 'menu-item isActive' : 'menu-item'}><BsHouseDoorFill className='m-auto' /></a>
                         </Link>
                     </li>
                     <li>

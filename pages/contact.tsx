@@ -19,36 +19,36 @@ function Contact() {
   let contactsUser = {
     name: 'cloud contacts',
     user: [
-      { name: "Shakib hasan", img: author,},
-      { name: "Rohul amin", img: author2,},
-      { name: "Shakib hasan", img: author,},
+      { name: "Shakib hasan", img: author, },
+      { name: "Rohul amin", img: author2, },
+      { name: "Shakib hasan", img: author, },
     ]
   }
 
   let contactsUser1 = {
     name: 'starred',
     user: [
-      { name: "Shakib hasan", img: author,},
-      { name: "Rohul amin", img: author2,},
-      { name: "Shakib hasan", img: author,},
-      { name: "Rohul amin", img: author2,},
+      { name: "Shakib hasan", img: author, },
+      { name: "Rohul amin", img: author2, },
+      { name: "Shakib hasan", img: author, },
+      { name: "Rohul amin", img: author2, },
     ]
   }
 
   let contactsUser2 = {
     name: 'External',
     user: [
-      { name: "Rohul amin", img: author2,},
-      { name: "Shakib hasan", img: author,},
-      { name: "Rohul amin", img: author2,},
+      { name: "Rohul amin", img: author2, },
+      { name: "Shakib hasan", img: author, },
+      { name: "Rohul amin", img: author2, },
     ]
   }
 
   const contactInfo = [
-    {name: "Home", title: '012 123 4562', icons: <AiOutlineHome />},
-    {name: "Work", title: '012 123 4562', icons: <MdOutlineWorkOutline />},
-    {name: "Location", title: 'Los Angeles USA', icons: <GoLocation />},
-    {name: "Time Zone", title: '-10h, GMT', icons: <MdOutlineWatchLater />},
+    { name: "Home", title: '012 123 4562', icons: <AiOutlineHome /> },
+    { name: "Work", title: '012 123 4562', icons: <MdOutlineWorkOutline /> },
+    { name: "Location", title: 'Los Angeles USA', icons: <GoLocation /> },
+    { name: "Time Zone", title: '-10h, GMT', icons: <MdOutlineWatchLater /> },
   ]
 
   return (
@@ -67,67 +67,67 @@ function Contact() {
           <div className='mt-5'>
             <h1 className='text-xl font-bold'>My Contacts</h1>
             <div className='mt-5 grid gap-y-3'>
-              <Accordion contactsUser={contactsUser1}  />
-              <Accordion contactsUser={contactsUser2}  />
-              <Accordion contactsUser={contactsUser}  />
+              <Accordion contactsUser={contactsUser1} />
+              <Accordion contactsUser={contactsUser2} />
+              <Accordion contactsUser={contactsUser} />
             </div>
           </div>
 
           <div className='mt-5'>
             <h1 className='text-xl font-bold'>Company Directory</h1>
             <div className='mt-5 grid gap-y-3'>
-              <Accordion contactsUser={contactsUser}  />
-              <Accordion contactsUser={contactsUser}  />
+              <Accordion contactsUser={contactsUser} />
+              <Accordion contactsUser={contactsUser} />
             </div>
           </div>
         </div>
 
         <div className='w-full p-4 sm:p-6  lg:p-8'>
-            <div className='bg-[#212534] p-5 rounded-2xl w-full border border-grey-800 '>
-              <div className='flex mb-5 items-center'>
-                <div>
-                  <Image
-                      className='rounded-lg w-full mx-auto'
-                      src={author2}
-                      alt="user"
-                      width={80}
-                      height={80}
-                  />
-                </div>
-                <div className='ml-5'>
-                  <h1 className='text-3xl font-bold text-white'>Roul amin</h1>
-                  <span className='text-grey-500 mt-3 font-xs'>added forms google contacts</span>
-                </div>
+          <div className='bg-[#212534] p-5 rounded-2xl w-full border border-grey-800 '>
+            <div className='flex mb-5 items-center'>
+              <div>
+                <Image
+                  className='rounded-lg w-full mx-auto'
+                  src={author2}
+                  alt="user"
+                  width={80}
+                  height={80}
+                />
               </div>
+              <div className='ml-5'>
+                <h1 className='text-3xl font-bold text-white'>Roul amin</h1>
+                <span className='text-grey-500 mt-3 font-xs'>added forms google contacts</span>
+              </div>
+            </div>
 
-              <div className='flex w-full items-center gap-x-3 border-y border-grey-800 py-8 justify-between'>
-                <Button size="md" className="!text-grey-500 border bg-[#282c3a] border-grey-800 !px-4 capitalize flex items-center" variant="text"><span className='mr-2 text-[18px]'><BsTelephone /></span> call</Button>
-                <Button size="md" className="!text-grey-500 border bg-[#282c3a] border-grey-800 !px-4 capitalize flex items-center" variant="text"><span className='mr-2 text-[18px]'><BiVideo /></span> videocall</Button>
-                <Button size="md" className="!text-grey-500 border bg-[#282c3a] border-grey-800 !px-4 capitalize flex items-center" variant="text"><span className='mr-2 text-[18px]'><BiMessageRoundedDots /></span> Massage</Button>
-                <Button size="md" className="!text-grey-500 border bg-[#282c3a] border-grey-800 !p-3 font-bold text-[14px] capitalize" variant="text"><FiEdit2 /></Button>
-                <Button size="md" className="!text-grey-500 border bg-[#282c3a] border-grey-800 !p-3 font-bold text-[14px] capitalize" variant="text"><MdOutlineDelete /></Button>
-             </div>
+            <div className='flex w-full flex-wrap sm:flex-nowrap items-center gap-3 border-y border-grey-800 py-8 sm:justify-center'>
+              <Button size="md" className="!text-grey-500 border bg-[#282c3a] border-grey-800 !px-4 capitalize flex items-center" variant="text"><span className='mr-2 text-[18px]'><BsTelephone /></span> call</Button>
+              <Button size="md" className="!text-grey-500 border bg-[#282c3a] border-grey-800 !px-4 capitalize flex items-center" variant="text"><span className='mr-2 text-[18px]'><BiVideo /></span> videocall</Button>
+              <Button size="md" className="!text-grey-500 border bg-[#282c3a] border-grey-800 !px-4 capitalize flex items-center" variant="text"><span className='mr-2 text-[18px]'><BiMessageRoundedDots /></span> Massage</Button>
+              <Button size="md" className="!text-grey-500 border bg-[#282c3a] border-grey-800 !p-3 font-bold text-[14px] capitalize" variant="text"><FiEdit2 /></Button>
+              <Button size="md" className="!text-grey-500 border bg-[#282c3a] border-grey-800 !p-3 font-bold text-[14px] capitalize" variant="text"><MdOutlineDelete /></Button>
+            </div>
 
-             <div className='mt-12'>
+            <div className='mt-12'>
               <h1 className='my-8 font-bold'>Contacts info</h1>
               <div className='grid grid-cols-2 border-y py-6 mb-10 mt-6 border-grey-800 gap-y-10'>
                 {
                   contactInfo.map(i => (
                     <>
-                    <div className='flex items-center'>
-                      <Button size="lg" className="!text-grey-500 border bg-[#282c3a] border-grey-800 !p-3 font-bold text-[16px] capitalize" variant="text">{i.icons}</Button>
-                      <div className='ml-2'>
-                        <p className='text-grey-500 text-[14px] !mt-1'>{i.name}</p>
-                        <span className='text-white !text-[16px]'>{i.title}</span>
+                      <div className='flex items-center'>
+                        <Button size="lg" className="!text-grey-500 border bg-[#282c3a] border-grey-800 !p-3 font-bold text-[16px] capitalize" variant="text">{i.icons}</Button>
+                        <div className='ml-2'>
+                          <p className='text-grey-500 text-[14px] !mt-1'>{i.name}</p>
+                          <span className='text-white !text-[16px]'>{i.title}</span>
+                        </div>
                       </div>
-                    </div>
                     </>
                   ))
                 }
               </div>
-             </div>
-
             </div>
+
+          </div>
         </div>
       </div>
 

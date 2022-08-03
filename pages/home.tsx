@@ -19,10 +19,10 @@ function HomePage() {
 
       <TopBar />
       <section className='home-body flex w-full h-screen pt-20 md:flex-nowrap flex-wrap'>
-        <div className='p-4 pt-16 w-full'>
+        <div className='p-4 sm:pt-8 w-full'>
           <Card />
         </div>
-        <div className='p-4 pt-16 w-full border-l overflow-y-scroll border-grey-800'>
+        <div className='p-4 sm:pt-8 w-full border-l overflow-y-scroll border-grey-800'>
           <div className='max-w-xl mx-auto'>
             <DateComponent />
             <ScheduleList />
