@@ -3,8 +3,42 @@ import React from "react";
 import Link from "next/link";
 import { BsChevronLeft, BsFacebook, BsGithub } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
+import auth from "../firebase/firebase.init";
+import { useRouter } from "next/router";
+import Loading from "../components/Loading";
 
-function signIn() {
+function SignIn() {
+  const router = useRouter();
+  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+  const [
+    signInWithEmailAndPassword,
+    user,
+    loading,
+    error,
+  ] = useSignInWithEmailAndPassword(auth);
+
+  let signInError;
+  if (error || gError) {
+    signInError = <p className='text-red-500 mb-2 text-center'>{error?.message}</p>
+  }
+
+  if (user || gUser) {
+    router.replace("/home")
+  }
+
+  if (loading) {
+    return <Loading />
+  }
+
+  const handaleSubmite = async (e: any) => {
+    e.preventDefault()
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    console.log(email, password)
+    await signInWithEmailAndPassword(email, password);
+  }
+
   return (
     <div className="p-12 pb-0 section max-w-2xl bg-[#232634] h-auto mt-20 mx-auto shadow-lg rounded-2xl">
       <div className="title">
@@ -12,13 +46,12 @@ function signIn() {
           Zoomla
         </h1>
       </div>
-      <form className="grid justify-items-center gap-y-4">
-        <input type="text" name="name" placeholder='Enter Your Email' className='search-input shadow-md py-4 pl-8' />
-        <input type="text" name="name" placeholder='Enter Your Password' className='search-input shadow-md py-4 pl-8' />
-        <Button className="px-36 bg-slate-300">
-          Sign In
-        </Button>
+      <form onSubmit={handaleSubmite} className="grid justify-items-center gap-y-4">
+        <input type="text" name="email" placeholder='Enter Your Email' className='search-input shadow-md py-4 pl-8' />
+        <input type="password" name="password" placeholder='Enter Your Password' className='search-input shadow-md py-4 pl-8' />
+        <input type="submit" value="Sign In" className="text-white cursor-pointer font-bold py-2 bg-blue-500 rounded-lg w-1/2" />
       </form>
+      {signInError}
       <div className="checkbox flex justify-center items-center font-normal mt-5">
         <Checkbox defaultChecked />
         <h2 className='text-white'>Keep me signed in</h2>
@@ -30,7 +63,7 @@ function signIn() {
       </div>
       <div className="grid justify-items-center mt-8">
         <ul className="flex gap-8">
-          <li className="flex flex-col items-center justify-center text-white">
+          <li onClick={() => signInWithGoogle()} className="flex cursor-pointer flex-col items-center justify-center text-white">
             <FcGoogle className="text-xl" />
             Google</li>
           <li className="flex flex-col items-center justify-center text-white">
@@ -45,7 +78,7 @@ function signIn() {
         <Link href='/'>
           <a className="flex justify-center items-center ml-10 m-10 gap-x-2 text-white"><BsChevronLeft /> Back</a>
         </Link>
-        <Link href='/'>
+        <Link href='/signUp'>
           <a className="text-[#83bbff] mr-10 m-10">Sign Up</a>
         </Link>
       </div>
@@ -53,4 +86,4 @@ function signIn() {
   );
 }
 
-export default signIn;
+export default SignIn;

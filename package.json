@@ -22,6 +22,7 @@
     "@tailwindcss/forms": "^0.5.2",
     "date-fns": "^2.29.1",
     "dayjs": "^1.11.4",
+    "firebase": "^9.9.1",
     "framer-motion": "^6.5.1",
     "moment": "^2.29.4",
     "mongoose": "^6.5.0",
@@ -30,6 +31,7 @@
     "react": "18.2.0",
     "react-day-picker": "^8.0.7",
     "react-dom": "18.2.0",
+    "react-firebase-hooks": "^5.0.3",
     "react-icons": "^4.4.0"
   },
   "devDependencies": {

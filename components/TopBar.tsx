@@ -7,9 +7,20 @@ import { FaVideo } from 'react-icons/fa'
 import { Menu, MenuHandler, MenuItem, MenuList } from '@material-tailwind/react';
 import type { MenuHandlerProps } from "@material-tailwind/react";
 import Link from 'next/link';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../firebase/firebase.init';
+import { signOut } from 'firebase/auth';
 
 function TopBar() {
     const { asPath } = useRouter();
+    const [user, loading, error] = useAuthState(auth);
+    const logOut = () => {
+        signOut(auth)
+        localStorage.removeItem('accessToken');
+    }
+
+    console.log(user)
+
     return (
         <section className='p-1 sm:p-3 sm:py-4 bg-dark fixed top-0 left-0 sm:pl-10 pl-3 w-full z-10 bg-[#1c1f2e] border-b border-grey-800'>
             <div className=''>
@@ -26,26 +37,39 @@ function TopBar() {
                             <FiSearch className='search-icon' />
                         </form>
                     </li>
-                    <li className='w-12 h-12'>
+                    {user && <li className='w-12 h-12'>
                         <Menu placement="bottom-end">
                             <MenuHandler>
-                                <div className='cursor-pointer'>
-                                    <Image src={author} alt="Author Image" width={50} height={50} objectFit='cover' quality={100} className='rounded-xl' />
+                                <div className=''>
+                                    {user?.displayName && <div className='w-[50px] h-[50px] ring-2 ring-white ring-offset-2 ring-blue-800 rounded-full bg-blue-600 flex items-center justify-center'>
+                                        <h1 className='text-2xl text-white font-bold'>{user?.displayName.slice(0, 1)}</h1>
+                                    </div>}
+                                    {/* {!user?.displayName && <div className='cursor-pointer'>
+                                        <Image src={author} alt="Author Image" width={50} height={50} objectFit='cover' quality={100} className='rounded-xl' />
+                                    </div>} */}
                                 </div>
                             </MenuHandler>
                             <MenuList className='bg-[#272b39] shadow-sm border-transparent'>
                                 <MenuItem className='text-grey-400 border-b border-grey-800 hover:bg-[#242736] hover:text-grey-500 hover:shadow-md'>
                                     <div className='text-center'>
-                                        <Image src={author} alt="Author Image" width={60} height={60} objectFit='cover' quality={100} className='rounded-full right-2 ring-blue-500' />
-                                        <h3 className='mt-2 font-bold'>Arifa Anjum</h3>
+                                        {user?.displayName && <div className='w-[60px] h-[60px] mx-auto rounded-full bg-blue-600 flex items-center justify-center'>
+                                            <h1 className='text-2xl capitalize text-white font-bold'>{user?.displayName.slice(0, 1)}</h1>
+                                        </div>}
+                                        {/* {!user?.displayName && <Image src={author} alt="Author Image" width={60} height={60} objectFit='cover' quality={100} className='rounded-full right-2 ring-blue-500' />} */}
+                                        <h3 className='mt-2 font-bold'>{user ? user?.displayName : 'Zoomla'}</h3>
                                     </div>
                                 </MenuItem>
                                 <MenuItem className='text-grey-400 hover:bg-[#242736] hover:text-grey-500 hover:shadow-md'>Sittings</MenuItem>
                                 <MenuItem className='text-grey-400 hover:bg-[#242736] hover:text-grey-500 hover:shadow-md'>Update</MenuItem>
-                                <MenuItem className='text-grey-400 hover:bg-[#242736] hover:text-grey-500 hover:shadow-md'>Sign Out</MenuItem>
+                                <MenuItem onClick={logOut} className='text-grey-400 hover:bg-[#242736] hover:text-grey-500 hover:shadow-md'>Sign Out</MenuItem>
                             </MenuList>
                         </Menu>
-                    </li>
+                    </li>}
+                    {!user && <li className='text-white text-xl font-bold'>
+                        <Link href='/signIn'>
+                            <a>Sing In</a>
+                        </Link>
+                    </li>}
                 </ul>
 
             </div>
