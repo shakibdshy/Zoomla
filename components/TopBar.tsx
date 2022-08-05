@@ -41,7 +41,7 @@ function TopBar() {
                         <Menu placement="bottom-end">
                             <MenuHandler>
                                 <div className=''>
-                                    {user?.displayName && <div className='w-[50px] h-[50px] ring-2 ring-white ring-offset-2 ring-blue-800 rounded-full bg-blue-600 flex items-center justify-center'>
+                                    {user?.displayName && <div className='sm:w-[50px] w-[40px] h-[40px] sm:h-[50px] ring-2 cursor-pointer ring-offset-2 ring-blue-800 rounded-full bg-blue-600 flex items-center justify-center'>
                                         <h1 className='text-2xl text-white font-bold'>{user?.displayName.slice(0, 1)}</h1>
                                     </div>}
                                     {/* {!user?.displayName && <div className='cursor-pointer'>
