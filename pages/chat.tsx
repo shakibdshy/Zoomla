@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   Tabs,
   TabsHeader,
@@ -19,7 +19,19 @@ import { BsPlusSquare, BsStar, BsCameraVideo, BsFileText, BsFileEarmarkCheck, Bs
 import { RiShareBoxLine } from 'react-icons/ri'
 import { BiScreenshot } from 'react-icons/bi'
 
+import dynamic from "next/dynamic";
+
+
+// const CometChatNoSSR = dynamic(
+//     () => import('../components/CometChatNoSSR'),
+//     { ssr: false }
+// );
+
+
 function Chat() {
+//   useEffect(() => {
+//     window.CometChat = require('@cometchat-pro/chat').CometChat
+// });
   return (
     <>
       <Head>
@@ -27,6 +39,18 @@ function Chat() {
         <meta name="description" content="Video Conference Meeting and Real Time Chat" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+
+      {/* <div><CometChatNoSSR /></div> */}
+
+
+
+   
+
+
+
+
+
 
       <TopBar />
       <Tabs value="html" className='home-body flex w-full h-screen flex-wrap md:flex-nowrap'>
