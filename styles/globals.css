@@ -9,6 +9,10 @@
     border: 1px solid transparent;
     @apply mt-2 p-4 text-center text-2xl text-[#767780] w-14 h-14 rounded-xl block transition-all relative hover:text-white before:absolute before:bottom-0 before:left-0 before:right-0 before:mx-auto before:w-0 before:h-[2px] before:transition-all;
   }
+  .sm-menu-item {
+    border: 1px solid transparent;
+    @apply p-2 text-center text-xl text-[#767780] w-10 h-10 rounded-xl block transition-all relative hover:text-white before:absolute before:bottom-0 before:left-0 before:right-0 before:mx-auto before:w-0 before:h-[2px] before:transition-all;
+  }
 
   .isActive {
     border-color: #2c2f3c;
@@ -73,7 +77,7 @@
 
   .schedule-list-meta li {
     position: relative;
-    z-index: 1;
+    /* z-index: 1; */
   }
 
   .schedule-list-meta li + li::before {

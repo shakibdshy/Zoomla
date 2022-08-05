@@ -22,7 +22,7 @@ function HomePage() {
         <div className='p-4 sm:pt-8 w-full'>
           <Card />
         </div>
-        <div className='p-4 sm:pt-8 w-full border-l overflow-y-scroll border-grey-800'>
+        <div className='p-4 sm:pt-8 w-full sm:border-l overflow-y-scroll border-grey-800'>
           <div className='max-w-xl mx-auto'>
             <DateComponent />
             <ScheduleList />
