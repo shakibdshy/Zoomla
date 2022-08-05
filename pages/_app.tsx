@@ -7,6 +7,7 @@ import { ThemeProvider } from '@material-tailwind/react';
 import '@fullcalendar/common/main.css'; 
 import '@fullcalendar/daygrid/main.css'; 
 import '@fullcalendar/timegrid/main.css'; 
+import { StateContext } from '../context/UpcommingContext';
 
 // this should give a better typing
 type AppPropsWithLayout = AppProps & {
@@ -23,7 +24,9 @@ const MyApp = ({
   return getLayout(
     <ThemeProvider>
       <Layout>
-        <Component {...pageProps} />
+        <StateContext>
+          <Component {...pageProps} />
+        </StateContext>
       </Layout>
     </ThemeProvider>
   )

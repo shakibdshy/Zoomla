@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["./global-types.d.ts","next-env.d.ts", "**/*.ts", "**/*.tsx", "components/TestClass.js", "pages/signUp.js"],
+  "include": ["./global-types.d.ts","next-env.d.ts", "**/*.ts", "**/*.tsx", "components/TestClass.js", "pages/signUp.js", "context/UpcommingContext.js", "hooks/useFetch.js"],
   "exclude": ["node_modules"]
 }

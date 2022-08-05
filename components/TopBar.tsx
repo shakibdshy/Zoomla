@@ -19,8 +19,6 @@ function TopBar() {
         localStorage.removeItem('accessToken');
     }
 
-    console.log(user)
-
     return (
         <section className='p-1 sm:p-3 sm:py-4 bg-dark fixed top-0 left-0 sm:pl-10 pl-3 w-full z-10 bg-[#1c1f2e] border-b border-grey-800'>
             <div className=''>
