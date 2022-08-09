@@ -31,7 +31,7 @@ function SignIn() {
     return <Loading />
   }
 
-  const handaleSubmite = async (e: any) => {
+  const handaleSubmite = async (e) => {
     e.preventDefault()
     const email = e.target.email.value;
     const password = e.target.password.value;

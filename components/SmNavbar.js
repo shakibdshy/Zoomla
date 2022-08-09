@@ -1,9 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import { BsHouseDoorFill, BsChatLeftDots, BsClock, BsCalendar2Date } from 'react-icons/bs'
-import { FaVideo } from 'react-icons/fa'
 import { MdOutlineContacts } from 'react-icons/md'
-import { HiOutlineLightBulb } from 'react-icons/hi'
 import { useRouter } from 'next/router'
 
 function SmNavbar() {

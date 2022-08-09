@@ -5,7 +5,6 @@ import { FiSearch } from 'react-icons/fi'
 import { useRouter } from 'next/router';
 import { FaVideo } from 'react-icons/fa'
 import { Menu, MenuHandler, MenuItem, MenuList } from '@material-tailwind/react';
-import type { MenuHandlerProps } from "@material-tailwind/react";
 import Link from 'next/link';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../firebase/firebase.init';

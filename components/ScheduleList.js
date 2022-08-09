@@ -1,6 +1,5 @@
 import React from 'react'
 import { Button, Menu, MenuHandler, MenuItem, MenuList } from "@material-tailwind/react";
-import type { MenuHandlerProps } from "@material-tailwind/react";
 import Image from "next/image";
 import author from "../assets/shakib.jpg"
 import author2 from "../assets/rohul.png"
@@ -9,36 +8,18 @@ import { BsThreeDots } from 'react-icons/bs';
 import { useRouter } from 'next/router';
 import { UseStateContext } from '../context/UpcommingContext';
 
-type data = {
-    setUser: React.Dispatch<React.SetStateAction<{
-        data: {
-            name: string;
-            time: string;
-            hours: string;
-            user: any[];
-        };
-    }>>
-}
 
-type user = {
-    data: {
-        name: string;
-        time: string;
-        hours: string;
-        user: any;
-    }
-}
 
-interface Estring {
-    name: string;
-    slot: string;
-}
+// interface Estring {
+//     name: string;
+//     slot: string;
+// }
 
 function ScheduleList() {
     const { asPath } = useRouter();
     const [events, setEvents] = UseStateContext()
     console.log(events);
-    
+
     const data = [
         {
             name: "Design Daily Zoomla Meeting",
@@ -51,7 +32,7 @@ function ScheduleList() {
         <div className='w-full text-white pt-4'>
             <div className='grid gap-3'>
                 {
-                    events.map((event:any) => (
+                    events.map((event) => (
                         <>
                             <div key={event._id} className='w-full border bg-[#212534] border-[#262938] p-3 sm:p-5 rounded-xl shadow-sm'>
                                 <div className='flex justify-between items-center'>
@@ -77,7 +58,7 @@ function ScheduleList() {
                                 <div className='flex justify-between mt-8 items-center'>
                                     <div className="flex items-center !gap-x-2">
                                         {
-                                            // event.user.slice(0, 3).map(u => (
+                                            // data?.user.slice(0, 3).map(u => (
                                             //     <>
                                             //         <div className="">
                                             //             <div>

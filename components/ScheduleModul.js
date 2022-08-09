@@ -15,24 +15,20 @@ import { DayPicker } from 'react-day-picker';
 import { UseStateContext } from '../context/UpcommingContext';
 import { eventNames } from 'process';
 
-type props = {
-  setOpen: (val: boolean) => void
-  open: boolean
-}
 
 const mySelected = { backgroundColor: '#0e78f9', }
 
-function ScheduleModul({ setOpen, open }: props) {
-  const [selected, setSelected] = useState<Date>();
-  const [eventName, setEventName] = useState<string>('');
+function ScheduleModul({ setOpen, open }) {
+  const [selected, setSelected] = useState();
+  const [eventName, setEventName] = useState('');
   const handleOpen = () => setOpen(!open);
   const [events, setEvents] = UseStateContext()
 
-  const handleChange = (e: any) => {    
+  const handleChange = (e) => {    
     setEventName(e.target.value)
   }
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const slot = e.target.slot.value
 

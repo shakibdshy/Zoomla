@@ -7,9 +7,9 @@ import ScheduleModul from './ScheduleModul'
 import JoinMeetingModal from './JoinMeetingModal'
 
 function Card() {
-    const [open, setOpen] = useState<boolean>(false);
-    const [meetOpen, setMeetOpen] = useState<boolean>(false);
-    const handleOpen = (index: number) => {
+    const [open, setOpen] = useState(false);
+    const [meetOpen, setMeetOpen] = useState(false);
+    const handleOpen = (index) => {
         if(index === 2){
           setOpen(!open);
         }
