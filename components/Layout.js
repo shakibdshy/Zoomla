@@ -2,7 +2,7 @@ import React, { PropsWithChildren, ReactElement } from 'react'
 import Header from './Header'
 import SmNavbar from './SmNavbar';
 
-export default function Layout({ children }: PropsWithChildren<{}>) {
+export default function Layout({ children }) {
     return (
         <>
             <div className="body-container relative pb-20 sm:pb-0 flex">
@@ -17,6 +17,6 @@ export default function Layout({ children }: PropsWithChildren<{}>) {
         </>
     )
 }
-export const getLayout = (page: ReactElement) => (
+export const getLayout = (page) => (
     <Layout>{page}</Layout>
 );

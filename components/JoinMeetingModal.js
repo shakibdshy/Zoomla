@@ -12,16 +12,16 @@ import {
 } from "@material-tailwind/react";
 import { useRouter } from 'next/router';
 
-type props = {
-  setMeetOpen: (val: boolean) => void
-  open: boolean
-}
+// type props = {
+//   setMeetOpen: (val: boolean) => void
+//   open: boolean
+// }
 
-function JoinMeetingModal({ setMeetOpen, open }: props) {
+function JoinMeetingModal({ setMeetOpen, open }) {
 
   const router = useRouter()
 
-  const handleOpen = (id: number) => {
+  const handleOpen = (id) => {
     setMeetOpen(!open)
     if (id === 1) {
       router.replace("/meetingRoom")

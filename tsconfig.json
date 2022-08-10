@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["./global-types.d.ts","next-env.d.ts", "**/*.ts", "**/*.tsx", "components/TestClass.js", "pages/signUp.js", "context/UpcommingContext.js", "hooks/useFetch.js"],
+  "include": ["./global-types.d.ts","next-env.d.ts", "**/*.ts", "**/*.tsx", "components/TestClass.js", "pages/signUp.js", "context/UpcommingContext.js", "hooks/useFetch.js", "components/TopBar.js", "components/SmNavbar.js", "components/ScheduleModul.js", "components/ScheduleList.js", "components/MassageAcccordion.js", "components/Loading.js", "components/Layout.js", "components/JoinMeetingModal.js", "components/Header.js", "components/DateTime.js", "components/Card.js", "components/Accordions.js", "pages/signIn.js", "pages/schedule.js", "pages/meetingRoom.js", "pages/meeting.js", "pages/index.js", "pages/home.js", "pages/contact.js", "pages/_app.js", "pages/chat.js", "firebase/firebase.init.js", "pages/api/user.js"],
   "exclude": ["node_modules"]
 }

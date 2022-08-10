@@ -15,7 +15,7 @@ import author2 from "../assets/rohul.png"
 function Meeting() {
   const [select, setSelect] = useState(true)
 
-  const data: { name: string, time: string, hours: string, user: any[] } = {
+  const data = {
     name: "Design Daily Zoomla Meeting",
     time: "10:00-11:00",
     hours: "8",

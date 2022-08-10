@@ -3,29 +3,21 @@ import Image from 'next/image';
 import React, { Fragment, useState } from 'react'
 import { BiChevronRight, BiChevronDown } from 'react-icons/bi'
 
-// type propsData = {
-//   name: string;
-//   user: {
+// interface UserProps {
+//   contactsUser: {
+//     name: string;
+//     user: {
 //       name: string;
-//       img: any;
-//   }[];
+//       img: StaticImageData;
+//     }[];
+//   }
 // }
 
-interface UserProps {
-  contactsUser: {
-    name: string;
-    user: {
-      name: string;
-      img: StaticImageData;
-    }[];
-  }
-}
-
-function Accordions({ contactsUser }: UserProps) {
+function Accordions({ contactsUser }) {
 
     const [open, setOpen] = useState(0);
     
-    const handleOpen = (value:number) => {
+    const handleOpen = (value) => {
       setOpen(open === value ? 0 : value);
     };
 
