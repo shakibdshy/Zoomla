@@ -15,7 +15,7 @@ import author2 from "../assets/rohul.png"
 function Meeting() {
   const [select, setSelect] = useState(true)
 
-  const data: { name: string, time: string, hours: string, user: any[] } = {
+  const data = {
     name: "Design Daily Zoomla Meeting",
     time: "10:00-11:00",
     hours: "8",
@@ -31,8 +31,8 @@ function Meeting() {
     <>
       <TopBar />
       <div className='text-white flex h-screen pt-20 md:flex-nowrap flex-wrap'>
-        <div className='w-full overflow-y-scroll md:border-r p-4 border-grey-800'>
-          <div className='flex !gap-x-3 border-b border-grey-800  items-center p-4 pt-0 justify-between'>
+        <div className='w-full overflow-y-auto sm:max-h-screen max-h-[500px] md:border-r p-2 sm:p-4 border-grey-800'>
+          <div className='flex !gap-x-3 border-b border-grey-800  items-center py-4 pt-0 justify-between'>
             <Button size="sm" className="!text-grey-500 !text-xl font-bold !px-2 bg-[#212534] border border-[#4d4c4c] lowercase" variant="text"><AiOutlineReload /></Button>
             <div className='flex w-full lg:w-1/2 rounded-lg items-center justify-between bg-[#2b2a2a] p-1'>
               <Button onClick={() => setSelect(true)} size="sm" className={`${select && "border bg-[#3d3c3c] border-[#4d4c4c]"} !text-grey-500 !px-3 w-full mr-4 bg-[#2f2e2e]  capitalize`} variant="text">Upcoming</Button>
@@ -46,7 +46,7 @@ function Meeting() {
           </div>
         </div>
 
-        <div className='w-full text-white p-4 lg:p-8'>
+        <div className='w-full text-white p-2 sm:p-4 lg:p-8'>
           <div className='my-5'>
             <h1 className='text-2xl font-bold'>{user.name}</h1>
             <div className="text-xs mt-2 text-grey-400 flex items-center">
@@ -57,10 +57,10 @@ function Meeting() {
             </div>
           </div>
 
-          <div className='flex w-full items-center gap-x-3 border-y border-grey-800 py-8 justify-between'>
+          <div className='flex flex-wrap w-full items-center gap-3 border-y border-grey-800 py-8 '>
             <Button size="md" variant="filled" className={`!px-4 capitalize`}>start</Button>
-            <Button size="md" className="!text-grey-500 !px-4 w-full border bg-[#212534] border-grey-800 capitalize" variant="text">Recorded</Button>
-            <Button size="md" className="!text-grey-500 !px-4 w-full border bg-[#212534] border-grey-800 capitalize" variant="text">Recorded</Button>
+            <Button size="md" className="!text-grey-500 !px-4 border bg-[#212534] border-grey-800 capitalize" variant="text">Recorded</Button>
+            <Button size="md" className="!text-grey-500 !px-4 border bg-[#212534] border-grey-800 capitalize" variant="text">Recorded</Button>
             <Button size="md" className="!text-grey-500 !px-3 border bg-[#212534] border-grey-800  capitalize" variant="text">id</Button>
             <Button size="md" className="!text-grey-500 !px-3 border bg-[#212534] border-grey-800  capitalize" variant="text">id</Button>
           </div>
@@ -84,7 +84,7 @@ function Meeting() {
               <span className='text-xl text-grey-500'><BiUserPin /></span>
               <p className='text-grey-500 ml-2 mb-2'>participants:</p>
             </div>
-            <div className='flex items-center mt-8 gap-4'>
+            <div className='grid grid-cols-2 sm:grid-cols-4 items-center mt-8 gap-4'>
               {
                 user?.user?.slice(0, 3).map((u, index) => (
                   <>

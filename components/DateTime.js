@@ -2,11 +2,9 @@ import React, { ReactNode, useEffect, useState } from 'react'
 import banner from "../assets/banner.png"
 import Image from 'next/image'
 import moment from 'moment';
-
 function DateComponent() {
     const time = moment().format('h:mm A');
     const date = moment().format('dddd, MMMM Do YYYY');
-
     return (
         <div className='w-full relative mb-3'>
             <Image
@@ -29,5 +27,4 @@ function DateComponent() {
         </div>
     )
 }
-
 export default DateComponent

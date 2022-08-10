@@ -1,70 +1,42 @@
 import React from 'react'
 import { Button, Menu, MenuHandler, MenuItem, MenuList } from "@material-tailwind/react";
-import type { MenuHandlerProps } from "@material-tailwind/react";
 import Image from "next/image";
 import author from "../assets/shakib.jpg"
 import author2 from "../assets/rohul.png"
 import { MdOutlineWatchLater } from 'react-icons/md';
 import { BsThreeDots } from 'react-icons/bs';
 import { useRouter } from 'next/router';
+import { UseStateContext } from '../context/UpcommingContext';
 
-type data = {
-    setUser: React.Dispatch<React.SetStateAction<{
-        data: {
-            name: string;
-            time: string;
-            hours: string;
-            user: any[];
-        };
-    }>>
-}
 
-type user = {
-    data: {
-        name: string;
-        time: string;
-        hours: string;
-        user: any;
-    }
-}
+
+// interface Estring {
+//     name: string;
+//     slot: string;
+// }
 
 function ScheduleList() {
     const { asPath } = useRouter();
+    const [events, setEvents] = UseStateContext()
+    console.log(events);
+
     const data = [
         {
             name: "Design Daily Zoomla Meeting",
             time: "10:00-11:00",
             hours: "8",
             user: [author, author2, author, author2, author2, author, author2, author2, author, author2,]
-        },
-        {
-            name: "Design Daily Zoomla Meeting",
-            time: "09:00-10:00",
-            hours: "6",
-            user: [author, author2, author]
-        },
-        {
-            name: "Design Daily Zoomla Meeting",
-            time: "08:00-09:00",
-            hours: "2",
-            user: [author, author2, author, author2, author2, author2,]
-        },
-        {
-            name: "Design Daily Zoomla Meeting",
-            time: "10:00-11:00",
-            hours: "12",
-            user: [author, author2, author]
         }
     ]
     return (
         <div className='w-full text-white pt-4'>
             <div className='grid gap-3'>
                 {
-                    data.map((i, index) => (
+                    events.map((event) => (
                         <>
-                            <div key={index} className='w-full border bg-[#212534] border-[#262938] p-3 sm:p-5 rounded-xl shadow-sm'>
+                            <div key={event._id} className='w-full border bg-[#212534] border-[#262938] p-3 sm:p-5 rounded-xl shadow-sm'>
                                 <div className='flex justify-between items-center'>
-                                    <h1 className="text-xl font-bold">{i.name}</h1>
+                                    <h1 className="text-xl font-bold">{event.name}</h1>
                                     <div>
                                         <Menu placement="bottom-end">
                                             <MenuHandler>
@@ -80,30 +52,30 @@ function ScheduleList() {
                                     </div>
                                 </div>
                                 <ul className="schedule-list-meta text-xs mt-2 text-grey-400 flex items-center gap-4">
-                                    <li className='flex items-center gap-1'><MdOutlineWatchLater /> {i.time}</li>
-                                    <li>start in {i.hours} hours</li>
+                                    <li className='flex items-center gap-1'><MdOutlineWatchLater /> 10:00-11:00</li>
+                                    <li>start in 8 hours</li>
                                 </ul>
                                 <div className='flex justify-between mt-8 items-center'>
                                     <div className="flex items-center !gap-x-2">
                                         {
-                                            i.user.slice(0, 3).map(u => (
-                                                <>
-                                                    <div className="">
-                                                        <div>
-                                                            <Image
-                                                                className='rounded-lg w-full mx-auto'
-                                                                src={u}
-                                                                alt="user"
-                                                                width={36}
-                                                                height={40}
-                                                            />
-                                                        </div>
-                                                    </div>
-                                                </>
-                                            ))
+                                            // data?.user.slice(0, 3).map(u => (
+                                            //     <>
+                                            //         <div className="">
+                                            //             <div>
+                                            //                 <Image
+                                            //                     className='rounded-lg w-full mx-auto'
+                                            //                     src={u}
+                                            //                     alt="user"
+                                            //                     width={36}
+                                            //                     height={40}
+                                            //                 />
+                                            //             </div>
+                                            //         </div>
+                                            //     </>
+                                            // ))
                                         }
-                                        {(i.user.length > 3) && <div>
-                                            <Button variant="filled" className='!font-bold mb-1 !px-3'>+{i.user.length - 3}</Button>
+                                        {(event?.user?.length > 3) && <div>
+                                            <Button variant="filled" className='!font-bold mb-1 !px-3'>+{event?.user?.length - 3}</Button>
                                         </div>}
                                     </div>
                                     <div>

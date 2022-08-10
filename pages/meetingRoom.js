@@ -37,7 +37,7 @@ function meetingRoom() {
                                         className='rounded-xl w-full mx-auto'
                                         src={author}
                                         alt="user"
-                                        width={1080}
+                                        width={1280}
                                         height={640}
                                     />
                                     <div className='flex w-full items-center justify-between absolute bottom-2 left-0 p-4 '>

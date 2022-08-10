@@ -4,19 +4,19 @@ import Image from 'next/image';
 import React, { Fragment, useState } from 'react'
 import { BiChevronRight, BiChevronDown, BiMessageRoundedDots } from 'react-icons/bi'
 
-interface DataProps {
-  data: {
-    id: number;
-    name: string;
-    img: StaticImageData;
-  }[]
-}
+// interface DataProps {
+//   data: {
+//     id: number;
+//     name: string;
+//     img: StaticImageData;
+//   }[]
+// }
 
-function MassageAcccordion({ data }: DataProps) {
+function MassageAcccordion({ data }) {
 
   const [open, setOpen] = useState(0);
 
-  const handleOpen = (value: number) => {
+  const handleOpen = (value) => {
     setOpen((open === value) ? 0 : value);
   };
 
