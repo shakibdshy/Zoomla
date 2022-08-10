@@ -26,6 +26,7 @@
     "date-fns": "^2.29.1",
     "dateformat": "^5.0.3",
     "dayjs": "^1.11.4",
+    "emoji-mart": "^5.2.0",
     "framer-motion": "^6.5.1",
     "html-react-parser": "^3.0.1",
     "moment": "^2.29.4",
@@ -35,7 +36,9 @@
     "react": "18.2.0",
     "react-day-picker": "^8.0.7",
     "react-dom": "18.2.0",
-    "react-icons": "^4.4.0"
+    "react-icons": "^4.4.0",
+    "react-scripts": "^5.0.1",
+    "twemoji": "^14.0.2"
   },
   "devDependencies": {
     "@types/node": "18.0.6",
