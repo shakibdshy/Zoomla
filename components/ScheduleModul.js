@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { toast} from 'react-toastify';
 import {
   Button,
   Dialog,
@@ -19,10 +20,19 @@ import { eventNames } from 'process';
 const mySelected = { backgroundColor: '#0e78f9', }
 
 function ScheduleModul({ setOpen, open }) {
-  const [selected, setSelected] = useState();
+  const [selected, setSelected] = useState(new Date());
   const [eventName, setEventName] = useState('');
+  const [time1, setTime1] = useState('08:00');
+  const [time2, setTime2] = useState('10:00');
   const handleOpen = () => setOpen(!open);
-  const [events, setEvents] = UseStateContext()
+  const [events, setEvents, loading, error] = UseStateContext()
+
+  const randomId = Math.floor(Math.random() * (952469103) + 172495031);
+  const [copy, setCopy] = useState('copy')
+  const handleCopy = (i) => {
+    navigator.clipboard.writeText(randomId)
+    setCopy(i)
+  }
 
   const handleChange = (e) => {    
     setEventName(e.target.value)
@@ -30,15 +40,19 @@ function ScheduleModul({ setOpen, open }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const slot = e.target.slot.value
+    const slot = e.target.slot.value;
 
     const eventData = {
       name: eventName,
-      slot
+      date: selected,
+      time1: time1,
+      time2: time2,
+      slot,
+      meetingId: randomId,
     }  
     
 
-    fetch('http://localhost:5000/api/event', {
+    fetch('https://arcane-wave-11590.herokuapp.com/events', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
@@ -49,6 +63,8 @@ function ScheduleModul({ setOpen, open }) {
       .then(data => {
         console.log(data)
         data._id && setEvents([...events, data]);
+        setOpen(!open)
+        toast.dark(`successfully added Item`);
       });
   }
 
@@ -65,11 +81,11 @@ function ScheduleModul({ setOpen, open }) {
               </div>
               <div className='flex items-center'>
                 <Button onClick={handleOpen} size="sm" className="!text-grey-500 border bg-[#282c3a] border-[#262938] !px-4 capitalize flex items-center" variant="text">Cancel</Button>
-                <Button type='submit' onClick={handleOpen} size="sm" className="!text-white ml-3 bg-[#0e78f9] !px-4 capitalize flex items-center" variant="text">Save</Button>
+                <Button type='submit' size="sm" className="!text-white ml-3 hover:bg-[#0e78f9] bg-[#0e78f9] !px-4 capitalize flex items-center" variant="text">Save</Button>
               </div>
             </DialogHeader>
             <DialogBody className='py-6 !px-0 !w-full !block border-y !text-white border-[#31364d]'>
-              <input type="text" onChange={handleChange} className="w-full h-16 bg-transparent focus:border-none focus:outline-none text-xl" value={eventName} placeholder="Meeting Title" />
+              <input type="text" onChange={handleChange} className="w-full h-16 bg-transparent focus:border-none focus:outline-none text-xl" value={eventName} placeholder="Meeting Title" required />
               <div className='flex justify-between w-full md:border-b border-t md:flex-nowrap flex-wrap  border-[#31364d]'>
                 <div className='w-full py-5'>
                   <span className='text-grey-600 block text-xs !-mb-5'>select date</span>
@@ -100,9 +116,9 @@ function ScheduleModul({ setOpen, open }) {
                     <span className='text-grey-600 mb-2 block text-xs'>select Time zone</span>
                     <select name="slot" className='!rounded-xl w-full !text-white text-md bg-[#282c3a] border-grey-800 p-[10px]'>
                       <option value="Kiev, GMT +2">Kiev, GMT +2</option>
-                      <option value="Kiev, GMT +2">Kiev, GMT +2</option>
-                      <option value="Kiev, GMT +2">Kiev, GMT +2</option>
-                      <option value="Kiev, GMT +2" selected>Kiev, GMT +2</option>
+                      <option value="Rasia, GMT +4">Rasia, GMT +4</option>
+                      <option value="Kiev, BTE +3">Kiev, BTE +3</option>
+                      <option value="Usa, UTE +6" selected>Usa, UTE +6</option>
                     </select>
                   </div>
 
@@ -110,27 +126,21 @@ function ScheduleModul({ setOpen, open }) {
                     <div className='border-y border-[#31364d] py-6'>
                       <span className='text-grey-600 mb-2 block text-xs'>select meeting Time</span>
                       <div className='flex w-full items-center justify-between'>
-                        <select className='!rounded-xl mx-auto !w-full border !text-grey-500 text-sm bg-[#282c3a] border-grey-800 p-2'>
-                          <option value="14:00">14:00</option>
-                          <option value="14:00">14:00</option>
-                          <option value="14:00">14:00</option>
-                          <option value="13:00" selected>13:00</option>
-                        </select>
+                        <input onChange={() => setTime1(event.target.value)} type="time" value={time1} name="time1" className='!rounded-xl mx-auto !w-full border !text-grey-500 text-sm bg-[#282c3a] border-[#2f3449] p-2' placeholder='08:40' required />
                         <span className='mx-2 text-grey-600 text-xs'>to</span>
-                        <select className='!rounded-xl mx-auto !w-full border !text-grey-500 text-sm bg-[#282c3a] border-grey-800 p-2'>
-                          <option value="14:00">14:00</option>
-                          <option value="14:00">14:00</option>
-                          <option value="14:00">14:00</option>
-                          <option value="14:00" selected>14:00</option>
-                        </select>
+                        <input onChange={() => setTime2(event.target.value)} type="time" value={time2} name="time2" className='!rounded-xl mx-auto !w-full border !text-grey-500 text-sm bg-[#282c3a] border-[#2f3449] p-2' required />
                       </div>
                     </div>
 
                     <div className='my-6'>
                       <span className='text-grey-600 text-xs'>security passcode</span>
                       <div className='flex items-center justify-between mt-2 gap-x-3'>
-                        <span className="!text-grey-500 rounded-[10px] w-full border text-sm bg-[#282c3a] border-grey-800 !px-4 py-[6px] capitalize flex items-center">id9c25467l</span>
-                        <Button size="sm" className="!text-white bg-[#8e44ad] !px-4 capitalize flex items-center" variant="text">Copy</Button>
+                        <span className="!text-grey-500 rounded-[10px] w-full border text-sm bg-[#282c3a] border-[#2f3449] !px-4 py-[10px] capitalize flex items-center">
+                          { randomId }
+                        </span>
+                        <div>
+                         <Button onClick={() => handleCopy('coped')} size="md" className={` ${(copy === 'coped') && '!text-blue-300 !bg-blue-800'} !text-white hover:bg-[#8e44ad] bg-[#8e44ad] !px-4 capitalize flex items-center`} variant="text">{copy}</Button>
+                        </div>
                       </div>
                     </div>
 

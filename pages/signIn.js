@@ -48,8 +48,8 @@ function SignIn() {
           </h1>
         </div>
         <form onSubmit={handaleSubmite} className="grid justify-items-center gap-y-4">
-          <input type="text" name="email" placeholder='Enter Your Email' className='search-input shadow-md py-4 pl-8' />
-          <input type="password" name="password" placeholder='Enter Your Password' className='search-input shadow-md py-4 pl-8' />
+          <input type="text" name="email" placeholder='Enter Your Email' required className='search-input shadow-md py-4 pl-8' />
+          <input type="password" name="password" placeholder='Enter Your Password' required className='search-input shadow-md py-4 pl-8' />
           <input type="submit" value="Sign In" className="text-white cursor-pointer font-bold py-2 bg-blue-500 rounded-lg w-1/2" />
         </form>
         {signInError}

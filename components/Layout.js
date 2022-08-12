@@ -1,6 +1,8 @@
 import React, { PropsWithChildren, ReactElement } from 'react'
 import Header from './Header'
 import SmNavbar from './SmNavbar';
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Layout({ children }) {
     return (
@@ -13,6 +15,7 @@ export default function Layout({ children }) {
                 <div className='fixed sm:hidden left-0 bottom-0 w-full flex items-center justify-center border-grey-800 border-t'>
                     <SmNavbar />
                 </div>
+                <ToastContainer />
             </div>
         </>
     )

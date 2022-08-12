@@ -48,9 +48,9 @@ function SignUp() {
                     </h1>
                 </div>
                 <form onSubmit={handaleSubmite} className="grid justify-items-center gap-y-4">
-                    <input type="text" name="name" placeholder='Enter Your Name' className='search-input shadow-md py-4 pl-8' />
-                    <input type="text" name="email" placeholder='Enter Your Email' className='search-input shadow-md py-4 pl-8' />
-                    <input type="password" name="password" placeholder='Enter Your Password' className='search-input shadow-md py-4 pl-8' />
+                    <input type="text" name="name" placeholder='Enter Your Name' required className='search-input shadow-md py-4 pl-8' />
+                    <input type="text" name="email" placeholder='Enter Your Email' required className='search-input shadow-md py-4 pl-8' />
+                    <input type="password" name="password" placeholder='Enter Your Password' required className='search-input shadow-md py-4 pl-8' />
                     <input type="submit" value="Sign Up" className="text-white cursor-pointer font-bold py-2 bg-blue-500 rounded-lg w-1/2" />
                 </form>
                 <p className="text-red-500 text-center mt-2">{error?.message || updateeError?.message}</p>

@@ -130,6 +130,13 @@
   background-color: #b9babd39;
 }
 
+input[type="time"]::-webkit-calendar-picker-indicator{
+  background-color: #343554;
+  border-radius: 50%;
+  color-scheme: white !important;
+  color: #fff !important;
+  }
+
 /* ===== default design ===== */
 
 html,
