@@ -4,10 +4,10 @@ import useFetch from '../hooks/useFetch'
 const Context = createContext()
 
 export const StateContext = ({ children }) => {
-    const [event, setEvent, loading, error] = useFetch()
+    const [events, setEvents, loading, error] = useFetch()
 
     return (
-        <Context.Provider value={[event, setEvent, loading, error]}>
+        <Context.Provider value={[events, setEvents, loading, error]}>
             {children}
         </Context.Provider>
     )

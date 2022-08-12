@@ -27,7 +27,7 @@ function SignIn() {
     router.replace("/home")
   }
 
-  if (loading) {
+  if (loading || gLoading) {
     return <Loading />
   }
 

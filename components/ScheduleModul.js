@@ -62,7 +62,7 @@ function ScheduleModul({ setOpen, open }) {
       .then(res => res.json())
       .then(data => {
         console.log(data)
-        data._id && setEvents([...events, data]);
+        data && setEvents(data);
         setOpen(!open)
         toast.dark(`successfully added Item`);
       });

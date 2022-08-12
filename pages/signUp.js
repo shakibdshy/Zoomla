@@ -19,7 +19,7 @@ function SignUp() {
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
 
-    if (loading) {
+    if (loading || updating) {
         return <Loading />
     }
 
