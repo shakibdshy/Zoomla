@@ -10,7 +10,7 @@ function useFetch() {
         const fetchData = async () => {
             setLoading(true)
             try {
-                const url = 'http://localhost:5000/api/event';
+                const url = 'https://arcane-wave-11590.herokuapp.com/events';
                 const { data } = await axios.get(url);
                 setData(data);
             } catch (error) {

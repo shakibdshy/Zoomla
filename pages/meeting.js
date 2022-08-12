@@ -11,20 +11,30 @@ import ScheduleList from '../components/ScheduleList';
 import Image from 'next/image';
 import author from "../assets/shakib.jpg"
 import author2 from "../assets/rohul.png"
+import ScheduleModul from '../components/ScheduleModul';
+import { UseStateContext } from '../context/UpcommingContext';
 
 function Meeting() {
   const [select, setSelect] = useState(true)
+  const [events, setEvents, loading, error] = UseStateContext();
+  const [open, setOpen] = useState(false);
+  const users = [author, author2, author, author2, author2, author, author2, author2, author, author2,]
 
   const data = {
     name: "Design Daily Zoomla Meeting",
-    time: "10:00-11:00",
+    time1: "10:00",
+    time2: "11:00",
     hours: "8",
-    user: [author, author2, author, author2, author2, author, author2, author2, author, author2,]
+    meetingId: "125 365 785"
   }
-  const [user, setUser] = useState(data)
+  const [user, setScheduleItem] = useState(events[0])
 
   useEffect(() => {
-    setUser(data)
+    if(events){
+      setScheduleItem(events[0])
+    }else{
+      setScheduleItem(data)
+    }
   }, [])
 
   return (
@@ -33,27 +43,23 @@ function Meeting() {
       <div className='text-white flex h-screen pt-20 md:flex-nowrap flex-wrap'>
         <div className='w-full overflow-y-auto sm:max-h-screen max-h-[500px] md:border-r p-2 sm:p-4 border-grey-800'>
           <div className='flex !gap-x-3 border-b border-grey-800  items-center py-4 pt-0 justify-between'>
-            <Button size="sm" className="!text-grey-500 !text-xl font-bold !px-2 bg-[#212534] border border-[#4d4c4c] lowercase" variant="text"><AiOutlineReload /></Button>
-            <div className='flex w-full lg:w-1/2 rounded-lg items-center justify-between bg-[#2b2a2a] p-1'>
-              <Button onClick={() => setSelect(true)} size="sm" className={`${select && "border bg-[#3d3c3c] border-[#4d4c4c]"} !text-grey-500 !px-3 w-full mr-4 bg-[#2f2e2e]  capitalize`} variant="text">Upcoming</Button>
-              <Button onClick={() => setSelect(false)} size="sm" className={`${!select && "border bg-[#3d3c3c] border-[#4d4c4c]"} !text-grey-500 !px-3 w-full bg-[#2f2e2e]  capitalize`} variant="text">Recorded</Button>
-            </div>
-            <Button size="sm" className="!text-grey-500 !text-xl font-bold !px-2 bg-[#282c3a] border border-[#4d4c4c] lowercase" variant="text"><BsPlusSquare /></Button>
+            <Button onClick={() => setSelect(true)} size="md" className={`!text-white border !px-3 bg-[#212534] border-[#2f3449]  capitalize`} variant="text">Upcoming</Button>
+            <Button onClick={() => setOpen(!open)} size="md" className="!text-grey-500 !text-xl font-bold !px-2 bg-[#212534] border border-[#2f3449] lowercase" variant="text"><BsPlusSquare /></Button>
           </div>
           <div className='w-full'>
             <h1 className='text-xl font-bold pl-5 mt-5 mb-3'>Today</h1>
-            <ScheduleList />
+            <ScheduleList setScheduleItem={setScheduleItem} />
           </div>
         </div>
 
         <div className='w-full text-white p-2 sm:p-4 lg:p-8'>
           <div className='my-5'>
-            <h1 className='text-2xl font-bold'>{user.name}</h1>
+            <h1 className='text-2xl font-bold'>{user?.name}</h1>
             <div className="text-xs mt-2 text-grey-400 flex items-center">
               <span className="!mr-2"> <MdOutlineWatchLater /> </span>
-              <span className=""> {user?.time}</span>
+              <span className="">{user?.time1}-{user?.time2}</span>
               <span className="mx-2">|</span>
-              <span className="">start in {user?.hours} hours</span>
+              <span className="">start in {(user?.hours) ? user?.hours : '8'} hours</span>
             </div>
           </div>
 
@@ -74,7 +80,7 @@ function Meeting() {
             <div className='w-full text-center'>
               <div>
                 <span className='text-sm text-grey-500'>meeting id</span>
-                <h3 className='text-2xl font-bold'>123 648 1252</h3>
+                <h3 className='text-2xl font-bold'>{user?.meetingId}</h3>
               </div>
             </div>
           </div>
@@ -86,7 +92,7 @@ function Meeting() {
             </div>
             <div className='grid grid-cols-2 sm:grid-cols-4 items-center mt-8 gap-4'>
               {
-                user?.user?.slice(0, 3).map((u, index) => (
+                users?.slice(0, 3).map((u, index) => (
                   <>
                     <div key={index} className='p-5 border rounded-xl text-center bg-[#212534] border-grey-800'>
                       <div>
@@ -115,6 +121,7 @@ function Meeting() {
           </div>
         </div>
       </div>
+      <ScheduleModul setOpen={setOpen} open={open} />
     </>
 
   )
