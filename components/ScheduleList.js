@@ -11,17 +11,7 @@ import { UseStateContext } from '../context/UpcommingContext';
 import Loading from './Loading';
 import { useQuery } from 'react-query';
 
-
-
-// interface Estring {
-//     name: string;
-//     slot: string;
-// }
-
 function ScheduleList({setScheduleItem}) {
-
-
-
     const { asPath } = useRouter();
     const [events, setEvents, loading, error] = UseStateContext();
     const [deleteOpen, setDeleteOpen] = useState(false);
