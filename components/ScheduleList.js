@@ -9,13 +9,7 @@ import { BsThreeDots } from 'react-icons/bs';
 import { useRouter } from 'next/router';
 import { UseStateContext } from '../context/UpcommingContext';
 import Loading from './Loading';
-
-
-
-// interface Estring {
-//     name: string;
-//     slot: string;
-// }
+import { useQuery } from 'react-query';
 
 function ScheduleList({setScheduleItem}) {
     const { asPath } = useRouter();
@@ -27,7 +21,7 @@ function ScheduleList({setScheduleItem}) {
     console.log(events[0]?._id);
     const user = [author, author2, author, author2, author2, author, author2, author2, author,]
 
-    if(loading){
+    if( loading ){
         <Loading />
     }
 

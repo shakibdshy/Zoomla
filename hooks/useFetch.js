@@ -3,8 +3,10 @@ import axios from 'axios'
 
 function useFetch() {
     const [data, setData] = useState([])
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
     const [error, setError] = useState(false)
+
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -12,11 +14,11 @@ function useFetch() {
             try {
                 const url = 'https://arcane-wave-11590.herokuapp.com/events';
                 const { data } = await axios.get(url);
+                setLoading(false)
                 setData(data);
             } catch (error) {
                 setError(true)
             }
-            setLoading(false)
         }
         fetchData()
     }, [])

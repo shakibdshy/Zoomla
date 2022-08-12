@@ -6,12 +6,16 @@ import {
   DialogFooter,
 } from "@material-tailwind/react";
 import { toast } from 'react-toastify';
+import { UseStateContext } from '../context/UpcommingContext';
 
 const DeletingModal = ({open, event, setDeleteOpen}) => {
 
-
+    const [events, setEvents, loading, error] = UseStateContext()
     const id = event._id;
-    console.log(id)
+    
+    const deleted = events?.filter(i => i?._id !== id)
+
+    console.log(deleted)
 
     const handleDelete = () => {
         fetch(`https://arcane-wave-11590.herokuapp.com/events/${id}`, {
@@ -24,6 +28,7 @@ const DeletingModal = ({open, event, setDeleteOpen}) => {
             if(data.deletedCount){
                 toast.dark(`${event?.name} deleted`);
                 setDeleteOpen(!open);
+                setEvents(deleted)
             }
         })
       };
