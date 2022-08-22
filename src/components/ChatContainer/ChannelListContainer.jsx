@@ -3,6 +3,7 @@
 import React from 'react'
 import ZoomlaIcon from '../../assets/zoompost.jpg'
 import LogoutIcon from '../../assets/logout.png'
+import ChannelSearch from './ChannelSearch'
 
 
 const SideBar = () => {
@@ -36,6 +37,7 @@ const ChannelListContainer = () => {
       <SideBar />
       <div className="channel-list__list__wrapper">
         <CompanyHeader />
+        <ChannelSearch />
       </div>
     </>
   )
