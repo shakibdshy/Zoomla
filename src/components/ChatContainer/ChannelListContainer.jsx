@@ -8,6 +8,7 @@ import ZoomlaIcon from '../../assets/zoompost.jpg'
 import LogoutIcon from '../../assets/logout.png'
 import ChannelSearch from './ChannelSearch';
 import TeamChannelList from './TeamChannelList';
+import TeamChannelPreview from './TeamChannelPreview';
 
 
 const SideBar = () => {
@@ -47,6 +48,19 @@ const ChannelListContainer = () => {
           ChannelRenderFilterFn={() => {} }
           List={(listProps) => (
             <TeamChannelList {...listProps} type="team" />
+          )}
+          Preview={(previewProps) => (
+            <TeamChannelPreview {...previewProps} type="team" />
+          )}
+        />
+        <ChannelList
+          filter={{}}
+          ChannelRenderFilterFn={() => {} }
+          List={(listProps) => (
+            <TeamChannelList {...listProps} type="messaging" />
+          )}
+          Preview={(previewProps) => (
+            <TeamChannelPreview {...previewProps} type="messaging" />
           )}
         />
       </div>
