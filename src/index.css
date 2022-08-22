@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.menu-item {
+  border: 1px solid transparent;
+  @apply mt-2 p-4 text-center text-2xl text-[#767780] w-14 h-14 rounded-xl block transition-all relative hover:text-white before:absolute before:bottom-0 before:left-0 before:right-0 before:mx-auto before:w-0 before:h-[2px] before:transition-all;
+}
+
+.sm-menu-item {
+  border: 1px solid transparent;
+  @apply p-2 text-center text-xl text-[#767780] w-10 h-10 rounded-xl block transition-all relative hover:text-white before:absolute before:bottom-0 before:left-0 before:right-0 before:mx-auto before:w-0 before:h-[2px] before:transition-all;
+}
+
+.isActive {
+  border-color: #2c2f3c;
+  background: rgba(255, 255, 255, 0.03);
+  color: #fff;
+  @apply shadow-md before:w-6 before:bg-[#767780];
+}
+
+.search-icon {
+  @apply absolute top-0 bottom-0 ml-2 sm:ml-4 my-auto text-xl text-[#878891];
+}
+
+.card {
+  background: #0e78f9;
+  border-radius: 20px;
+  padding: 30px;
+}
+
+.card:first-child {
+  background: #ff742e;
+}
+
+.card:first-child .card-icon {
+  border-color: #ff9c6b;
+}
+
+.card-icon {
+  width: 68px;
+  height: 64px;
+  line-height: 64px;
+  text-align: center;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  font-size: 36px;
+  border: 1px solid #539ffa;
+  color: #fff;
+  padding: 15px 0;
+  @apply shadow-sm;
+  margin-bottom: 50px;
+}
+
+.card-icon svg {
+  margin: auto;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.card-text {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.schedule-list-meta li {
+  position: relative;
+  /* z-index: 1; */
+}
+
+.schedule-list-meta li+li::before {
+  position: absolute;
+  content: "";
+  left: -9px;
+  top: 3px;
+  width: 2px;
+  height: 10px;
+  @apply bg-gray-400;
+}
+
+.chat-tab>div,
+.single-chat-tab>div {
+  width: 100%;
+}
+
+.chat-tab .tab-title {
+  @apply text-gray-500;
+}
+
+.chat-tab .absolute {
+  color: #000;
+  background: #232634;
+}
+
+.single-chat-tab .absolute {
+  color: #000;
+  background: #0e78f9;
+}
+
+.feed-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  grid-auto-flow: dense;
+}
+
+@media (max-width: 400px) {
+  .card {
+    padding: 16px;
+  }
+
+  .card-icon {
+    margin-bottom: 20px;
+  }
+}
+
+/* scrool bar design */
+::-webkit-scrollbar{
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track{
+  background-color: #413e3e;
+}
+::-webkit-scrollbar-thumb{
+  background-color: #b9babd39;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+code,
+kbd,
+samp,
+pre {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+:focus {
+  outline: none;
+}

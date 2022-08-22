@@ -1,12 +1,23 @@
+/* eslint-disable prettier/prettier */
+/** @type {import('tailwindcss').Config} */ 
+
 const withMT = require("@material-tailwind/react/utils/withMT");
 
+
+// module.exports = {
+//   content: [
+//     "./src/**/*.{js,jsx,ts,tsx}",
+//   ],
+//   theme: {
+//     extend: {},
+//   },
+//   plugins: [],
+// }
+ 
 module.exports = withMT({
-  content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {},
   },
   plugins: [],
-})
+});
