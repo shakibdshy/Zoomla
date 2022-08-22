@@ -2,7 +2,7 @@
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import Chat from "../Pages/Chat";
+import ChatPage from "../Pages/ChatPage";
 import Contact from "../Pages/Contact";
 import Home from "../Pages/Home";
 import Meeting from "../Pages/MeetingPage";
@@ -18,7 +18,7 @@ export function ZoomlaRouteList() {
                 <Route path="/meeting-page" element={<Meeting />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/schedule" element={<Schedule />} />
-                <Route path="/chat" element={<Chat />} />
+                <Route path="/chat" element={<ChatPage />} />
                 <Route path="/userProfile" element={<ProfileUser />} />
                 <Route path="/stories" element={<ZoomlaStore />} />
             </Routes>
