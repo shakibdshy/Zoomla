@@ -1,9 +1,13 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable prettier/prettier */
-import React from 'react'
+import React from 'react';
+import { ChannelList } from 'stream-chat-react';
+import Cookies from 'universal-cookie';
+// import { ChannelSearch, TeamChannelList, TeamChannelPreview } from './';
 import ZoomlaIcon from '../../assets/zoompost.jpg'
 import LogoutIcon from '../../assets/logout.png'
-import ChannelSearch from './ChannelSearch'
+import ChannelSearch from './ChannelSearch';
+import TeamChannelList from './TeamChannelList';
 
 
 const SideBar = () => {
@@ -38,6 +42,13 @@ const ChannelListContainer = () => {
       <div className="channel-list__list__wrapper">
         <CompanyHeader />
         <ChannelSearch />
+        <ChannelList
+          filter={{}}
+          ChannelRenderFilterFn={() => {} }
+          List={(listProps) => (
+            <TeamChannelList {...listProps} type="team" />
+          )}
+        />
       </div>
     </>
   )
