@@ -158,7 +158,7 @@ const RedirectToPreview = ({ getDetails }) => {
     getDetails();
   }, [roomId]); //eslint-disable-line
 
-  console.error({ roomId, role });
+  // console.error({ roomId, role });
 
   if (!roomId && !role) {
     return <Navigate to="/" />;
@@ -240,8 +240,8 @@ function AppRoutes({ getUserToken, getDetails }) {
       <KeyboardHandler />
       <ZoomlaRouteList />
       <Routes>
-        <Route path="/signIn" element={<SignIn />} /> 
-        <Route path="/signUp" element={<SignUp />} /> 
+        <Route path="/signin" element={<SignIn />} /> 
+        <Route path="/signup" element={<SignUp />} /> 
         <Route
           path="/*"
           element={

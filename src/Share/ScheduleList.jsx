@@ -54,8 +54,8 @@ function ScheduleList({ setScheduleItem }) {
     }
   };
   const handleSchedule = event => {
-    
-    if((pathname === '/meeting-page')){
+
+    if ((pathname === '/meeting-page')) {
       setSchedule(event._id);
       setScheduleItem(event);
     }
@@ -71,85 +71,82 @@ function ScheduleList({ setScheduleItem }) {
     <div className="w-full text-white pt-4">
       <div className="grid gap-3">
         {events?.map(event => (
-          <>
-            <div
-              onClick={() => handleSchedule(event)}
-              key={event?._id}
-              className={` ${
-                ((schedule === event?._id) & (pathname === '/meeting-page')) &&
-                "!bg-[#0e78f9] duration-300 border !border-[#4496f9]"
-                } w-full border ${dark ? "bg-[#212534] border-[#262938]" : "bg-white rounded-xl shadow-xl ring-1 ring-slate-900/5"} p-3 sm:p-5 rounded-xl shadow-sm`}
-            >
-              <div className="flex justify-between items-center">
-                <h1 className={`text-xl font-bold capitalize ${dark ? "text-white" : "text-black"}`}>{event?.name}</h1>
-                <div>
-                  {!(pathname === '/meeting-page') && <Menu placement="bottom-end">
-                    <MenuHandler>
-                      <Button
-                        size="sm"
-                        className={`!text-gray-500 ${dark ? "bg-[#272b39] border border-[#262938]" : "bg-white shadow-xl ring-1 ring-slate-900/5"} text-xl shadow-md`}
-                        variant="text"
-                      >
-                        <BsThreeDots />
-                      </Button>
-                    </MenuHandler>
-                    <MenuList className={`${dark ? "bg-[#272b39]" : "bg-white shadow-xl ring-1 ring-slate-900"} shadow-sm border-transparent`}>
-                      <MenuItem className={`${dark ? "text-gray-400" : "text-black"} ${dark ? "hover:bg-[#242736] hover:text-gray-500" : "hover:text-slate-900 hover:bg-gray-200"} hover:shadow-sm`}>
-                        Copy Invitation Link
-                      </MenuItem>
-                      <MenuItem className={`${dark ? "text-gray-400" : "text-black"} ${dark ? "hover:bg-[#242736] hover:text-gray-500" : "hover:text-slate-900 hover:bg-gray-200"} hover:shadow-sm`}>
-                        Edit
-                      </MenuItem>
-                      <MenuItem
-                        onClick={() => handleOpen(event)}
-                        className={`${dark ? "text-gray-400" : "text-black"} ${dark ? "hover:bg-[#242736] hover:text-gray-500" : "hover:text-slate-900 hover:bg-gray-200"} hover:shadow-sm`}
-                      >
-                        Delete
-                      </MenuItem>
-                    </MenuList>
-                  </Menu>}
-                </div>
-              </div>
-              <ul className="schedule-list-meta text-xs mt-2 text-gray-400 flex items-center gap-4">
-                <li className="flex items-center gap-1">
-                  <MdOutlineWatchLater /> {event?.time1}-{event?.time2}
-                </li>
-                <li>
-                  start in {handleDateHour(event?.date, event?.time1)} hours
-                </li>
-              </ul>
-              <div className="flex justify-between mt-8 items-center">
-                <div className="flex items-center !gap-x-2">
-                  <Avatar.Group spacing="sm">
-                    {user.slice(0, 3).map(u => (
-                      <>
-                        <Avatar src={u} radius="xl" />
-                      </>
-                    ))}
-                    { (user.length > 3) && <Avatar sx={{ backgroundColor: "orange" }} radius="xl">
-                    +{user?.length - 3}
-                    </Avatar>}
-                  </Avatar.Group>
-                </div>
-                <div>
-                  <Button
-                    size="md"
-                    className={`${schedule === event?._id && "!bg-[#318cf9] duration-100 border !border-[#4496f9] !text-[#fff]"} text-gray-500 !px-3 bg-[#282c3a] mr-2 lowercase`}
-                    variant="text"
-                  >
-                    id
-                  </Button>
-                  { !(pathname === '/meeting-page') &&  <Button
-                    size="md"
-                    variant="filled"
-                    className="bg-[#0e78f9] sm:!px-4 !px-3 capitalize"
-                  >
-                    start
-                  </Button>}
-                </div>
+          <div
+            onClick={() => handleSchedule(event)}
+            key={event?._id}
+            className={` ${((schedule === event?._id) & (pathname === '/meeting-page')) &&
+              "!bg-[#0e78f9] duration-300 border !border-[#4496f9]"
+              } w-full border ${dark ? "bg-[#212534] border-[#262938]" : "bg-white rounded-xl shadow-xl ring-1 ring-slate-900/5"} p-3 sm:p-5 rounded-xl shadow-sm`}
+          >
+            <div className="flex justify-between items-center">
+              <h1 className={`text-xl font-bold capitalize ${dark ? "text-white" : "text-black"}`}>{event?.name}</h1>
+              <div>
+                {!(pathname === '/meeting-page') && <Menu placement="bottom-end">
+                  <MenuHandler>
+                    <Button
+                      size="sm"
+                      className={`!text-gray-500 ${dark ? "bg-[#272b39] border border-[#262938]" : "bg-white shadow-xl ring-1 ring-slate-900/5"} text-xl shadow-md`}
+                      variant="text"
+                    >
+                      <BsThreeDots />
+                    </Button>
+                  </MenuHandler>
+                  <MenuList className={`${dark ? "bg-[#272b39]" : "bg-white shadow-xl ring-1 ring-slate-900"} shadow-sm border-transparent`}>
+                    <MenuItem className={`${dark ? "text-gray-400" : "text-black"} ${dark ? "hover:bg-[#242736] hover:text-gray-500" : "hover:text-slate-900 hover:bg-gray-200"} hover:shadow-sm`}>
+                      Copy Invitation Link
+                    </MenuItem>
+                    <MenuItem className={`${dark ? "text-gray-400" : "text-black"} ${dark ? "hover:bg-[#242736] hover:text-gray-500" : "hover:text-slate-900 hover:bg-gray-200"} hover:shadow-sm`}>
+                      Edit
+                    </MenuItem>
+                    <MenuItem
+                      onClick={() => handleOpen(event)}
+                      className={`${dark ? "text-gray-400" : "text-black"} ${dark ? "hover:bg-[#242736] hover:text-gray-500" : "hover:text-slate-900 hover:bg-gray-200"} hover:shadow-sm`}
+                    >
+                      Delete
+                    </MenuItem>
+                  </MenuList>
+                </Menu>}
               </div>
             </div>
-          </>
+            <ul className="schedule-list-meta text-xs mt-2 text-gray-400 flex items-center gap-4">
+              <li className="flex items-center gap-1">
+                <MdOutlineWatchLater /> {event?.time1}-{event?.time2}
+              </li>
+              <li>
+                start in {handleDateHour(event?.date, event?.time1)} hours
+              </li>
+            </ul>
+            <div className="flex justify-between mt-8 items-center">
+              <div className="flex items-center !gap-x-2">
+                <Avatar.Group spacing="sm">
+                  {user.slice(0, 3).map(u => (
+                    <>
+                      <Avatar src={u} radius="xl" />
+                    </>
+                  ))}
+                  {(user.length > 3) && <Avatar sx={{ backgroundColor: "orange" }} radius="xl">
+                    +{user?.length - 3}
+                  </Avatar>}
+                </Avatar.Group>
+              </div>
+              <div>
+                <Button
+                  size="md"
+                  className={`${schedule === event?._id && "!bg-[#318cf9] duration-100 border !border-[#4496f9] !text-[#fff]"} text-gray-500 !px-3 bg-[#282c3a] mr-2 lowercase`}
+                  variant="text"
+                >
+                  id
+                </Button>
+                {!(pathname === '/meeting-page') && <Button
+                  size="md"
+                  variant="filled"
+                  className="bg-[#0e78f9] sm:!px-4 !px-3 capitalize"
+                >
+                  start
+                </Button>}
+              </div>
+            </div>
+          </div>
         ))}
       </div>
       <DeletingModal

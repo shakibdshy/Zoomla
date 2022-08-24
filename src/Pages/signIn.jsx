@@ -33,7 +33,7 @@ function SignIn() {
     const email = gUser.user.email;
     const name = gUser.user.displayName;
     const img = gUser.user.photoURL;
-    fetch(`https://arcane-wave-11590.herokuapp.com/user`, {
+    fetch(`http://localhost:8800/api/auth/signin`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

@@ -5,6 +5,8 @@ import { Avatar, useChatContext } from 'stream-chat-react'
 
 const TeamChannelPreview = ({ children, type }) => {
   const { channel: activeChannel, client } = useChatContext()
+
+  console.log(client)
   
   const ChannelPreview = () => (
     <p className="channel-preview__item">

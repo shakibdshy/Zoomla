@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable prettier/prettier */
 import { Checkbox } from "@material-tailwind/react";
@@ -8,6 +9,9 @@ import auth from "../../firebase/firebase.init";
 import Loading from "../Share/Loading";
 import { Link, useNavigate } from "react-router-dom";
 import { UseUserContext } from "../context/UpcommingContext";
+import Cookies from "universal-cookie";
+
+const cookies = new Cookies();
 
 function SignUp() {
     const [, , setUser] = UseUserContext();
@@ -29,7 +33,7 @@ function SignUp() {
         navigate("/")
         const email = user?.user.email;
         const name = user?.user.displayName;
-        fetch(`https://arcane-wave-11590.herokuapp.com/user`, {
+        fetch(`http://localhost:8800/api/auth/signup`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -42,6 +46,10 @@ function SignUp() {
                     setUser(data)
                 }
             })
+        cookies.set('token', user?.user.refreshToken)
+        cookies.set('name', user?.user.name)
+        cookies.set('email', user?.user.email)
+
     }
 
 
@@ -53,7 +61,6 @@ function SignUp() {
 
         await createUserWithEmailAndPassword(email, password);
         await updateProfile({ displayName: name });
-
     }
 
     return (
@@ -79,7 +86,7 @@ function SignUp() {
                     <Link to='/'>
                         <span className="flex justify-center items-center ml-5 sm:ml-10 m-10 gap-x-2 text-white"><BsChevronLeft /> Back</span>
                     </Link>
-                    <Link to='/signIn'>
+                    <Link to='/signin'>
                         <span className="text-[#83bbff] mr-5 sm:mr-10 m-10">Sign In</span>
                     </Link>
                 </div>

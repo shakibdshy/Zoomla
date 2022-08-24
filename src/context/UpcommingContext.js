@@ -15,7 +15,6 @@ export const StateContext = ({ children }) => {
   const [users, setUser, Uloading] = useUsers(user)
   const [events, setEvents, loading, error] = useFetch();
   const [Feeds, setFeed, FLoading, FError] = useFeedFetch();
-  console.log(events);
 
   const currentUser = users?.find(u => u?.email?.includes(user?.email));
 

@@ -5,42 +5,36 @@ import React, { useState } from 'react';
 import { StreamChat } from 'stream-chat';
 import { Chat} from 'stream-chat-react';
 import Cookies from 'universal-cookie'; 
-import { ChannelContainer, ChannelListContainer } from '../components/ChatContainer';
+import { ChannelContainer, ChannelListContainer, Auth } from '../components/ChatContainer';
 import Header from '../Share/Header';
 import SmNavbar from '../Share/SmNavbar';
 import TopBar from '../Share/TopBar';
 import './ChatPage.css'
+import 'stream-chat-react/dist/css/index.css';
 
+const cookies = new Cookies();
 const apiKey = '3pznn44zcu9w';
+const authToken = cookies.get('token');
 
 const client = StreamChat.getInstance(apiKey);
 
-// const darkModeTheme = {
-//   '--bg-gradient-end': '#101214',
-//   '--bg-gradient-start': '#070a0d',
-//   '--black': '#ffffff',
-//   '--blue-alice': '#00193d',
-//   '--border': '#141924',
-//   '--button-background': '#ffffff',
-//   '--button-text': '#005fff',
-//   '--grey': '#7a7a7a',
-//   '--grey-gainsboro': '#2d2f2f',
-//   '--grey-whisper': '#1c1e22',
-//   '--modal-shadow': '#000000',
-//   '--overlay': '#00000066',
-//   '--overlay-dark': '#ffffffcc',
-//   '--shadow-icon': '#00000080',
-//   '--targetedMessageBackground': '#302d22',
-//   '--transparent': 'transparent',
-//   '--white': '#101418',
-//   '--white-smoke': '#13151b',
-//   '--white-snow': '#070a0d',
-// };
+if (authToken) { 
+  client.connectUser(
+    {
+      token: cookies.get('token'),
+      email: cookies.get('email'),
+      name: cookies.get('name'),
+    },
+    authToken
+  );
+}
 
+console.log(client);
 
 const ChatPage = () => {
   const { colorScheme } = useMantineColorScheme();
   const dark = colorScheme === "dark";
+
   return (
     <>
       <div className="body-container relative pb-20 sm:pb-0 flex">
