@@ -8,7 +8,7 @@ import {
 } from "@material-tailwind/react";
 
 
-function StoreiTopBar({ setPostOpen, open }) {
+function StorieTopBar({ setPostOpen, open }) {
     return (
         <section className="">
             <div className="flex items-start justify-between">
@@ -39,4 +39,4 @@ function StoreiTopBar({ setPostOpen, open }) {
     );
 }
 
-export default StoreiTopBar;
+export default StorieTopBar;

@@ -18,12 +18,12 @@ import { FaRegFileVideo } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { UseFeedContext } from "../context/UpcommingContext";
 
-const CreatePostModal = ({ open, setPostOpen }) => {
+const UpdatePostModal = ({ open, setUpdatePostOpen, post }) => {
     const [, setFeed,] = UseFeedContext()
     const [user] = useAuthState(auth);
     const [image, setImage] = useState();
-    const [img, setImg] = useState()
-    const [title, setTitle] = useState()
+    const [img, setImg] = useState(post?.img)
+    const [title, setTitle] = useState(post?.title)
     const imageRef = useRef();
 
     const onImageChange = (event) => {
@@ -55,15 +55,15 @@ const CreatePostModal = ({ open, setPostOpen }) => {
                     const data = {
                         title: title,
                         date: new Date(),
-                        email: user?.email,
-                        name: user?.displayName,
+                        email: post?.email,
+                        name: post?.name,
                         img,
                     }
 
                     console.log(data)
                     // send data backend
-                    fetch("https://arcane-wave-11590.herokuapp.com/feedPost", {
-                        method: 'POST',
+                    fetch(`https://arcane-wave-11590.herokuapp.com/feedPost/${post._id}`, {
+                        method: 'PUT',
                         headers: {
                             'content-type': 'application/json'
                         },
@@ -73,8 +73,8 @@ const CreatePostModal = ({ open, setPostOpen }) => {
                         .then(data => {
                             if (data) {
                                 setFeed(data)
-                                setPostOpen(!open)
-                                toast.dark(`Feed post ${title} successfully`);
+                                setUpdatePostOpen(!open)
+                                toast.dark(`Feed post Update ${title} successfully`);
                             }
                         })
                 }
@@ -88,10 +88,10 @@ const CreatePostModal = ({ open, setPostOpen }) => {
                 className="flex !bg-[#4b69c294] items-center justify-end sm:justify-center !w-full"
                 size="xxl"
                 open={open}
-                handler={setPostOpen}
+                handler={setUpdatePostOpen}
             >
                 <div className="w-full sm:w-[60%] lg:w-[40%] overflow-y-auto !bg-[#1c1f2e] rounded-t-xl relative sm:!rounded-xl p-3">
-                    <div onClick={() => setPostOpen(!open)} className="text-2xl cursor-pointer absolute top-[5px] right-[5px] rounded-full text-white">
+                    <div onClick={() => setUpdatePostOpen(!open)} className="text-2xl cursor-pointer absolute top-[5px] right-[5px] rounded-full text-white">
                         <AiOutlineClose />
                     </div>
                     <DialogHeader className="flex !text-white items-center justify-between">
@@ -107,6 +107,7 @@ const CreatePostModal = ({ open, setPostOpen }) => {
                                 <input
                                     className="!text-gray-500 border text-sm !w-[90%] px-4 !py-[8px] rounded-[24px] outline-0 border-[#2d303d] bg-[#212534]"
                                     type="text"
+                                    value={title}
                                     onChange={() => setTitle(event.target.value)}
                                     placeholder="Text something"
                                     id=""
@@ -117,7 +118,8 @@ const CreatePostModal = ({ open, setPostOpen }) => {
                     <DialogBody>
                         <div className='w-full rounded-2xl'>
                             {image && <img src={image.image} className='w-full rounded-2xl' alt="post img" />}
-                            {/* <img src={post2} className='w-full rounded-2xl' alt="post img" /> */}
+                            {!image && <img src={post?.img} className='w-full rounded-2xl' alt="post img" />}
+                            {/* <img src={post?.img} className='w-full rounded-2xl' alt="post img" /> */}
                         </div>
                     </DialogBody>
                     <DialogFooter className="flex justify-between items-center w-full">
@@ -136,7 +138,7 @@ const CreatePostModal = ({ open, setPostOpen }) => {
                         </ul>
                         <div className="flex items-center">
                             <Button
-                                onClick={() => setPostOpen(!open)}
+                                onClick={() => setUpdatePostOpen(!open)}
                                 size="sm"
                                 className="!text-white border ml-3 bg-[#212534] hover:bg-[#212534] border-gray-800 !px-4 capitalize flex items-center"
                                 variant="text"
@@ -150,7 +152,7 @@ const CreatePostModal = ({ open, setPostOpen }) => {
                                 className="!text-white border ml-3 bg-[#8e44ad] hover:bg-[#8e44ad] border-gray-800 !px-4 capitalize flex items-center"
                                 variant="text"
                             >
-                                Share
+                                Save
                             </Button>
                         </div>
                     </DialogFooter>
@@ -160,4 +162,4 @@ const CreatePostModal = ({ open, setPostOpen }) => {
     );
 };
 
-export default CreatePostModal;
+export default UpdatePostModal;

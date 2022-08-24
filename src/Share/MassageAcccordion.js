@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { Accordion, AccordionBody, Button } from '@material-tailwind/react';
 import Head from 'next/head';
 import Image from 'next/image';

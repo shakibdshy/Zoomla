@@ -71,6 +71,7 @@
     "stream-chat": "^6.9.0",
     "stream-chat-react": "^9.4.1",
     "universal-cookie": "^4.0.4",
+    "swiper": "^8.3.2",
     "uuid": "^8.3.2",
     "web-vitals": "^1.0.1",
     "worker-timers": "^7.0.40"
