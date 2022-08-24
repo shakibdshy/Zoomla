@@ -35,11 +35,11 @@ const ChatPage = () => {
   const { colorScheme } = useMantineColorScheme();
   const dark = colorScheme === "dark";
 
-  // const [createType, setCreateType] = useState('');
-  // const [isCreating, setIsCreating] = useState(false);
-  // const [isEditing, setIsEditing] = useState(false);
+  const [createType, setCreateType] = useState('');
+  const [isCreating, setIsCreating] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
 
-  // if (!authToken) return <StreamAuth />
+  if (!authToken) return <StreamAuth />
 
   return (
     <>
@@ -49,7 +49,9 @@ const ChatPage = () => {
           <TopBar />
           <section className='app__wrapper mt-[80px]'>
             <Chat client={client} theme="team light">
-              <ChannelListContainer />
+              <ChannelListContainer
+                
+              />
               <ChannelContainer />
             </Chat>
           </section>
