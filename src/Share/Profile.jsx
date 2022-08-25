@@ -3,7 +3,7 @@
 import React from 'react';
 import post1 from '../assets/zoompost.jpg'
 import { Button } from '@material-tailwind/react';
-import { UseFeedContext, UseStoryContext, UseUserContext } from '../context/UpcommingContext';
+import { UseFeedContext, UseStoryContext, UseUserContext } from '../context/UpcomingContext';
 const Profile = ({ setProfile, profile }) => {
     const [currentUser] = UseUserContext();
     const [story] = UseStoryContext()

@@ -11,7 +11,7 @@ import {
 import { toast } from "react-toastify";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase/firebase.init";
-import { UseUserContext } from "../context/UpcommingContext";
+import { UseUserContext } from "../context/UpcomingContext";
 
 
 function UpdateProfileModal({ setUpdateOpen, open }) {

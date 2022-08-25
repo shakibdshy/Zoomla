@@ -15,7 +15,7 @@ import CreatePostModal from '../Share/CreatePostModal';
 import UserProfile from '../Share/UserProfile';
 import Story from '../Share/Storys';
 import StoryShow from '../Share/StoryShowModal';
-import { UseFeedContext, UseStoryContext, UseUserContext } from '../context/UpcommingContext';
+import { UseFeedContext, UseStoryContext, UseUserContext } from '../context/UpcomingContext';
 import OpenStoryModal from '../Share/OpenStoryModal';
 import { useRef } from 'react';
 import { FaChevronLeft } from 'react-icons/fa';

@@ -7,17 +7,14 @@ import {
     Dialog,
     DialogBody,
 } from "@material-tailwind/react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination, Navigation } from "swiper";
+import { AiOutlineClose } from "react-icons/ai";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
-
-// import required modules
-import { Autoplay, Pagination, Navigation } from "swiper";
-import { AiOutlineClose } from "react-icons/ai";
 
 function StoryShow({ setStoryOpen, open, stories }) {
 

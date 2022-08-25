@@ -12,7 +12,7 @@ import {
 import { AiOutlineClose } from "react-icons/ai";
 import { FcLike } from "react-icons/fc";
 import { Center, SegmentedControl, Box } from '@mantine/core';
-import { UseUserContext } from "../context/UpcommingContext";
+import { UseUserContext } from "../context/UpcomingContext";
 
 function AllLikeComments({ setLikeOpen, open, post }) {
     const [currentUser, users] = UseUserContext();

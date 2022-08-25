@@ -15,7 +15,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { ImFilePicture } from "react-icons/im";
 import { FaRegFileVideo } from "react-icons/fa";
 import { toast } from "react-toastify";
-import { UseStoryContext } from "../context/UpcommingContext";
+import { UseStoryContext } from "../context/UpcomingContext";
 
 const OpenStoryModal = ({ open, setOpenStory, img, image, onImageChange }) => {
     const [, setStory,] = UseStoryContext();

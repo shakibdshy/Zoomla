@@ -7,7 +7,7 @@ import {
   DialogFooter,
 } from "@material-tailwind/react";
 import { toast } from "react-toastify";
-import { UseFeedContext, UseStateContext } from "../context/UpcommingContext";
+import { UseFeedContext, UseStateContext } from "../context/UpcomingContext";
 
 const DeletingModal = ({ open, method, event, setDeleteOpen }) => {
   const [events, setEvents] = UseStateContext();

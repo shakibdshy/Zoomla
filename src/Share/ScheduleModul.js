@@ -14,7 +14,7 @@ import {
 import { BsFillCalendar2DateFill } from "react-icons/bs";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
-import { UseStateContext } from "../context/UpcommingContext";
+import { UseStateContext } from "../context/UpcomingContext";
 
 const mySelected = { backgroundColor: "#0e78f9" };
 

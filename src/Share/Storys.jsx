@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 // import author from "../assets/shakib.jpg";
 // import author2 from "../assets/rohul.png";
-import { UseStoryContext } from '../context/UpcommingContext';
+import { UseStoryContext } from '../context/UpcomingContext';
 
 const Story = ({ storyShow }) => {
     const [story] = UseStoryContext()

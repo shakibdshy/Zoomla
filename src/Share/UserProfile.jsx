@@ -6,7 +6,7 @@ import post1 from '../assets/zoompost.jpg'
 import { Button } from '@material-tailwind/react';
 import { FiEdit } from 'react-icons/fi';
 import UpdateProfileModal from './UpdateProfileModal';
-import { UseFeedContext, UseStoryContext, UseUserContext } from '../context/UpcommingContext';
+import { UseFeedContext, UseStoryContext, UseUserContext } from '../context/UpcomingContext';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase/firebase.init';
 import FeedCard from './FeedCard';

@@ -13,7 +13,7 @@ import author2 from "../assets/rohul.png";
 import DeletingModal from "./DeletingModal";
 import { MdOutlineWatchLater } from "react-icons/md";
 import { BsThreeDots } from "react-icons/bs";
-import { UseStateContext } from "../context/UpcommingContext";
+import { UseStateContext } from "../context/UpcomingContext";
 import Loading from "./Loading";
 import { Avatar } from "@mantine/core";
 import { useLocation } from "react-router-dom";

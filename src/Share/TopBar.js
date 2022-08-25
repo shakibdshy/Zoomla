@@ -13,7 +13,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase/firebase.init";
 import { signOut } from "firebase/auth";
 import { Link, useLocation } from "react-router-dom";
-import { UseUserContext } from "../context/UpcommingContext";
+import { UseUserContext } from "../context/UpcomingContext";
 
 function TopBar() {
   const [user] = useAuthState(auth);

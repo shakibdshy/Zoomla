@@ -9,8 +9,8 @@ import LogRocket from "logrocket";
 import setupLogRocketReact from "logrocket-react";
 import { ThemeProvider } from "@material-tailwind/react";
 import { ColorSchemeProvider, MantineProvider } from "@mantine/core";
-import { StateContext } from "./context/UpcommingContext";
 import { useHotkeys, useLocalStorage } from "@mantine/hooks";
+import { StateContext } from "./context/UpcomingContext";
 
 if (
   process.env.NODE_ENV === "production" &&

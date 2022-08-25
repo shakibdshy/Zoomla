@@ -6,7 +6,7 @@ import { Button, Menu, MenuHandler, MenuItem, MenuList } from '@material-tailwin
 import { FcLike, FcLikePlaceholder } from 'react-icons/fc';
 import { TbMessageDots } from 'react-icons/tb';
 import { format } from 'date-fns';
-import { UseFeedContext, UseUserContext } from '../context/UpcommingContext';
+import { UseFeedContext, UseUserContext } from '../context/UpcomingContext';
 import DeletingModal from './DeletingModal';
 import { FaRegPaperPlane } from 'react-icons/fa';
 import { FiBookmark } from 'react-icons/fi';

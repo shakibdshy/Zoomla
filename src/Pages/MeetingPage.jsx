@@ -10,7 +10,7 @@ import ScheduleList from '../Share/ScheduleList';
 import author from "../assets/shakib.jpg"
 import author2 from "../assets/rohul.png"
 import ScheduleModul from '../Share/ScheduleModul';
-import { UseStateContext } from '../context/UpcommingContext';
+import { UseStateContext } from '../context/UpcomingContext';
 import SmNavbar from '../Share/SmNavbar';
 import TopBar from '../Share/TopBar';
 import Header from '../Share/Header';

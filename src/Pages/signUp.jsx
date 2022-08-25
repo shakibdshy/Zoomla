@@ -7,7 +7,7 @@ import { BsChevronLeft } from "react-icons/bs";
 import auth from "../../firebase/firebase.init";
 import Loading from "../Share/Loading";
 import { Link, useNavigate } from "react-router-dom";
-import { UseUserContext } from "../context/UpcommingContext";
+import { UseUserContext } from "../context/UpcomingContext";
 
 function SignUp() {
     const [, , setUser] = UseUserContext();
