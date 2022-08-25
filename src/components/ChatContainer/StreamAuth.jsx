@@ -30,7 +30,6 @@ const StreamAuth = () => {
     const { username, password, phoneNumber, avatarURL } = form;
 
     const URL = "http://localhost:8800/auth";
-    // const URL = 'https://medical-pager.herokuapp.com/auth';
 
     const {data} = await axios.post(
       `${URL}/${isSignup ? "stream-signup" : "stream-login"}`,
