@@ -12,7 +12,7 @@ import { UseFeedContext, UseStateContext } from "../context/UpcommingContext";
 const DeletingModal = ({ open, method, event, setDeleteOpen }) => {
   const [events, setEvents] = UseStateContext();
   const [Feeds, setFeed] = UseFeedContext()
-  const id = event._id;
+  const id = event?._id;
 
   const existEvents = events?.filter(i => i?._id !== id);
   const exsitFeeds = Feeds?.filter(i => i?._id !== id);

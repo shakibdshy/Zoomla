@@ -137,6 +137,13 @@ input[type="time"]::-webkit-calendar-picker-indicator{
   color: #fff !important;
   }
 
+  .feedCard{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 24px;
+    grid-auto-flow: dense;
+  }  
+
 /* ===== default design ===== */
 
 html,

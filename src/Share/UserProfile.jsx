@@ -6,15 +6,20 @@ import post1 from '../assets/zoompost.jpg'
 import { Button } from '@material-tailwind/react';
 import { FiEdit } from 'react-icons/fi';
 import UpdateProfileModal from './UpdateProfileModal';
-import { UseUserContext } from '../context/UpcommingContext';
+import { UseFeedContext, UseStoryContext, UseUserContext } from '../context/UpcommingContext';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase/firebase.init';
+import FeedCard from './FeedCard';
 // import { Button } from '@material-tailwind/react';
 
 const UserProfile = () => {
     const [currentUser] = UseUserContext();
+    const [user] = useAuthState(auth);
     const [updateOpen, setUpdateOpen] = useState(false);
-
+    const [Feeds] = UseFeedContext();
+    const [story] = UseStoryContext();
+    const myPost = Feeds?.filter(p => p?.email?.includes(user?.email));
+    const myStory = story?.filter(p => p?.email?.includes(user?.email));
 
     return (
         <div className='p-5'>
@@ -57,7 +62,7 @@ const UserProfile = () => {
                 </div>
                 <div className="w-full flex justify-between gap-2 sm:gap-3 mt-3 items-center">
                     <div className="text-center w-full bg-[#262938] rounded-md p-2">
-                        <h1 className='text-xl font-bold text-green-800'>80+</h1>
+                        <h1 className='text-xl font-bold text-green-800'>{myPost?.length}</h1>
                         <span className='text-xs sm:text-sm text-gray-400 font-bold'>Posts</span>
                     </div>
                     <div className="text-center w-full bg-[#262938] rounded-md p-2">
@@ -65,12 +70,16 @@ const UserProfile = () => {
                         <span className='text-xs sm:text-sm text-gray-400 font-bold'>Flowers</span>
                     </div>
                     <div className="text-center w-full bg-[#262938] rounded-md p-2">
-                        <h1 className='text-xl font-bold text-green-800'>300+</h1>
+                        <h1 className='text-xl font-bold text-green-800'>{myStory.length}+</h1>
                         <span className='text-xs sm:text-sm text-gray-400 font-bold'>Stories</span>
                     </div>
                 </div>
             </div>
-            <UpdateProfileModal user={currentUser} open={updateOpen} setUpdateOpen={setUpdateOpen} />
+            <div className='w-full mt-4'>
+                <h1 className='text-3xl mb-3 font-bold text-white'>Feeds</h1>
+                {myPost && <FeedCard FeedPosts={myPost} />}
+            </div>
+            <UpdateProfileModal open={updateOpen} setUpdateOpen={setUpdateOpen} />
         </div>
     );
 };

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable prettier/prettier */
@@ -8,12 +9,14 @@ import { FcGoogle } from "react-icons/fc";
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import auth from "../../firebase/firebase.init";
 import Loading from "../Share/Loading";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { UseUserContext } from "../context/UpcommingContext";
 
 function SignIn() {
   const [currentUser, users, setUser] = UseUserContext();
   const navigate = useNavigate();
+  const location = useLocation()
+  let from = location.state?.from?.pathname || '/';
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
   const [
     signInWithEmailAndPassword,
@@ -33,7 +36,7 @@ function SignIn() {
     const email = gUser.user.email;
     const name = gUser.user.displayName;
     const img = gUser.user.photoURL;
-    fetch(`http://localhost:8800/api/auth/signin`, {
+    fetch(`https://arcane-wave-11590.herokuapp.com/user`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
@@ -49,7 +52,7 @@ function SignIn() {
   }
 
   if (user || gUser) {
-    navigate("/")
+    navigate(from, { replace: true })
   }
 
   if (loading || gLoading) {

@@ -14,19 +14,17 @@ import auth from "../../firebase/firebase.init";
 import { UseUserContext } from "../context/UpcommingContext";
 
 
-function UpdateProfileModal({ setUpdateOpen, user, open }) {
+function UpdateProfileModal({ setUpdateOpen, open }) {
     const [users] = useAuthState(auth);
-    const [, , setUser] = UseUserContext();
-
+    const [currentUser, , setUser] = UseUserContext();
     const [image, setImage] = useState();
-    const [img, setImg] = useState(user?.img)
+    const [img, setImg] = useState(currentUser?.img)
     const imageRef = useRef();
-    const [name, setName] = useState(user?.name)
-    const [phone, setPhone] = useState(user?.phone ? user?.phone : "8801.....")
+    const [name, setName] = useState(currentUser?.name)
+    const [phone, setPhone] = useState(currentUser?.phone ? currentUser?.phone : "8801.....")
     const [email, setEmail] = useState(users?.email)
     const [address, setAddress] = useState("Nalitabari serpur")
-    const [bio, setBio] = useState(user?.bio ? user?.bio : "Enter Your bio data")
-
+    const [bio, setBio] = useState(currentUser?.bio ? currentUser?.bio : "Enter Your bio data")
     const onImageChange = (event) => {
         if (event.target.files && event.target.files[0]) {
             let img = event.target.files[0];
@@ -43,7 +41,6 @@ function UpdateProfileModal({ setUpdateOpen, user, open }) {
         e.preventDefault();
         const fromData = new FormData();
         fromData.append('image', img);
-        console.log(img, "img")
 
         const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`
         fetch(url, {
@@ -53,7 +50,6 @@ function UpdateProfileModal({ setUpdateOpen, user, open }) {
             .then(res => res.json())
             .then(result => {
                 if (result.success) {
-                    console.log('imgbb', result)
                     const imgUrl = result.data?.url;
 
                     const data = {
@@ -64,10 +60,9 @@ function UpdateProfileModal({ setUpdateOpen, user, open }) {
                         bio: bio,
                         img: imgUrl,
                     }
-
                     console.log(data, "server")
                     // send data backend
-                    fetch(`http://localhost:5000/UpdateUser/${user?._id}`, {
+                    fetch(`https://arcane-wave-11590.herokuapp.com/UpdateUser/${currentUser._id}`, {
                         method: 'PUT',
                         headers: {
                             'content-type': 'application/json'
@@ -105,14 +100,14 @@ function UpdateProfileModal({ setUpdateOpen, user, open }) {
                                 <div className="mt-3">
                                     <div className="flex text-center justify-between items-center">
                                         <div onClick={() => imageRef.current.click()} className="rounded-full cursor-pointer">
-                                            {(image || user?.img) && <div className="w-20 rounded-full ring bg-blue-200 ring-green-500 ring-offset-base-100 ring-offset-2">
-                                                {!image && <img src={user?.img} className='rounded-full w-20' alt='profile' />}
+                                            {(image || currentUser?.img) && <div className="w-20 rounded-full ring bg-blue-200 ring-green-500 ring-offset-base-100 ring-offset-2">
+                                                {!image && <img src={currentUser?.img} className='rounded-full w-20' alt='profile' />}
                                                 {image && <img src={image?.image} className='rounded-full w-20' alt='profile' />}
                                             </div>}
-                                            {!((user?.img) || image) && (
+                                            {!((currentUser?.img) || image) && (
                                                 <div className="w-[120px] h-[120px] ring-2 cursor-pointer ring-offset-2 ring-blue-800 rounded-full bg-blue-600 flex items-center justify-center">
                                                     <h1 className="text-5xl uppercase text-white font-bold">
-                                                        {user?.name.slice(0, 2)}
+                                                        {currentUser?.name.slice(0, 2)}
                                                     </h1>
                                                 </div>
                                             )}
@@ -121,13 +116,13 @@ function UpdateProfileModal({ setUpdateOpen, user, open }) {
                                             </div>
                                         </div>
                                         <div className=" w-full ml-3">
-                                            <input type="text" required name='name' onChange={(e) => setName(e.target.value)} value={name} placeholder={user?.name} className="!text-gray-500 border text-sm !w-full px-4 !py-[8px] rounded-[14px] mb-3 outline-0 border-[#2d303d] bg-[#252a3d]" />
-                                            <input type="text" required name='address' onChange={(e) => setAddress(e.target.value)} value={address} placeholder={user?.address} className="!text-gray-500 border text-sm !w-full px-4 !py-[8px] rounded-[14px] outline-0 border-[#2d303d] bg-[#252a3d]" />
+                                            <input type="text" required name='name' onChange={(e) => setName(e.target.value)} value={name} placeholder={currentUser?.name} className="!text-gray-500 border text-sm !w-full px-4 !py-[8px] rounded-[14px] mb-3 outline-0 border-[#2d303d] bg-[#252a3d]" />
+                                            <input type="text" required name='address' onChange={(e) => setAddress(e.target.value)} value={address} placeholder={currentUser?.address} className="!text-gray-500 border text-sm !w-full px-4 !py-[8px] rounded-[14px] outline-0 border-[#2d303d] bg-[#252a3d]" />
                                         </div>
                                     </div>
                                     <div className=" w-full flex items-center justify-between gap-x-3 mt-3">
-                                        <input type="text" name='phone' required onChange={(e) => setPhone(e.target.value)} value={phone} placeholder={user?.phone} className="!text-gray-500 border text-sm !w-full px-4 !py-[8px] rounded-[14px] outline-0 border-[#2d303d] bg-[#252a3d]" />
-                                        <input type="text" name='email' required onChange={(e) => setEmail(e.target.value)} value={email} placeholder={user?.email} className="!text-gray-500 border text-sm !w-full px-4 !py-[8px] rounded-[14px] outline-0 border-[#2d303d] bg-[#252a3d]" />
+                                        <input type="text" name='phone' required onChange={(e) => setPhone(e.target.value)} value={phone} placeholder={currentUser?.phone} className="!text-gray-500 border text-sm !w-full px-4 !py-[8px] rounded-[14px] outline-0 border-[#2d303d] bg-[#252a3d]" />
+                                        <input type="text" name='email' required onChange={(e) => setEmail(e.target.value)} value={email} placeholder={currentUser?.email} className="!text-gray-500 border text-sm !w-full px-4 !py-[8px] rounded-[14px] outline-0 border-[#2d303d] bg-[#252a3d]" />
                                     </div>
                                     <div className="mt-4">
                                         <textarea name='bio' required value={bio} onChange={(e) => setBio(e.target.value)} className="!text-gray-500 border text-sm !w-full px-4 !py-[8px] rounded-[10px] outline-0 border-[#2d303d] bg-[#252a3d]" placeholder="Bio data"></textarea>

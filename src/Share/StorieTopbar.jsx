@@ -8,12 +8,12 @@ import {
 } from "@material-tailwind/react";
 
 
-function StoreiTopBar({ setPostOpen, open }) {
+function StorieTopBar({ setPostOpen, open }) {
     return (
         <section className="">
             <div className="flex items-start justify-between">
                 <div>
-                    <div className="relative z-10">
+                    <div className="relative hidden sm:block z-10">
                         <input
                             type="text"
                             name="name"
@@ -39,4 +39,4 @@ function StoreiTopBar({ setPostOpen, open }) {
     );
 }
 
-export default StoreiTopBar;
+export default StorieTopBar;

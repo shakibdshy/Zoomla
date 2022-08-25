@@ -1,7 +1,8 @@
+/* eslint-disable prettier/prettier */
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-function useUsers() {
+function useStoryFetch() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -10,7 +11,7 @@ function useUsers() {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const url = "https://arcane-wave-11590.herokuapp.com/user";
+        const url = "https://arcane-wave-11590.herokuapp.com/story";
         const { data } = await axios.get(url);
         setLoading(false);
         setData(data);
@@ -24,4 +25,4 @@ function useUsers() {
   return [data, setData, loading, error];
 }
 
-export default useUsers;
+export default useStoryFetch;
