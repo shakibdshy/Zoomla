@@ -14,10 +14,12 @@ import FeedCard from './FeedCard';
 
 const UserProfile = () => {
     const [currentUser] = UseUserContext();
+    const [user] = useAuthState(auth);
     const [updateOpen, setUpdateOpen] = useState(false);
     const [Feeds] = UseFeedContext();
     const [story] = UseStoryContext();
-    const myPost = Feeds?.map(p => p?.email?.includes(currentUser?.email));
+    const myPost = Feeds?.filter(p => p?.email?.includes(user?.email));
+    const myStory = story?.filter(p => p?.email?.includes(user?.email));
 
     return (
         <div className='p-5'>
@@ -68,14 +70,14 @@ const UserProfile = () => {
                         <span className='text-xs sm:text-sm text-gray-400 font-bold'>Flowers</span>
                     </div>
                     <div className="text-center w-full bg-[#262938] rounded-md p-2">
-                        <h1 className='text-xl font-bold text-green-800'>{story.length}+</h1>
+                        <h1 className='text-xl font-bold text-green-800'>{myStory.length}+</h1>
                         <span className='text-xs sm:text-sm text-gray-400 font-bold'>Stories</span>
                     </div>
                 </div>
             </div>
             <div className='w-full mt-4'>
                 <h1 className='text-3xl mb-3 font-bold text-white'>Feeds</h1>
-                <FeedCard />
+                {myPost && <FeedCard FeedPosts={myPost} />}
             </div>
             <UpdateProfileModal open={updateOpen} setUpdateOpen={setUpdateOpen} />
         </div>

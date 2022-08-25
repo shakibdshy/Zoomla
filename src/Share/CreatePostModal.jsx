@@ -121,16 +121,16 @@ const CreatePostModal = ({ open, setPostOpen }) => {
                         </div>
                     </DialogBody>
                     <DialogFooter className="flex justify-between items-center w-full">
-                        <ul className="flex items-center gap-x-5">
+                        <ul className="flex items-center gap-x-2 sm:gap-x-5">
                             <li onClick={() => imageRef.current.click()} className="flex cursor-pointer items-center">
-                                <span className="text-[30px] text-blue-700 font-bold"><ImFilePicture /></span>
+                                <span className="text-[20px] sm:text-[30px] text-blue-700 font-bold"><ImFilePicture /></span>
                                 <span className="ml-1">Picture</span>
                                 <div style={{ display: 'none' }} className="hidden">
                                     <input type="file" name="images" onChange={onImageChange} ref={imageRef} id="" />
                                 </div>
                             </li>
                             <li className="flex items-center">
-                                <span className="text-[30px] text-[#8e44ad] font-bold"><FaRegFileVideo /></span>
+                                <span className="text-[20px] sm:text-[30px] text-[#8e44ad] font-bold"><FaRegFileVideo /></span>
                                 <span className="ml-1">video</span>
                             </li>
                         </ul>

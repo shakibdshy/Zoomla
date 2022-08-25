@@ -14,9 +14,9 @@ import UpdatePostModal from './UpdatePostModal';
 import AllLikeComments from './AllLikesCommentsModal';
 
 
-const FeedCard = () => {
+const FeedCard = ({ FeedPosts }) => {
     const [currentUser, users] = UseUserContext();
-    const [Feeds, setFeed] = UseFeedContext()
+    const [Feeds, setFeed] = UseFeedContext();
     const [updateOpen, setUpdateOpen] = useState(false);
     const [deleteOpen, setDeleteOpen] = useState(false);
     const [likeOpen, setLikeOpen] = useState(false);
@@ -94,7 +94,7 @@ const FeedCard = () => {
     return (
         <div className='w-full feedCard'>
             {
-                Feeds.map(p => (
+                FeedPosts?.map(p => (
                     <>
                         <div className='rounded-[24px] w-full h-auto text-white border bg-[#212534] border-[#262938]  p-[10px]'>
                             <div className='flex justify-between items-center'>
@@ -165,7 +165,7 @@ const FeedCard = () => {
                                                     <textarea required onChange={(e) => setComment(e.target.value)} className="!text-gray-500 border text-sm !w-full px-3 !py-[5px] rounded-[10px] outline-0 border-[#2d303d] bg-[#252a3d]" placeholder="Comment"></textarea>
                                                     <div className='mb-2 flex justify-end'>
                                                         {/* <Button onClick={() => handleComment(currentUser?.email, p?._id)} size="sm" className="!text-gray-500 bg-[#2e3446] border border-[#262938] text-xs shadow-md">send</Button> */}
-                                                        <input type="submit" value="Save" className="!text-white border text-sm px-4 !py-[5px] cursor-pointer rounded-[14px] outline-0 border-[#8699ef] bg-[#3a7ef4]" />
+                                                        <input type="submit" value="Sent" className="!text-white border text-sm px-4 !py-[5px] cursor-pointer rounded-[14px] outline-0 border-[#8699ef] bg-[#3a7ef4]" />
                                                     </div>
                                                 </form>
                                             </Popover.Dropdown>
@@ -186,15 +186,22 @@ const FeedCard = () => {
                                 <div className='flex items-center justify-between '>
                                     {p?.likes && <p onClick={() => handleLikeComment(p)} className='text-gray-500 cursor-pointer text-sm capitalize'>Liked by
                                         <span className='capitalize'> {p?.likes?.[p?.likes?.length - 1]?.email.slice(0, 5)} </span>
-                                        and {p?.likes?.length} others
+                                        {(p?.likes?.length > 1) && <span>and {p?.likes?.length - 1} others</span>}
                                     </p>}
                                     {!(p?.likes) && <p className='text-gray-500 text-sm capitalize'>no like available</p>}
                                 </div>
                                 <div className='flex items-center'>
-                                    {p?.title && <p className='text-sm text-gray-500'>"{p?.title.slice(0, 40)}</p>}
-                                    {(p?.title.length > 40) && <p className='text-sm text-blue-gray-500'>...more</p>}
+                                    {p?.title && <p className='text-sm text-gray-300'>"{p?.title.slice(0, 40)}</p>}
+                                    {(p?.title?.length > 40) && <p className='text-sm cursor-pointer text-blue-gray-500'>...more</p>}
                                 </div>
-                                <small className='text-xs text-gray-500'>{format(new Date(p?.date), 'PP')}</small>
+                                {p?.comments && <div onClick={() => handleLikeComment(p)} className='flex cursor-pointer items-center'>
+                                    {(PostUser(p?.comments?.[p?.comments.length - 1]?.email)?.img) && <div>
+                                        <img src={PostUser(p?.comments?.[p?.comments.length - 1]?.email)?.img} className="w-[12px] h-[12px] rounded-full" alt="user" />
+                                    </div>}
+                                    <p className='text-sm mx-1 capitalize font-bold text-white'>{p?.comments?.[p?.comments.length - 1]?.email.slice(0, 5)} </p>
+                                    <p className='text-sm text-gray-500'> {p?.comments?.[p?.comments.length - 1]?.comment.slice(0, 40)}</p>
+                                </div>}
+                                {p?.date && <small className='text-xs text-gray-500'>{format(new Date(p?.date), 'PP')}</small>}
                             </div>
                         </div>
                     </>

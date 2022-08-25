@@ -15,13 +15,14 @@ import CreatePostModal from '../Share/CreatePostModal';
 import UserProfile from '../Share/UserProfile';
 import Story from '../Share/Storys';
 import StoryShow from '../Share/StoryShowModal';
-import { UseStoryContext, UseUserContext } from '../context/UpcommingContext';
+import { UseFeedContext, UseStoryContext, UseUserContext } from '../context/UpcommingContext';
 import OpenStoryModal from '../Share/OpenStoryModal';
 import { useRef } from 'react';
 import { FaChevronLeft } from 'react-icons/fa';
 
 
 const ZoomlaStore = () => {
+    const [Feeds] = UseFeedContext();
     const [open, setOpen] = useState(true);
     const [show, setShow] = useState(false);
     const [currentUser] = UseUserContext();
@@ -70,34 +71,34 @@ const ZoomlaStore = () => {
                             {/* story section */}
                             <h1 className={`${profile ? 'block' : "hidden"} text-2xl mb-3 font-bold text-white`}>Story</h1>
                             <div className={`${!profile ? 'hidden' : ""} flex items-center w-full pb-2`}>
-                                <div className='mr-5'>
-                                    <div className={`${!(currentUser?.img) && "ring-[4px] bg-[#506ed1] flex items-center justify-center ring-offset-[3px] ring-[#506ed1]"} w-[80px] h-[80px] mt-2 mx-auto relative rounded-full cursor-pointer`}>
+                                <div className='mr-2 lg:mr-5'>
+                                    <div className={`${!(currentUser?.img) && "ring-[4px] bg-[#506ed1] flex items-center ml-2 justify-center ring-offset-[3px] ring-[#506ed1]"} xl:w-[80px] xl:h-[80px] lg:w-[70px] lg:h-[70px] w-[50px] h-[50px] mt-2 mx-auto relative rounded-full cursor-pointer`}>
                                         {currentUser?.img && <img src={currentUser.img} alt="user" className='w-full rounded-full overflow-hidden' />}
                                         {!(currentUser?.img) &&
-                                            <h1 className="text-4xl uppercase text-white font-bold">
+                                            <h1 className="text-3xl sm:text-4px uppercase text-white font-bold">
                                                 {currentUser?.name.slice(0, 2)}
                                             </h1>
                                         }
-                                        <div onClick={() => setImgUrl()} className='absolute w-[30px] h-[30px] right-[-5px] p-1 flex items-center justify-center text-white text-2xl font-bold rounded-full bg-[#8e44ad] bottom-[4px]'>
+                                        <div onClick={() => setImgUrl()} className='absolute w-[24px] h-[24px] md:w-[30px] md:h-[30px] right-[-5px] p-1 flex items-center justify-center text-white text-xl md:text-2xl font-bold rounded-full bg-[#8e44ad] bottom-[4px]'>
                                             <span className='mt-[-5px]'>+</span>
                                             <div style={{ display: 'none' }} className="hidden">
                                                 <input type="file" name="images" onChange={onImageChange} ref={imageRef} id="" />
                                             </div>
                                         </div>
                                     </div>
-                                    <p className='text-white mt-3'>Your Story</p>
+                                    <p className='text-white mt-3'>Story</p>
                                 </div>
                                 <Story storyShow={storyShow} />
                             </div>
                             {/* Feed section */}
                             <div className='w-full mt-3'>
                                 <h1 className='text-3xl mb-3 font-bold text-white'>{profile ? 'Feed' : "My Profile"}</h1>
-                                {profile ? <FeedCard /> : <UserProfile />}
+                                {profile ? <FeedCard FeedPosts={Feeds} /> : <UserProfile />}
                             </div>
                         </div>
                         <motion.div
                             animate={{
-                                width: !open ? '0px' : '340px',
+                                width: !open ? '0px' : '320px',
                                 transition: {
                                     duration: 0.5,
                                     type: 'spring',
@@ -105,8 +106,8 @@ const ZoomlaStore = () => {
                                 }
                             }}
                             className={`${!show ? 'block' : 'hidden'} pt-[80px] bg-black sm:relative fixed top-0 right-0 border-l h-screen border-gray-800 text-white`}>
-                            <div>
-                                <div onClick={() => setOpen(!open)} className={`${!open ? "-left-[36px]" : "-left-[18px] rotate-180"} z-50 absolute cursor-pointer p-1 border-gray-700 border-2 rounded-full text-white font-bold top-16 bg-gray-800`}> <FaChevronLeft /> </div>
+                            <div className='relative sm:static'>
+                                <div onClick={() => setOpen(!open)} className={`${!open ? "-left-[36px]" : "-left-[18px] rotate-180"} z-50 absolute cursor-pointer p-1 border-gray-700 border-2 rounded-full text-white font-bold -top-1 sm:top-16 bg-gray-800`}> <FaChevronLeft /> </div>
                                 <div className={`${open ? 'block' : 'hidden'} px-3 pt-4 w-full`}>
                                     <Profile profile={profile} setProfile={setProfile} />
                                     <div className='mt-8'>

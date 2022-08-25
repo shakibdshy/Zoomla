@@ -8,7 +8,8 @@ const Profile = ({ setProfile, profile }) => {
     const [currentUser] = UseUserContext();
     const [story] = UseStoryContext()
     const [Feeds] = UseFeedContext()
-    const myPost = Feeds?.map(p => p?.email?.includes(currentUser?.email));
+    const myPost = Feeds?.filter(p => p?.email?.includes(currentUser?.email));
+    const myStory = story?.filter(p => p?.email?.includes(currentUser?.email));
     return (
         <>
             <div className={`${profile ? 'block' : 'hidden'} border w-full bg-[#212534] pb-3 border-[#262938] rounded-2xl`}>
@@ -34,7 +35,7 @@ const Profile = ({ setProfile, profile }) => {
                     </div>
                     <div className='w-full text-center'>
                         <h1 className='text-sm'>Story</h1>
-                        <h1 className='text-blue-700'>{story.length}+</h1>
+                        <h1 className='text-blue-700'>{myStory.length}</h1>
                     </div>
                 </div>
                 <div className='px-4 flex justify-center'>

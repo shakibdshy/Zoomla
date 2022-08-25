@@ -12,30 +12,41 @@ import { UseStoryContext } from '../context/UpcommingContext';
 const Story = ({ storyShow }) => {
     const [story] = UseStoryContext()
 
-    const storyLength = () => {
-        let number = 1
-        if (story.length > 8) {
-            return number = 7;
-        } else {
-            return number = story.length - 1;
-        }
-        return number;
-    }
+    // const storyLength = () => {
+    //     let number = 1
+    //     if (story.length > 8) {
+    //         return number = 7;
+    //     } else {
+    //         return number = story.length - 1;
+    //     }
+    //     return number;
+    // }
 
 
     return (
         <Swiper
             spaceBetween={10}
-            slidesPerView={storyLength()}
+            slidesPerView={4}
             onSlideChange={() => console.log('slide change')}
             onSwiper={(swiper) => console.log(swiper)}
             className="text-white"
+            breakpoints={{
+                600: {
+                    slidesPerView: 4,
+                },
+                868: {
+                    slidesPerView: 5,
+                },
+                1024: {
+                    slidesPerView: 7,
+                },
+            }}
         >
             {
                 story.map(u => (
                     <SwiperSlide className='text-center'>
-                        <div onClick={() => storyShow(story)} className='w-[80px] mx-auto h-[80px] mt-2 !bg-[#1c1f2e] rounded-full ring-[4px] cursor-pointer ring-offset-[3px] ring-[#8e44ad]'>
-                            <img src={u.img} alt="user" className='w-[80px] mx-auto h-[80px] rounded-full overflow-hidden' />
+                        <div onClick={() => storyShow(story)} className='xl:w-[80px] xl:h-[80px] lg:w-[70px] lg:h-[70px] w-[50px] h-[50px] mx-auto  mt-2 !bg-[#1c1f2e] rounded-full sm:ring-[4px] ring-[2px] cursor-pointer ring-offset-[1px] sm:ring-offset-[3px] ring-[#8e44ad]'>
+                            <img src={u.img} alt="user" className='xl:w-[80px] xl:h-[80px] lg:w-[70px] lg:h-[70px] w-[50px] h-[50px] mx-auto rounded-full overflow-hidden' />
                         </div>
                         <p className='text-white mt-3'>{u.name.slice(0, 5)}</p>
                     </SwiperSlide>
