@@ -1,7 +1,3 @@
-// /* eslint-disable no-undef */
-// /* eslint-disable no-unused-vars */
-// /* eslint-disable react-hooks/rules-of-hooks */
-// /* eslint-disable prettier/prettier */
 import { Checkbox } from "@material-tailwind/react";
 import React from "react";
 import { BsChevronLeft, BsFacebook, BsGithub } from "react-icons/bs";

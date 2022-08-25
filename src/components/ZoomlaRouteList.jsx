@@ -9,10 +9,10 @@ import Home from "../Pages/Home";
 import Meeting from "../Pages/MeetingPage";
 import ProfileUser from "../Pages/ProfileUser";
 import Schedule from "../Pages/Schedule";
-import SignIn from "../Pages/SignIn";
-import SignUp from "../Pages/SignUp";
 import ZoomlaStore from "../Pages/ZoomlaStore";
 import "../globals.css"
+import SignIn from "../Pages/signin";
+import SignUp from "../Pages/signup";
 
 
 export function ZoomlaRouteList() {
