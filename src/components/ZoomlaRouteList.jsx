@@ -20,8 +20,8 @@ export function ZoomlaRouteList() {
         <div>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/signIn" element={<SignIn />} />
-                <Route path="/signUp" element={<SignUp />} />
+                <Route path="/signin" element={<SignIn />} />
+                <Route path="/signup" element={<SignUp />} />
                 <Route path="/meeting-page" element={<RequireAuth><Meeting /></RequireAuth>} />
                 <Route path="/contact" element={<RequireAuth><Contact /></RequireAuth>} />
                 <Route path="/schedule" element={<RequireAuth><Schedule /></RequireAuth>} />
