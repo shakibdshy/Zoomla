@@ -105,7 +105,7 @@ function TopBar() {
           )}
           {!user && (
             <li className="text-white text-xl font-bold">
-              <Link to="/signIn">
+              <Link to="/auth-signup">
                 <span>Sing In</span>
               </Link>
             </li>
