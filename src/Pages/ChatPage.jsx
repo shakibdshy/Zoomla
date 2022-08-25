@@ -9,8 +9,8 @@ import { ChannelContainer, ChannelListContainer, StreamAuth } from '../component
 import Header from '../Share/Header';
 import SmNavbar from '../Share/SmNavbar';
 import TopBar from '../Share/TopBar';
-import './ChatPage.css'
 import 'stream-chat-react/dist/css/index.css';
+import './ChatPage.css'
 
 const cookies = new Cookies();
 const apiKey = '3pznn44zcu9w';
@@ -47,8 +47,8 @@ const ChatPage = () => {
         <Header />
         <main className={`w-full sm:ml-[90px] ${dark ? "bg-[#1c1f2e]" : "bg-white"}`}>
           <TopBar />
-          <section className='app__wrapper mt-[80px]'>
-            <Chat client={client} theme="team light">
+          <section className='app__wrapper mt-[80px] h-screen'>
+            <Chat client={client} theme="team dark">
               <ChannelListContainer
                 isCreating={isCreating}
                 setIsCreating={setIsCreating}
