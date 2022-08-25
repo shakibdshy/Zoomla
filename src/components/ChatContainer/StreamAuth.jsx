@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, { useState } from "react";
 import Cookies from "universal-cookie";
 import axios from "axios";
@@ -31,9 +32,7 @@ const StreamAuth = () => {
     const URL = "http://localhost:8800/auth";
     // const URL = 'https://medical-pager.herokuapp.com/auth';
 
-    const {
-      data: { token, userId, hashedPassword, fullName },
-    } = await axios.post(
+    const {data} = await axios.post(
       `${URL}/${isSignup ? "stream-signup" : "stream-login"}`,
       {
         username,
@@ -43,6 +42,21 @@ const StreamAuth = () => {
         avatarURL,
       }
     );
+    const { token, userId, hashedPassword, fullName } = data;
+    if (isSignup && data) { 
+      // own database api call
+      //name, email, password, avatar
+      const userData = {
+        name: fullName,
+        email: username,
+        password: hashedPassword,
+        avatar: avatarURL,
+      }
+      const url = "http://localhost:8800/api/auth/signup";
+      //console.log(url);
+      const { data } = await axios.post(url, userData)
+      console.log(data);
+    }
 
     cookies.set("token", token);
     cookies.set("username", username);
