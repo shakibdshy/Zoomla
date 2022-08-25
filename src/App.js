@@ -28,8 +28,6 @@ import { shadeColor } from "./common/utils";
 import "./base.css";
 import "./index.css";
 import { ZoomlaRouteList } from "./components/ZoomlaRouteList";
-import SignIn from "./Pages/signIn";
-import SignUp from "./Pages/signUp";
 import { StreamAuth } from "./components/ChatContainer";
 
 const Conference = React.lazy(() => import("./components/conference"));
@@ -241,8 +239,6 @@ function AppRoutes({ getUserToken, getDetails }) {
       <KeyboardHandler />
       <ZoomlaRouteList />
       <Routes>
-        <Route path="/signin" element={<SignIn />} /> 
-        <Route path="/signup" element={<SignUp />} /> 
         <Route path="/auth-signup" element={<StreamAuth />} /> 
         <Route
           path="/*"
