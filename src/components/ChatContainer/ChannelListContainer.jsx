@@ -28,7 +28,7 @@ const SideBar = () => {
   )
 }
 
-const CompanyHeader = () => { 
+const CompanyHeader = () => {
   return (
     <div className="channel-list__header">
       <p className="channel-list__header__text">Zoomla</p>
@@ -36,7 +36,7 @@ const CompanyHeader = () => {
   )
 }
 
-const ChannelListContainer = () => {
+const ChannelListContainer = ({ isCreating, setIsCreating, setIsEditing, setCreateType }) => {
   return (
     <>
       <SideBar />
@@ -45,9 +45,16 @@ const ChannelListContainer = () => {
         <ChannelSearch />
         <ChannelList
           filter={{}}
-          ChannelRenderFilterFn={() => {} }
+          ChannelRenderFilterFn={() => { }}
           List={(listProps) => (
-            <TeamChannelList {...listProps} type="team" />
+            <TeamChannelList
+              {...listProps}
+              type="team"
+              isCreating={isCreating}
+              setIsCreating={setIsCreating}
+              setCreateType={setCreateType}
+              setIsEditing={setIsEditing}
+            />
           )}
           Preview={(previewProps) => (
             <TeamChannelPreview {...previewProps} type="team" />
@@ -55,9 +62,16 @@ const ChannelListContainer = () => {
         />
         <ChannelList
           filter={{}}
-          ChannelRenderFilterFn={() => {} }
+          ChannelRenderFilterFn={() => { }}
           List={(listProps) => (
-            <TeamChannelList {...listProps} type="messaging" />
+            <TeamChannelList
+              {...listProps}
+              type="messaging"
+              isCreating={isCreating}
+              setIsCreating={setIsCreating}
+              setCreateType={setCreateType}
+              setIsEditing={setIsEditing}
+            />
           )}
           Preview={(previewProps) => (
             <TeamChannelPreview {...previewProps} type="messaging" />
