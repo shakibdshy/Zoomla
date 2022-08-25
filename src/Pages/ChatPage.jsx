@@ -29,7 +29,7 @@ if (authToken) {
   }, authToken)
 }
 
-console.log(client);
+console.log(client.user);
 
 const ChatPage = () => {
   const { colorScheme } = useMantineColorScheme();
@@ -46,8 +46,7 @@ const ChatPage = () => {
       <div className="body-container relative pb-20 sm:pb-0 flex">
         <Header />
         <main className={`w-full sm:ml-[90px] ${dark ? "bg-[#1c1f2e]" : "bg-white"}`}>
-          <TopBar />
-          <section className='app__wrapper mt-[80px] h-screen'>
+          <section className='app__wrapper h-screen'>
             <Chat client={client} theme="team dark">
               <ChannelListContainer
                 isCreating={isCreating}

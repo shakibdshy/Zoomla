@@ -69,7 +69,6 @@ function ScheduleList({ setScheduleItem }) {
     <div className="w-full text-white pt-4">
       <div className="grid gap-3">
         {events?.map(event => (
-          <>
             <div
               onClick={() => handleSchedule(event)}
               key={event?._id}
@@ -119,10 +118,8 @@ function ScheduleList({ setScheduleItem }) {
               <div className="flex justify-between mt-8 items-center">
                 <div className="flex items-center !gap-x-2">
                   <Avatar.Group spacing="sm">
-                    {user.slice(0, 3).map(u => (
-                      <>
-                        <Avatar src={u} radius="xl" />
-                      </>
+                    {user.slice(0, 3).map((u, i) => (
+                        <Avatar key={i} src={u} radius="xl" />
                     ))}
                     { (user.length > 3) && <Avatar sx={{ backgroundColor: "orange" }} radius="xl">
                     +{user?.length - 3}
@@ -150,7 +147,6 @@ function ScheduleList({ setScheduleItem }) {
                 </div>
               </div>
             </div>
-          </>
         ))}
       </div>
       <DeletingModal

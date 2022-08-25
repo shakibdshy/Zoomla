@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import Cookies from "universal-cookie";
 import axios from "axios";
+import { useLocation, useNavigate } from "react-router-dom";
+import { StreamChat } from "stream-chat";
 
 // import signinImage from "../assets/signup.jpg";
 
@@ -19,6 +21,12 @@ const initialState = {
 const StreamAuth = () => {
   const [form, setForm] = useState(initialState);
   const [isSignup, setIsSignup] = useState(true);
+  const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
+
+  const apiKey = '3pznn44zcu9w';
+  const client = StreamChat.getInstance(apiKey);
 
   const handleChange = e => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -43,8 +51,6 @@ const StreamAuth = () => {
     );
     const { token, userId, hashedPassword, fullName } = data;
     if (isSignup && data) { 
-      // own database api call
-      //name, email, password, avatar
       const userData = {
         name: fullName,
         email: username,
@@ -52,9 +58,10 @@ const StreamAuth = () => {
         avatar: avatarURL,
       }
       const url = "http://localhost:8800/api/auth/signup";
-      //console.log(url);
-      const { data } = await axios.post(url, userData)
-      console.log(data);
+
+      await axios.post(url, userData)
+      //console.log(data);
+      
     }
 
     cookies.set("token", token);
@@ -69,6 +76,10 @@ const StreamAuth = () => {
     }
 
     window.location.reload();
+
+    if (client.user) {
+      navigate(from, { replace: true });
+    }
   };
 
   const switchMode = () => {
