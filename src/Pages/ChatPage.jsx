@@ -3,8 +3,8 @@
 import { useMantineColorScheme } from '@mantine/core';
 import React, { useState } from 'react';
 import { StreamChat } from 'stream-chat';
-import { Chat} from 'stream-chat-react';
-import Cookies from 'universal-cookie'; 
+import { Chat } from 'stream-chat-react';
+import Cookies from 'universal-cookie';
 import { ChannelContainer, ChannelListContainer, StreamAuth } from '../components/ChatContainer';
 import Header from '../Share/Header';
 import SmNavbar from '../Share/SmNavbar';
@@ -50,9 +50,18 @@ const ChatPage = () => {
           <section className='app__wrapper mt-[80px]'>
             <Chat client={client} theme="team light">
               <ChannelListContainer
-                
+                isCreating={isCreating}
+                setIsCreating={setIsCreating}
+                setCreateType={setCreateType}
+                setIsEditing={setIsEditing}
               />
-              <ChannelContainer />
+              <ChannelContainer
+                isCreating={isCreating}
+                setIsCreating={setIsCreating}
+                isEditing={isEditing}
+                setIsEditing={setIsEditing}
+                createType={createType}
+              />
             </Chat>
           </section>
         </main>

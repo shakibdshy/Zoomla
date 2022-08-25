@@ -15,11 +15,9 @@ const UserContext = createContext()
 export const StateContext = ({ children }) => {
   const [user] = useAuthState(auth);
   const [users, setUser, Uloading] = useUsers(user);
-  console.log(user, users)
   const [events, setEvents, loading, error] = useFetch();
   const [story, setStory, Sloading, Serror] = useStoryFetch()
   const [Feeds, setFeed, FLoading, FError] = useFeedFetch();
-  console.log(events);
 
   const currentUser = users?.find(u => u?.email?.includes(user?.email));
 
