@@ -25,7 +25,7 @@ export function ZoomlaRouteList() {
                 <Route path="/meeting-page" element={<RequireAuth><Meeting /></RequireAuth>} />
                 <Route path="/contact" element={<RequireAuth><Contact /></RequireAuth>} />
                 <Route path="/schedule" element={<RequireAuth><Schedule /></RequireAuth>} />
-                <Route path="/chat" element={<RequireAuth><ChatPage /></RequireAuth>} />
+                <Route path="/chat" element={<ChatPage />} />
                 <Route path="/userProfile" element={<RequireAuth><ProfileUser /></RequireAuth>} />
                 <Route path="/stories" element={<RequireAuth><ZoomlaStore /></RequireAuth>} />
             </Routes>
