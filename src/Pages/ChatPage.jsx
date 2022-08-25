@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import { StreamChat } from 'stream-chat';
 import { Chat} from 'stream-chat-react';
 import Cookies from 'universal-cookie'; 
-import { ChannelContainer, ChannelListContainer, Auth } from '../components/ChatContainer';
+import { ChannelContainer, ChannelListContainer, StreamAuth } from '../components/ChatContainer';
 import Header from '../Share/Header';
 import SmNavbar from '../Share/SmNavbar';
 import TopBar from '../Share/TopBar';
@@ -18,15 +18,15 @@ const authToken = cookies.get('token');
 
 const client = StreamChat.getInstance(apiKey);
 
-if (authToken) { 
-  client.connectUser(
-    {
-      token: cookies.get('token'),
-      email: cookies.get('email'),
-      name: cookies.get('name'),
-    },
-    authToken
-  );
+if (authToken) {
+  client.connectUser({
+    id: cookies.get('userId'),
+    name: cookies.get('username'),
+    fullName: cookies.get('fullName'),
+    image: cookies.get('avatarURL'),
+    hashedPassword: cookies.get('hashedPassword'),
+    phoneNumber: cookies.get('phoneNumber'),
+  }, authToken)
 }
 
 console.log(client);
@@ -35,6 +35,12 @@ const ChatPage = () => {
   const { colorScheme } = useMantineColorScheme();
   const dark = colorScheme === "dark";
 
+  // const [createType, setCreateType] = useState('');
+  // const [isCreating, setIsCreating] = useState(false);
+  // const [isEditing, setIsEditing] = useState(false);
+
+  // if (!authToken) return <StreamAuth />
+
   return (
     <>
       <div className="body-container relative pb-20 sm:pb-0 flex">
@@ -42,7 +48,7 @@ const ChatPage = () => {
         <main className={`w-full sm:ml-[90px] ${dark ? "bg-[#1c1f2e]" : "bg-white"}`}>
           <TopBar />
           <section className='app__wrapper mt-[80px]'>
-            <Chat client={client}>
+            <Chat client={client} theme="team light">
               <ChannelListContainer />
               <ChannelContainer />
             </Chat>

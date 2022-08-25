@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Cookies from "universal-cookie";
 import axios from "axios";
 
-import signinImage from "../assets/signup.jpg";
+// import signinImage from "../assets/signup.jpg";
 
 const cookies = new Cookies();
 
@@ -15,7 +15,7 @@ const initialState = {
   avatarURL: "",
 };
 
-const Auth = () => {
+const StreamAuth = () => {
   const [form, setForm] = useState(initialState);
   const [isSignup, setIsSignup] = useState(true);
 
@@ -28,18 +28,21 @@ const Auth = () => {
 
     const { username, password, phoneNumber, avatarURL } = form;
 
-    const URL = "https://localhost:8800/api/stream-auth";
+    const URL = "http://localhost:8800/auth";
     // const URL = 'https://medical-pager.herokuapp.com/auth';
 
     const {
       data: { token, userId, hashedPassword, fullName },
-    } = await axios.post(`${URL}/${isSignup ? "signup" : "login"}`, {
-      username,
-      password,
-      fullName: form.fullName,
-      phoneNumber,
-      avatarURL,
-    });
+    } = await axios.post(
+      `${URL}/${isSignup ? "stream-signup" : "stream-login"}`,
+      {
+        username,
+        password,
+        fullName: form.fullName,
+        phoneNumber,
+        avatarURL,
+      }
+    );
 
     cookies.set("token", token);
     cookies.set("username", username);
@@ -148,10 +151,10 @@ const Auth = () => {
         </div>
       </div>
       <div className="auth__form-container_image">
-        <img src={signinImage} alt="sign in" />
+        {/* <img src={signinImage} alt="sign in" /> */}
       </div>
     </div>
   );
 };
 
-export default Auth;
+export default StreamAuth;
