@@ -143,7 +143,7 @@ function ScheduleList({ setScheduleItem }) {
                       target="_blank"
                       rel="noopener noreferrer"
                       href="https://zoomla.vercel.app/meeting/62e9232ec166400656965011/guest"
-                      className="bg-[#0e78f9] sm:!px-4 !px-3 capitalize"
+                      className="bg-[#0e78f9] capitalize"
                     >
                       start
                     </Button>

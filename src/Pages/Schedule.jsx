@@ -33,9 +33,9 @@ function Schedule() {
   return (
     <div className="body-container relative pb-20 sm:pb-0 flex">
       <Header />
-      <main className='w-full sm:w-[95%] sm:ml-[90px]'>
+      <main className='w-full sm:w-[96%] sm:ml-[90px]'>
         <TopBar />
-        <div className='p-5'>
+        <div className='pt-[79px]'>
           <StyleWrapper>
             <FullCalendar
               initialView="timeGridWeek"

@@ -28,7 +28,7 @@ function TopBar() {
   const { pathname } = useLocation();
 
   return (
-    <section className={` p-1 sm:p-3 sm:py-4 bg-dark fixed top-0 left-0 sm:pl-10 pl-3 w-full z-10  border-b `}>
+    <section className={` p-1 sm:p-3 sm:py-4 ${dark ? "bg-[#212534] border-[#262938] text-white" : "bg-[#f1f1f4] border-[#e8eaf5] text-[#000]"} fixed top-0 left-0 sm:pl-10 pl-3 w-full z-10  border-b `}>
       <div className="">
         <ul className="flex items-center justify-between gap-x-2 sm:gap-x-5">
           <li className="hidden sm:block font-medium text-2xl sm:pl-20 capitalize">
