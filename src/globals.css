@@ -7,7 +7,7 @@
 @layer components {
   .menu-item {
     border: 1px solid transparent;
-    @apply mt-2 p-4 text-center text-2xl text-[#767780] w-14 h-14 rounded-xl block transition-all relative hover:text-white before:absolute before:bottom-0 before:left-0 before:right-0 before:mx-auto before:w-0 before:h-[2px] before:transition-all;
+    @apply mt-2 p-4 text-center text-2xl text-[#767780] w-14 h-14 rounded-xl block transition-all relative  before:absolute before:bottom-0 before:left-0 before:right-0 before:mx-auto before:w-0 before:h-[2px] before:transition-all;
   }
   .sm-menu-item {
     border: 1px solid transparent;
@@ -124,16 +124,16 @@
   width: 5px;
 }
 ::-webkit-scrollbar-track{
-  background-color: #413e3e;
+  background-color: #323c5544;
 }
 ::-webkit-scrollbar-thumb{
-  background-color: #b9babd39;
+  background-color: #2f375259;
 }
 
 input[type="time"]::-webkit-calendar-picker-indicator{
   background-color: #343554;
   border-radius: 50%;
-  color-scheme: white !important;
+  color-scheme: rgba(54, 57, 84, 0.353) !important;
   color: #fff !important;
   }
 

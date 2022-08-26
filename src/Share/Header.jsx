@@ -5,10 +5,15 @@ import { FaVideo } from 'react-icons/fa'
 import { MdOutlineContacts } from 'react-icons/md'
 import { CgStories } from 'react-icons/cg'
 import { Link, NavLink } from 'react-router-dom'
+import { HiLightBulb } from 'react-icons/hi'
+import { MdNightlightRound } from 'react-icons/md'
+import { ActionIcon, Tooltip, useMantineColorScheme } from '@mantine/core'
 // import '../globals.css'
 function Header() {
+    const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+    const dark = colorScheme === 'dark';
     return (
-        <header className="p-3 hidden !bg-[rgb(28,31,46)] sm:block !z-20 fixed !bottom-0 !left-0 sm:inset-0 max-w-[90px] border-r border-gray-800">
+        <header className={`p-3 hidden ${dark ? '!bg-[rgb(28,31,46)]' : "bg-white"} sm:block !z-20 fixed !bottom-0 !left-0 sm:inset-0 max-w-[90px] border-r border-gray-800`}>
             <div className='sm:block hidden'>
                 <Link to='/'>
                     <p className='p-4 text-white bg-[#0e78f9] text-2xl w-14 h-14 rounded-xl block shadow-md'><FaVideo className='shadow-sm' /></p>
@@ -18,34 +23,47 @@ function Header() {
                 <ul>
                     <li>
                         <NavLink to='/'>
-                            { ({ isActive }) => <span className={ isActive ? 'menu-item isActive' : 'menu-item'}><BsHouseDoorFill className='m-auto' /></span>}
+                            {({ isActive }) => <span className={isActive ? 'menu-item isActive light:text-white' : 'menu-item'}><BsHouseDoorFill className='m-auto' /></span>}
                         </NavLink>
                     </li>
                     <li>
                         <NavLink to='/chat'>
-                            { ({ isActive }) => <span className={ isActive ? 'menu-item isActive' : 'menu-item'}><BsChatLeftDots /></span>}
+                            {({ isActive }) => <span className={isActive ? 'menu-item isActive' : 'menu-item'}><BsChatLeftDots /></span>}
                         </NavLink>
                     </li>
                     <li>
                         <NavLink to='/meeting-page'>
-                            { ({ isActive }) => <span className={ isActive ? 'menu-item isActive' : 'menu-item'}><BsClock /></span>}
+                            {({ isActive }) => <span className={isActive ? 'menu-item isActive' : 'menu-item'}><BsClock /></span>}
                         </NavLink>
                     </li>
                     <li>
                         <NavLink to='/contact'>
-                            { ({ isActive }) => <span className={ isActive ? 'menu-item isActive' : 'menu-item'}><MdOutlineContacts /></span>}
+                            {({ isActive }) => <span className={isActive ? 'menu-item isActive' : 'menu-item'}><MdOutlineContacts /></span>}
                         </NavLink>
                     </li>
                     <li>
                         <NavLink to='/schedule'>
-                            { ({ isActive }) => <span className={ isActive ? 'menu-item isActive' : 'menu-item'}><BsCalendar2Date /></span>}
+                            {({ isActive }) => <span className={isActive ? 'menu-item isActive' : 'menu-item'}><BsCalendar2Date /></span>}
                         </NavLink>
                     </li>
 
                     <li>
                         <NavLink to='/stories'>
-                            { ({ isActive }) => <span className={ isActive ? 'menu-item isActive' : 'menu-item'}><CgStories /></span>}
+                            {({ isActive }) => <span className={isActive ? 'menu-item isActive' : 'menu-item'}><CgStories /></span>}
                         </NavLink>
+                    </li>
+
+                    <li className="menu-item">
+                        <Tooltip label="Dark/Light" position="bottom">
+                            <ActionIcon
+                                variant="outline"
+                                color={dark ? 'yellow' : 'blue'}
+                                onClick={() => toggleColorScheme()}
+                                title="Toggle color scheme"
+                            >
+                                {dark ? <MdNightlightRound size={18} /> : <HiLightBulb size={18} />}
+                            </ActionIcon>
+                        </Tooltip>
                     </li>
                 </ul>
             </nav>
@@ -53,4 +71,4 @@ function Header() {
     )
 }
 
-export default Header
+export default Header 

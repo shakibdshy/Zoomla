@@ -14,8 +14,11 @@ import auth from "../../firebase/firebase.init";
 import { signOut } from "firebase/auth";
 import { Link, useLocation } from "react-router-dom";
 import { UseUserContext } from "../context/UpcomingContext";
+import { useMantineColorScheme } from "@mantine/core";
 
 function TopBar() {
+  const { colorScheme } = useMantineColorScheme();
+  const dark = colorScheme === "dark";
   const [user] = useAuthState(auth);
   const [currentUser, users, setUser] = UseUserContext();
   const logOut = () => {
@@ -25,10 +28,10 @@ function TopBar() {
   const { pathname } = useLocation();
 
   return (
-    <section className="p-1 sm:p-3 sm:py-4 bg-dark fixed top-0 left-0 sm:pl-10 pl-3 w-full z-10 bg-[#1c1f2e] border-b border-gray-800">
+    <section className={` p-1 sm:p-3 sm:py-4 bg-dark fixed top-0 left-0 sm:pl-10 pl-3 w-full z-10  border-b `}>
       <div className="">
         <ul className="flex items-center justify-between gap-x-2 sm:gap-x-5">
-          <li className="text-white hidden sm:block font-medium text-2xl sm:pl-20 capitalize">
+          <li className="hidden sm:block font-medium text-2xl sm:pl-20 capitalize">
             {pathname.slice(1)}
             {pathname === "/" && "Home"}
             {pathname.slice(1, 7) === "preview" && "Meeting Room"}
@@ -56,9 +59,9 @@ function TopBar() {
               <Menu placement="bottom-end">
                 <MenuHandler>
                   <div className="">
-                  {currentUser?.img && <div className='w-[50px] h-[50px] bottom-[-20px] rounded-full ring-[4px] cursor-pointer ring-offset-[3px] ring-blue-600'>
+                    {currentUser?.img && <div className='w-[50px] h-[50px] bottom-[-20px] rounded-full ring-[4px] cursor-pointer ring-offset-[3px] ring-blue-600'>
                       <img src={currentUser?.img} className="w-[50px] h-[50px] rounded-full" alt="user" />
-                  </div>}
+                    </div>}
                     {!(currentUser?.img) && (
                       <div className="sm:w-[50px] w-[40px] h-[40px] sm:h-[50px] ring-2 cursor-pointer ring-offset-2 ring-blue-800 rounded-full bg-blue-600 flex items-center justify-center">
                         <h1 className="text-2xl text-white font-bold">
