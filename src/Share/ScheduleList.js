@@ -14,8 +14,8 @@ import DeletingModal from "./DeletingModal";
 import { MdOutlineWatchLater } from "react-icons/md";
 import { BsThreeDots } from "react-icons/bs";
 import { UseStateContext } from "../context/UpcommingContext";
-import Loading from "./Loading";
-import { Avatar } from "@mantine/core";
+// import Loading from "./Loading";
+import { Avatar, Skeleton } from "@mantine/core";
 import { useLocation } from "react-router-dom";
 
 function ScheduleList({ setScheduleItem }) {
@@ -37,9 +37,9 @@ function ScheduleList({ setScheduleItem }) {
     author,
   ];
 
-  if (loading) {
-    <Loading />;
-  }
+  // if (loading) {
+  //   <Loading />;
+  // }
 
   useEffect(() => {
     setSchedule(events[0]?._id);
@@ -70,7 +70,7 @@ function ScheduleList({ setScheduleItem }) {
       <div className="grid gap-3">
         {events?.map(event => (
           <>
-            <div
+            <Skeleton visible={loading} 
               onClick={() => handleSchedule(event)}
               key={event?._id}
               className={` ${
@@ -149,7 +149,7 @@ function ScheduleList({ setScheduleItem }) {
                   </Button>}
                 </div>
               </div>
-            </div>
+            </Skeleton>
           </>
         ))}
       </div>

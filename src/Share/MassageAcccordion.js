@@ -1,4 +1,5 @@
-import { Accordion, AccordionBody, Button } from '@material-tailwind/react';
+/* eslint-disable prettier/prettier */
+import { Accordion, AccordionBody} from '@material-tailwind/react';
 import Head from 'next/head';
 import Image from 'next/image';
 import React, { Fragment, useState } from 'react'

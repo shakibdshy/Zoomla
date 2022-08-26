@@ -18,20 +18,20 @@ function StorieTopBar({ setPostOpen, open }) {
                             type="text"
                             name="name"
                             placeholder="Search by keyword"
-                            className=" bg-gray-800 p-3 text-white pl-12 rounded-[24px]"
+                            className=" bg-[#282b481d] p-3 pl-12 rounded-[24px]"
                         />
                         <FiSearch className="search-icon" />
                     </div>
                 </div>
                 <ul className="flex items-center gap-x-4">
-                    <li className="text-white text-2xl cursor-pointer">
+                    <li className="text-2xl cursor-pointer">
                         <span><IoMdNotificationsOutline /></span>
                     </li>
-                    <li className="text-white text-2xl cursor-pointer">
+                    <li className="text-2xl cursor-pointer">
                         <span><RiMessengerLine /></span>
                     </li>
-                    <li className="text-white">
-                        <Button size="md" onClick={() => setPostOpen(!open)} className="!text-white hover:bg-[#8e44ad] rounded-[24px] text-[16px] bg-[#8e44ad] !px-4 capitalize flex items-center" variant="text">Create Post</Button>
+                    <li className="">
+                        <Button size="md" onClick={() => setPostOpen(!open)} className="!text-white rounded-[24px] text-[16px] bg-gradient-to-r from-[#13b38f] to-[#2091d9] !px-4 capitalize flex items-center" variant="text">Create Post</Button>
                     </li>
                 </ul>
             </div>

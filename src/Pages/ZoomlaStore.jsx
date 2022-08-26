@@ -19,9 +19,12 @@ import { UseFeedContext, UseStoryContext, UseUserContext } from '../context/Upco
 import OpenStoryModal from '../Share/OpenStoryModal';
 import { useRef } from 'react';
 import { FaChevronLeft } from 'react-icons/fa';
+import { useMantineColorScheme } from '@mantine/core';
 
 
 const ZoomlaStore = () => {
+    const { colorScheme } = useMantineColorScheme();
+    const dark = colorScheme === "dark";
     const [Feeds] = UseFeedContext();
     const [open, setOpen] = useState(true);
     const [show, setShow] = useState(false);
@@ -60,16 +63,16 @@ const ZoomlaStore = () => {
 
     return (
         <>
-            <div className="body-container w-full bg-[#1c1f2e] relative sm:pb-0 flex">
+            <div className={` ${dark ? "bg-[#1c1f2e] text-white" : "bg-white text-#000"} body-container w-full relative sm:pb-0 flex`}>
                 <Header />
                 <main className='w-full relative sm:w-[95%] sm:ml-[90px]'>
-                    <section className='p-4 px-6 bg-[#1c1f2e] border-b z-10 border-gray-800 pl-28 fixed top-0 left-0 w-full'>
+                    <section className={`p-4 px-6 ${dark ? "bg-[#1c1f2e] border-[#3f445d] text-white" : "bg-white border-[#c3c8e1] text-[#000]"} border-b z-10 pl-28 fixed top-0 left-0 w-full`}>
                         <StorieTopBar open={postOpen} setPostOpen={setPostOpen} />
                     </section>
                     <section className='flex px-4'>
                         <div className='pr-4 mx-auto w-full h-screen overflow-x-auto pt-[80px]'>
                             {/* story section */}
-                            <h1 className={`${profile ? 'block' : "hidden"} text-2xl mb-3 font-bold text-white`}>Story</h1>
+                            <h1 className={`${profile ? 'block' : "hidden"} text-2xl mb-3 font-bold`}>Story</h1>
                             <div className={`${!profile ? 'hidden' : ""} flex items-center w-full pb-2`}>
                                 <div className='mr-2 lg:mr-5'>
                                     <div className={`${!(currentUser?.img) && "ring-[4px] bg-[#506ed1] flex items-center ml-2 justify-center ring-offset-[3px] ring-[#506ed1]"} xl:w-[80px] xl:h-[80px] lg:w-[70px] lg:h-[70px] w-[50px] h-[50px] mt-2 mx-auto relative rounded-full cursor-pointer`}>
@@ -86,13 +89,18 @@ const ZoomlaStore = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <p className='text-white mt-3'>Story</p>
+                                    <p className='mt-3'>Story</p>
                                 </div>
                                 <Story storyShow={storyShow} />
                             </div>
                             {/* Feed section */}
                             <div className='w-full mt-3'>
-                                <h1 className='text-3xl mb-3 font-bold text-white'>{profile ? 'Feed' : "My Profile"}</h1>
+                                <div className='flex items-center mb-3'>
+                                    <h1 className={`text-2xl w-auto px-5 py-1 pb-2 rounded-3xl bg-gradient-to-r from-[#2091d9] to-[#13b38f] text-white font-bold ${!profile ? 'text-xl w-[200px]' : ''}  `}>
+                                        <span className='w-full'>{profile ? 'Feed' : "My Profile"}</span>
+                                    </h1>
+                                    <div className='w-full -ml-2 h-[3px] rounded-sm bg-[#13b38f]'></div>
+                                </div>
                                 {profile ? <FeedCard FeedPosts={Feeds} /> : <UserProfile />}
                             </div>
                         </div>
@@ -105,9 +113,9 @@ const ZoomlaStore = () => {
                                     damping: 10,
                                 }
                             }}
-                            className={`${!show ? 'block' : 'hidden'} pt-[80px] bg-black sm:relative fixed top-0 right-0 border-l h-screen border-gray-800 text-white`}>
+                            className={`${!show ? 'block' : 'hidden'} pt-[80px] ${dark ? "bg-[#1c1f2e] text-white" : "bg-white text-[#000]"} sm:relative fixed top-0 right-0 border-l h-screen border-[#2b2f4657] text-white`}>
                             <div className='relative sm:static'>
-                                <div onClick={() => setOpen(!open)} className={`${!open ? "-left-[36px]" : "-left-[18px] rotate-180"} z-50 absolute cursor-pointer p-1 border-gray-700 border-2 rounded-full text-white font-bold -top-1 sm:top-16 bg-gray-800`}> <FaChevronLeft /> </div>
+                                <div onClick={() => setOpen(!open)} className={`${!open ? "-left-[36px]" : "-left-[18px] rotate-180"} z-50 absolute cursor-pointer p-1 border-gray-700 border-2 rounded-full text-white font-bold -top-1 sm:top-16 bg-gradient-to-r from-cyan-500 to-blue-500`}> <FaChevronLeft /> </div>
                                 <div className={`${open ? 'block' : 'hidden'} px-3 pt-4 w-full`}>
                                     <Profile profile={profile} setProfile={setProfile} />
                                     <div className='mt-8'>
@@ -126,14 +134,14 @@ const ZoomlaStore = () => {
                                                 ))
                                             }
                                             <div className='text-center'>
-                                                <div onClick={() => storyShow(myStory)} className='w-[50px] flex items-center justify-center mx-auto h-[50px] !bg-[#1c1f2e] rounded-full ring-[2px] cursor-pointer ring-[#8e44ad]'>
+                                                <div onClick={() => storyShow(myStory)} className='w-[50px] flex items-center justify-center mx-auto h-[50px] rounded-full ring-[2px] cursor-pointer ring-[#8e44ad]'>
                                                     <span className='text-2xl font-bold text-[#8e44ad]'><AiOutlinePlayCircle /></span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div className='mt-8'>
-                                        <Button size="md" onClick={() => setImgUrl()} className="!text-white text-center mx-auto hover:bg-[#8e44ad] rounded-[24px] text-[16px] bg-[#8e44ad] !px-10 capitalize flex items-center" variant="text">
+                                        <Button size="md" onClick={() => setImgUrl()} className="!text-white text-center mx-auto hover:bg-[#8e44ad] rounded-[24px] text-[16px] bg-gradient-to-r from-[#13b38f] to-[#2091d9]  !px-10 capitalize flex items-center" variant="text">
                                             add Story
                                             <div style={{ display: 'none' }} className="hidden">
                                                 <input type="file" name="images" onChange={onImageChange} ref={imageRef} id="" />

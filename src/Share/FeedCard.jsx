@@ -1,11 +1,14 @@
+/* eslint-disable react/jsx-curly-brace-presence */
+/* eslint-disable no-unused-vars */
 /* eslint-disable prettier/prettier */
 import React, { useState } from 'react';
 import { BsThreeDots } from 'react-icons/bs';
-import { Popover } from '@mantine/core';
+import { Popover, Skeleton, useMantineColorScheme } from '@mantine/core';
 import { Button, Menu, MenuHandler, MenuItem, MenuList } from '@material-tailwind/react';
 import { FcLike, FcLikePlaceholder } from 'react-icons/fc';
 import { TbMessageDots } from 'react-icons/tb';
 import { format } from 'date-fns';
+// import { motion } from "framer-motion"
 import { UseFeedContext, UseUserContext } from '../context/UpcommingContext';
 import DeletingModal from './DeletingModal';
 import { FaRegPaperPlane } from 'react-icons/fa';
@@ -15,8 +18,10 @@ import AllLikeComments from './AllLikesCommentsModal';
 
 
 const FeedCard = ({ FeedPosts }) => {
+    const { colorScheme } = useMantineColorScheme();
+    const dark = colorScheme === "dark";
     const [currentUser, users] = UseUserContext();
-    const [Feeds, setFeed] = UseFeedContext();
+    const [Feeds, setFeed, FLoading] = UseFeedContext();
     const [updateOpen, setUpdateOpen] = useState(false);
     const [deleteOpen, setDeleteOpen] = useState(false);
     const [likeOpen, setLikeOpen] = useState(false);
@@ -96,7 +101,8 @@ const FeedCard = ({ FeedPosts }) => {
             {
                 FeedPosts?.map(p => (
                     <>
-                        <div className='rounded-[24px] w-full h-auto text-white border bg-[#212534] border-[#262938]  p-[10px]'>
+                        <Skeleton visible={!FeedPosts}
+                            className={` ${dark ? "bg-[#212534] border-[#262938] text-white" : "bg-[#f1f1f4] border-[#e8eaf5] text-[#000]"} rounded-[24px] w-full h-auto text-white border p-[10px]`}>
                             <div className='flex justify-between items-center'>
                                 <div className='flex items-center'>
                                     {(PostUser(p.email)?.img) && (
@@ -113,7 +119,7 @@ const FeedCard = ({ FeedPosts }) => {
                                     )}
                                     <div className='ml-2'>
                                         <h4 className='capitalize mb-[-2px]'>{p?.name}</h4>
-                                        <small className='text-xm block text-gray-500 mt-[-3px]'>{PostUser(p.email)?.address}</small>
+                                        <small className='text-xm text-gray-600 block mt-[-3px]'>{PostUser(p.email)?.address}</small>
                                     </div>
                                 </div>
                                 <Menu placement="bottom-end">
@@ -144,7 +150,7 @@ const FeedCard = ({ FeedPosts }) => {
                                 <img src={p.img} className='w-full rounded-2xl' alt="post img" />
                             </div>
 
-                            <div className='flex items-center justify-between'>
+                            <div className={`${dark ? 'text-gray-500' : 'text-gray-700'} flex items-center justify-between`}>
                                 <ul className='flex items-center gap-x-3'>
                                     <li onClick={() => handleLike(currentUser?.email, p?._id)} className="text-gray-400 text-[20px] cursor-pointer">
                                         <span>
@@ -155,7 +161,7 @@ const FeedCard = ({ FeedPosts }) => {
                                             }
                                         </span>
                                     </li>
-                                    <li className="text-gray-400 text-[20px] cursor-pointer">
+                                    <li className=" text-[20px] cursor-pointer">
                                         <Popover width={250} trapFocus position="bottom, end" withArrow shadow="md">
                                             <Popover.Target>
                                                 <span><TbMessageDots /></span>
@@ -171,12 +177,12 @@ const FeedCard = ({ FeedPosts }) => {
                                             </Popover.Dropdown>
                                         </Popover>
                                     </li>
-                                    <li className="text-gray-400 text-[20px] cursor-pointer">
+                                    <li className="text-[20px] cursor-pointer">
                                         <span><FaRegPaperPlane /></span>
                                     </li>
                                 </ul>
                                 <div>
-                                    <div className="text-gray-400 text-[20px] cursor-pointer">
+                                    <div className="text-[20px] cursor-pointer">
                                         <span><FiBookmark /></span>
                                     </div>
                                 </div>
@@ -184,26 +190,26 @@ const FeedCard = ({ FeedPosts }) => {
 
                             <div className='my-2'>
                                 <div className='flex items-center justify-between '>
-                                    {p?.likes && <p onClick={() => handleLikeComment(p)} className='text-gray-500 cursor-pointer text-sm capitalize'>Liked by
+                                    {p?.likes && <p onClick={() => handleLikeComment(p)} className={`${dark ? 'text-gray-500' : 'text-gray-700'} cursor-pointer capitalize text-sm`}>Liked by
                                         <span className='capitalize'> {p?.likes?.[p?.likes?.length - 1]?.email.slice(0, 5)} </span>
                                         {(p?.likes?.length > 1) && <span>and {p?.likes?.length - 1} others</span>}
                                     </p>}
-                                    {!(p?.likes) && <p className='text-gray-500 text-sm capitalize'>no like available</p>}
+                                    {!(p?.likes) && <p className={`${dark ? 'text-gray-500' : 'text-gray-700'} text-sm`}>No like available</p>}
                                 </div>
                                 <div className='flex items-center'>
-                                    {p?.title && <p className='text-sm text-gray-300'>"{p?.title.slice(0, 40)}</p>}
+                                    {p?.title && <p className={`${dark ? 'text-gray-500' : 'text-gray-700'} text-sm`}>"{p?.title.slice(0, 40)}</p>}
                                     {(p?.title?.length > 40) && <p className='text-sm cursor-pointer text-blue-gray-500'>...more</p>}
                                 </div>
                                 {p?.comments && <div onClick={() => handleLikeComment(p)} className='flex cursor-pointer items-center'>
                                     {(PostUser(p?.comments?.[p?.comments.length - 1]?.email)?.img) && <div>
                                         <img src={PostUser(p?.comments?.[p?.comments.length - 1]?.email)?.img} className="w-[12px] h-[12px] rounded-full" alt="user" />
                                     </div>}
-                                    <p className='text-sm mx-1 capitalize font-bold text-white'>{p?.comments?.[p?.comments.length - 1]?.email.slice(0, 5)} </p>
+                                    <p className={`${dark ? 'text-gray-400' : 'text-gray-700'} font-bold mx-1 capitalize text-sm`}>{p?.comments?.[p?.comments.length - 1]?.email?.slice(0, 5)} </p>
                                     <p className='text-sm text-gray-500'> {p?.comments?.[p?.comments.length - 1]?.comment.slice(0, 40)}</p>
                                 </div>}
-                                {p?.date && <small className='text-xs text-gray-500'>{format(new Date(p?.date), 'PP')}</small>}
+                                {p?.date && <small className='text-xs text-gray-600'>{format(new Date(p?.date), 'PP')}</small>}
                             </div>
-                        </div>
+                        </Skeleton>
                     </>
                 ))
             }

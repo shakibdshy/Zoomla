@@ -14,8 +14,11 @@ import auth from "../../firebase/firebase.init";
 import { signOut } from "firebase/auth";
 import { Link, useLocation } from "react-router-dom";
 import { UseUserContext } from "../context/UpcommingContext";
+import { useMantineColorScheme } from "@mantine/core";
 
 function TopBar() {
+  const { colorScheme } = useMantineColorScheme();
+  const dark = colorScheme === "dark";
   const [user] = useAuthState(auth);
   const [currentUser, users, setUser] = UseUserContext();
   const logOut = () => {
@@ -25,10 +28,10 @@ function TopBar() {
   const { pathname } = useLocation();
 
   return (
-    <section className="p-1 sm:p-3 sm:py-4 bg-dark fixed top-0 left-0 sm:pl-10 pl-3 w-full z-10 bg-[#1c1f2e] border-b border-gray-800">
+    <section className={` p-1 sm:p-3 sm:py-4 bg-dark fixed top-0 left-0 sm:pl-10 pl-3 w-full z-10  border-b `}>
       <div className="">
         <ul className="flex items-center justify-between gap-x-2 sm:gap-x-5">
-          <li className="text-white hidden sm:block font-medium text-2xl sm:pl-20 capitalize">
+          <li className="hidden sm:block font-medium text-2xl sm:pl-20 capitalize">
             {pathname.slice(1)}
             {pathname === "/" && "Home"}
             {pathname.slice(1, 7) === "preview" && "Meeting Room"}
