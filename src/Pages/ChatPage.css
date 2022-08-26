@@ -14,6 +14,15 @@ body {
     height: 100%;
 }
 
+.str-chat__input-flat-wrapper {
+    align-items: center;
+    gap: 10px;
+}
+
+.str-chat__input-flat-emojiselect {
+    top: calc(100% - 49px);
+}
+
 .auth__form-container {
     min-height: 100vh;
     display: flex;
@@ -428,6 +437,8 @@ body {
 .channel-list__header {
     padding-left: 16px;
     height: 62px;
+    display: flex;
+    align-items: center;
 }
 
 .channel-list__header__text {
@@ -581,6 +592,8 @@ body {
     height: 62px;
     box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
     padding-right: 20px;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
 .create-channel__header p {
@@ -588,7 +601,6 @@ body {
     font-weight: bold;
     font-size: 18px;
     line-height: 22px;
-    color: #2c2c30;
     margin-left: 20px;
 }
 
@@ -608,7 +620,6 @@ body {
     font-family: Helvetica Neue, sans-serif;
     font-size: 16px;
     line-height: 120%;
-    color: #2c2c30;
     margin-top: 30px;
 }
 
@@ -661,6 +672,7 @@ body {
     display: flex;
     flex-direction: column;
     height: 100%;
+    gap: 16px;
 }
 
 .user-list__header {
@@ -700,10 +712,10 @@ body {
     align-items: center;
     margin: 0px 20px;
     justify-content: space-between;
+    padding: 5px 0;
 }
 
 .user-item__wrapper:hover {
-    background: #f7f6f8;
     cursor: pointer;
 }
 
@@ -718,7 +730,6 @@ body {
     font-family: Helvetica Neue, sans-serif;
     font-size: 14px;
     line-height: 17px;
-    color: #2c2c30;
     word-break: break-all;
 }
 
@@ -765,7 +776,6 @@ body {
     font-weight: bold;
     font-size: 18px;
     line-height: 22px;
-    color: #2c2c30;
     margin-left: 20px;
 }
 
@@ -779,24 +789,24 @@ body {
     height: 169px;
     padding-left: 20px;
     box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
+    gap: 10px;
+    padding-bottom: 10px;
 }
 
 .channel-name-input__wrapper p {
     font-family: Helvetica Neue, sans-serif;
     font-size: 16px;
     line-height: 120%;
-    color: #2c2c30;
     margin-top: 30px;
 }
 
 .channel-name-input__wrapper input {
     font-family: Helvetica Neue, sans-serif;
-    font-size: 18px;
-    color: rgba(0, 0, 0);
+    font-size: 16px;
+    color: #fff;
     height: 50px;
     width: 90%;
-    background: #f7f6f8;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.3);
     box-sizing: border-box;
     border-radius: 8px;
     padding-left: 16px;
@@ -947,6 +957,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 15px 0;
 }
 
 .team-channel-list__header svg {
@@ -959,7 +970,6 @@ body {
     line-height: 16px;
     height: 16px;
     color: rgba(255, 255, 255, 0.66);
-    margin-bottom: 10px;
 }
 
 .channel-preview__wrapper {
@@ -973,8 +983,6 @@ body {
     display: flex;
     align-items: center;
     background: rgba(0, 0, 0, 0.2);
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
     font-weight: bold;
     margin-right: 16px;
     cursor: pointer;
@@ -983,8 +991,6 @@ body {
 
 .channel-preview__wrapper:hover {
     background: rgba(0, 0, 0, 0.2);
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
     font-weight: bold;
     margin-right: 16px;
     cursor: pointer;
@@ -996,7 +1002,7 @@ body {
     font-family: Helvetica Neue, sans-serif;
     font-size: 14px;
     color: #ffffff;
-    padding: 0px 20px;
+    padding: 8px 20px;
     height: 100%;
     width: 100%;
     text-overflow: ellipsis;
@@ -1034,10 +1040,6 @@ body {
     text-overflow: ellipsis;
 }
 
-.str-chat__message-team:hover {
-    background: #e9e9ea;
-}
-
 .str-chat__message-team-group {
     display: flex;
     flex-direction: column;
@@ -1049,7 +1051,6 @@ body {
     font-style: normal;
     font-weight: normal;
     line-height: 120%;
-    color: #000000;
     margin: 0;
     background: none;
 }
@@ -1725,6 +1726,10 @@ div.rta__autocomplete.str-chat__emojisearch {
 .str-chat__input-flat {
     width: 100%;
     padding: 10px;
+}
+
+.str-chat__message-attachment--giphy {
+    max-width: 350px;
 }
 
 @media screen and (max-width: 960px) {
