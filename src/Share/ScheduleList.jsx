@@ -14,12 +14,11 @@ import DeletingModal from "./DeletingModal";
 import { MdOutlineWatchLater } from "react-icons/md";
 import { BsThreeDots } from "react-icons/bs";
 import { UseStateContext } from "../context/UpcomingContext";
-import Loading from "./Loading";
 import { Avatar } from "@mantine/core";
 import { useLocation } from "react-router-dom";
 
 function ScheduleList({ setScheduleItem }) {
-  const [events, , loading] = UseStateContext();
+  const [events, ,] = UseStateContext();
   const [deleteOpen, setDeleteOpen] = useState(false);
   const [event, setEvent] = useState({});
   const [schedule, setSchedule] = useState("events[0]?._id");
@@ -37,9 +36,9 @@ function ScheduleList({ setScheduleItem }) {
     author,
   ];
 
-  if (loading) {
-    <Loading />;
-  }
+  // if (loading) {
+  //   <Loading />;
+  // }
 
   useEffect(() => {
     setSchedule(events[0]?._id);
@@ -52,8 +51,8 @@ function ScheduleList({ setScheduleItem }) {
     }
   };
   const handleSchedule = event => {
-    
-    if((pathname === '/meeting-page')){
+
+    if ((pathname === '/meeting-page')) {
       setSchedule(event._id);
       setScheduleItem(event);
     }
@@ -69,13 +68,13 @@ function ScheduleList({ setScheduleItem }) {
     <div className="w-full text-white pt-4">
       <div className="grid gap-3">
         {events?.map(event => (
+          <>
             <div
               onClick={() => handleSchedule(event)}
               key={event?._id}
-              className={` ${
-                ((schedule === event?._id) & (pathname === '/meeting-page')) &&
+              className={` ${((schedule === event?._id) & (pathname === '/meeting-page')) &&
                 "!bg-[#0e78f9] duration-300 border !border-[#4496f9]"
-              } w-full border bg-[#212534] border-[#262938] p-3 sm:p-5 rounded-xl shadow-sm`}
+                } w-full border bg-[#212534] border-[#262938] p-3 sm:p-5 rounded-xl shadow-sm`}
             >
               <div className="flex justify-between items-center">
                 <h1 className="text-xl font-bold">{event?.name}</h1>
@@ -119,25 +118,24 @@ function ScheduleList({ setScheduleItem }) {
                 <div className="flex items-center !gap-x-2">
                   <Avatar.Group spacing="sm">
                     {user.slice(0, 3).map((u, i) => (
-                        <Avatar key={i} src={u} radius="xl" />
+                      <Avatar key={i} src={u} radius="xl" />
                     ))}
-                    { (user.length > 3) && <Avatar sx={{ backgroundColor: "orange" }} radius="xl">
-                    +{user?.length - 3}
+                    {(user.length > 3) && <Avatar sx={{ backgroundColor: "orange" }} radius="xl">
+                      +{user?.length - 3}
                     </Avatar>}
                   </Avatar.Group>
                 </div>
                 <div>
                   <Button
                     size="md"
-                    className={` ${
-                      schedule === event?._id &&
+                    className={` ${schedule === event?._id &&
                       "!bg-[#318cf9] duration-100 border !border-[#4496f9] !text-[#fff]"
-                    } text-gray-500 !px-3 bg-[#282c3a] mr-2 lowercase`}
+                      } text-gray-500 !px-3 bg-[#282c3a] mr-2 lowercase`}
                     variant="text"
                   >
                     id
                   </Button>
-                  { !(pathname === '/meeting-page') &&  <Button
+                  {!(pathname === '/meeting-page') && <Button
                     size="md"
                     variant="filled"
                     className="bg-[#0e78f9] sm:!px-4 !px-3 capitalize"
@@ -147,6 +145,7 @@ function ScheduleList({ setScheduleItem }) {
                 </div>
               </div>
             </div>
+          </>
         ))}
       </div>
       <DeletingModal
