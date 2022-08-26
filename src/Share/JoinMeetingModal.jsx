@@ -12,8 +12,8 @@ import { useNavigate } from "react-router-dom";
 
 function JoinMeetingModal({ setMeetOpen, open }) {
   const navigate = useNavigate();
-  const [meetingId, setMeetingId] = useState('62f88c26b1e780e78c3b55a7');
-  const [meetingRole, setMeetingRole] = useState('zoomla-6857');
+  const [meetingId, setMeetingId] = useState('62e9232ec166400656965011');
+  const [meetingRole, setMeetingRole] = useState('guest');
 
   const handleOpen = id => {
     setMeetOpen(!open);

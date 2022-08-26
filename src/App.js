@@ -263,6 +263,7 @@ export default function App() {
       themeConfig={{
         aspectRatio: process.env.REACT_APP_TILE_SHAPE,
         color: process.env.REACT_APP_COLOR,
+        theme: process.env.REACT_APP_THEME,
         logo: process.env.REACT_APP_LOGO,
         font: process.env.REACT_APP_FONT,
         headerPresent: process.env.REACT_APP_HEADER_PRESENT,
