@@ -392,7 +392,7 @@ body {
 .channel-list__list__wrapper {
     display: flex;
     flex-direction: column;
-    background: var(--primary-color);
+    background: var(--dark-grey);
     width: 240px;
 }
 
@@ -840,9 +840,8 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
-    background: #ffffff;
+    background: #1c1f2e;
     box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
-    border-top-right-radius: 16px;
     z-index: 1;
 }
 
@@ -859,7 +858,7 @@ body {
     font-family: Helvetica Neue, sans-serif;
     font-weight: bold;
     font-size: 18px;
-    color: #2c2c30;
+    color: #fff;
     margin-right: 8px;
 }
 

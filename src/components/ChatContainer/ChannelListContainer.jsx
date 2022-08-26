@@ -31,7 +31,7 @@ import TeamChannelPreview from './TeamChannelPreview';
 const CompanyHeader = () => {
   return (
     <div className="channel-list__header">
-      <p className="channel-list__header__text">Zoomla</p>
+      <p className="channel-list__header__text">Messages</p>
     </div>
   )
 }
