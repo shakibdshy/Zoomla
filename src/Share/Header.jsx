@@ -2,7 +2,6 @@
 import React from 'react'
 import { BsHouseDoorFill, BsChatLeftDots, BsClock, BsCalendar2Date } from 'react-icons/bs'
 import { FaVideo } from 'react-icons/fa'
-import { MdOutlineContacts } from 'react-icons/md'
 import { CgStories } from 'react-icons/cg'
 import { Link, NavLink } from 'react-router-dom'
 import { HiLightBulb } from 'react-icons/hi'
@@ -13,7 +12,7 @@ function Header() {
     const { colorScheme, toggleColorScheme } = useMantineColorScheme();
     const dark = colorScheme === 'dark';
     return (
-        <header className={`p-3 hidden ${dark ? '!bg-[rgb(28,31,46)]' : "bg-white"} sm:block !z-20 fixed !bottom-0 !left-0 sm:inset-0 max-w-[90px] border-r border-gray-800`}>
+        <header className={`p-3 hidden ${dark ? '!bg-[rgb(28,31,46)] border-gray-800' : "bg-white zoomla-border-clr"} sm:block !z-20 fixed !bottom-0 !left-0 sm:inset-0 max-w-[90px] border-r`}>
             <div className='sm:block hidden'>
                 <Link to='/'>
                     <p className='p-4 text-white bg-[#0e78f9] text-2xl w-14 h-14 rounded-xl block shadow-md'><FaVideo className='shadow-sm' /></p>
@@ -34,11 +33,6 @@ function Header() {
                     <li>
                         <NavLink to='/meeting-page'>
                             {({ isActive }) => <span className={isActive ? 'menu-item isActive' : 'menu-item'}><BsClock /></span>}
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to='/contact'>
-                            {({ isActive }) => <span className={isActive ? 'menu-item isActive' : 'menu-item'}><MdOutlineContacts /></span>}
                         </NavLink>
                     </li>
                     <li>

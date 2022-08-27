@@ -10,7 +10,7 @@ import Loading from "../Share/Loading";
 import { Link, useNavigate } from "react-router-dom";
 import { UseUserContext } from "../context/UpcomingContext";
 
-function SignUp() {
+function Signup() {
   const [, , setUser] = UseUserContext();
   const navigate = useNavigate();
   const [updateProfile, updating, updateeError] = useUpdateProfile(auth);
@@ -111,4 +111,4 @@ function SignUp() {
   );
 }
 
-export default SignUp;
+export default Signup;

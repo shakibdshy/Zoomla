@@ -11,7 +11,7 @@ import Loading from "../Share/Loading";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { UseUserContext } from "../context/UpcomingContext";
 
-function SignIn() {
+function Signin() {
   const [currentUser, , setUser] = UseUserContext();
   const navigate = useNavigate();
   const location = useLocation();
@@ -140,4 +140,4 @@ function SignIn() {
   );
 }
 
-export default SignIn;
+export default Signin;

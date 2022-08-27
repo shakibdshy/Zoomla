@@ -14,11 +14,11 @@ const Home = () => {
     const dark = colorScheme === "dark";
     return (
         <>
-            <div className="body-container relative pb-20 sm:pb-0 flex">
+            <div className={`body-container ${dark ? "bg-[#1c1f2e] theme-dark" : "bg-white theme-light"} relative pb-20 sm:pb-0 flex`}>
                 <Header />
-                <main className={`w-full sm:ml-[90px] ${dark ? "bg-[#1c1f2e]" : "bg-white"}`}>
+                <main className={`w-full sm:ml-[90px]`}>
                     <TopBar />
-                    <section className='home-body flex w-full h-screen pt-20 md:flex-nowrap flex-wrap'>
+                    <section className='home-body flex w-full h-screen pt-[82px] md:flex-nowrap flex-wrap'>
                         <div className='p-4 sm:pt-8 lg:pt-16 w-full'>
                             <Card />
                         </div>

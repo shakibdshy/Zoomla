@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import React, { Suspense, useEffect, useState, useCallback } from "react";
 import {
   BrowserRouter as Router,
@@ -239,7 +238,9 @@ function AppRoutes({ getUserToken, getDetails }) {
       <KeyboardHandler />
       <ZoomlaRouteList />
       <Routes>
-        <Route path="/auth-signup" element={<StreamAuth />} /> 
+        {/* <Route path="/signin" element={<Signin />} /> 
+        <Route path="/signup" element={<Signup />} />  */}
+        <Route path="/auth-signup" element={<StreamAuth />} />
         <Route
           path="/*"
           element={

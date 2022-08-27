@@ -1,8 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap');
 
+:root {
+  --zoomla-clr-primary: #0e78f9;
+  --zoomla-clr-primary-light: #eff6ff;
+  --zoomla-clr-secondary: #ff742e;
+  --zoomla-clr-light: #f2f1ff;
+  --zoomla-clr-secondary-light: #ffeee5;
+  --zoomla-border-clr-light: #f0f2f7;
+  --zoomla-box-shadow: rgb(0 0 0 / 8%) 0px 2px 6px;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.zoomla-blur {
+  backdrop-filter: saturate(180%) blur(10px);
+  box-shadow: rgb(2 1 1 / 10%) 0px 5px 20px -5px;
+}
+
+.zoomla-border-clr {
+  border-color: var(--zoomla-border-clr-light);
+}
 
 .menu-item {
   border: 1px solid transparent;
@@ -21,6 +40,21 @@
   @apply shadow-md before:w-6 before:bg-[#767780];
 }
 
+.theme-light .menu-item {
+  color: #0e78f9;
+}
+
+.theme-light .isActive,
+.theme-light .menu-item:hover {
+  border-color: transparent;
+  background: #f2f1ff;
+  color: #0e78f9;
+}
+
+.theme-light .isActive:before {
+  background: #0e78f9;
+}
+
 .search-icon {
   @apply absolute top-0 bottom-0 ml-2 sm:ml-4 my-auto text-xl text-[#878891];
 }
@@ -31,12 +65,26 @@
   padding: 30px;
 }
 
+.theme-light .card {
+  background: var(--zoomla-clr-primary-light);
+  box-shadow: none;
+}
+
 .card:first-child {
   background: #ff742e;
 }
 
+.theme-light .card:first-child {
+  background: var(--zoomla-clr-secondary-light);
+  box-shadow: none;
+}
+
 .card:first-child .card-icon {
   border-color: #ff9c6b;
+}
+
+.theme-light .card:first-child .card-icon {
+  border-color: var(--zoomla-clr-secondary-light);
 }
 
 .card-icon {
@@ -54,6 +102,19 @@
   margin-bottom: 50px;
 }
 
+.theme-light .card-icon {
+  color: var(--zoomla-clr-primary);
+  background-color: #c2ddff;
+  border: 1px solid var(--zoomla-clr-primary-light);
+  box-shadow: none;
+}
+
+.theme-light .card:first-child .card-icon {
+  color: var(--zoomla-clr-secondary);
+  background-color: #ffd8c5;
+  border: 1px solid var(--zoomla-clr-primary-light);
+}
+
 .card-icon svg {
   margin: auto;
 }
@@ -64,9 +125,27 @@
   color: #fff;
 }
 
+.theme-light .card-title {
+  color: var(--zoomla-clr-primary);
+}
+
+.theme-light .card:first-child .card-title {
+  color: var(--zoomla-clr-secondary);
+}
+
 .card-text {
   font-size: 16px;
   color: rgba(255, 255, 255, 0.5);
+}
+
+.theme-light .card-text {
+  font-size: 16px;
+  color: #72b2ff;
+}
+
+.theme-light .card:first-child .card-text {
+  font-size: 16px;
+  color: #ffa87c;
 }
 
 .schedule-list-meta li {
@@ -132,13 +211,15 @@
 }
 
 /* scrool bar design */
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   width: 4px;
   height: 4px;
 }
-::-webkit-scrollbar-track{
+
+::-webkit-scrollbar-track {
   background-color: #413e3e;
 }
-::-webkit-scrollbar-thumb{
+
+::-webkit-scrollbar-thumb {
   background-color: #b9babd39;
 }
