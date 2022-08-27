@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-restricted-globals */
 import React, { Fragment } from "react";
@@ -17,6 +18,7 @@ import { ImFilePicture } from "react-icons/im";
 import { FaRegFileVideo } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { UseFeedContext } from "../context/UpcomingContext";
+import { LoadingOverlay } from "@mantine/core";
 
 const CreatePostModal = ({ open, setPostOpen }) => {
     const [, setFeed,] = UseFeedContext()
@@ -25,6 +27,7 @@ const CreatePostModal = ({ open, setPostOpen }) => {
     const [img, setImg] = useState()
     const [title, setTitle] = useState()
     const imageRef = useRef();
+    const [visible, setVisible] = useState(false);
 
     const onImageChange = (event) => {
         if (event.target.files && event.target.files[0]) {
@@ -37,6 +40,7 @@ const CreatePostModal = ({ open, setPostOpen }) => {
     }
     const imageStorageKey = '290c7a0f169eabc5cf1f1fe286564c38';
     const handlePost = async () => {
+        setVisible(true);
         const fromData = new FormData();
         fromData.append('image', img);
         console.log(img)
@@ -73,6 +77,7 @@ const CreatePostModal = ({ open, setPostOpen }) => {
                         .then(data => {
                             if (data) {
                                 setFeed(data)
+                                setVisible(false);
                                 setPostOpen(!open)
                                 toast.dark(`Feed post ${title} successfully`);
                             }
@@ -115,6 +120,7 @@ const CreatePostModal = ({ open, setPostOpen }) => {
                         </div>
                     </DialogHeader>
                     <DialogBody>
+                        <LoadingOverlay visible={visible} overlayBlur={2} />
                         <div className='w-full rounded-2xl'>
                             {image && <img src={image.image} className='w-full rounded-2xl' alt="post img" />}
                             {/* <img src={post2} className='w-full rounded-2xl' alt="post img" /> */}

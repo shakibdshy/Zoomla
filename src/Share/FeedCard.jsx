@@ -3,7 +3,7 @@
 /* eslint-disable prettier/prettier */
 import React, { useState } from 'react';
 import { BsThreeDots } from 'react-icons/bs';
-import { Popover, Skeleton, useMantineColorScheme } from '@mantine/core';
+import { LoadingOverlay, Popover, Skeleton, useMantineColorScheme } from '@mantine/core';
 import { Button, Menu, MenuHandler, MenuItem, MenuList } from '@material-tailwind/react';
 import { FcLike, FcLikePlaceholder } from 'react-icons/fc';
 import { TbMessageDots } from 'react-icons/tb';
@@ -29,6 +29,7 @@ const FeedCard = ({ FeedPosts }) => {
     const [like, setLike] = useState()
     const [event, setEvent] = useState();
     const [likeEmail, setLikeEmail] = useState();
+    const [visible, setVisible] = useState(false);
     const method = 'feedPost'
 
     const handleOpen = (p, method) => {
@@ -79,6 +80,7 @@ const FeedCard = ({ FeedPosts }) => {
     const handleComment = (e, email, id) => {
         e.preventDefault();
         if (comment) {
+            setVisible(true);
             fetch(`https://arcane-wave-11590.herokuapp.com/comment/${id}`, {
                 method: 'PUT',
                 headers: {
@@ -89,6 +91,8 @@ const FeedCard = ({ FeedPosts }) => {
                 .then(res => res.json())
                 .then(data => {
                     if (data) {
+                        setVisible(false);
+                        setComment('');
                         setFeed(data);
                     }
                 })
@@ -166,8 +170,9 @@ const FeedCard = ({ FeedPosts }) => {
                                                 <span><TbMessageDots /></span>
                                             </Popover.Target>
                                             <Popover.Dropdown className='p-1 bg-[#242836] rounded-xl border-[#383e55] '>
+                                                <LoadingOverlay visible={visible} overlayBlur={2} />
                                                 <form onSubmit={(e) => handleComment(e, currentUser?.email, p?._id)}>
-                                                    <textarea required onChange={(e) => setComment(e.target.value)} className="!text-gray-500 border text-sm !w-full px-3 !py-[5px] rounded-[10px] outline-0 border-[#2d303d] bg-[#252a3d]" placeholder="Comment"></textarea>
+                                                    <textarea required value={comment} onChange={(e) => setComment(e.target.value)} className="!text-gray-500 border text-sm !w-full px-3 !py-[5px] rounded-[10px] outline-0 border-[#2d303d] bg-[#252a3d]" placeholder="Enter Comment"></textarea>
                                                     <div className='mb-2 flex justify-end'>
                                                         {/* <Button onClick={() => handleComment(currentUser?.email, p?._id)} size="sm" className="!text-gray-500 bg-[#2e3446] border border-[#262938] text-xs shadow-md">send</Button> */}
                                                         <input type="submit" value="Sent" className="!text-white border text-sm px-4 !py-[5px] cursor-pointer rounded-[14px] outline-0 border-[#8699ef] bg-[#3a7ef4]" />

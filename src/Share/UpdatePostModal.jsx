@@ -17,6 +17,7 @@ import { ImFilePicture } from "react-icons/im";
 import { FaRegFileVideo } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { UseFeedContext } from "../context/UpcomingContext";
+import { LoadingOverlay } from "@mantine/core";
 
 const UpdatePostModal = ({ open, setUpdatePostOpen, post }) => {
     const [, setFeed,] = UseFeedContext()
@@ -25,6 +26,7 @@ const UpdatePostModal = ({ open, setUpdatePostOpen, post }) => {
     const [img, setImg] = useState(post?.img)
     const [title, setTitle] = useState(post?.title)
     const imageRef = useRef();
+    const [visible, setVisible] = useState(false);
 
     const onImageChange = (event) => {
         if (event.target.files && event.target.files[0]) {
@@ -37,6 +39,7 @@ const UpdatePostModal = ({ open, setUpdatePostOpen, post }) => {
     }
     const imageStorageKey = '290c7a0f169eabc5cf1f1fe286564c38';
     const handlePost = async () => {
+        setVisible(true);
         const fromData = new FormData();
         fromData.append('image', img);
         console.log(img)
@@ -73,6 +76,7 @@ const UpdatePostModal = ({ open, setUpdatePostOpen, post }) => {
                         .then(data => {
                             if (data) {
                                 setFeed(data)
+                                setVisible(true);
                                 setUpdatePostOpen(!open)
                                 toast.dark(`Feed post Update ${title} successfully`);
                             }
@@ -94,6 +98,7 @@ const UpdatePostModal = ({ open, setUpdatePostOpen, post }) => {
                     <div onClick={() => setUpdatePostOpen(!open)} className="text-2xl cursor-pointer absolute top-[5px] right-[5px] rounded-full text-white">
                         <AiOutlineClose />
                     </div>
+                    <LoadingOverlay visible={visible} overlayBlur={2} />
                     <DialogHeader className="flex !text-white items-center justify-between">
                         <div className='flex items-center'>
                             {user?.displayName && (
