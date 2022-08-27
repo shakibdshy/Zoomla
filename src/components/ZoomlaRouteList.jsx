@@ -10,7 +10,7 @@ import Meeting from "../Pages/MeetingPage";
 import ProfileUser from "../Pages/ProfileUser";
 import Schedule from "../Pages/Schedule";
 import ZoomlaStore from "../Pages/ZoomlaStore";
-import "../globals.css"
+// import "../globals.css"
 
 
 export function ZoomlaRouteList() {
