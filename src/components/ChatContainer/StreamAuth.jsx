@@ -20,7 +20,7 @@ const initialState = {
 
 const StreamAuth = () => {
   const [form, setForm] = useState(initialState);
-  const [isSignup, setIsSignup] = useState(true);
+  const [isSignup, setIsSignup] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
@@ -75,7 +75,7 @@ const StreamAuth = () => {
       cookies.set("hashedPassword", hashedPassword);
     }
 
-    window.location.reload();
+    // window.location.reload();
 
     if (client.user) {
       navigate(from, { replace: true });
@@ -83,7 +83,7 @@ const StreamAuth = () => {
   };
 
   const switchMode = () => {
-    setIsSignup(prevIsSignup => !prevIsSignup);
+    setIsSignup(prevIsSignup => prevIsSignup);
   };
 
   return (
