@@ -14,7 +14,7 @@ import auth from "../../firebase/firebase.init";
 import { signOut } from "firebase/auth";
 import { Link, useLocation } from "react-router-dom";
 import { UseUserContext } from "../context/UpcomingContext";
-import { useMantineColorScheme } from "@mantine/core";
+import { Input, useMantineColorScheme } from "@mantine/core";
 
 function TopBar() {
   const { colorScheme } = useMantineColorScheme();
@@ -44,14 +44,13 @@ function TopBar() {
             </Link>
           </li>
           <li className="ml-auto hidden sm:block grow-0 shrink-0 basis-auto">
-            <form className="relative z-10">
-              <input
-                type="text"
-                name="name"
-                placeholder="Search by keyword"
-                className="search-input"
+            <form className="relative z-10">              
+              <Input
+                icon={<FiSearch />}
+                placeholder="Search By keyword"
+                size="md"
+                radius="md"
               />
-              <FiSearch className="search-icon" />
             </form>
           </li>
           {user && (
@@ -107,7 +106,7 @@ function TopBar() {
             </li>
           )}
           {!user && (
-            <li className="text-white text-xl font-bold">
+            <li className={`${dark ? 'text-white' : 'text-black'} text-lg font-bold uppercase`}>
               <Link to="/auth-signup">
                 <span>Sing In</span>
               </Link>
