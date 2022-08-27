@@ -22,8 +22,6 @@ function Meeting() {
     const [, setSelect] = useState(true)
     const [events] = UseStateContext();
     const [open, setOpen] = useState(false);
-    const { colorScheme } = useMantineColorScheme();
-    const dark = colorScheme === "dark";
     const users = [author, author2, author, author2, author2, author, author2, author2, author, author2,]
 
     const data = {
