@@ -22,7 +22,7 @@ const Home = () => {
                         <div className='p-4 sm:pt-8 lg:pt-16 w-full'>
                             <Card />
                         </div>
-                        <div className='p-4 sm:pt-8 lg:pt-16 w-full sm:border-l overflow-y-scroll border-gray-800'>
+                        <div className={`p-4 sm:pt-8 lg:pt-16 w-full sm:border-l overflow-y-scroll ${dark ? "border-gray-800" : "zoomla-border-clr-light"}`}>
                             <div className='max-w-xl mx-auto'>
                                 <DateTime />
                                 <ScheduleList />

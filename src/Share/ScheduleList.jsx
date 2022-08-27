@@ -5,7 +5,7 @@ import {
   MenuItem,
   MenuList,
 } from "@material-tailwind/react";
-import { Button } from "@mantine/core";
+import { Button, useMantineColorScheme } from "@mantine/core";
 import author from "../assets/shakib.jpg";
 import author2 from "../assets/rohul.png";
 import DeletingModal from "./DeletingModal";
@@ -21,6 +21,8 @@ function ScheduleList({ setScheduleItem }) {
   const [event, setEvent] = useState({});
   const [schedule, setSchedule] = useState("events[0]?._id");
   const { pathname } = useLocation();
+  const { colorScheme } = useMantineColorScheme();
+  const dark = colorScheme === "dark";
   const method = "events";
   const user = [
     author,
@@ -71,32 +73,40 @@ function ScheduleList({ setScheduleItem }) {
               className={` ${
                 (schedule === event?._id) & (pathname === "/meeting-page") &&
                 "!bg-[#0e78f9] duration-300 border !border-[#4496f9]"
-              } w-full border bg-[#212534] border-[#262938] p-3 sm:p-5 rounded-xl shadow-sm`}
+              } w-full border  p-3 sm:p-5 rounded-xl  ${
+                dark
+                  ? "bg-[#212534] border-[#262938] shadow-sm"
+                  : "text-white zoomla-shadow-xl"
+              }`}
             >
               <div className="flex justify-between items-center">
-                <h1 className="text-xl font-bold">{event?.name}</h1>
+                <h1
+                  className={`text-xl font-bold ${
+                    dark ? "text-white" : "text-black"
+                  }`}
+                >
+                  {event?.name}
+                </h1>
                 <div>
                   {!(pathname === "/meeting-page") && (
                     <Menu placement="bottom-end">
                       <MenuHandler>
                         <Button
                           size="sm"
-                          className="!text-gray-500 bg-[#272b39] border border-[#262938] text-xl shadow-md"
-                          variant="text"
+                          className={`${dark ? "" : ""} text-xl shadow-md`}
+                          variant="outline"
                         >
                           <BsThreeDots />
                         </Button>
                       </MenuHandler>
-                      <MenuList className="bg-[#272b39] shadow-sm border-transparent">
-                        <MenuItem className="text-gray-400 hover:bg-[#242736] hover:text-gray-500 hover:shadow-md">
+                      <MenuList className="zoomla-shadow-xl border-transparent">
+                        <MenuItem className="hover:shadow-md">
                           Copy Invitation Link
                         </MenuItem>
-                        <MenuItem className="text-gray-400 hover:bg-[#242736] hover:text-gray-500 hover:shadow-md">
-                          Edit
-                        </MenuItem>
+                        <MenuItem className="hover:shadow-md">Edit</MenuItem>
                         <MenuItem
                           onClick={() => handleOpen(event)}
-                          className="text-gray-400 hover:bg-[#242736] hover:text-gray-500 hover:shadow-md"
+                          className="hover:shadow-md"
                         >
                           Delete
                         </MenuItem>

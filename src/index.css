@@ -8,6 +8,7 @@
   --zoomla-clr-secondary-light: #ffeee5;
   --zoomla-border-clr-light: #f0f2f7;
   --zoomla-box-shadow: rgb(0 0 0 / 8%) 0px 2px 6px;
+  --zoomla-box-shadow-xl: drop-shadow(0 12px 24px rgb(104 112 118 / 0.15)) drop-shadow(0 12px 14px rgb(104 112 118 / 0.1));
 }
 
 @tailwind base;
@@ -20,6 +21,14 @@
 }
 
 .zoomla-border-clr {
+  border-color: var(--zoomla-border-clr-light);
+}
+
+.zoomla-shadow-xl {
+  box-shadow: rgb(0 0 0 / 8%) 0px 2px 6px;
+}
+
+.zoomla-border-clr-light {
   border-color: var(--zoomla-border-clr-light);
 }
 
