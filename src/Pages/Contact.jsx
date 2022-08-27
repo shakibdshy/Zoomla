@@ -13,10 +13,13 @@ import author2 from "../assets/author2.jpg"
 import Header from '../Share/Header'
 import TopBar from '../Share/TopBar'
 import SmNavbar from '../Share/SmNavbar'
+import { useMantineColorScheme } from '@mantine/core'
 
 
 function Contact() {
   const [select, setSelect] = useState(true)
+  const { colorScheme } = useMantineColorScheme();
+  const dark = colorScheme === "dark";
   let contactsUser = {
     name: 'cloud contacts',
     user: [
@@ -54,7 +57,7 @@ function Contact() {
 
   return (
     <>
-      <div className="body-container relative pb-20 sm:pb-0 flex">
+      <div className={`body-container ${dark ? "bg-[#1c1f2e] theme-dark" : "bg-white theme-light"} relative pb-20 sm:pb-0 flex`}>
         <Header />
         <main className='w-full sm:w-[95%] sm:ml-[90px]'>
           <TopBar />

@@ -8,6 +8,7 @@ import styled from '@emotion/styled';
 import SmNavbar from '../Share/SmNavbar';
 import TopBar from '../Share/TopBar';
 import Header from '../Share/Header';
+import { useMantineColorScheme } from '@mantine/core';
 
 export const StyleWrapper = styled.div`
   .fc{
@@ -28,10 +29,12 @@ export const StyleWrapper = styled.div`
 `
 
 function Schedule() {
+  const { colorScheme } = useMantineColorScheme();
+  const dark = colorScheme === "dark";
 
 
   return (
-    <div className="body-container relative pb-20 sm:pb-0 flex">
+    <div className={`body-container ${dark ? "bg-[#1c1f2e] theme-dark" : "bg-white theme-light"} relative pb-20 sm:pb-0 flex`}>
       <Header />
       <main className='w-full sm:w-[96%] sm:ml-[90px]'>
         <TopBar />

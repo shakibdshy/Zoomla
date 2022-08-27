@@ -43,7 +43,7 @@ const ChatPage = () => {
 
   return (
     <>
-      <div className="body-container relative pb-20 sm:pb-0 flex">
+      <div className={`body-container ${dark ? "bg-[#1c1f2e] theme-dark" : "bg-white theme-light"} relative pb-20 sm:pb-0 flex`}>
         <Header />
         <main className={`w-full sm:ml-[90px] ${dark ? "bg-[#1c1f2e]" : "bg-white"}`}>
           <section className='app__wrapper h-screen'>

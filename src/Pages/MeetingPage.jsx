@@ -14,11 +14,14 @@ import { UseStateContext } from '../context/UpcomingContext';
 import SmNavbar from '../Share/SmNavbar';
 import TopBar from '../Share/TopBar';
 import Header from '../Share/Header';
+import { useMantineColorScheme } from '@mantine/core';
 
 function Meeting() {
     const [, setSelect] = useState(true)
     const [events] = UseStateContext();
     const [open, setOpen] = useState(false);
+    const { colorScheme } = useMantineColorScheme();
+    const dark = colorScheme === "dark";
     const users = [author, author2, author, author2, author2, author, author2, author2, author, author2,]
 
     const data = {
@@ -40,7 +43,7 @@ function Meeting() {
 
     return (
         <>
-            <div className="body-container relative pb-20 sm:pb-0 flex">
+            <div className={`body-container ${dark ? "bg-[#1c1f2e] theme-dark" : "bg-white theme-light"} relative pb-20 sm:pb-0 flex`}>
                 <Header />
                 <main className='w-full sm:w-[95%] sm:ml-[90px]'>
                     <TopBar />

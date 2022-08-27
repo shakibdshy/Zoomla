@@ -63,7 +63,7 @@ const ZoomlaStore = () => {
 
     return (
         <>
-            <div className={` ${dark ? "bg-[#1c1f2e] text-white" : "bg-white text-#000"} body-container w-full relative sm:pb-0 flex`}>
+            <div className={`body-container ${dark ? "bg-[#1c1f2e] theme-dark" : "bg-white theme-light"} relative pb-20 sm:pb-0 flex`}>
                 <Header />
                 <main className='w-full relative sm:w-[95%] sm:ml-[90px]'>
                     <section className={`p-4 px-6 ${dark ? "bg-[#1c1f2e] border-[#3f445d] text-white" : "bg-white border-[#c3c8e1] text-[#000]"} border-b z-10 pl-28 fixed top-0 left-0 w-full`}>
