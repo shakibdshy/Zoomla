@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import {
   Button,
   Dialog,
@@ -8,17 +8,19 @@ import {
 } from "@material-tailwind/react";
 import { toast } from "react-toastify";
 import { UseFeedContext, UseStateContext } from "../context/UpcomingContext";
+import { LoadingOverlay } from "@mantine/core";
 
 const DeletingModal = ({ open, method, event, setDeleteOpen }) => {
   const [events, setEvents] = UseStateContext();
   const [Feeds, setFeed] = UseFeedContext()
   const id = event?._id;
-
+  const [visible, setVisible] = useState(false);
   const existEvents = events?.filter(i => i?._id !== id);
   const exsitFeeds = Feeds?.filter(i => i?._id !== id);
 
 
   const handleDelete = () => {
+    setVisible(true)
     fetch(`https://arcane-wave-11590.herokuapp.com/${method}/${id}`, {
       method: "DELETE",
     })
@@ -27,12 +29,14 @@ const DeletingModal = ({ open, method, event, setDeleteOpen }) => {
         console.log(data);
         if (data.deletedCount) {
           toast.dark(`Delete successfully`);
+          setVisible(false)
           setDeleteOpen(!open);
           setEvents(existEvents);
           setFeed(exsitFeeds);
         }
       });
   };
+
   return (
     <Fragment>
       <Dialog
@@ -42,9 +46,10 @@ const DeletingModal = ({ open, method, event, setDeleteOpen }) => {
         handler={setDeleteOpen}
       >
         <div className="w-full sm:w-[60%] lg:w-[40%] overflow-y-auto !bg-[#1c1f2e] rounded-t-2xl sm:!rounded-2xl p-3 sm:p-6">
+          <LoadingOverlay visible={visible} overlayBlur={2} />
           <DialogHeader className="flex !text-white !px-0 items-center justify-between">
             <h1 className="text-red-500 !text-xl">
-              Are you sure You Want Delete This {(method === 'events')? 'Schedule List': "Post"}
+              Are you sure You Want Delete This {(method === 'events') ? 'Schedule List' : "Post"}
             </h1>
           </DialogHeader>
           <DialogFooter className="text-left w-full">

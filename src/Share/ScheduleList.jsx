@@ -128,7 +128,7 @@ function ScheduleList({ setScheduleItem }) {
                 <div>
                   <Button
                     size="md"
-                    className={` ${schedule === event?._id &&
+                    className={` ${((schedule === event?._id) & (pathname === '/meeting-page')) &&
                       "!bg-[#318cf9] duration-100 border !border-[#4496f9] !text-[#fff]"
                       } text-gray-500 !px-3 bg-[#282c3a] mr-2 lowercase`}
                     variant="text"

@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase/firebase.init";
 import { UseUserContext } from "../context/UpcomingContext";
+import { LoadingOverlay } from "@mantine/core";
 
 
 function UpdateProfileModal({ setUpdateOpen, open }) {
@@ -25,6 +26,7 @@ function UpdateProfileModal({ setUpdateOpen, open }) {
     const [email, setEmail] = useState(users?.email)
     const [address, setAddress] = useState("Nalitabari serpur")
     const [bio, setBio] = useState(currentUser?.bio ? currentUser?.bio : "Enter Your bio data")
+    const [visible, setVisible] = useState(false);
     const onImageChange = (event) => {
         if (event.target.files && event.target.files[0]) {
             let img = event.target.files[0];
@@ -41,6 +43,7 @@ function UpdateProfileModal({ setUpdateOpen, open }) {
         e.preventDefault();
         const fromData = new FormData();
         fromData.append('image', img);
+        setVisible(true);
 
         const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`
         fetch(url, {
@@ -72,6 +75,7 @@ function UpdateProfileModal({ setUpdateOpen, open }) {
                         .then(res => res.json())
                         .then(data => {
                             if (data?.users) {
+                                setVisible(false);
                                 setUpdateOpen(!open)
                                 setUser(users);
                                 toast.dark("Update Profile successfully");
@@ -96,6 +100,7 @@ function UpdateProfileModal({ setUpdateOpen, open }) {
                     </DialogHeader>
                     <form onSubmit={handleUpdate}>
                         <DialogBody className="!p-0 !w-full !block border-y !text-white border-[#31364d]">
+                            <LoadingOverlay visible={visible} overlayBlur={2} />
                             <div className="modal-box p-2 sm:p-4">
                                 <div className="mt-3">
                                     <div className="flex text-center justify-between items-center">
