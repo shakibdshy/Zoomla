@@ -9,6 +9,10 @@
   --zoomla-border-clr-light: #f0f2f7;
   --zoomla-box-shadow: rgb(0 0 0 / 8%) 0px 2px 6px;
   --zoomla-box-shadow-xl: drop-shadow(0 12px 24px rgb(104 112 118 / 0.15)) drop-shadow(0 12px 14px rgb(104 112 118 / 0.1));
+  --zoomla-chat-dark-sidebar-bg: #202a42;
+  --zoomla-chat-dark-sidebar-select-bg: #1d2437;
+  --zoomla-chat-dark-sidebar-select-text: #fff;
+  --zoomla-chat-gr-bg: linear-gradient(to right, #00d2ff 0%, #3a7bd5 100%);
 }
 
 @tailwind base;
