@@ -116,14 +116,14 @@
 }
 
 .theme-light .card-icon {
-  color: var(--zoomla-clr-primary);
+  color: #0950a7;
   background-color: #c2ddff;
   border: 1px solid var(--zoomla-clr-primary-light);
   box-shadow: none;
 }
 
 .theme-light .card:first-child .card-icon {
-  color: var(--zoomla-clr-secondary);
+  color: #6d4835;
   background-color: #ffd8c5;
   border: 1px solid var(--zoomla-clr-primary-light);
 }
@@ -139,11 +139,11 @@
 }
 
 .theme-light .card-title {
-  color: var(--zoomla-clr-primary);
+  color: #0950a7;
 }
 
 .theme-light .card:first-child .card-title {
-  color: var(--zoomla-clr-secondary);
+  color: #833c18;
 }
 
 .card-text {
@@ -153,12 +153,12 @@
 
 .theme-light .card-text {
   font-size: 16px;
-  color: #72b2ff;
+  color: #365579;
 }
 
 .theme-light .card:first-child .card-text {
   font-size: 16px;
-  color: #ffa87c;
+  color: #6d4835;
 }
 
 .schedule-list-meta li {
