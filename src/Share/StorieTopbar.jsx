@@ -8,7 +8,7 @@ import {
 } from "@material-tailwind/react";
 
 
-function StorieTopBar({ setPostOpen, open }) {
+function StorieTopBar({ setPostOpen, open, dark }) {
     return (
         <section className="">
             <div className="flex items-start justify-between">
@@ -18,7 +18,7 @@ function StorieTopBar({ setPostOpen, open }) {
                             type="text"
                             name="name"
                             placeholder="Search by keyword"
-                            className=" bg-[#282b481d] p-3 pl-12 rounded-[24px]"
+                            className={` ${dark ? "bg-transparent border-[#3f445d] text-white" : "bg-transparent border-[#d1dcf3] text-[#000]"} border p-3 pl-12 rounded-[24px]`}
                         />
                         <FiSearch className="search-icon" />
                     </div>

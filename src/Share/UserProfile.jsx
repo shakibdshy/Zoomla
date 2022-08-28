@@ -24,7 +24,7 @@ const UserProfile = () => {
 
     return (
         <div className='p-5'>
-            <div className={` ${dark ? "bg-[#212534] border-[#262938] text-white" : "bg-[#f1f1f4] border-[#e8eaf5] text-[#000]"} border w-full rounded-xl p-0`}>
+            <div className={` ${dark ? "bg-[#212534] border-[#262938] text-white" : "bg-[#eff6ff] border-[#e8eaf5] text-[#000]"} border w-full rounded-xl p-0`}>
                 <div className="flex justify-between items-center ">
                     <div className='rounded-2xl relative w-full h-[300px]'>
                         <img src={post1} className="rounded-t-2xl w-full h-[300px]" alt="cover phot" />

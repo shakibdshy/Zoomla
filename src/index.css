@@ -106,7 +106,7 @@
   line-height: 64px;
   text-align: center;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.15);
+  background: #ffffff26;
   font-size: 36px;
   border: 1px solid #539ffa;
   color: #fff;
@@ -210,7 +210,6 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 24px;
-  grid-auto-flow: dense;
 }
 
 @media (max-width: 400px) {
@@ -230,9 +229,10 @@
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #413e3e;
+  background-color: transparent;
+  border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #b9babd39;
+  background-color: #13b39093;
 }

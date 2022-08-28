@@ -48,10 +48,10 @@ function Meeting() {
                 <main className='w-full sm:w-[95%] sm:ml-[90px]'>
                     <TopBar />
                     <div className={` ${dark ? "bg-[#1c1f2e] border-[#262938] text-white" : "bg-[#fff] border-[#e8eaf5] text-[#000]"} flex h-screen pt-20 md:flex-nowrap flex-wrap`}>
-                        <div className='w-full overflow-y-auto sm:max-h-screen max-h-[500px] md:border-r p-2 sm:p-4 '>
-                            <div className={` ${dark ? "border-[#262938]" : "border-[#e8eaf5]"} flex !gap-x-3 border-b items-center py-4 pt-0 justify-between`}>
-                                <Button onClick={() => setSelect(true)} size="md" className="!text-white border !px-3 bg-[#212534] border-[#2f3449]  capitalize" variant="text">Upcoming</Button>
-                                <Button onClick={() => setOpen(!open)} size="md" className="!text-gray-500 !text-xl font-bold !px-2 bg-[#212534] border border-[#2f3449] lowercase" variant="text"><BsPlusSquare /></Button>
+                        <div className={`${dark ? "border-[#3f445d]" : "border-[#e8eaf5]"} w-full overflow-y-auto sm:max-h-screen max-h-[500px] md:border-r p-2 sm:p-4`}>
+                            <div className={` ${dark ? "border-[#3f445d]" : "border-[#e8eaf5]"} flex !gap-x-3 border-b items-center py-4 pt-0 justify-between`}>
+                                <Button onClick={() => setSelect(true)} size="md" className={` ${dark ? "bg-[#282c3a] text-gray-500" : "!bg-[#eff6ff] text-[#0e78f9]"} capitalize `} variant="text">Upcoming</Button>
+                                <Button onClick={() => setOpen(!open)} size="md" className={`${dark ? "bg-[#282c3a] text-gray-500" : "!bg-[#eff6ff] text-[#0e78f9]"} capitalize !text-xl font-bold !px-2`} variant="text"><BsPlusSquare /></Button>
                             </div>
                             <div className='w-full'>
                                 <h1 className='text-xl font-bold pl-5 mt-5 mb-3'>Today</h1>
@@ -70,18 +70,18 @@ function Meeting() {
                                 </div>
                             </div>
 
-                            <div className={` ${dark ? "border-[#262938]" : "border-[#e8eaf5]"} flex flex-wrap w-full items-center gap-3 border-y py-8`}>
+                            <div className={` ${dark ? "border-[#3f445d]" : "border-[#e8eaf5]"} flex flex-wrap w-full items-center gap-3 border-y py-8`}>
                                 <Button size="md" variant="filled" className='!px-4 capitalize'>start</Button>
-                                <Button size="md" className="!text-gray-500 !px-4 border bg-[#212534] border-gray-800 capitalize" variant="text">Recorded</Button>
-                                <Button size="md" className="!text-gray-500 !px-3 border bg-[#212534] border-gray-800  capitalize" variant="text">id</Button>
+                                <Button size="md" className={`${dark ? "bg-[#282c3a] text-gray-500" : "!bg-[#eff6ff] text-[#0e78f9]"} capitalize`} variant="text">Recorded</Button>
+                                <Button size="md" className={`${dark ? "bg-[#282c3a] text-gray-500" : "!bg-[#eff6ff] text-[#0e78f9]"} capitalize px-3`} variant="text" >id</Button>
                             </div>
 
                             <div className='my-8'>
                                 <p className={`text-sm ${dark ? 'text-gray-500' : 'text-gray-700'}`}>In tenetur maxime repudiandae, voluptates provident aperiam illum quasi accusamus natus minima suscipit. Iste suscipit repudiandae cumque velit.</p>
                             </div>
 
-                            <div className={` ${dark ? 'text-gray-500 border-[#262938]' : 'text-gray-700 border-[#e8eaf5]'}  my-5 border-y p-5 flex items-center justify-between`}>
-                                <Button size="md" className='!text-gray-500 !px-3 border bg-[#282c3a] border-[#4d4c4c]  capitalize' variant="text">id</Button>
+                            <div className={` ${dark ? 'text-gray-500 border-[#3f445d] m-0.5' : 'text-gray-700 border-[#e8eaf5]'}  my-5 border-y p-5 flex items-center justify-between`}>
+                                <Button size="md" className={`${dark ? "bg-[#282c3a] text-gray-500" : "!bg-[#eff6ff] text-[#0e78f9]"} capitalize px-3`} variant="text">id</Button>
                                 <div className='w-full text-center'>
                                     <div>
                                         <span className='text-sm text-gray-500'>meeting id</span>
@@ -99,7 +99,7 @@ function Meeting() {
                                     {
                                         users?.slice(0, 3).map((u, index) => (
                                             <>
-                                                <div key={index} className={` ${dark ? "bg-[#212534] border-[#262938] text-white" : "bg-[#f1f1f4] border-[#e8eaf5] text-[#000]"} p-5 border rounded-xl text-center`}>
+                                                <div key={index} className={` ${dark ? "bg-[#212534] border-[#262938] shadow-sm" : "zoomla-shadow-xl"} p-5 border rounded-xl text-center`}>
                                                     <div>
                                                         <img
                                                             className='rounded-lg w-[40px] h-[40px] mx-auto'
@@ -107,18 +107,18 @@ function Meeting() {
                                                             alt="user"
                                                         />
                                                     </div>
-                                                    <p className='text-gray-500'>Shakib Al Hasan</p>
+                                                    <p className='mt-2 text-gray-500'>Shakib Al Hasan</p>
                                                 </div>
                                             </>
                                         ))
                                     }
-                                    <div className='p-5 border rounded-xl text-center bg-[#0e78f9] border-[#4496f9]'>
+                                    <div className={`${dark ? "bg-[#0e78f9] text-white" : "!bg-[#eff6ff] !text-[#0e78f9]"} p-5 rounded-xl duration-300`}>
                                         <div className='flex items-center justify-center'>
-                                            <div style={{ backgroundColor: 'rgba(255, 255, 255, 0.15)' }} className='w-[40px] h-[38px] text-white flex items-center justify-center border border-[#539ffa] rounded-lg '>
+                                            <div className={` ${dark ? "bg-[#ffffff26] text-[#fff] border border-[#539ffa]" : "bg-[#c2ddff] !text-[#0e78f9]"} w-[40px] h-[38px] flex items-center justify-center text-center rounded-lg`}>
                                                 <BsPlusSquareFill />
                                             </div>
                                         </div>
-                                        <p className='text-white mt-1'>Invite Member</p>
+                                        <p className='text-center mt-1'>Invite Member</p>
                                     </div>
                                 </div>
                             </div>
