@@ -15,7 +15,7 @@ const Profile = ({ setProfile, profile }) => {
     const myStory = story?.filter(p => p?.email?.includes(currentUser?.email));
     return (
         <>
-            <div className={`${profile ? 'block' : 'hidden'} ${dark ? "bg-[#212534] border-[#262938] text-white" : "bg-[#f1f1f4] border-[#e8eaf5] text-[#000]"} border w-full bg-[#212534] pb-3 border-[#262938] rounded-2xl`}>
+            <div className={`${profile ? 'block' : 'hidden'} ${dark ? "bg-[#212534] border-[#262938] text-white" : "bg-[#eff6ff] border-[#e8eaf5] text-[#000]"} border w-full bg-[#212534] pb-3 border-[#262938] rounded-2xl`}>
                 <div className='rounded-2xl relative w-full h-[140px]'>
                     <img src={post1} className="rounded-t-2xl w-full h-[140px]" alt="cover phot" />
                     {currentUser?.img && <div className='w-[60px] h-[60px] absolute left-[50%] translate-x-[-50%] bottom-[-20px] rounded-full ring-[4px] cursor-pointer ring-offset-[3px] ring-blue-600'>

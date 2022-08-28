@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, { useEffect, useState } from "react";
 import {
   Menu,
@@ -70,20 +71,16 @@ function ScheduleList({ setScheduleItem }) {
             <div
               onClick={() => handleSchedule(event)}
               key={event?._id}
-              className={` ${
-                (schedule === event?._id) & (pathname === "/meeting-page") &&
-                "!bg-[#0e78f9] duration-300 border !border-[#4496f9]"
-              } w-full border  p-3 sm:p-5 rounded-xl  ${
-                dark
-                  ? "bg-[#212534] border-[#262938] shadow-sm"
-                  : "text-white zoomla-shadow-xl"
-              }`}
+              className={` ${(schedule === event?._id) & (pathname === "/meeting-page") &&
+                (!dark ? "!bg-[#eff6ff] duration-300 !text-[#0e78f9]" : "bg-[#0e78f9] text-white")
+                } w-full border  p-3 sm:p-5 rounded-xl  ${dark
+                  ? "bg-[#212534] text-white border-[#262938] shadow-sm"
+                  : "text-[#000] zoomla-shadow-xl"
+                }`}
             >
               <div className="flex justify-between items-center">
                 <h1
-                  className={`text-xl font-bold ${
-                    dark ? "text-white" : "text-black"
-                  }`}
+                  className={`text-xl font-bold `}
                 >
                   {event?.name}
                 </h1>
@@ -139,10 +136,9 @@ function ScheduleList({ setScheduleItem }) {
                 <div>
                   <Button
                     size="md"
-                    className={` ${
-                      schedule === event?._id &&
+                    className={` ${(schedule === event?._id) & (pathname === "/meeting-page") &&
                       "!bg-[#318cf9] duration-100 border !border-[#4496f9] !text-[#fff]"
-                    } text-gray-500 !px-3 bg-[#282c3a] mr-2 lowercase`}
+                      } ${dark ? "text-gray-500 bg-[#282c3a]" : "!bg-[#eff6ff] text-[#0e78f9]"} !px-3 mr-2 lowercase`}
                     variant="text"
                   >
                     id
@@ -153,7 +149,7 @@ function ScheduleList({ setScheduleItem }) {
                       target="_blank"
                       rel="noopener noreferrer"
                       href="https://zoomla.vercel.app/meeting/62e9232ec166400656965011/guest"
-                      className="bg-[#0e78f9] capitalize"
+                      className={`${dark ? "bg-[#0e78f9] text-white" : "!bg-[#eff6ff] text-[#0e78f9]"} capitalize`}
                     >
                       start
                     </Button>

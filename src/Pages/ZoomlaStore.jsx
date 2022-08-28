@@ -66,8 +66,8 @@ const ZoomlaStore = () => {
             <div className={`body-container ${dark ? "bg-[#1c1f2e] theme-dark" : "bg-white theme-light"} relative pb-20 sm:pb-0 flex`}>
                 <Header />
                 <main className='w-full relative sm:w-[95%] sm:ml-[90px]'>
-                    <section className={`p-4 px-6 ${dark ? "bg-[#1c1f2e] border-[#3f445d] text-white" : "bg-white border-[#c3c8e1] text-[#000]"} border-b z-10 pl-28 fixed top-0 left-0 w-full`}>
-                        <StorieTopBar open={postOpen} setPostOpen={setPostOpen} />
+                    <section className={`p-4 px-6 ${dark ? "bg-[#212534] border-[#3f445d] text-white" : "bg-white border-[#eff2fb] text-[#000]"} zoomla-blur border-b z-10 pl-28 fixed top-0 left-0 w-full`}>
+                        <StorieTopBar dark={dark} open={postOpen} setPostOpen={setPostOpen} />
                     </section>
                     <section className='flex px-4'>
                         <div className='pr-4 mx-auto w-full h-screen overflow-x-auto pt-[80px]'>
@@ -113,13 +113,13 @@ const ZoomlaStore = () => {
                                     damping: 10,
                                 }
                             }}
-                            className={`${!show ? 'block' : 'hidden'} pt-[80px] ${dark ? "bg-[#1c1f2e] text-white" : "bg-white text-[#000]"} sm:relative fixed top-0 right-0 border-l h-screen border-[#2b2f4657] text-white`}>
+                            className={`${!show ? 'block' : 'hidden'} pt-[80px] ${dark ? "bg-[#1c1f2e] border-[#3f445d] text-white" : "bg-white zoomla-border-clr-light text-[#000]"} sm:relative fixed top-0 right-0 border-l h-screen border-[#3f445d] text-white`}>
                             <div className='relative sm:static'>
                                 <div onClick={() => setOpen(!open)} className={`${!open ? "-left-[36px]" : "-left-[18px] rotate-180"} z-50 absolute cursor-pointer p-1 border-gray-700 border-2 rounded-full text-white font-bold -top-1 sm:top-16 bg-gradient-to-r from-cyan-500 to-blue-500`}> <FaChevronLeft /> </div>
                                 <div className={`${open ? 'block' : 'hidden'} px-3 pt-4 w-full`}>
                                     <Profile profile={profile} setProfile={setProfile} />
                                     <div className='mt-8'>
-                                        <h3 className='text-white text-xl font-bold'>Your Stories</h3>
+                                        <h3 className='text-xl font-bold'>My Stories</h3>
                                         <div className='flex flex-wrap gap-5 justify-between mt-5'>
                                             {
                                                 myStory.slice(0, 5).map(u => (

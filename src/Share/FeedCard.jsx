@@ -105,7 +105,7 @@ const FeedCard = ({ FeedPosts }) => {
                 FeedPosts?.map(p => (
                     <>
                         <Skeleton visible={!FeedPosts}
-                            className={` ${dark ? "bg-[#212534] border-[#262938] text-white" : "bg-[#f1f1f4] border-[#e8eaf5] text-[#000]"} rounded-[24px] w-full h-auto text-white border p-[10px]`}>
+                            className={` ${dark ? "bg-[#212534] border-[#262938] text-white" : "bg-[#eff6ff] border-[#e8eaf5] text-[#000]"} rounded-[24px] w-full h-auto text-white border p-[10px]`}>
                             <div className='flex justify-between items-center'>
                                 <div className='flex items-center'>
                                     {(PostUser(p.email)?.img) && (
