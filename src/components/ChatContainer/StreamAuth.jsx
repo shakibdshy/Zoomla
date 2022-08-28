@@ -75,7 +75,7 @@ const StreamAuth = () => {
       cookies.set("hashedPassword", hashedPassword);
     }
 
-    // window.location.reload();
+    window.location.reload();
 
     if (client.user) {
       navigate(from, { replace: true });
