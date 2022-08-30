@@ -29,7 +29,7 @@ if (authToken) {
   }, authToken)
 }
 
-console.log(client.user);
+console.log(client.messages);
 
 const ChatPage = () => {
   const { colorScheme } = useMantineColorScheme();

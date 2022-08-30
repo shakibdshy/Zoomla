@@ -131,7 +131,7 @@ function Signin() {
               <BsChevronLeft /> Back
             </span>
           </Link>
-          <Link to="/signUp">
+          <Link to="/signup">
             <span className="text-[#83bbff] mr-5 sm:mr-10 m-10">Sign Up</span>
           </Link>
         </div>

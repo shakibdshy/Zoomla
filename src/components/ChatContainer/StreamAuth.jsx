@@ -83,7 +83,7 @@ const StreamAuth = () => {
   };
 
   const switchMode = () => {
-    setIsSignup(prevIsSignup => prevIsSignup);
+    setIsSignup(prevIsSignup => !prevIsSignup);
   };
 
   return (
