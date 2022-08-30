@@ -14,6 +14,7 @@ import { FaRegPaperPlane } from 'react-icons/fa';
 import { FiBookmark } from 'react-icons/fi';
 import UpdatePostModal from './UpdatePostModal';
 import AllLikeComments from './AllLikesCommentsModal';
+import { motion } from "framer-motion"
 
 
 const FeedCard = ({ FeedPosts }) => {
@@ -104,7 +105,10 @@ const FeedCard = ({ FeedPosts }) => {
             {
                 FeedPosts?.map(p => (
                     <>
-                        <Skeleton visible={!FeedPosts}
+                        <motion.div
+                            initial={{ y: "10vw", transition: { type: "spring", duration: 2 } }}
+                            animate={{ y: 0, transition: { type: "spring", duration: 2 } }}
+                            exit={{ y: "60vw", scale: [1, 0], transition: { duration: 0.5 } }}
                             className={` ${dark ? "bg-[#212534] border-[#262938] text-white" : "bg-[#eff6ff] border-[#e8eaf5] text-[#000]"} rounded-[24px] w-full h-auto text-white border p-[10px]`}>
                             <div className='flex justify-between items-center'>
                                 <div className='flex items-center'>
@@ -135,13 +139,13 @@ const FeedCard = ({ FeedPosts }) => {
                                             <BsThreeDots />
                                         </Button>
                                     </MenuHandler>
-                                    <MenuList onClick={() => handleOpen(p, 'update')} className="bg-[#272b39] shadow-sm border-transparent">
-                                        <MenuItem className="text-gray-400 hover:bg-[#242736] hover:text-gray-500 hover:shadow-md">
+                                    <MenuList onClick={() => handleOpen(p, 'update')} className={`${dark ? "bg-[#272b39] text-gray-400" : "bg-[#fff] text-[#000]"} shadow-xl border-transparent`}>
+                                        <MenuItem className={` ${dark ? "bg-[#272b39] hover:bg-[#272b39]" : "bg-[#fff]"} hover:shadow-md`}>
                                             Edit
                                         </MenuItem>
                                         <MenuItem
                                             onClick={() => handleOpen(p, 'delete')}
-                                            className="text-gray-400 hover:bg-[#242736] hover:text-gray-500 hover:shadow-md"
+                                            className={` ${dark ? "bg-[#272b39] hover:bg-[#272b39]" : "bg-[#fff]"} hover:shadow-md`}
                                         >
                                             Delete
                                         </MenuItem>
@@ -169,10 +173,10 @@ const FeedCard = ({ FeedPosts }) => {
                                             <Popover.Target>
                                                 <span><TbMessageDots /></span>
                                             </Popover.Target>
-                                            <Popover.Dropdown className='p-1 bg-[#242836] rounded-xl border-[#383e55] '>
+                                            <Popover.Dropdown className={`${dark ? "bg-[#242836] border-[#383e55]" : "bg-[#fff]"} p-1 rounded-xl`}>
                                                 <LoadingOverlay visible={visible} overlayBlur={2} />
                                                 <form onSubmit={(e) => handleComment(e, currentUser?.email, p?._id)}>
-                                                    <textarea required value={comment} onChange={(e) => setComment(e.target.value)} className="!text-gray-500 border text-sm !w-full px-3 !py-[5px] rounded-[10px] outline-0 border-[#2d303d] bg-[#252a3d]" placeholder="Enter Comment"></textarea>
+                                                    <textarea required value={comment} onChange={(e) => setComment(e.target.value)} className={`${dark ? "bg-[#242836] border-[#383e55]" : "bg-[#fff]"} !text-gray-500 border text-sm !w-full px-3 !py-[5px] rounded-[10px] outline-0`} placeholder="Enter Comment"></textarea>
                                                     <div className='mb-2 flex justify-end'>
                                                         {/* <Button onClick={() => handleComment(currentUser?.email, p?._id)} size="sm" className="!text-gray-500 bg-[#2e3446] border border-[#262938] text-xs shadow-md">send</Button> */}
                                                         <input type="submit" value="Sent" className="!text-white border text-sm px-4 !py-[5px] cursor-pointer rounded-[14px] outline-0 border-[#8699ef] bg-[#3a7ef4]" />
@@ -213,7 +217,7 @@ const FeedCard = ({ FeedPosts }) => {
                                 </div>}
                                 {p?.date && <small className='text-xs text-gray-600'>{format(new Date(p?.date), 'PP')}</small>}
                             </div>
-                        </Skeleton>
+                        </motion.div>
                     </>
                 ))
             }

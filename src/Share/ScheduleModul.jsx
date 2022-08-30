@@ -15,10 +15,13 @@ import { BsFillCalendar2DateFill } from "react-icons/bs";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import { UseStateContext } from "../context/UpcomingContext";
+import { useMantineColorScheme } from "@mantine/core";
 
 const mySelected = { backgroundColor: "#0e78f9" };
 
 function ScheduleModul({ setOpen, open }) {
+  const { colorScheme } = useMantineColorScheme();
+  const dark = colorScheme === "dark";
   const [selected, setSelected] = useState(new Date());
   const [eventName, setEventName] = useState("");
   const [time1, setTime1] = useState("08:00");
@@ -69,18 +72,18 @@ function ScheduleModul({ setOpen, open }) {
     <>
       <Dialog
         size="xxl"
-        className="flex !bg-[#4b69c294] items-center justify-end sm:justify-center !w-full"
+        className={`${dark ? "!bg-[#4b69c294]" : "!bg-[#0509157a]"} flex items-center justify-end sm:justify-center !w-full`}
         open={open}
         handler={handleOpen}
       >
-        <div className="w-full md:w-[80%] lg:w-[60%] h-[550px] sm:h-[790px] overflow-y-auto !bg-[#1c1f2e] rounded-t-2xl md:!rounded-2xl p-3 sm:p-6">
+        <div className={`${dark ? "!bg-[#1c1f2e]" : "!bg-[#fff]"} w-full md:w-[80%] lg:w-[60%] h-[550px] sm:h-[790px] overflow-y-auto !bg-[#1c1f2e] rounded-t-2xl md:!rounded-2xl p-3 sm:p-6`}>
           <form onSubmit={handleSubmit}>
             <DialogHeader className="flex !px-0 items-center justify-between">
-              <div className="flex items-center">
-                <span className="text-white">
+              <div className={` ${dark ? "text-[#fff]" : "text-[#000]"} flex items-center`}>
+                <span className="">
                   <BsFillCalendar2DateFill />
                 </span>
-                <h3 className="text-white text-sm sm:text-2xl ml-2">
+                <h3 className={` text-sm sm:text-2xl ml-2`}>
                   Schedule Meeting
                 </h3>
               </div>
@@ -88,7 +91,7 @@ function ScheduleModul({ setOpen, open }) {
                 <Button
                   onClick={handleOpen}
                   size="sm"
-                  className="!text-gray-500 border bg-[#282c3a] border-[#262938] !px-4 capitalize flex items-center"
+                  className={` ${dark ? "bg-[#282c3a] text-gray-500" : "!bg-[#eff6ff] text-[#0e78f9]"} !px-4 capitalize flex items-center`}
                   variant="text"
                 >
                   Cancel
@@ -103,7 +106,7 @@ function ScheduleModul({ setOpen, open }) {
                 </Button>
               </div>
             </DialogHeader>
-            <DialogBody className="py-6 !px-0 !w-full !block border-y !text-white border-[#31364d]">
+            <DialogBody className={`${dark ? "border-[#3f445d]" : "border-[#e8eaf5]"} py-6 !px-0 !w-full !block border-y !text-white`}>
               <input
                 type="text"
                 onChange={handleChange}
@@ -112,7 +115,7 @@ function ScheduleModul({ setOpen, open }) {
                 placeholder="Meeting Title"
                 required
               />
-              <div className="flex justify-between w-full md:border-b border-t md:flex-nowrap flex-wrap  border-[#31364d]">
+              <div className={`${dark ? "border-[#3f445d]" : "border-[#e8eaf5]"} flex justify-between w-full md:border-b border-t md:flex-nowrap flex-wrap `}>
                 <div className="w-full py-5">
                   <span className="text-gray-600 block text-xs !-mb-5">
                     select date
@@ -175,7 +178,7 @@ function ScheduleModul({ setOpen, open }) {
                     </span>
                     <select
                       name="slot"
-                      className="!rounded-xl w-full !text-white text-md bg-[#282c3a] border-gray-800 p-[10px]"
+                      className={`${dark ? "bg-[#282c3a] !text-white border-[#3f445d]" : "text-[#000] border-[#e8eaf5]"} border !rounded-xl w-full text-md p-[10px]`}
                     >
                       <option value="Kiev, GMT +2">Kiev, GMT +2</option>
                       <option value="Rasia, GMT +4">Rasia, GMT +4</option>
@@ -187,7 +190,7 @@ function ScheduleModul({ setOpen, open }) {
                   </div>
 
                   <div className="w-full">
-                    <div className="border-y border-[#31364d] py-6">
+                    <div className={`${dark ? "border-[#3f445d]" : "border-[#e8eaf5]"} py-6`}>
                       <span className="text-gray-600 mb-2 block text-xs">
                         select meeting Time
                       </span>
@@ -197,7 +200,7 @@ function ScheduleModul({ setOpen, open }) {
                           type="time"
                           value={time1}
                           name="time1"
-                          className="!rounded-xl mx-auto !w-full border !text-gray-500 text-sm bg-[#282c3a] border-[#2f3449] p-2"
+                          className={`${dark ? "bg-[#282c3a] !text-white border-[#3f445d]" : "text-[#000] border-[#e8eaf5]"} !rounded-xl mx-auto !w-full border text-sm p-2`}
                           placeholder="08:40"
                           required
                         />
@@ -207,7 +210,7 @@ function ScheduleModul({ setOpen, open }) {
                           type="time"
                           value={time2}
                           name="time2"
-                          className="!rounded-xl mx-auto !w-full border !text-gray-500 text-sm bg-[#282c3a] border-[#2f3449] p-2"
+                          className={`${dark ? "bg-[#282c3a] !text-white border-[#3f445d]" : "text-[#000] border-[#e8eaf5]"} !rounded-xl mx-auto !w-full border text-sm p-2`}
                           required
                         />
                       </div>
@@ -218,16 +221,15 @@ function ScheduleModul({ setOpen, open }) {
                         security passcode
                       </span>
                       <div className="flex items-center justify-between mt-2 gap-x-3">
-                        <span className="!text-gray-500 rounded-[10px] w-full border text-sm bg-[#282c3a] border-[#2f3449] !px-4 py-[10px] capitalize flex items-center">
+                        <span className={` ${dark ? "bg-[#282c3a] !text-gray-500 border border-[#2f3449]" : "!bg-[#eff6ff] text-[#0e78f9]"} rounded-[10px] w-full text-sm !px-4 py-[10px] capitalize flex items-center`}>
                           {randomId}
                         </span>
                         <div>
                           <Button
                             onClick={() => handleCopy("coped")}
                             size="md"
-                            className={` ${
-                              copy === "coped" && "!text-blue-300 !bg-blue-800"
-                            } !text-white hover:bg-[#8e44ad] bg-[#8e44ad] !px-4 capitalize flex items-center`}
+                            className={` ${copy === "coped" && "!text-blue-300 !bg-blue-800"
+                              } !text-white hover:bg-[#8e44ad] bg-[#8e44ad] !px-4 capitalize flex items-center`}
                             variant="text"
                           >
                             {copy}
@@ -247,7 +249,7 @@ function ScheduleModul({ setOpen, open }) {
               </div>
             </DialogBody>
             <DialogFooter className="text-left !p-0 w-full">
-              <div className="w-full border-b border-[#31364d] pb-5">
+              <div className={` ${dark ? "border-[#3f445d]" : "border-[#e8eaf5]"} w-full border-b pb-5`}>
                 <span className="text-gray-600 text-xs">Meeting Id</span>
                 <div className="sm:flex justify-between items-center">
                   <Radio

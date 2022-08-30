@@ -7,10 +7,11 @@ import ChatPage from "../Pages/ChatPage";
 import Contact from "../Pages/Contact";
 import Home from "../Pages/Home";
 import Meeting from "../Pages/MeetingPage";
+import NotFoundErrorPage from "../Pages/NotFoundErrorPage";
 import ProfileUser from "../Pages/ProfileUser";
 import Schedule from "../Pages/Schedule";
 import ZoomlaStore from "../Pages/ZoomlaStore";
-// import "../globals.css"
+import { StreamAuth } from "./ChatContainer";
 
 
 export function ZoomlaRouteList() {
@@ -18,12 +19,14 @@ export function ZoomlaRouteList() {
         <div>
             <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/auth-signup" element={<StreamAuth />} />
                 <Route path="/meeting-page" element={<RequireAuth><Meeting /></RequireAuth>} />
                 <Route path="/contact" element={<RequireAuth><Contact /></RequireAuth>} />
                 <Route path="/schedule" element={<RequireAuth><Schedule /></RequireAuth>} />
                 <Route path="/chat" element={<ChatPage />} />
                 <Route path="/userProfile" element={<RequireAuth><ProfileUser /></RequireAuth>} />
                 <Route path="/stories" element={<RequireAuth><ZoomlaStore /></RequireAuth>} />
+                <Route path="*" element={<NotFoundErrorPage />} />
             </Routes>
             <ToastContainer />
         </div>

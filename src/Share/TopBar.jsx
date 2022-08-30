@@ -44,7 +44,7 @@ function TopBar() {
             </Link>
           </li>
           <li className="ml-auto hidden sm:block grow-0 shrink-0 basis-auto">
-            <form className="relative z-10">              
+            <form className="relative z-10">
               <Input
                 icon={<FiSearch />}
                 placeholder="Search By keyword"
@@ -58,8 +58,8 @@ function TopBar() {
               <Menu placement="bottom-end">
                 <MenuHandler>
                   <div className="">
-                    {currentUser?.img && <div className='w-[50px] h-[50px] bottom-[-20px] rounded-full ring-[4px] cursor-pointer ring-offset-[3px] ring-blue-600'>
-                      <img src={currentUser?.img} className="w-[50px] h-[50px] rounded-full" alt="user" />
+                    {currentUser?.img && <div className='sm:w-[50px] w-[40px] h-[40px] sm:h-[50px] bottom-[-20px] rounded-full sm:ring-[4px] ring-[2px] cursor-pointer ring-offset-[1px] sm:ring-offset-[3px] ring-blue-600'>
+                      <img src={currentUser?.img} className="sm:w-[50px] w-[40px] h-[40px] sm:h-[50px] rounded-full" alt="user" />
                     </div>}
                     {!(currentUser?.img) && (
                       <div className="sm:w-[50px] w-[40px] h-[40px] sm:h-[50px] ring-2 cursor-pointer ring-offset-2 ring-blue-800 rounded-full bg-blue-600 flex items-center justify-center">
@@ -70,9 +70,9 @@ function TopBar() {
                     )}
                   </div>
                 </MenuHandler>
-                <MenuList className="bg-[#272b39] shadow-sm border-transparent">
+                <MenuList className={`${dark ? "bg-[#272b39] text-gray-400" : "bg-[#fff] text-[#000]"}  shadow-xl border-transparent`}>
                   <Link to="/userProfile">
-                    <MenuItem className="text-gray-400 border-b border-gray-800 hover:bg-[#242736] hover:text-gray-500 hover:shadow-md">
+                    <MenuItem className={`${dark ? "bg-[#272b39] border-gray-800" : "bg-[#fff] border-[#e8eaf5]"} border-b`}>
                       <div className="text-center">
                         {user?.displayName && (
                           <div className="w-[60px] h-[60px] mx-auto rounded-full bg-blue-600 flex items-center justify-center">
@@ -88,16 +88,16 @@ function TopBar() {
                     </MenuItem>
                   </Link>
                   <Link to="userProfile">
-                    <MenuItem className="text-gray-400 hover:bg-[#242736] hover:text-gray-500 hover:shadow-md">
+                    <MenuItem className={`${dark ? "bg-[#272b39]" : "bg-[#fff]"} border-b`}>
                       My Profile
                     </MenuItem>
                   </Link>
-                  <MenuItem className="text-gray-400 hover:bg-[#242736] hover:text-gray-500 hover:shadow-md">
+                  <MenuItem className={`${dark ? "bg-[#272b39]" : "bg-[#fff]"} border-b`}>
                     Update
                   </MenuItem>
                   <MenuItem
                     onClick={logOut}
-                    className="text-gray-400 hover:bg-[#242736] hover:text-gray-500 hover:shadow-md"
+                    className={`${dark ? "bg-[#272b39]" : "bg-[#fff]"} border-b`}
                   >
                     Sign Out
                   </MenuItem>

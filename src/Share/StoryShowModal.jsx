@@ -15,19 +15,22 @@ import { AiOutlineClose } from "react-icons/ai";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import { useMantineColorScheme } from "@mantine/core";
 
 function StoryShow({ setStoryOpen, open, stories }) {
+    const { colorScheme } = useMantineColorScheme();
+    const dark = colorScheme === "dark";
 
     return (
         <Fragment>
             <Dialog
-                className="flex !bg-[#4b69c294] items-center justify-start sm:justify-center !w-full"
+                className={` ${dark ? "!bg-[#4b69c294]" : "!bg-[#0509157a]"} flex items-center justify-start sm:justify-center !w-full`}
                 size="xxl"
                 open={open}
                 handler={setStoryOpen}
             >
-                <div className="w-full sm:w-[80%] lg:w-[60%] max-h-screen overflow-y-auto !bg-[#1c1f2e] relative rounded-t-2xl sm:!rounded-2xl p-3">
-                    <div onClick={() => setStoryOpen(!open)} className="text-2xl cursor-pointer absolute top-[5px] right-[5px] rounded-full text-white">
+                <div className={`${dark ? "!bg-[#1c1f2e] text-white" : "!bg-[#fff] text-[#000]"} w-full sm:w-[80%] lg:w-[60%] max-h-screen overflow-y-auto relative rounded-t-2xl sm:!rounded-2xl p-3`}>
+                    <div onClick={() => setStoryOpen(!open)} className="text-2xl cursor-pointer absolute top-[5px] right-[5px] rounded-full">
                         <AiOutlineClose />
                     </div>
                     <DialogBody className="!w-full  !block">
@@ -62,7 +65,7 @@ function StoryShow({ setStoryOpen, open, stories }) {
                                                 )}
                                                 {/* <img src={p.uImg} alt="user" className='rounded-full w-[36px] h-[36px]' /> */}
                                                 <div className='ml-2'>
-                                                    <h4 className='capitalize text-white mb-[-2px]'>{p?.name}</h4>
+                                                    <h4 className='capitalize mb-[-2px]'>{p?.name}</h4>
                                                     <small className='text-xm block text-gray-500 mt-[-3px]'>{p?.email}</small>
                                                 </div>
                                             </div>

@@ -23,29 +23,29 @@ const UserProfile = () => {
     const myStory = story?.filter(p => p?.email?.includes(user?.email));
 
     return (
-        <div className='p-5'>
+        <div className='sm-p-5 p-2'>
             <div className={` ${dark ? "bg-[#212534] border-[#262938] text-white" : "bg-[#eff6ff] border-[#e8eaf5] text-[#000]"} border w-full rounded-xl p-0`}>
                 <div className="flex justify-between items-center ">
                     <div className='rounded-2xl relative w-full h-[300px]'>
                         <img src={post1} className="rounded-t-2xl w-full h-[300px]" alt="cover phot" />
-                        <div className='absolute flex justify-between items-center left-[50px] w-full bottom-[-80px]'>
-                            <div className='flex w-full items-center'>
-                                {currentUser?.img && <div className='!w-[150px] h-[150px] bg-[#262938] rounded-full ring-[4px] cursor-pointer ring-offset-[3px] ring-[#2481d1]'>
-                                    <img src={currentUser?.img} className="w-[150px] h-[150px] rounded-full" alt="user" />
+                        <div className='md:absolute -mt-[50px] md:mt-0 flex justify-between items-center  sm:left-[50px] w-full bottom-[-80px]'>
+                            <div className='flex w-full justify-center md:justify-start items-center'>
+                                {currentUser?.img && <div className='md:w-[150px] md:h-[150px] w-[100px] h-[100px] bg-[#262938] rounded-full ring-[4px] cursor-pointer ring-offset-[3px] ring-[#2481d1]'>
+                                    <img src={currentUser?.img} className="md:w-[150px] md:h-[150px] w-[100px] h-[100px] rounded-full" alt="user" />
                                 </div>}
                                 {!(currentUser?.img) && (
-                                    <div className="w-[150px] h-[150px] ring-2 cursor-pointer ring-offset-2 ring-blue-800 rounded-full bg-blue-600 flex items-center justify-center">
+                                    <div className="md:w-[150px] md:h-[150px] w-[100px] h-[100px] ring-2 cursor-pointer ring-offset-2 ring-blue-800 rounded-full bg-blue-600 flex items-center justify-center">
                                         <h1 className="text-5xl uppercase font-bold">
                                             {currentUser?.name.slice(0, 2)}
                                         </h1>
                                     </div>
                                 )}
-                                <div className='ml-3 !pt-[60px]'>
+                                <div className='hidden md:block ml-3 !pt-[60px]'>
                                     <h1 className='text-3xl capitalize font-bold'>{currentUser?.name}</h1>
                                     <h1 className='text-xl font-bold'>{currentUser?.address}</h1>
                                 </div>
                             </div>
-                            <div className='ml-3 !pt-10 w-full flex justify-end pr-[60px] items-center'>
+                            <div className=' !pt-10 w-full absolute t-[60px] md:flex justify-end md:pr-[60px] items-center'>
                                 <Button
                                     size="sm"
                                     onClick={() => setUpdateOpen(!updateOpen)}
@@ -58,7 +58,11 @@ const UserProfile = () => {
                         </div>
                     </div>
                 </div>
-                <div className="mt-28 pl-4">
+                <div className='md:hidden text-center !pt-[60px]'>
+                    <h1 className='text-3xl capitalize font-bold'>{currentUser?.name}</h1>
+                    <h1 className='text-xl font-bold'>{currentUser?.address}</h1>
+                </div>
+                <div className="pl-4 mt-3 md:mt-28">
                     <span className='text-xs block text-gray-500 l-height sm:text-sm'>{currentUser?.bio}</span>
                 </div>
                 <div className="w-full flex justify-between p-[10px] gap-2 sm:gap-3 mt-3 items-center">
