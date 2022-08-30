@@ -72,8 +72,8 @@ const ZoomlaStore = () => {
                     <section className='flex px-4'>
                         <div className='pr-4 mx-auto w-full h-screen overflow-x-auto pt-[80px]'>
                             {/* story section */}
-                            <h1 className={`${profile ? 'block' : "hidden"} text-2xl mb-3 font-bold`}>Story</h1>
-                            <div className={`${!profile ? 'hidden' : ""} flex items-center w-full pb-2`}>
+                            {/* <h1 className={`${profile ? 'block' : "hidden"} text-2xl mb-3 font-bold`}>Story</h1> */}
+                            <div className={`${!profile ? 'hidden' : ""} flex items-center mt-3 w-full pb-2`}>
                                 <div className='mr-2 lg:mr-5'>
                                     <div className={`${!(currentUser?.img) && "ring-[4px] bg-[#506ed1] flex items-center ml-2 justify-center ring-offset-[3px] ring-[#506ed1]"} xl:w-[80px] xl:h-[80px] lg:w-[70px] lg:h-[70px] w-[50px] h-[50px] mt-2 mx-auto relative rounded-full cursor-pointer`}>
                                         {currentUser?.img && <img src={currentUser.img} alt="user" className='w-full rounded-full overflow-hidden' />}
@@ -96,8 +96,8 @@ const ZoomlaStore = () => {
                             {/* Feed section */}
                             <div className='w-full mt-3'>
                                 <div className='flex items-center mb-3'>
-                                    <h1 className={`text-2xl w-auto px-5 py-1 pb-2 rounded-3xl bg-gradient-to-r from-[#2091d9] to-[#13b38f] text-white font-bold ${!profile ? 'text-xl w-[200px]' : ''}  `}>
-                                        <span className='w-full'>{profile ? 'Feed' : "My Profile"}</span>
+                                    <h1 className={`text-2xl inline-block px-5 py-1 pb-2 rounded-3xl bg-gradient-to-r from-[#2091d9] to-[#13b38f] text-white font-bold ${!profile ? 'text-xl w-[200px]' : ''}  `}>
+                                        <span className='w-full'>{profile ? 'Feed' : "Profile"}</span>
                                     </h1>
                                     <div className='w-full -ml-2 h-[3px] rounded-sm bg-[#13b38f]'></div>
                                 </div>

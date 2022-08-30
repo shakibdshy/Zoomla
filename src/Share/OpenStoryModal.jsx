@@ -16,8 +16,11 @@ import { ImFilePicture } from "react-icons/im";
 import { FaRegFileVideo } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { UseStoryContext } from "../context/UpcomingContext";
+import { useMantineColorScheme } from "@mantine/core";
 
 const OpenStoryModal = ({ open, setOpenStory, img, image, onImageChange }) => {
+    const { colorScheme } = useMantineColorScheme();
+    const dark = colorScheme === "dark";
     const [, setStory,] = UseStoryContext();
     const [user] = useAuthState(auth);
     const imageRef = useRef();
@@ -71,20 +74,20 @@ const OpenStoryModal = ({ open, setOpenStory, img, image, onImageChange }) => {
     return (
         <Fragment>
             <Dialog
-                className="flex !bg-[#4b69c294] items-center justify-end sm:justify-center !w-full"
+                className={`${dark ? "!bg-[#4b69c294]" : "!bg-[#0509157a]"} flex !bg-[#4b69c294] items-center justify-end sm:justify-center !w-full`}
                 size="xxl"
                 open={open}
                 handler={setOpenStory}
             >
-                <div className="w-full sm:w-[60%] lg:w-[40%] overflow-y-auto !bg-[#1c1f2e] rounded-t-xl relative sm:!rounded-xl p-3">
-                    <div onClick={() => setOpenStory(!open)} className="text-2xl cursor-pointer absolute top-[5px] right-[5px] rounded-full text-white">
+                <div className={`${dark ? "!bg-[#1c1f2e] text-white" : "!bg-[#fff] text-[#000]"} w-full md:w-[60%] lg:w-[40%] overflow-y-auto !bg-[#1c1f2e] rounded-t-xl relative sm:!rounded-xl p-3 `}>
+                    <div onClick={() => setOpenStory(!open)} className="text-2xl cursor-pointer absolute top-[5px] right-[5px] rounded-full">
                         <AiOutlineClose />
                     </div>
-                    <DialogHeader className="flex !text-white items-center justify-between">
+                    <DialogHeader className="flex items-center justify-between sm:!p-4 !px-0">
                         <div className='flex items-center'>
                             {user?.displayName && (
                                 <div className="w-[40px] h-[40px] ring-2 cursor-pointer ring-offset-2 ring-blue-800 rounded-full bg-blue-600 flex items-center justify-center">
-                                    <h1 className="text-xl text-white font-bold">
+                                    <h1 className="text-xl font-bold">
                                         {user?.displayName.slice(0, 1)}
                                     </h1>
                                 </div>
@@ -94,12 +97,12 @@ const OpenStoryModal = ({ open, setOpenStory, img, image, onImageChange }) => {
                             </div>
                         </div>
                     </DialogHeader>
-                    <DialogBody>
+                    <DialogBody className="sm:!p-4 !p-0">
                         <div className='w-full rounded-2xl'>
                             {image && <img src={image.image} className='w-full rounded-2xl' alt="post img" />}
                         </div>
                     </DialogBody>
-                    <DialogFooter className="flex justify-between items-center w-full">
+                    <DialogFooter className="flex justify-between items-center w-full sm:!p-4 !px-0">
                         <ul className="flex items-center gap-x-5">
                             <li onClick={() => imageRef.current.click()} className="flex cursor-pointer items-center">
                                 <span className="text-[30px] text-blue-700 font-bold"><ImFilePicture /></span>
@@ -117,7 +120,7 @@ const OpenStoryModal = ({ open, setOpenStory, img, image, onImageChange }) => {
                             <Button
                                 onClick={() => setOpenStory(!open)}
                                 size="sm"
-                                className="!text-white border ml-3 bg-[#212534] hover:bg-[#212534] border-gray-800 !px-4 capitalize flex items-center"
+                                className={` ${dark ? "bg-[#282c3a] text-gray-500" : "!bg-[#eff6ff] text-[#0e78f9]"} !px-4 capitalize flex items-center`}
                                 variant="text"
                             >
                                 cancel

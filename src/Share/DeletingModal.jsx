@@ -8,9 +8,11 @@ import {
 } from "@material-tailwind/react";
 import { toast } from "react-toastify";
 import { UseFeedContext, UseStateContext } from "../context/UpcomingContext";
-import { LoadingOverlay } from "@mantine/core";
+import { LoadingOverlay, useMantineColorScheme } from "@mantine/core";
 
 const DeletingModal = ({ open, method, event, setDeleteOpen }) => {
+  const { colorScheme } = useMantineColorScheme();
+  const dark = colorScheme === "dark";
   const [events, setEvents] = UseStateContext();
   const [Feeds, setFeed] = UseFeedContext()
   const id = event?._id;
@@ -40,12 +42,12 @@ const DeletingModal = ({ open, method, event, setDeleteOpen }) => {
   return (
     <Fragment>
       <Dialog
-        className="flex !bg-[#4b69c250] items-center justify-end sm:justify-center !w-full"
+        className={`${dark ? "!bg-[#4b69c294]" : "!bg-[#0509157a]"} flex !bg-[#4b69c250] items-center justify-end sm:justify-center !w-full`}
         size="xxl"
         open={open}
         handler={setDeleteOpen}
       >
-        <div className="w-full sm:w-[60%] lg:w-[40%] overflow-y-auto !bg-[#1c1f2e] rounded-t-2xl sm:!rounded-2xl p-3 sm:p-6">
+        <div className={`${dark ? "!bg-[#1c1f2e] text-white" : "!bg-[#fff] text-[#000]"} w-full sm:w-[60%] lg:w-[40%] overflow-y-auto !bg-[#1c1f2e] rounded-t-2xl sm:!rounded-2xl p-3 sm:p-6`}>
           <LoadingOverlay visible={visible} overlayBlur={2} />
           <DialogHeader className="flex !text-white !px-0 items-center justify-between">
             <h1 className="text-red-500 !text-xl">
@@ -57,7 +59,7 @@ const DeletingModal = ({ open, method, event, setDeleteOpen }) => {
               <Button
                 onClick={() => setDeleteOpen(!open)}
                 size="sm"
-                className="!text-gray-500 border bg-[#282c3a] border-gray-800 !px-4 capitalize flex items-center"
+                className={` ${dark ? "bg-[#282c3a] text-gray-500" : "!bg-[#eff6ff] text-[#0e78f9]"} !px-4 capitalize flex items-center`}
                 variant="text"
               >
                 Cancel
