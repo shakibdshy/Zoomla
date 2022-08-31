@@ -60,7 +60,7 @@ const StreamAuth = () => {
         password: hashedPassword,
         avatar: avatarURL,
       }
-      const url = "https://zoomla-backend.herokuapp.com/api/auth/signup";
+      const url = "https://zoomla-backend.herokuapp.com/api/auth";
 
       await axios.post(`${url}/${isSignup ? "signup" : "signin"}`, userData)
       //console.log(data);
