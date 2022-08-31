@@ -13,6 +13,7 @@ const cookies = new Cookies();
 const initialState = {
   fullName: "",
   username: "",
+  email: "",
   password: "",
   confirmPassword: "",
   phoneNumber: "",
@@ -38,7 +39,7 @@ const StreamAuth = () => {
   const handleSubmit = async e => {
     e.preventDefault();
 
-    const { username, password, phoneNumber, avatarURL } = form;
+    const { username, email, password, phoneNumber, avatarURL } = form;
 
     const URL = "https://zoomla-backend.herokuapp.com/auth";
 
@@ -46,6 +47,7 @@ const StreamAuth = () => {
       `${URL}/${isSignup ? "stream-signup" : "stream-login"}`,
       {
         username,
+        email,
         password,
         fullName: form.fullName,
         phoneNumber,
