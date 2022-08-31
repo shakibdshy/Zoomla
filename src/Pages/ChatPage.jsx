@@ -40,6 +40,8 @@ const ChatPage = () => {
   const [isCreating, setIsCreating] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
 
+  if (!authToken) return <StreamAuth />
+
   return (
     <>
       <div className={`body-container ${dark ? "bg-[#1c1f2e] theme-dark" : "bg-white theme-light"} relative pb-20 sm:pb-0 flex`}>

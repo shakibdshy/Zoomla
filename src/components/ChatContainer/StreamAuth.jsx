@@ -5,7 +5,7 @@ import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import { StreamChat } from "stream-chat";
 
-// import signinImage from "../assets/signup.jpg";
+import signinImage from "../../assets/signup.jpg";
 
 const cookies = new Cookies();
 
@@ -59,7 +59,7 @@ const StreamAuth = () => {
       }
       const url = "https://zoomla-backend.herokuapp.com/api/auth/signup";
 
-      await axios.post(url, userData)
+      await axios.post(`${url}/${isSignup ? "signup" : "signin"}`, userData)
       //console.log(data);
       
     }
@@ -175,7 +175,7 @@ const StreamAuth = () => {
         </div>
       </div>
       <div className="auth__form-container_image">
-        {/* <img src={signinImage} alt="sign in" /> */}
+        <img src={signinImage} alt="sign in" />
       </div>
     </div>
   );
