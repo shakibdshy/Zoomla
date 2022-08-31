@@ -39,7 +39,7 @@ function Signin() {
 
     const URL = "https://zoomla-backend.herokuapp.com/auth";
 
-    const { data } = await axios.post(`${URL}/stream-signin`, {
+    const { data } = await axios.post(`${URL}/stream-login`, {
       username,
       password,
       fullName: form.fullName,
@@ -78,7 +78,7 @@ function Signin() {
       <div className="p-5 sm:p-12 pb-0 section w-full sm:max-w-2xl bg-[#232634] h-auto mx-auto shadow-lg rounded-t-2xl sm:rounded-2xl">
         <div className="title">
           <h1 className="sm:text-4xl text-3xl text-[#83bbff] font-bold text-center pt-5 sm:pt-14 pb-4 sm:pb-8 flex justify-center">
-            Zoomla - Sign Up
+            Zoomla - Sign In
           </h1>
         </div>
         <form
@@ -117,7 +117,7 @@ function Signin() {
               size="lg"
               type="submit"
             >
-              Sign Up
+              Sign In
             </Button>
           </div>
         </form>
