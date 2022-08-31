@@ -9,12 +9,12 @@ import { BiUserPin } from 'react-icons/bi'
 import ScheduleList from '../Share/ScheduleList';
 import author from "../assets/shakib.jpg"
 import author2 from "../assets/rohul.png"
-import ScheduleModul from '../Share/ScheduleModul';
 import { UseStateContext } from '../context/UpcomingContext';
 import SmNavbar from '../Share/SmNavbar';
 import TopBar from '../Share/TopBar';
 import Header from '../Share/Header';
 import { useMantineColorScheme } from '@mantine/core';
+import ScheduleModul from '../Shared/ScheduleModul';
 
 function Meeting() {
     const { colorScheme } = useMantineColorScheme();

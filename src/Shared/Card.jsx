@@ -4,9 +4,9 @@ import { FaVideo } from 'react-icons/fa'
 import { BsPlusSquareFill , BsFillCalendarDateFill } from 'react-icons/bs'
 
 import { TbScreenShare } from 'react-icons/tb'
-import ScheduleModul from './ScheduleModul'
 import JoinMeetingModal from './JoinMeetingModal'
 import { Link } from 'react-router-dom'
+import ScheduleModul from './ScheduleModul'
 
 function Card() {
     const [open, setOpen] = useState(false);

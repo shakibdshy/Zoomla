@@ -52,6 +52,21 @@ function ScheduleModul({ setOpen, open }) {
       meetingId: randomId,
     };
 
+    fetch("https://prod-in2.100ms.live/api/v2/rooms", {
+      body: {
+        "name": eventData.name,
+      },
+      headers: {
+        Authorization: `{Bearer ${process.env.REACT_APP_ROOM_TOKEN}}`,
+        "Content-Type": "application/json"
+      },
+      method: "POST"
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+      });
+
     fetch("https://arcane-wave-11590.herokuapp.com/events", {
       method: "POST",
       headers: {
