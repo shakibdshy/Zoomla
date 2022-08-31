@@ -142,7 +142,7 @@ function UpdateProfileModal({ setUpdateOpen, open }) {
                                 <Button
                                     onClick={() => setUpdateOpen(!open)}
                                     size="sm"
-                                    className="!text-gray-500 border bg-[#282c3a] border-gray-800 !px-4 mr-3 capitalize flex items-center"
+                                    className={` ${dark ? "bg-[#282c3a] text-gray-500" : "!bg-[#eff6ff] text-[#0e78f9]"} !px-4 capitalize flex items-center`}
                                     variant="text"
                                 >
                                     Cancel
