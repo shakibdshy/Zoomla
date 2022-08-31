@@ -34,7 +34,6 @@ function Signin() {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    // console.log(form);
     const { username, password, phoneNumber, avatarURL } = form;
 
     const URL = "https://zoomla-backend.herokuapp.com/auth";
@@ -58,13 +57,16 @@ function Signin() {
       const url = "https://zoomla-backend.herokuapp.com/api/auth/signin";
 
       await axios.post(url, userData);
-      //console.log(data);
     }
+    console.log(client.user);
 
     cookies.set("token", token);
     cookies.set("username", username);
     cookies.set("fullName", fullName);
     cookies.set("userId", userId);
+    cookies.set("phoneNumber", phoneNumber);
+    cookies.set("avatarURL", avatarURL);
+    cookies.set("hashedPassword", hashedPassword);
 
     window.location.reload();
 

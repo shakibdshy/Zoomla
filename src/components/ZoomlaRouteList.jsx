@@ -19,12 +19,12 @@ export function ZoomlaRouteList() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/auth-signup" element={<StreamAuth />} />
-                <Route path="/meeting-page" element={<RequireAuth><Meeting /></RequireAuth>} />
-                <Route path="/contact" element={<RequireAuth><Contact /></RequireAuth>} />
-                <Route path="/schedule" element={<RequireAuth><Schedule /></RequireAuth>} />
+                <Route path="/meeting-page" element={<Meeting />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/schedule" element={<Schedule />} />
                 <Route path="/chat" element={<ChatPage />} />
-                <Route path="/userProfile" element={<RequireAuth><ProfileUser /></RequireAuth>} />
-                <Route path="/stories" element={<RequireAuth><ZoomlaStore /></RequireAuth>} />
+                <Route path="/userProfile" element={<ProfileUser />} />
+                <Route path="/stories" element={<ZoomlaStore />} />
             </Routes>
             <ToastContainer />
         </div>
