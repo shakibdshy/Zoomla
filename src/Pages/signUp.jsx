@@ -12,7 +12,7 @@ const cookies = new Cookies();
 
 const initialState = {
   fullName: "",
-  email: "",
+  username: "",
   password: "",
   confirmPassword: "",
   phoneNumber: "",
@@ -34,40 +34,42 @@ function Signup() {
 
   const handleSubmit = async e => {
     e.preventDefault();
-
-    const { password, phoneNumber, avatarURL } = form;
+    // console.log(form);
+    const { username, password, phoneNumber, avatarURL } = form;
 
     const URL = "https://zoomla-backend.herokuapp.com/auth";
 
     const { data } = await axios.post(`${URL}/stream-signup`, {
+      username,
       password,
       fullName: form.fullName,
       phoneNumber,
       avatarURL,
     });
-    const { token, userId, hashedPassword, fullName, email } = data;
+    const { token, userId, hashedPassword, fullName } = data;
     if (data) {
+      console.log(data);
       const userData = {
         name: fullName,
-        email: email,
+        email: username,
         password: hashedPassword,
         avatar: avatarURL,
       };
-      const url = "https://zoomla-backend.herokuapp.com/auth/stream-signup";
+      const url = "https://zoomla-backend.herokuapp.com/api/auth/signup";
 
       await axios.post(url, userData);
       //console.log(data);
     }
 
     cookies.set("token", token);
+    cookies.set("username", username);
     cookies.set("fullName", fullName);
-    cookies.set("email", email);
     cookies.set("userId", userId);
     cookies.set("phoneNumber", phoneNumber);
     cookies.set("avatarURL", avatarURL);
     cookies.set("hashedPassword", hashedPassword);
 
-    // window.location.reload();
+    window.location.reload();
 
     if (client.user) {
       navigate(from, { replace: true });
@@ -97,6 +99,18 @@ function Signup() {
               onChange={handleChange}
               required
               classNames="w-full"
+            />
+          </div>
+          <div className="w-full">
+            <Input
+              name="username"
+              type="text"
+              icon={<IconAt />}
+              variant="filled"
+              placeholder="Enter Username"
+              size="lg"
+              onChange={handleChange}
+              required
             />
           </div>
           <div className="w-full">
