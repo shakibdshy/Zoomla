@@ -23,6 +23,7 @@ if (authToken) {
     id: cookies.get('userId'),
     name: cookies.get('username'),
     fullName: cookies.get('fullName'),
+    email: cookies.get('email'),
     image: cookies.get('avatarURL'),
     hashedPassword: cookies.get('hashedPassword'),
     phoneNumber: cookies.get('phoneNumber'),
@@ -38,8 +39,6 @@ const ChatPage = () => {
   const [createType, setCreateType] = useState('');
   const [isCreating, setIsCreating] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
-
-  if (!authToken) return <StreamAuth />
 
   return (
     <>
