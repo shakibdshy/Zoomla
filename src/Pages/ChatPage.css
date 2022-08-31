@@ -928,7 +928,7 @@ body {
     line-height: 120%;
     margin: 0;
     border-radius: 10px;
-    padding-left: 15px;
+    padding: 10px 15px;
     background: linear-gradient(to right, #00d2ff 0%, #3a7bd5 100%);
 }
 .str-chat__message-team:hover .str-chat__message-team-content {

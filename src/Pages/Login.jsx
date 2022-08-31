@@ -1,129 +1,132 @@
 import { Checkbox } from "@material-tailwind/react";
-import React from "react";
-import { BsChevronLeft, BsFacebook, BsGithub } from "react-icons/bs";
-import { FcGoogle } from "react-icons/fc";
-import {
-  useSignInWithEmailAndPassword,
-  useSignInWithGoogle,
-} from "react-firebase-hooks/auth";
-import auth from "../../firebase/firebase.init";
-import Loading from "../Share/Loading";
+import React, { useState } from "react";
+import { BsChevronLeft } from "react-icons/bs";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { UseUserContext } from "../context/UpcomingContext";
+import axios from "axios";
+import Cookies from "universal-cookie";
+import { StreamChat } from "stream-chat";
+import { Button, Input } from "@mantine/core";
+import { IconAt } from "@tabler/icons";
+
+const cookies = new Cookies();
+
+const initialState = {
+  fullName: "",
+  username: "",
+  password: "",
+  confirmPassword: "",
+  phoneNumber: "",
+  avatarURL: "",
+};
 
 function Signin() {
-  const [currentUser, , setUser] = UseUserContext();
+  const [form, setForm] = useState(initialState);
   const navigate = useNavigate();
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
-  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
-  const [signInWithEmailAndPassword, user, loading, error] =
-    useSignInWithEmailAndPassword(auth);
 
-  let signInError;
-  if (error || gError) {
-    signInError = (
-      <p className="text-red-500 mb-2 text-center">{error?.message}</p>
-    );
-  }
+  const apiKey = "3pznn44zcu9w";
+  const client = StreamChat.getInstance(apiKey);
 
-  if (gUser && currentUser?.email !== gUser?.user?.email) {
-    const email = gUser.user.email;
-    const name = gUser.user.displayName;
-    const img = gUser.user.photoURL;
-    fetch(`https://arcane-wave-11590.herokuapp.com/user`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({ email, name, img }),
-    })
-      .then(res => res.json())
-      .then(data => {
-        if (data) {
-          setUser(data);
-        }
-      });
-  }
+  const handleChange = e => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
-  if (user || gUser) {
-    navigate(from, { replace: true });
-  }
-
-  if (loading || gLoading) {
-    return <Loading />;
-  }
-
-  const handaleSubmite = async e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    const email = e.target.email.value;
-    const password = e.target.password.value;
-    // console.log(email, password)
-    await signInWithEmailAndPassword(email, password);
+    // console.log(form);
+    const { username, password, phoneNumber, avatarURL } = form;
+
+    const URL = "https://zoomla-backend.herokuapp.com/auth";
+
+    const { data } = await axios.post(`${URL}/stream-signin`, {
+      username,
+      password,
+      fullName: form.fullName,
+      phoneNumber,
+      avatarURL,
+    });
+    const { token, userId, hashedPassword, fullName } = data;
+    if (data) {
+      console.log(data);
+      const userData = {
+        name: fullName,
+        email: username,
+        password: hashedPassword,
+        avatar: avatarURL,
+      };
+      const url = "https://zoomla-backend.herokuapp.com/api/auth/signin";
+
+      await axios.post(url, userData);
+      //console.log(data);
+    }
+
+    cookies.set("token", token);
+    cookies.set("username", username);
+    cookies.set("fullName", fullName);
+    cookies.set("userId", userId);
+
+    window.location.reload();
+
+    if (client.user) {
+      navigate(from, { replace: true });
+    }
   };
 
   return (
     <div className="flex justify-center w-full h-screen items-end sm:items-center">
       <div className="p-5 sm:p-12 pb-0 section w-full sm:max-w-2xl bg-[#232634] h-auto mx-auto shadow-lg rounded-t-2xl sm:rounded-2xl">
         <div className="title">
-          <h1 className="text-4xl text-[#83bbff] font-bold text-center pt-5 sm:pt-14 pb-4 sm:pb-8 flex justify-center">
-            Zoomla
+          <h1 className="sm:text-4xl text-3xl text-[#83bbff] font-bold text-center pt-5 sm:pt-14 pb-4 sm:pb-8 flex justify-center">
+            Zoomla - Sign Up
           </h1>
         </div>
         <form
-          onSubmit={handaleSubmite}
+          onSubmit={handleSubmit}
           className="grid justify-items-center gap-y-4"
         >
-          <input
-            type="text"
-            name="email"
-            placeholder="Enter Your Email"
-            required
-            className="search-input shadow-md py-4 pl-8"
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Enter Your Password"
-            required
-            className="search-input shadow-md py-4 pl-8"
-          />
-          <input
-            type="submit"
-            value="Sign In"
-            className="text-white cursor-pointer font-bold py-2 bg-blue-500 rounded-lg w-1/2"
-          />
+          <div className="w-full">
+            <Input
+              name="username"
+              type="text"
+              icon={<IconAt />}
+              variant="filled"
+              placeholder="Enter Username"
+              size="lg"
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="w-full">
+            <Input
+              name="password"
+              type="password"
+              icon={<IconAt />}
+              variant="filled"
+              placeholder="Password"
+              size="lg"
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="w-full">
+            <Button
+              className="w-full"
+              variant="gradient"
+              gradient={{ from: "indigo", to: "cyan" }}
+              size="lg"
+              type="submit"
+            >
+              Sign Up
+            </Button>
+          </div>
         </form>
-        {signInError}
+        {/* <p className="text-red-500 text-center mt-2">
+          {error?.message || updateeError?.message}
+        </p> */}
         <div className="checkbox flex justify-center items-center font-normal mt-5">
           <Checkbox defaultChecked />
-          <h2 className="text-white">Keep me signed in</h2>
-        </div>
-        <div className="flex justify-center items-center gap-3">
-          <hr className="w-full h-[1px] bg-gray-300 border-none" />
-          <h2 className="grow-0 shrink-0 basis-auto m-5 text-white">
-            or Sign In with
-          </h2>
-          <hr className="w-full h-[1px] bg-gray-300 border-none" />
-        </div>
-        <div className="grid justify-items-center mt-8">
-          <ul className="flex gap-8">
-            <li
-              onClick={() => signInWithGoogle()}
-              className="flex cursor-pointer flex-col items-center justify-center text-white"
-            >
-              <FcGoogle className="text-xl" />
-              Google
-            </li>
-            <li className="flex flex-col items-center justify-center text-white">
-              <BsFacebook className="text-xl" />
-              Facebook
-            </li>
-            <li className="flex flex-col items-center justify-center text-white">
-              <BsGithub className="text-xl" />
-              GitHub
-            </li>
-          </ul>
+          <h2 className="text-white">Keep me signed Up</h2>
         </div>
         <div className="flex justify-between">
           <Link to="/">
