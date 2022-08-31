@@ -227,7 +227,6 @@ const RouteList = ({ getUserToken, getDetails }) => {
         path="/:roomId/"
         element={<RedirectToPreview getDetails={getDetails} />}
       />
-      <Route path="*" element={<NotFoundErrorPage />} />
     </Routes>
   );
 };
@@ -256,6 +255,7 @@ function AppRoutes({ getUserToken, getDetails }) {
             <RouteList getUserToken={getUserToken} getDetails={getDetails} />
           }
         />
+        <Route path="*" element={<NotFoundErrorPage />} />
       </Routes>
     </Router>
   );
