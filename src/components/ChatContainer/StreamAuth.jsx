@@ -2,10 +2,11 @@
 import React, { useState } from "react";
 import Cookies from "universal-cookie";
 import axios from "axios";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { StreamChat } from "stream-chat";
-
-import signinImage from "../../assets/signup.jpg";
+import { Button, Input, Title, useMantineColorScheme } from "@mantine/core";
+import { IconAt } from "@tabler/icons";
+import { BsChevronLeft } from "react-icons/bs";
 
 const cookies = new Cookies();
 
@@ -21,6 +22,8 @@ const initialState = {
 const StreamAuth = () => {
   const [form, setForm] = useState(initialState);
   const [isSignup, setIsSignup] = useState(false);
+  const { colorScheme } = useMantineColorScheme();
+  const dark = colorScheme === "dark";
   const navigate = useNavigate();
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
@@ -39,7 +42,7 @@ const StreamAuth = () => {
 
     const URL = "https://zoomla-backend.herokuapp.com/auth";
 
-    const {data} = await axios.post(
+    const { data } = await axios.post(
       `${URL}/${isSignup ? "stream-signup" : "stream-login"}`,
       {
         username,
@@ -50,7 +53,7 @@ const StreamAuth = () => {
       }
     );
     const { token, userId, hashedPassword, fullName } = data;
-    if (isSignup && data) { 
+    if (isSignup && data) {
       const userData = {
         name: fullName,
         email: username,
@@ -61,7 +64,7 @@ const StreamAuth = () => {
 
       await axios.post(`${url}/${isSignup ? "signup" : "signin"}`, userData)
       //console.log(data);
-      
+
     }
 
     cookies.set("token", token);
@@ -87,95 +90,113 @@ const StreamAuth = () => {
   };
 
   return (
-    <div className="auth__form-container">
-      <div className="auth__form-container_fields">
-        <div className="auth__form-container_fields-content">
-          <p>{isSignup ? "Sign Up" : "Sign In"}</p>
-          <form onSubmit={handleSubmit}>
+    <div className={`flex justify-center w-full h-screen items-end sm:items-center ${dark ? "bg-[#212534]" : ""}`}>
+      <div className="p-5 sm:p-12 pb-0 section w-full sm:max-w-2xl bg-[#232634] h-auto mx-auto shadow-lg rounded-t-2xl sm:rounded-2xl">
+        <Title order={3} size="h1" align="center" className="pb-8">{isSignup ? "Sign Up" : "Sign In"}</Title>
+          <form className="grid justify-items-center gap-y-4" onSubmit={handleSubmit}>
             {isSignup && (
-              <div className="auth__form-container_fields-content_input">
-                <label htmlFor="fullName">Full Name</label>
-                <input
+              <div className="w-full">
+                <Input
                   name="fullName"
                   type="text"
-                  placeholder="Full Name"
+                  icon={<IconAt />}
+                  variant="filled"
+                  placeholder="Enter Your Name"
+                  size="lg"
                   onChange={handleChange}
                   required
+                  classNames="w-full"
                 />
               </div>
             )}
-            <div className="auth__form-container_fields-content_input">
-              <label htmlFor="username">Username</label>
-              <input
+            <div className="w-full">
+              <Input
                 name="username"
                 type="text"
-                placeholder="Username"
+                icon={<IconAt />}
+                variant="filled"
+                placeholder="Enter Username"
+                size="lg"
                 onChange={handleChange}
                 required
               />
             </div>
             {isSignup && (
-              <div className="auth__form-container_fields-content_input">
-                <label htmlFor="phoneNumber">Phone Number</label>
-                <input
+              <div className="w-full">
+                <Input
                   name="phoneNumber"
                   type="text"
+                  icon={<IconAt />}
+                  variant="filled"
                   placeholder="Phone Number"
+                  size="lg"
                   onChange={handleChange}
-                  required
                 />
               </div>
             )}
             {isSignup && (
-              <div className="auth__form-container_fields-content_input">
-                <label htmlFor="avatarURL">Avatar URL</label>
-                <input
+              <div className="w-full">
+                <Input
                   name="avatarURL"
                   type="text"
+                  icon={<IconAt />}
+                  variant="filled"
                   placeholder="Avatar URL"
+                  size="lg"
                   onChange={handleChange}
-                  required
                 />
               </div>
             )}
-            <div className="auth__form-container_fields-content_input">
-              <label htmlFor="password">Password</label>
-              <input
+            <div className="w-full">
+              <Input
                 name="password"
                 type="password"
+                icon={<IconAt />}
+                variant="filled"
                 placeholder="Password"
+                size="lg"
                 onChange={handleChange}
                 required
               />
             </div>
             {isSignup && (
-              <div className="auth__form-container_fields-content_input">
-                <label htmlFor="confirmPassword">Confirm Password</label>
-                <input
+              <div className="w-full">
+                <Input
                   name="confirmPassword"
                   type="password"
+                  icon={<IconAt />}
+                  variant="filled"
                   placeholder="Confirm Password"
+                  size="lg"
                   onChange={handleChange}
                   required
                 />
               </div>
             )}
-            <div className="auth__form-container_fields-content_button">
-              <button>{isSignup ? "Sign Up" : "Sign In"}</button>
+            <div className="w-full">
+              <Button
+                className="w-full"
+                size="lg"
+              type="submit"
+              style={{ backgroundColor: "transparent", backgroundImage: "linear-gradient(45deg, rgb(76, 110, 245) 0%, rgb(21, 170, 191) 100%)" }}
+              >
+                {isSignup ? "Sign Up" : "Sign In"}
+              </Button>
             </div>
           </form>
-          <div className="auth__form-container_fields-account">
+          <div className="flex justify-between items-center">
+            <Link to="/">
+              <span className="flex justify-center items-center m-10 ml-0 gap-x-2 text-white">
+                <BsChevronLeft /> Back
+              </span>
+            </Link>
             <p>
               {isSignup ? "Already have an account?" : "Don't have an account?"}
-              <span onClick={switchMode}>
+              <span className="text-[#83bbff] m-10 mr-0 cursor-pointer" onClick={switchMode}>
                 {isSignup ? "Sign In" : "Sign Up"}
               </span>
             </p>
           </div>
-        </div>
-      </div>
-      <div className="auth__form-container_image">
-        <img src={signinImage} alt="sign in" />
       </div>
     </div>
   );
