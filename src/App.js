@@ -28,8 +28,8 @@ import "./base.css";
 import "./index.css";
 import { ZoomlaRouteList } from "./components/ZoomlaRouteList";
 import { StreamAuth } from "./components/ChatContainer";
-import Signup from "./Pages/signup";
-import Signin from "./Pages/Signin";
+import Signup from "./Pages/Register";
+import Signin from "./Pages/Login";
 import NotFoundErrorPage from "./Pages/NotFoundErrorPage";
 
 const Conference = React.lazy(() => import("./components/conference"));
