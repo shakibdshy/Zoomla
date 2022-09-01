@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useEffect, useCallback, useState, Fragment } from "react";
 import {
   usePreviewJoin,
@@ -161,13 +162,24 @@ const PreviewTile = ({ name, error }) => {
             <>
               <StyledVideoTile.AvatarContainer>
                 {client.user ? (
-                  <img src={client.user.image} alt="Author Image" />
+                  <>
+                    <img
+                      src={client.user.image}
+                      alt="Author Image"
+                      className="flex justify-center items-center rounded-full min-h-0"
+                    />
+                    <Text css={{ ...textEllipsis("75%") }} variant="body2">
+                      {client.user.fullName}
+                    </Text>
+                  </>
                 ) : (
-                  <Avatar name={name} data-testid="preview_avatar_tile" />
+                  <>
+                    <Avatar name={name} data-testid="preview_avatar_tile" />
+                    <Text css={{ ...textEllipsis("75%") }} variant="body2">
+                      {client.user.fullName}
+                    </Text>
+                  </>
                 )}
-                <Text css={{ ...textEllipsis("75%") }} variant="body2">
-                  {name}
-                </Text>
               </StyledVideoTile.AvatarContainer>
             </>
           ) : null}
