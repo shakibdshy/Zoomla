@@ -47,8 +47,8 @@ function StoryShow({ setStoryOpen, open, stories }) {
                             className="mySwiper"
                         >
                             {
-                                stories?.map(p => (
-                                    <>
+                                stories?.map((p, index) => (
+                                    <div key={index}>
                                         <SwiperSlide className=''>
                                             <div className='flex items-center p-3'>
                                                 {(p?.img) && (
@@ -73,7 +73,7 @@ function StoryShow({ setStoryOpen, open, stories }) {
                                                 <img src={p.img} className='w-full max-h-[500px] rounded-2xl' alt="post img" />
                                             </div>
                                         </SwiperSlide>
-                                    </>
+                                    </div>
                                 ))
                             }
                         </Swiper>

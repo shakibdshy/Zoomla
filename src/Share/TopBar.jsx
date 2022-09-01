@@ -27,6 +27,8 @@ function TopBar() {
 
   const client = StreamChat.getInstance(apiKey);
   const { pathname } = useLocation();
+  const [user] = useAuthState(auth);
+  console.log(client.user, user)
 
   return (
     <section className={`zoomla-blur p-1 sm:p-3 sm:py-5 ${dark ? "bg-[#212534] text-white" : "text-[#000]"} fixed top-0 left-0 sm:pl-10 pl-3 sm:pr-8 w-full z-10`}>
