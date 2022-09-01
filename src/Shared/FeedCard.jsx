@@ -103,8 +103,8 @@ const FeedCard = ({ FeedPosts }) => {
     return (
         <div className='w-full feedCard'>
             {
-                FeedPosts?.map(p => (
-                    <>
+                FeedPosts?.map((p, index) => (
+                    <div key={index}>
                         <motion.div
                             initial={{ y: "10vw", transition: { type: "spring", duration: 2 } }}
                             animate={{ y: 0, transition: { type: "spring", duration: 2 } }}
@@ -218,7 +218,7 @@ const FeedCard = ({ FeedPosts }) => {
                                 {p?.date && <small className='text-xs text-gray-600'>{format(new Date(p?.date), 'PP')}</small>}
                             </div>
                         </motion.div>
-                    </>
+                    </div>
                 ))
             }
             <AllLikeComments open={likeOpen} post={likeComment} setLikeOpen={setLikeOpen} />

@@ -6,13 +6,13 @@ import { BsPlusSquare } from 'react-icons/bs'
 import { MdOutlineWatchLater } from 'react-icons/md'
 import { BsPlusSquareFill } from 'react-icons/bs'
 import { BiUserPin } from 'react-icons/bi'
-import ScheduleList from '../Share/ScheduleList';
+import ScheduleList from '../Shared/ScheduleList';
 import author from "../assets/shakib.jpg"
 import author2 from "../assets/rohul.png"
 import { UseStateContext } from '../context/UpcomingContext';
-import SmNavbar from '../Share/SmNavbar';
-import TopBar from '../Share/TopBar';
-import Header from '../Share/Header';
+import SmNavbar from '../Shared/SmNavbar';
+import TopBar from '../Shared/TopBar';
+import Header from '../Shared/Header';
 import { useMantineColorScheme } from '@mantine/core';
 import ScheduleModul from '../Shared/ScheduleModul';
 
@@ -98,8 +98,8 @@ function Meeting() {
                                 <div className='grid grid-cols-2 sm:grid-cols-4 items-center mt-8 gap-4'>
                                     {
                                         users?.slice(0, 3).map((u, index) => (
-                                            <>
-                                                <div key={index} className={` ${dark ? "bg-[#212534] border-[#262938] shadow-sm" : "zoomla-shadow-xl"} p-5 border rounded-xl text-center`}>
+                                            <div key={index}>
+                                                <div className={` ${dark ? "bg-[#212534] border-[#262938] shadow-sm" : "zoomla-shadow-xl"} p-5 border rounded-xl text-center`}>
                                                     <div>
                                                         <img
                                                             className='rounded-lg w-[40px] h-[40px] mx-auto'
@@ -109,7 +109,7 @@ function Meeting() {
                                                     </div>
                                                     <p className='mt-2 text-gray-500'>Shakib Al Hasan</p>
                                                 </div>
-                                            </>
+                                            </div>
                                         ))
                                     }
                                     <div className={`${dark ? "bg-[#0e78f9] text-white" : "!bg-[#eff6ff] !text-[#0e78f9]"} p-5 rounded-xl duration-300`}>

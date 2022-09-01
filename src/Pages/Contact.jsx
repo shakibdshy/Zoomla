@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React, { useState } from 'react'
 import { Button } from '@material-tailwind/react'
-import Accordion from '../Share/Accordions'
+import Accordion from '../Shared/Accordions'
 import { BsPlusSquare, BsTelephone } from 'react-icons/bs'
 import { MdOutlineDelete, MdOutlineWatchLater, MdOutlineWorkOutline } from 'react-icons/md'
 import { BiVideo, BiMessageRoundedDots } from 'react-icons/bi'
@@ -10,9 +10,9 @@ import { AiOutlineHome } from 'react-icons/ai'
 import { GoLocation } from 'react-icons/go'
 import author from "../assets/shakib.jpg"
 import author2 from "../assets/author2.jpg"
-import Header from '../Share/Header'
-import TopBar from '../Share/TopBar'
-import SmNavbar from '../Share/SmNavbar'
+import Header from '../Shared/Header'
+import TopBar from '../Shared/TopBar'
+import SmNavbar from '../Shared/SmNavbar'
 import { useMantineColorScheme } from '@mantine/core'
 
 
