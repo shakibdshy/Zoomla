@@ -28,7 +28,7 @@ function TopBar() {
   const client = StreamChat.getInstance(apiKey);
   const { pathname } = useLocation();
   const [user] = useAuthState(auth);
-  console.log(client.user, user)
+  // console.log(client.user, user)
 
   const logout = () => {
     cookies.remove("token");
