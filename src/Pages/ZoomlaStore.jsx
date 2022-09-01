@@ -39,7 +39,7 @@ const ZoomlaStore = () => {
     const [img, setImg] = useState()
     const imageRef = useRef();
 
-    const myStory = story.filter(s => s?.email.includes(currentUser?.email))
+    const myStory = story?.filter(s => s?.email?.includes(currentUser?.email))
 
     const onImageChange = (event) => {
         if (event.target.files && event.target.files[0]) {
@@ -122,15 +122,15 @@ const ZoomlaStore = () => {
                                         <h3 className='text-xl font-bold'>My Stories</h3>
                                         <div className='flex flex-wrap gap-5 justify-between mt-5'>
                                             {
-                                                myStory.slice(0, 5).map(u => (
-                                                    <>
+                                                myStory.slice(0, 5).map((u, index) => (
+                                                    <div key={index}>
                                                         <div className='text-center'>
                                                             <div className='w-[50px] mx-auto h-[50px] !bg-[#1c1f2e] rounded-full ring-[2px] cursor-pointer ring-offset-[2px] ring-[#8e44ad]'>
                                                                 <img src={u.img} alt="user" className='w-[50px] mx-auto h-[50px] rounded-full overflow-hidden' />
                                                             </div>
                                                             <p className='text-white mt-3'>{u.name.slice(0, 5)}</p>
                                                         </div>
-                                                    </>
+                                                    </div>
                                                 ))
                                             }
                                             <div className='text-center'>

@@ -67,10 +67,9 @@ function ScheduleList({ setScheduleItem }) {
     <div className="w-full text-white pt-4">
       <div className="grid gap-3">
         {events?.map(event => (
-          <>
+          <div key={event?._id}>
             <div
               onClick={() => handleSchedule(event)}
-              key={event?._id}
               className={` ${(schedule === event?._id) & (pathname === "/meeting-page") &&
                 (!dark ? "!bg-[#eff6ff] duration-300 !text-[#0e78f9]" : "bg-[#0e78f9] text-white")
                 } w-full border  p-3 sm:p-5 rounded-xl  ${dark
@@ -157,7 +156,7 @@ function ScheduleList({ setScheduleItem }) {
                 </div>
               </div>
             </div>
-          </>
+          </div>
         ))}
       </div>
       <DeletingModal

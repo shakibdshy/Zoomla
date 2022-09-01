@@ -43,12 +43,12 @@ const Story = ({ storyShow }) => {
             }}
         >
             {
-                story.map(u => (
-                    <SwiperSlide className='text-center'>
+                story.map((u, index) => (
+                    <SwiperSlide className='text-center' key={index}>
                         <div onClick={() => storyShow(story)} className='xl:w-[80px] xl:h-[80px] lg:w-[70px] lg:h-[70px] w-[50px] h-[50px] mx-auto  mt-2 !bg-[#1c1f2e] rounded-full sm:ring-[4px] ring-[2px] cursor-pointer ring-offset-[1px] sm:ring-offset-[3px] ring-gradient-to-r from-cyan-500 to-blue-500'>
                             <img src={u.img} alt="user" className='xl:w-[80px] xl:h-[80px] lg:w-[70px] lg:h-[70px] w-[50px] h-[50px] mx-auto rounded-full overflow-hidden' />
                         </div>
-                        <p className='mt-3'>{u.name.slice(0, 5)}</p>
+                        <p className='mt-3'>{u?.name?.slice(0, 5)}</p>
                     </SwiperSlide>
                 ))
             }

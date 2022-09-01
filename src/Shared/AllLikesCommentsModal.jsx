@@ -66,8 +66,8 @@ function AllLikeComments({ setLikeOpen, open, post }) {
                     <DialogBody className="!w-full">
                         <div className="w-full">
                             {
-                                likeCommet?.map(l => (
-                                    <div className="w-full bg-blue-gray-900 rounded-lg mb-1 px-4 py-2">
+                                likeCommet?.map((l, index) => (
+                                    <div key={index} className="w-full bg-blue-gray-900 rounded-lg mb-1 px-4 py-2">
                                         <div className="w-full flex items-center justify-between">
                                             <div className="flex items-center">
                                                 {(likeCommentUser(l.email)?.img) && (
