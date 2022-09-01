@@ -6,9 +6,9 @@ import { StreamChat } from 'stream-chat';
 import { Chat } from 'stream-chat-react';
 import Cookies from 'universal-cookie';
 import { ChannelContainer, ChannelListContainer, StreamAuth } from '../components/ChatContainer';
-import Header from '../Share/Header';
-import SmNavbar from '../Share/SmNavbar';
-import TopBar from '../Share/TopBar';
+import Header from '../Shared/Header';
+import SmNavbar from '../Shared/SmNavbar';
+import TopBar from '../Shared/TopBar';
 import 'stream-chat-react/dist/css/index.css';
 import './ChatPage.css'
 

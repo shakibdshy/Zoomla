@@ -6,13 +6,13 @@ import { BsPlusSquare } from 'react-icons/bs'
 import { MdOutlineWatchLater } from 'react-icons/md'
 import { BsPlusSquareFill } from 'react-icons/bs'
 import { BiUserPin } from 'react-icons/bi'
-import ScheduleList from '../Share/ScheduleList';
+import ScheduleList from '../Shared/ScheduleList';
 import author from "../assets/shakib.jpg"
 import author2 from "../assets/rohul.png"
 import { UseStateContext } from '../context/UpcomingContext';
-import SmNavbar from '../Share/SmNavbar';
-import TopBar from '../Share/TopBar';
-import Header from '../Share/Header';
+import SmNavbar from '../Shared/SmNavbar';
+import TopBar from '../Shared/TopBar';
+import Header from '../Shared/Header';
 import { useMantineColorScheme } from '@mantine/core';
 import ScheduleModul from '../Shared/ScheduleModul';
 

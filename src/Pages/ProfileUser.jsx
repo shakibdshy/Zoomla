@@ -1,10 +1,10 @@
 /* eslint-disable prettier/prettier */
 import { useMantineColorScheme } from '@mantine/core';
 import React from 'react';
-import Header from '../Share/Header';
-import SmNavbar from '../Share/SmNavbar';
-import TopBar from '../Share/TopBar';
-import UserProfile from '../Share/UserProfile';
+import Header from '../Shared/Header';
+import SmNavbar from '../Shared/SmNavbar';
+import TopBar from '../Shared/TopBar';
+import UserProfile from '../Shared/UserProfile';
 
 const ProfileUser = () => {
     const { colorScheme } = useMantineColorScheme();
