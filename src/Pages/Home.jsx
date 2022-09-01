@@ -2,12 +2,12 @@
 /* eslint-disable prettier/prettier */
 import { useMantineColorScheme } from '@mantine/core';
 import React from 'react';
-import Card from '../Share/Card';
-import DateTime from '../Share/DateTime';
-import Header from '../Share/Header';
-import ScheduleList from '../Share/ScheduleList';
-import SmNavbar from '../Share/SmNavbar';
-import TopBar from '../Share/TopBar';
+import Card from '../Shared/Card';
+import DateTime from '../Shared/DateTime';
+import Header from '../Shared/Header';
+import ScheduleList from '../Shared/ScheduleList';
+import SmNavbar from '../Shared/SmNavbar';
+import TopBar from '../Shared/TopBar';
 
 const Home = () => {
     const { colorScheme } = useMantineColorScheme();

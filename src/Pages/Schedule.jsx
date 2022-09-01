@@ -5,9 +5,9 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import styled from '@emotion/styled';
-import SmNavbar from '../Share/SmNavbar';
-import TopBar from '../Share/TopBar';
-import Header from '../Share/Header';
+import SmNavbar from '../Shared/SmNavbar';
+import TopBar from '../Shared/TopBar';
+import Header from '../Shared/Header';
 import { useMantineColorScheme } from '@mantine/core';
 
 export const StyleWrapper = styled.div`

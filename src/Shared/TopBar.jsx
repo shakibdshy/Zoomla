@@ -28,6 +28,18 @@ function TopBar() {
   const client = StreamChat.getInstance(apiKey);
   const { pathname } = useLocation();
 
+  const logout = () => {
+    cookies.remove("token");
+    cookies.remove('userId');
+    cookies.remove('username');
+    cookies.remove('fullName');
+    cookies.remove('avatarURL');
+    cookies.remove('hashedPassword');
+    cookies.remove('phoneNumber');
+
+    window.location.reload();
+  }
+
   return (
     <section className={`zoomla-blur p-1 sm:p-3 sm:py-5 ${dark ? "bg-[#212534] text-white" : "text-[#000]"} fixed top-0 left-0 sm:pl-10 pl-3 sm:pr-8 w-full z-10`}>
       <div className="">
@@ -98,6 +110,7 @@ function TopBar() {
                   </MenuItem>
                   <MenuItem
                     className={`${dark ? "bg-[#272b39]" : "bg-[#fff]"} border-b`}
+                    onClick={logout}
                   >
                     Sign Out
                   </MenuItem>
@@ -107,7 +120,7 @@ function TopBar() {
           )}
           {!client.user && (
             <li className={`${dark ? 'text-white' : 'text-black'} text-lg font-bold uppercase`}>
-              <Link to="/signin">
+              <Link to="/auth-signup">
                 <span>Sing In</span>
               </Link>
             </li>
