@@ -167,12 +167,12 @@ const PreviewTile = ({ name, error }) => {
                       <img
                         src={client.user.image}
                         alt="User Image"
-                        className="flex justify-center items-center rounded-full min-h-0"
+                        className="w-20 h-20 flex justify-center items-center rounded-full min-h-0"
                       />
+                      <Text css={{ ...textEllipsis("75%") }} variant="body2">
+                        {client.user.fullName}
+                      </Text>
                     </div>
-                    <Text css={{ ...textEllipsis("75%") }} variant="body2">
-                      {client.user.fullName}
-                    </Text>
                   </>
                 ) : (
                   <>

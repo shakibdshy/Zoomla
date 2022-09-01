@@ -111,7 +111,7 @@ const Tile = ({ peerId, trackId, width, height }) => {
                       <img
                         src={client.user.image}
                         alt="User Image"
-                        className="flex justify-center items-center rounded-full min-h-0"
+                        className="w-20 h-20 flex justify-center items-center rounded-full min-h-0"
                       />
                     </div>
                   </>
