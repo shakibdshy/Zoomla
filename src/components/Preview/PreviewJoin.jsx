@@ -163,11 +163,13 @@ const PreviewTile = ({ name, error }) => {
               <StyledVideoTile.AvatarContainer>
                 {client.user ? (
                   <>
-                    <img
-                      src={client.user.image}
-                      alt="Author Image"
-                      className="flex justify-center items-center rounded-full min-h-0"
-                    />
+                    <div className="zoomla-preview-img">
+                      <img
+                        src={client.user.image}
+                        alt="User Image"
+                        className="flex justify-center items-center rounded-full min-h-0"
+                      />
+                    </div>
                     <Text css={{ ...textEllipsis("75%") }} variant="body2">
                       {client.user.fullName}
                     </Text>
@@ -176,7 +178,7 @@ const PreviewTile = ({ name, error }) => {
                   <>
                     <Avatar name={name} data-testid="preview_avatar_tile" />
                     <Text css={{ ...textEllipsis("75%") }} variant="body2">
-                      {client.user.fullName}
+                      {name}
                     </Text>
                   </>
                 )}

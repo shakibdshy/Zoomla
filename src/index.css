@@ -38,19 +38,19 @@
 
 .menu-item {
   border: 1px solid transparent;
-  @apply mt-2 p-4 text-center text-2xl text-[#767780] w-14 h-14 rounded-xl block transition-all relative hover:text-white before:absolute before:bottom-0 before:left-0 before:right-0 before:mx-auto before:w-0 before:h-[2px] before:transition-all;
+  @apply mt-2 p-4 text-center text-2xl text-[#767780] w-14 h-14 rounded-xl block transition-all relative hover: text-white before:absolute before:bottom-0 before:left-0 before:right-0 before:mx-auto before:w-0 before:h-[2px] before:transition-all;
 }
 
 .sm-menu-item {
   border: 1px solid transparent;
-  @apply p-2 text-center text-xl text-[#767780] w-10 h-10 rounded-xl block transition-all relative hover:text-white before:absolute before:bottom-0 before:left-0 before:right-0 before:mx-auto before:w-0 before:h-[2px] before:transition-all;
+  @apply p-2 text-center text-xl text-[#767780] w-10 h-10 rounded-xl block transition-all relative hover: text-white before:absolute before:bottom-0 before:left-0 before:right-0 before:mx-auto before:w-0 before:h-[2px] before:transition-all;
 }
 
 .isActive {
   border-color: #2c2f3c;
   background: rgba(255, 255, 255, 0.03);
   color: #fff;
-  @apply shadow-md before:w-6 before:bg-[#767780];
+  @apply shadow-md before: w-6 before:bg-[#767780];
 }
 
 .theme-light .menu-item {
@@ -69,7 +69,7 @@
 }
 
 .search-icon {
-  @apply absolute top-0 bottom-0 ml-2 sm:ml-4 my-auto text-xl text-[#878891];
+  @apply absolute top-0 bottom-0 ml-2 sm: ml-4 my-auto text-xl text-[#878891];
 }
 
 .card {
@@ -210,6 +210,19 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 24px;
+}
+
+.zoomla-preview-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 100%;
+  height: 100%;
 }
 
 @media (max-width: 400px) {
