@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { ExitIcon } from "@100mslive/react-icons";
 import { Button, Flex, Box, Text, textEllipsis } from "@100mslive/react-ui";
 import { ToastManager } from "./Toast/ToastManager";
@@ -14,6 +14,7 @@ import { getRoutePrefix } from "../common/utils";
 
 const PostLeave = () => {
   const navigate = useNavigation();
+  const location = useLocation();
   const { roomId, role } = useParams();
   const [previewPreference] = useUserPreferences(
     UserPreferencesKeys.PREVIEW,
@@ -75,6 +76,17 @@ const PostLeave = () => {
             <ExitIcon />
             <Text css={{ ml: "$3", fontWeight: "$semiBold", color: "inherit" }}>
               Rejoin
+            </Text>
+          </Button>
+          <Button
+            onClick={() => {
+              let from = location.state?.from?.pathname || "/";
+              navigate(from);
+            }}
+            data-testid="join_again_btn"
+          >
+            <Text css={{ ml: "$3", fontWeight: "$semiBold", color: "inherit" }}>
+              Back to Homepage
             </Text>
           </Button>
         </Flex>
