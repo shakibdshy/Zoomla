@@ -921,6 +921,9 @@ body {
 .str-chat__message-team-content {
     width: 200px;
 }
+.str-chat__message-team-content.str-chat__message-team-content--image {
+    width: 400px;
+}
 .str-chat__message-team-content p {
     font-family: Helvetica Neue, sans-serif;
     font-style: normal;
@@ -930,6 +933,9 @@ body {
     border-radius: 10px;
     padding: 10px 15px;
     background: linear-gradient(to right, #00d2ff 0%, #3a7bd5 100%);
+}
+span.str-chat__message-team-text--is-emoji p {
+    background: transparent;
 }
 .str-chat__message-team:hover .str-chat__message-team-content {
     background: none;

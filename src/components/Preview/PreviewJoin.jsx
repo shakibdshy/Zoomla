@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useEffect, useCallback, useState, Fragment } from "react";
 import {
   usePreviewJoin,
@@ -31,6 +32,7 @@ import {
   UserPreferencesKeys,
   defaultPreviewPreference,
 } from "../hooks/useUserPreferences";
+import { StreamChat } from "stream-chat";
 
 const PreviewJoin = ({ token, onJoin, env, skipPreview, initialName }) => {
   const [previewPreference, setPreviewPreference] = useUserPreferences(
@@ -127,6 +129,8 @@ const PreviewTile = ({ name, error }) => {
   const localPeer = useHMSStore(selectLocalPeer);
   const borderAudioRef = useBorderAudioLevel(localPeer?.audioTrack);
   const isVideoOn = useHMSStore(selectIsLocalVideoEnabled);
+  const apiKey = "3pznn44zcu9w";
+  const client = StreamChat.getInstance(apiKey);
   const {
     aspectRatio: { width, height },
   } = useTheme();
@@ -155,12 +159,31 @@ const PreviewTile = ({ name, error }) => {
             data-testid="preview_tile"
           />
           {!isVideoOn ? (
-            <StyledVideoTile.AvatarContainer>
-              <Avatar name={name} data-testid="preview_avatar_tile" />
-              <Text css={{ ...textEllipsis("75%") }} variant="body2">
-                {name}
-              </Text>
-            </StyledVideoTile.AvatarContainer>
+            <>
+              <StyledVideoTile.AvatarContainer>
+                {client.user ? (
+                  <>
+                    <div className="zoomla-preview-img">
+                      <img
+                        src={client.user.image}
+                        alt="User Image"
+                        className="w-20 h-20 flex justify-center items-center rounded-full min-h-0"
+                      />
+                      <Text css={{ ...textEllipsis("75%") }} variant="body2">
+                        {client.user.fullName}
+                      </Text>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <Avatar name={name} data-testid="preview_avatar_tile" />
+                    <Text css={{ ...textEllipsis("75%") }} variant="body2">
+                      {name}
+                    </Text>
+                  </>
+                )}
+              </StyledVideoTile.AvatarContainer>
+            </>
           ) : null}
         </>
       ) : !error ? (
