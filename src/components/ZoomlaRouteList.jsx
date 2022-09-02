@@ -10,7 +10,6 @@ import Meeting from "../Pages/MeetingPage";
 import ProfileUser from "../Pages/ProfileUser";
 import Schedule from "../Pages/Schedule";
 import ZoomlaStore from "../Pages/ZoomlaStore";
-import { StreamAuth } from "./ChatContainer";
 
 
 export function ZoomlaRouteList() {
@@ -18,7 +17,6 @@ export function ZoomlaRouteList() {
         <div>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/auth-signup" element={<StreamAuth />} />
                 <Route path="/meeting-page" element={<RequireAuth><Meeting /></RequireAuth>} />
                 <Route path="/contact" element={<RequireAuth><Contact /></RequireAuth>} />
                 <Route path="/schedule" element={<RequireAuth><Schedule /></RequireAuth>} />

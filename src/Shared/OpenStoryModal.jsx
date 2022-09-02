@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-restricted-globals */
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { useRef } from 'react';
 import {
     Button,
@@ -16,7 +16,7 @@ import { ImFilePicture } from "react-icons/im";
 import { FaRegFileVideo } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { UseStoryContext } from "../context/UpcomingContext";
-import { useMantineColorScheme } from "@mantine/core";
+import { LoadingOverlay, useMantineColorScheme } from "@mantine/core";
 
 const OpenStoryModal = ({ open, setOpenStory, img, image, onImageChange }) => {
     const { colorScheme } = useMantineColorScheme();
@@ -24,12 +24,14 @@ const OpenStoryModal = ({ open, setOpenStory, img, image, onImageChange }) => {
     const [, setStory,] = UseStoryContext();
     const [user] = useAuthState(auth);
     const imageRef = useRef();
+    const [visible, setVisible] = useState(false);
 
     const imageStorageKey = '290c7a0f169eabc5cf1f1fe286564c38';
     const handlePost = async () => {
         const fromData = new FormData();
         fromData.append('image', img);
         console.log(img)
+        setVisible(true);
 
         const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`
         fetch(url, {
@@ -51,7 +53,7 @@ const OpenStoryModal = ({ open, setOpenStory, img, image, onImageChange }) => {
 
                     console.log(data)
                     // send data backend
-                    fetch("https://arcane-wave-11590.herokuapp.com/story", {
+                    fetch("https://zoomla-backend.herokuapp.com/api/story/storyPost", {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'
@@ -60,8 +62,10 @@ const OpenStoryModal = ({ open, setOpenStory, img, image, onImageChange }) => {
                     })
                         .then(res => res.json())
                         .then(data => {
+                            console.log(data)
                             if (data) {
                                 setStory(data)
+                                setVisible(false);
                                 setOpenStory(!open)
                                 toast.dark(`successfully Share Your Story`);
                             }
@@ -84,20 +88,21 @@ const OpenStoryModal = ({ open, setOpenStory, img, image, onImageChange }) => {
                         <AiOutlineClose />
                     </div>
                     <DialogHeader className="flex items-center justify-between sm:!p-4 !px-0">
-                        <div className='flex items-center'>
+                        <div className={` flex items-center`}>
                             {user?.displayName && (
                                 <div className="w-[40px] h-[40px] ring-2 cursor-pointer ring-offset-2 ring-blue-800 rounded-full bg-blue-600 flex items-center justify-center">
-                                    <h1 className="text-xl font-bold">
+                                    <h1 className="text-xl text-white font-bold">
                                         {user?.displayName.slice(0, 1)}
                                     </h1>
                                 </div>
                             )}
                             <div className='ml-3'>
-                                <p>Share Your Story</p>
+                                <p className={`${dark ? "text-white" : "text-[#000]"}`}>Share Your Story</p>
                             </div>
                         </div>
                     </DialogHeader>
                     <DialogBody className="sm:!p-4 !p-0">
+                        <LoadingOverlay visible={visible} overlayBlur={2} />
                         <div className='w-full rounded-2xl'>
                             {image && <img src={image.image} className='w-full rounded-2xl' alt="post img" />}
                         </div>

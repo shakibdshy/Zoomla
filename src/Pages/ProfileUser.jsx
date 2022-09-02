@@ -14,7 +14,7 @@ const ProfileUser = () => {
             <Header />
             <main className='w-full sm:w-[95%] sm:ml-[90px]'>
                 <TopBar />
-                <section className=' w-full h-screen pt-20 p-8'>
+                <section className=' w-full h-screen sm:pt-28 pt-24  p-8'>
                     <UserProfile />
                 </section>
             </main>

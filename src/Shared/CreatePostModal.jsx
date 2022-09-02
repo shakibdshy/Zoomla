@@ -68,7 +68,7 @@ const CreatePostModal = ({ open, setPostOpen }) => {
 
                     console.log(data)
                     // send data backend
-                    fetch("https://arcane-wave-11590.herokuapp.com/feedPost", {
+                    fetch("https://zoomla-backend.herokuapp.com/api/feed", {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'

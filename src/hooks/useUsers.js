@@ -10,7 +10,7 @@ function useUsers() {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const url = "https://arcane-wave-11590.herokuapp.com/user";
+        const url = "https://zoomla-backend.herokuapp.com/api/users";
         const { data } = await axios.get(url);
         setLoading(false);
         setData(data);

@@ -1,11 +1,12 @@
+/* eslint-disable prettier/prettier */
 import { Checkbox } from "@material-tailwind/react";
 import React, { useState } from "react";
 import { BsChevronLeft } from "react-icons/bs";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "universal-cookie";
 import { StreamChat } from "stream-chat";
-import { Button, Input } from "@mantine/core";
+import { Button, Input, useMantineColorScheme } from "@mantine/core";
 import { IconAt } from "@tabler/icons";
 
 const cookies = new Cookies();
@@ -20,10 +21,10 @@ const initialState = {
 };
 
 function Signup() {
+  const { colorScheme } = useMantineColorScheme();
+  const dark = colorScheme === "dark";
   const [form, setForm] = useState(initialState);
   const navigate = useNavigate();
-  const location = useLocation();
-  let from = location.state?.from?.pathname || "/";
 
   const apiKey = "3pznn44zcu9w";
   const client = StreamChat.getInstance(apiKey);
@@ -53,7 +54,7 @@ function Signup() {
         name: fullName,
         email: username,
         password: hashedPassword,
-        avatar: avatarURL,
+        img: avatarURL,
       };
       const url = "https://zoomla-backend.herokuapp.com/api/auth/signup";
 
@@ -72,15 +73,15 @@ function Signup() {
     window.location.reload();
 
     if (client.user) {
-      navigate(from, { replace: true });
+      navigate("/");
     }
   };
 
   return (
-    <div className="flex justify-center w-full h-screen items-end sm:items-center">
-      <div className="p-5 sm:p-12 pb-0 section w-full sm:max-w-2xl bg-[#232634] h-auto mx-auto shadow-lg rounded-t-2xl sm:rounded-2xl">
+    <div className={`${dark ? "!bg-[#1d4bd6aa]" : "!bg-[#05091582]"} flex justify-center w-full h-screen items-end sm:items-center`}>
+      <div className={`${dark ? "!bg-[#1c1f2e] text-white" : "!bg-[#fff] text-[#000]"} p-5 sm:p-12 pb-0 section w-full sm:max-w-2xl bg-[#232634] h-auto mx-auto shadow-lg rounded-t-2xl sm:rounded-2xl`}>
         <div className="title">
-          <h1 className="sm:text-4xl text-3xl text-[#83bbff] font-bold text-center pt-5 sm:pt-14 pb-4 sm:pb-8 flex justify-center">
+          <h1 className="sm:text-4xl text-3xl font-bold text-center pt-5 sm:pt-14 pb-4 sm:pb-8 flex justify-center">
             Zoomla - Sign Up
           </h1>
         </div>
@@ -171,9 +172,9 @@ function Signup() {
               required
             />
           </div>
-          <div className="w-full">
+          <div className="w-full flex justify-center">
             <Button
-              className="w-full"
+              className="w-1/2 mx-auto bg-gradient-to-r from-[#2091d9] to-[#13b38f]"
               variant="gradient"
               gradient={{ from: "indigo", to: "cyan" }}
               size="lg"
@@ -188,16 +189,16 @@ function Signup() {
         </p> */}
         <div className="checkbox flex justify-center items-center font-normal mt-5">
           <Checkbox defaultChecked />
-          <h2 className="text-white">Keep me signed Up</h2>
+          <h2 className="">Keep me signed Up</h2>
         </div>
-        <div className="flex justify-between">
+        <div className="flex justify-between items-center">
           <Link to="/">
-            <span className="flex justify-center items-center ml-5 sm:ml-10 m-10 gap-x-2 text-white">
+            <span className="flex justify-center items-center ml-5 sm:ml-10 m-10 gap-x-2 text-[#2091d9]">
               <BsChevronLeft /> Back
             </span>
           </Link>
           <Link to="/signin">
-            <span className="text-[#83bbff] mr-5 sm:mr-10 m-10">Sign In</span>
+            <span className="text-[#13b38f] mr-5 sm:mr-10 m-10">Sign In</span>
           </Link>
         </div>
       </div>

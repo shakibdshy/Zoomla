@@ -10,7 +10,7 @@ function useFetch() {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const url = "https://arcane-wave-11590.herokuapp.com/events";
+        const url = "https://zoomla-backend.herokuapp.com/api/meeting";
         const { data } = await axios.get(url);
         setLoading(false);
         setData(data);

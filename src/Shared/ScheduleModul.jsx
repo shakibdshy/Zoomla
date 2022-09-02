@@ -14,20 +14,22 @@ import {
 import { BsFillCalendar2DateFill } from "react-icons/bs";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
-import { UseStateContext } from "../context/UpcomingContext";
-import { useMantineColorScheme } from "@mantine/core";
+import { UseStateContext, UseUserContext } from "../context/UpcomingContext";
+import { LoadingOverlay, useMantineColorScheme } from "@mantine/core";
 
 const mySelected = { backgroundColor: "#0e78f9" };
 
 function ScheduleModul({ setOpen, open }) {
   const { colorScheme } = useMantineColorScheme();
   const dark = colorScheme === "dark";
+  const [currentUser] = UseUserContext();
   const [selected, setSelected] = useState(new Date());
   const [eventName, setEventName] = useState("");
   const [time1, setTime1] = useState("08:00");
   const [time2, setTime2] = useState("10:00");
   const handleOpen = () => setOpen(!open);
   const [, setEvents] = UseStateContext()
+  const [visible, setVisible] = useState(false);
   const randomId = Math.floor(Math.random() * 952469103 + 172495031);
   const [copy, setCopy] = useState("copy");
   const handleCopy = i => {
@@ -42,10 +44,12 @@ function ScheduleModul({ setOpen, open }) {
   const handleSubmit = async e => {
     e.preventDefault();
     const slot = e.target.slot.value;
+    setVisible(true);
 
     const eventData = {
       name: eventName,
       date: selected,
+      email: currentUser?.email,
       time1: time1,
       time2: time2,
       slot,
@@ -67,7 +71,7 @@ function ScheduleModul({ setOpen, open }) {
         console.log(data)
       });
 
-    fetch("https://arcane-wave-11590.herokuapp.com/events", {
+    fetch("https://zoomla-backend.herokuapp.com/api/meeting", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -78,6 +82,7 @@ function ScheduleModul({ setOpen, open }) {
       .then(data => {
         console.log(data);
         data && setEvents(data);
+        setVisible(false);
         setOpen(!open);
         toast.dark(`successfully added Item`);
       });
@@ -91,7 +96,7 @@ function ScheduleModul({ setOpen, open }) {
         open={open}
         handler={handleOpen}
       >
-        <div className={`${dark ? "!bg-[#1c1f2e]" : "!bg-[#fff]"} w-full md:w-[80%] lg:w-[60%] h-[550px] sm:h-[790px] overflow-y-auto !bg-[#1c1f2e] rounded-t-2xl md:!rounded-2xl p-3 sm:p-6`}>
+        <div className={`${dark ? "!bg-[#1c1f2e] text-[#fff]" : "!bg-[#fff] text-[#000]"} w-full md:w-[80%] lg:w-[60%] h-[550px] sm:h-[790px] overflow-y-auto !bg-[#1c1f2e] rounded-t-2xl md:!rounded-2xl p-3 sm:p-6`}>
           <form onSubmit={handleSubmit}>
             <DialogHeader className="flex !px-0 items-center justify-between">
               <div className={` ${dark ? "text-[#fff]" : "text-[#000]"} flex items-center`}>
@@ -122,10 +127,11 @@ function ScheduleModul({ setOpen, open }) {
               </div>
             </DialogHeader>
             <DialogBody className={`${dark ? "border-[#3f445d]" : "border-[#e8eaf5]"} py-6 !px-0 !w-full !block border-y !text-white`}>
+              <LoadingOverlay visible={visible} overlayBlur={2} />
               <input
                 type="text"
                 onChange={handleChange}
-                className="w-full h-16 bg-transparent focus:border-none focus:outline-none text-xl"
+                className={` ${dark ? "bg-[#282c3a] text-gray-500" : "!bg-[#eff6ff] text-[#0e78f9]"} w-full rounded-xl px-5 h-16 focus:border-none focus:outline-none text-xl`}
                 value={eventName}
                 placeholder="Meeting Title"
                 required
