@@ -15,6 +15,7 @@ import {
 } from "@100mslive/react-ui";
 import { useLogo } from "../AppData/useUISettings";
 import { isStreamingKit } from "../../common/utils";
+import { Link } from "react-router-dom";
 
 export const SpeakerTag = () => {
   const dominantSpeaker = useHMSStore(selectDominantSpeaker);
@@ -57,16 +58,18 @@ export const Logo = () => {
     return null;
   }
   return (
-    <LogoImg
-      src={
-        logo ||
-        (themeType === "dark"
-          ? require("../../images/logo-light.svg")
-          : require("../../images/logo-dark.svg"))
-      }
-      alt="Brand Logo"
-      width={132}
-      height={40}
-    />
+    <Link to="/">
+      <LogoImg
+        src={
+          logo ||
+          (themeType === "dark"
+            ? require("../../images/logo-light.svg")
+            : require("../../images/logo-dark.svg"))
+        }
+        alt="Brand Logo"
+        width={132}
+        height={40}
+      />
+    </Link>
   );
 };
