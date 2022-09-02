@@ -32,7 +32,7 @@ import {
   UserPreferencesKeys,
   defaultPreviewPreference,
 } from "../hooks/useUserPreferences";
-import { StreamChat } from "stream-chat";
+// import { StreamChat } from "stream-chat";
 
 const PreviewJoin = ({ token, onJoin, env, skipPreview, initialName }) => {
   const [previewPreference, setPreviewPreference] = useUserPreferences(
@@ -129,8 +129,8 @@ const PreviewTile = ({ name, error }) => {
   const localPeer = useHMSStore(selectLocalPeer);
   const borderAudioRef = useBorderAudioLevel(localPeer?.audioTrack);
   const isVideoOn = useHMSStore(selectIsLocalVideoEnabled);
-  const apiKey = "3pznn44zcu9w";
-  const client = StreamChat.getInstance(apiKey);
+  // const apiKey = "3pznn44zcu9w";
+  // const client = StreamChat.getInstance(apiKey);
   const {
     aspectRatio: { width, height },
   } = useTheme();
@@ -161,7 +161,7 @@ const PreviewTile = ({ name, error }) => {
           {!isVideoOn ? (
             <>
               <StyledVideoTile.AvatarContainer>
-                {client.user ? (
+                {/* {client.user ? (
                   <>
                     <div className="zoomla-preview-img">
                       <img
@@ -181,7 +181,11 @@ const PreviewTile = ({ name, error }) => {
                       {name}
                     </Text>
                   </>
-                )}
+                )} */}
+                <Avatar name={name} data-testid="preview_avatar_tile" />
+                <Text css={{ ...textEllipsis("75%") }} variant="body2">
+                  {name}
+                </Text>
               </StyledVideoTile.AvatarContainer>
             </>
           ) : null}

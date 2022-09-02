@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { Fragment, useCallback, useState } from "react";
 import {
   Avatar,
@@ -28,7 +27,6 @@ import { useIsHeadless, useUISettings } from "./AppData/useUISettings";
 import { useAppConfig } from "./AppData/useAppConfig";
 import { getVideoTileLabel } from "./peerTileUtils";
 import { UI_SETTINGS } from "../common/constants";
-import { StreamChat } from "stream-chat";
 
 const Tile = ({ peerId, trackId, width, height }) => {
   const trackSelector = trackId
@@ -47,8 +45,6 @@ const Tile = ({ peerId, trackId, width, height }) => {
   const borderAudioRef = useBorderAudioLevel(audioTrack?.id);
   const isVideoDegraded = track?.degraded;
   const isLocal = localPeerID === peerId;
-  const apiKey = "3pznn44zcu9w";
-  const client = StreamChat.getInstance(apiKey);
   const label = getVideoTileLabel({
     peerName,
     track,
@@ -104,26 +100,10 @@ const Tile = ({ peerId, trackId, width, height }) => {
           ) : null}
           <StyledVideoTile.AvatarContainer>
             {isVideoMuted || isVideoDegraded || isAudioOnly ? (
-              <>
-                {client.user ? (
-                  <>
-                    <div className="zoomla-preview-img">
-                      <img
-                        src={client.user.image}
-                        alt="User Image"
-                        className="w-20 h-20 flex justify-center items-center rounded-full min-h-0"
-                      />
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <Avatar
-                      name={peerName || ""}
-                      data-testid="participant_avatar_icon"
-                    />
-                  </>
-                )}
-              </>
+              <Avatar
+                name={peerName || ""}
+                data-testid="participant_avatar_icon"
+              />
             ) : null}
           </StyledVideoTile.AvatarContainer>
 
