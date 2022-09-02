@@ -225,6 +225,10 @@
   height: 100%;
 }
 
+.hms-ui-c-PJLV-ihWtKLf-css {
+  background-color: transparent !important;
+}
+
 @media (max-width: 400px) {
   .card {
     padding: 16px;
