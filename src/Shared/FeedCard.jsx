@@ -31,7 +31,7 @@ const FeedCard = ({ FeedPosts }) => {
     const [event, setEvent] = useState();
     const [likeEmail, setLikeEmail] = useState();
     const [visible, setVisible] = useState(false);
-    const method = 'feedPost'
+    const method = 'api/feed'
 
     const handleOpen = (p, method) => {
         if (method === 'update') {
@@ -52,18 +52,14 @@ const FeedCard = ({ FeedPosts }) => {
 
 
     console.log(comment)
-    const handleLike = (email, id) => {
-        setLike(id)
+    const handleLike = async (email, p) => {
+        setLike(p?._id)
 
-        Feeds?.map(i => {
-            const like = i?.likes?.find(l => l?.email?.includes(email))
-            setLikeEmail(like?.email);
-            console.log(like?.email)
-        })
+        const like = p?.likes?.find(l => l?.email?.includes(email));
+        console.log(like, like?.email, email)
 
-
-        if (email !== likeEmail) {
-            fetch(`https://arcane-wave-11590.herokuapp.com/like/${id}`, {
+        if ((email !== like?.email)) {
+            fetch(`https://zoomla-backend.herokuapp.com/api/feed/like/${p?._id}`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json'
@@ -82,7 +78,7 @@ const FeedCard = ({ FeedPosts }) => {
         e.preventDefault();
         if (comment) {
             setVisible(true);
-            fetch(`https://arcane-wave-11590.herokuapp.com/comment/${id}`, {
+            fetch(`https://zoomla-backend.herokuapp.com/api/feed/comment/${id}`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json'
@@ -159,7 +155,7 @@ const FeedCard = ({ FeedPosts }) => {
 
                             <div className={`${dark ? 'text-gray-500' : 'text-gray-700'} flex items-center justify-between`}>
                                 <ul className='flex items-center gap-x-3'>
-                                    <li onClick={() => handleLike(currentUser?.email, p?._id)} className="text-gray-400 text-[20px] cursor-pointer">
+                                    <li onClick={() => handleLike(currentUser?.email, p)} className="text-gray-400 text-[20px] cursor-pointer">
                                         <span>
                                             {
                                                 ((like === p?._id) || (currentUser?.email === p?.likes?.find(l => l?.email?.includes(currentUser?.email))?.email)) ?
@@ -198,11 +194,11 @@ const FeedCard = ({ FeedPosts }) => {
 
                             <div className='my-2'>
                                 <div className='flex items-center justify-between '>
-                                    {p?.likes && <p onClick={() => handleLikeComment(p)} className={`${dark ? 'text-gray-500' : 'text-gray-700'} cursor-pointer capitalize text-sm`}>Liked by
+                                    {(p?.likes?.length > 0) && <p onClick={() => handleLikeComment(p)} className={`${dark ? 'text-gray-500' : 'text-gray-700'} cursor-pointer capitalize text-sm`}>Liked by
                                         <span className='capitalize'> {p?.likes?.[p?.likes?.length - 1]?.email.slice(0, 5)} </span>
                                         {(p?.likes?.length > 1) && <span>and {p?.likes?.length - 1} others</span>}
                                     </p>}
-                                    {!(p?.likes) && <p className={`${dark ? 'text-gray-500' : 'text-gray-700'} text-sm`}>No like available</p>}
+                                    {(p?.likes?.length === 0) && <p className={`${dark ? 'text-gray-500' : 'text-gray-700'} text-sm`}>No like available</p>}
                                 </div>
                                 <div className='flex items-center'>
                                     {p?.title && <p className={`${dark ? 'text-gray-500' : 'text-gray-700'} text-sm`}>"{p?.title.slice(0, 40)}</p>}

@@ -23,13 +23,12 @@ const DeletingModal = ({ open, method, event, setDeleteOpen }) => {
 
   const handleDelete = () => {
     setVisible(true)
-    fetch(`https://arcane-wave-11590.herokuapp.com/${method}/${id}`, {
+    fetch(`https://zoomla-backend.herokuapp.com/${method}/${id}`, {
       method: "DELETE",
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
-        if (data.deletedCount) {
+        if (data) {
           toast.dark(`Delete successfully`);
           setVisible(false)
           setDeleteOpen(!open);

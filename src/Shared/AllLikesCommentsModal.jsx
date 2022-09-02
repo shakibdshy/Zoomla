@@ -93,7 +93,7 @@ function AllLikeComments({ setLikeOpen, open, post }) {
                                     </div>
                                 ))
                             }
-                            {!(post?.comments) && <p className="text-center text-xl">No Comment available</p>}
+                            {(post?.comments?.length === 0) && <p className="text-center text-xl">No Comment available</p>}
                         </div>
                     </DialogBody>
                 </div>

@@ -11,7 +11,7 @@ function useFeedFetch() {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const url = "https://arcane-wave-11590.herokuapp.com/feedPost";
+        const url = "https://zoomla-backend.herokuapp.com/api/feed";
         const { data } = await axios.get(url);
         setLoading(false);
         setData(data);

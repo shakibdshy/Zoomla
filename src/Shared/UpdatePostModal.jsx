@@ -67,7 +67,7 @@ const UpdatePostModal = ({ open, setUpdatePostOpen, post }) => {
 
                     console.log(data)
                     // send data backend
-                    fetch(`https://arcane-wave-11590.herokuapp.com/feedPost/${post._id}`, {
+                    fetch(`https://zoomla-backend.herokuapp.com/api/feed/${post._id}`, {
                         method: 'PUT',
                         headers: {
                             'content-type': 'application/json'
@@ -100,7 +100,6 @@ const UpdatePostModal = ({ open, setUpdatePostOpen, post }) => {
                     <div onClick={() => setUpdatePostOpen(!open)} className="text-2xl cursor-pointer absolute top-[5px] right-[5px] rounded-full text-white">
                         <AiOutlineClose />
                     </div>
-                    <LoadingOverlay visible={visible} overlayBlur={2} />
                     <DialogHeader className="flex !text-white items-center justify-between sm:!p-4 !px-0">
                         <div className='flex items-center'>
                             {user?.displayName && (
@@ -123,6 +122,7 @@ const UpdatePostModal = ({ open, setUpdatePostOpen, post }) => {
                         </div>
                     </DialogHeader>
                     <DialogBody className="sm:!p-4 !p-0">
+                        <LoadingOverlay visible={visible} overlayBlur={2} />
                         <div className='w-full rounded-2xl'>
                             {image && <img src={image.image} className='w-full rounded-2xl' alt="post img" />}
                             {!image && <img src={post?.img} className='w-full rounded-2xl' alt="post img" />}

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable prettier/prettier */
 import React, { useEffect, useState } from "react";
 import {
@@ -12,11 +13,13 @@ import author2 from "../assets/rohul.png";
 import DeletingModal from "./DeletingModal";
 import { MdOutlineWatchLater } from "react-icons/md";
 import { BsThreeDots } from "react-icons/bs";
-import { UseStateContext } from "../context/UpcomingContext";
+import { UseStateContext, UseUserContext } from "../context/UpcomingContext";
 import { Avatar } from "@mantine/core";
 import { useLocation } from "react-router-dom";
+import { motion } from "framer-motion"
 
 function ScheduleList({ setScheduleItem }) {
+  const [currentUser] = UseUserContext();
   const [events, ,] = UseStateContext();
   const [deleteOpen, setDeleteOpen] = useState(false);
   const [event, setEvent] = useState({});
@@ -24,7 +27,7 @@ function ScheduleList({ setScheduleItem }) {
   const { pathname } = useLocation();
   const { colorScheme } = useMantineColorScheme();
   const dark = colorScheme === "dark";
-  const method = "events";
+  const method = "api/meeting";
   const user = [
     author,
     author2,
@@ -40,6 +43,9 @@ function ScheduleList({ setScheduleItem }) {
   // if (loading) {
   //   <Loading />;
   // }
+
+  const myEvents = events?.filter(e => e?.email?.includes(currentUser?.email))
+
 
   useEffect(() => {
     setSchedule(events[0]?._id);
@@ -68,7 +74,10 @@ function ScheduleList({ setScheduleItem }) {
       <div className="grid gap-3">
         {events?.map(event => (
           <div key={event?._id}>
-            <div
+            <motion.div
+              initial={{ y: "10vw", transition: { type: "spring", duration: 2 } }}
+              animate={{ y: 0, transition: { type: "spring", duration: 2 } }}
+              exit={{ y: "60vw", scale: [1, 0], transition: { duration: 0.5 } }}
               onClick={() => handleSchedule(event)}
               className={` ${(schedule === event?._id) & (pathname === "/meeting-page") &&
                 (!dark ? "!bg-[#eff6ff] duration-300 !text-[#0e78f9]" : "bg-[#0e78f9] text-white")
@@ -155,7 +164,7 @@ function ScheduleList({ setScheduleItem }) {
                   )}
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         ))}
       </div>

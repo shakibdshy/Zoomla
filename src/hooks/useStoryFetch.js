@@ -11,7 +11,7 @@ function useStoryFetch() {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const url = "https://arcane-wave-11590.herokuapp.com/story";
+        const url = "https://zoomla-backend.herokuapp.com/api/story";
         const { data } = await axios.get(url);
         setLoading(false);
         setData(data);

@@ -25,7 +25,7 @@ function UpdateProfileModal({ setUpdateOpen, open }) {
     const imageRef = useRef();
     const [name, setName] = useState(currentUser?.name)
     const [phone, setPhone] = useState(currentUser?.phone ? currentUser?.phone : "8801.....")
-    const [email, setEmail] = useState(users?.email)
+    const [email, setEmail] = useState(currentUser?.email)
     const [address, setAddress] = useState("Nalitabari serpur")
     const [bio, setBio] = useState(currentUser?.bio ? currentUser?.bio : "Enter Your bio data")
     const [visible, setVisible] = useState(false);
@@ -67,7 +67,7 @@ function UpdateProfileModal({ setUpdateOpen, open }) {
                     }
                     console.log(data, "server")
                     // send data backend
-                    fetch(`https://arcane-wave-11590.herokuapp.com/UpdateUser/${currentUser._id}`, {
+                    fetch(`https://zoomla-backend.herokuapp.com/api/users/${currentUser?._id}`, {
                         method: 'PUT',
                         headers: {
                             'content-type': 'application/json'
@@ -76,7 +76,7 @@ function UpdateProfileModal({ setUpdateOpen, open }) {
                     })
                         .then(res => res.json())
                         .then(data => {
-                            if (data?.users) {
+                            if (data) {
                                 setVisible(false);
                                 setUpdateOpen(!open)
                                 setUser(users);
