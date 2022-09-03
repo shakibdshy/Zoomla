@@ -56,6 +56,17 @@ const StreamAuth = () => {
     );
     const { token, userId, hashedPassword, fullName } = data;
     if (data) {
+      const url = "https://zoomla-backend.herokuapp.com/api/token";
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        }
+      }).then(res => res.json())
+        .then(data => { 
+          cookies.set("hmsToken", data?.token);
+          console.log("Token", data.token)
+        })
       cookies.set("token", token);
       cookies.set("username", username);
       cookies.set("fullName", fullName);
