@@ -8,8 +8,6 @@ import { Button, Input, Title, useMantineColorScheme } from "@mantine/core";
 import { IconAt } from "@tabler/icons";
 import { BsChevronLeft } from "react-icons/bs";
 
-const cookies = new Cookies();
-
 const initialState = {
   fullName: "",
   username: "",
@@ -29,7 +27,9 @@ const StreamAuth = () => {
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
 
+  const cookies = new Cookies();
   const apiKey = '3pznn44zcu9w';
+  const authToken = cookies.get('token');
   const client = StreamChat.getInstance(apiKey);
 
   const handleChange = e => {
@@ -55,6 +55,15 @@ const StreamAuth = () => {
       }
     );
     const { token, userId, hashedPassword, fullName } = data;
+    if (data) {
+      cookies.set("token", token);
+      cookies.set("username", username);
+      cookies.set("fullName", fullName);
+      cookies.set("userId", userId);
+
+      navigate(from, { replace: true });
+    }
+
     if (isSignup && data) {
       const userData = {
         name: fullName,
@@ -66,24 +75,20 @@ const StreamAuth = () => {
 
       await axios.post(`${url}/${isSignup ? "signup" : "signin"}`, userData)
       //console.log(data);
-
     }
 
-    cookies.set("token", token);
-    cookies.set("username", username);
-    cookies.set("fullName", fullName);
-    cookies.set("userId", userId);
-
+    
     if (isSignup) {
+      cookies.set("email", email);
       cookies.set("phoneNumber", phoneNumber);
       cookies.set("avatarURL", avatarURL);
       cookies.set("hashedPassword", hashedPassword);
     }
 
-    window.location.reload();
+    // window.location.reload();
 
-    if (client.user) {
-      navigate(from, { replace: true });
+    if (authToken || client.user) {
+      // navigate(from, { replace: true });
     }
   };
 
