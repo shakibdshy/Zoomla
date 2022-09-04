@@ -65,7 +65,7 @@ const StreamAuth = () => {
       }).then(res => res.json())
         .then(data => { 
           cookies.set("hmsToken", data?.token);
-          console.log("Token", data.token)
+          console.log("hmsToken", data.token)
         })
       cookies.set("token", token);
       cookies.set("username", username);
