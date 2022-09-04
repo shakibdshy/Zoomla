@@ -14,8 +14,8 @@ function Card() {
     const [open, setOpen] = useState(false);
     const [meetOpen, setMeetOpen] = useState(false);
 
-    const createMeeting = () => {
-        fetch('https://prod-in2.100ms.live/api/v2/rooms', {
+    const createMeeting = async (e) => {
+        await fetch('https://prod-in2.100ms.live/api/v2/rooms', {
             method: 'POST',
             headers: {
                 'Authorization': 'Bearer ' + cookies.get('hmsToken'),
