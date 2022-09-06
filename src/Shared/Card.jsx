@@ -27,6 +27,10 @@ function Card() {
                 'name': 'test-room',
             })
         })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
     }
 
     const handleOpen = (index) => {
