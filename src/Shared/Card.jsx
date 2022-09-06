@@ -18,7 +18,7 @@ function Card() {
         await fetch('https://prod-in2.100ms.live/api/v2/rooms', {
             method: 'POST',
             headers: {
-                "Access-Control-Allow-Origin: *"
+                "Access-Control-Allow-Origin": "*",
                 'Authorization': 'Bearer ' + cookies.get('hmsToken'),
                 'Content-Type': 'application/json'
             },
