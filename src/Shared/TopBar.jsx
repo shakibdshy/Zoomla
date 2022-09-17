@@ -123,7 +123,7 @@ function TopBar() {
           {!client.user && (
             <li className={`${dark ? 'text-white' : 'text-black'} text-lg font-bold uppercase`}>
               <Link to="/auth-signup">
-                <span>Sing In</span>
+                <span>Sign In</span>
               </Link>
             </li>
           )}
