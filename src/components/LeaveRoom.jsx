@@ -23,7 +23,7 @@ import {
   Dropdown,
 } from "@100mslive/react-ui";
 import {
-  DialogCheckbox,
+  // DialogCheckbox,
   DialogContent,
   DialogRow,
 } from "../primitives/DialogContent";
@@ -164,12 +164,12 @@ export const LeaveRoom = () => {
         }}
       >
         <DialogContent title="End Room" Icon={HangUpIcon}>
-          <DialogCheckbox
+          {/* <DialogCheckbox
             id="lockRoom"
             title="Disable future joins"
             value={lockRoom}
             onChange={setLockRoom}
-          />
+          /> */}
           <DialogRow justify="end">
             <Button
               variant="danger"
